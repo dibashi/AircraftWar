@@ -1,6 +1,7 @@
 
 
 var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
+
 cc.Class({
     extends: cc.Component,
 
@@ -186,7 +187,7 @@ cc.Class({
 
                 this.node.parent.getComponent('Game').gameOver();
             } else {
-                this.blood -= bDamage;
+             //   this.blood -= bDamage; //屏蔽后无敌 方便调试
                 this.bBar.string = this.blood;
             }
         } else if (other.node.group === "enemy") {

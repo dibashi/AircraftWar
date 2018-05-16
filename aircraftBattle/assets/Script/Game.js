@@ -20,25 +20,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-        // player:{
-        //     default: null,
-        //     type: cc.Node
-        // },
+        
         enemyPlane0: {
             default: null,
             type: cc.Prefab,
@@ -135,6 +117,15 @@ cc.Class({
 
 
     onLoad() {
+        var isloaded = cc.sys.localStorage.getItem("isLoaded");
+        cc.log("isloaded " + isloaded );
+        if(!isloaded) {
+            cc.sys.localStorage.setItem('isLoaded', 1);
+        } else {
+            var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;
+            cc.sys.localStorage.setItem('isLoaded', countLoaded);
+            cc.log("第" + countLoaded +"次登陆");
+        }
 
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
