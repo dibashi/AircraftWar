@@ -247,10 +247,18 @@
     "prizeJinBi": {
       "__uuid__": "2787c894-d409-4b53-bd6e-cd6c4f35986a"
     },
-    "prizeWuDiChongCi": null,
-    "prizeXinJiaXue": null,
-    "prizeJiSuSheSu": null,
-    "PrizeHuoJianPao": null,
+    "prizeWuDiChongCi": {
+      "__uuid__": "ef4c75dc-5198-48b2-aa9a-3fe68880d8d9"
+    },
+    "prizeXinJiaXue": {
+      "__uuid__": "775d56f0-90c7-4321-9c05-08543b50838b"
+    },
+    "prizeJiSuSheSu": {
+      "__uuid__": "3ced3287-a16b-41cb-9f86-65e89368e0c2"
+    },
+    "prizeHuoJianPao": {
+      "__uuid__": "2889e716-abd0-490b-ab55-755d71857292"
+    },
     "enemyBullet1": null,
     "enemyBullet2": null,
     "enemyBullet3": null,

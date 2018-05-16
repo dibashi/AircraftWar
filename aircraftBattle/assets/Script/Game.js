@@ -15,6 +15,9 @@ var globalStageData = require("enemyPlaneDatas").stageData;
 
 var generateType = require("enemyPlaneDatas").generateType;
 
+var globalDropJinBiCount = require("enemyPlaneDatas").dropJinBiCount;
+var globalJinBiCount = require("enemyPlaneDatas").jinBiCount;
+
 
 cc.Class({
     extends: cc.Component,
@@ -90,7 +93,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        PrizeHuoJianPao: {
+        prizeHuoJianPao: {
             default: null,
             type: cc.Prefab,
         },
@@ -111,6 +114,7 @@ cc.Class({
         enemyBulletMoveTime: 4,
 
         enemyCount:-1,//存储当前游戏的敌机个数，来实现stage切换。
+        player:null,
     },
 
 
@@ -118,19 +122,23 @@ cc.Class({
 
     onLoad() {
         var isloaded = cc.sys.localStorage.getItem("isLoaded");
-        cc.log("isloaded " + isloaded );
+        
         if(!isloaded) {
             cc.sys.localStorage.setItem('isLoaded', 1);
+            cc.sys.localStorage.setItem('jinBiCount', globalJinBiCount);
+
         } else {
             var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;
             cc.sys.localStorage.setItem('isLoaded', countLoaded);
-            cc.log("第" + countLoaded +"次登陆");
+            //cc.log("第" + countLoaded +"次登陆");
         }
 
+        cc.log("isloaded " + cc.sys.localStorage.getItem('isLoaded') );
+        cc.log("jinBiCount " + cc.sys.localStorage.getItem('jinBiCount') );
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
-        manager.enabledDebugDraw = true;
+        //manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
@@ -139,30 +147,30 @@ cc.Class({
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
 
         //根据globalHeroPlaneID来加载不同的预制体
-        var player = null;
+        //var player = null;
         if (D.globalHeroPlaneID === heroPlaneID.heroPlane0) {
-            player = cc.instantiate(this.heroPlane0);
+            this.player = cc.instantiate(this.heroPlane0);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane1) {
-            player = cc.instantiate(this.heroPlane1);
+            this.player = cc.instantiate(this.heroPlane1);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane2) {
-            player = cc.instantiate(this.heroPlane2);
+            this.player = cc.instantiate(this.heroPlane2);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane3) {
-            player = cc.instantiate(this.heroPlane3);
+            this.player = cc.instantiate(this.heroPlane3);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane4) {
             //cc.log('zhixing111111');
-            player = cc.instantiate(this.heroPlane4);
+            this.player = cc.instantiate(this.heroPlane4);
             //cc.log(player);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane5) {
             player = cc.instantiate(this.heroPlane5);
         }
 
-        this.node.addChild(player);
-        player.setPosition(0, player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
+        this.node.addChild(this.player);
+        this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
 
         this.stage = 0;
         this.runStage();
@@ -268,41 +276,64 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
-                    var jinbiPrefab = cc.instantiate(this.prizeJinBi);
-                    this.node.addChild(jinbiPrefab);
-                    jinbiPrefab.setPosition(prizePosition);
-                    jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
+                    var pf = cc.instantiate(this.prizeJinBi);
+                    this.node.addChild(pf);
+                    pf.setPosition(prizePosition);
+                    pf.getComponent("prize").prizeType = generateType.jinbi;
                     break;
                 case generateType.wudichongci:
                     cc.log("wudichongci!");
+                    var pf = cc.instantiate(this.prizeWuDiChongCi);
+                    this.node.addChild(pf);
+                    pf.setPosition(prizePosition);
+                    pf.getComponent("prize").prizeType = generateType.wudichongci;
                     break;
                 case generateType.xinjiaxue:
                     cc.log("xinjiaxue!");
+                    var pf = cc.instantiate(this.prizeXinJiaXue);
+                    this.node.addChild(pf);
+                    pf.setPosition(prizePosition);
+                    pf.getComponent("prize").prizeType = generateType.xinjiaxue;
                     break;
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
+                    var pf = cc.instantiate(this.prizeJiSuSheSu);
+                    this.node.addChild(pf);
+                    pf.setPosition(prizePosition);
+                    pf.getComponent("prize").prizeType = generateType.jisushesu;
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
+                    var pf = cc.instantiate(this.prizeHuoJianPao);
+                    this.node.addChild(pf);
+                    pf.setPosition(prizePosition);
+                    pf.getComponent("prize").prizeType = generateType.huojianpao;
                     break;
             }
         }
     },
 
     getJinBi:function() {
-        cc.log("getJinBi")
+        //cc.log("getJinBi");
+        var c = cc.sys.localStorage.getItem('jinBiCount');
+       // cc.log("getJinBi --------->"+c);
+        var newC = parseInt(c) + globalDropJinBiCount;
+       // cc.log("getJinBi --------->"+newC);
+        cc.sys.localStorage.setItem('jinBiCount', newC);
+
     },
     getWuDiChongCi:function() {
-        cc.log("getWuDiChongCi")
+        cc.log("getWuDiChongCi");
     },
-    xinjiaxue:function() {
-        cc.log("xinjiaxue")
+    getXinJiaXue:function() {
+        cc.log("xinjiaxue");
+        this.player.getComponent("Player").addBlood();
     },
-    jisushesu:function() {
-        cc.log("jisushesu")
+    getJiSuSheSu:function() {
+        cc.log("jisushesu");
     },
-    huojianpao:function() {
-        cc.log("huojianpao")
+    getHuoJianPao:function() {
+        cc.log("huojianpao");
     },
 
 
