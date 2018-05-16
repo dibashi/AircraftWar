@@ -50,7 +50,7 @@ cc.Class({
         this.bBar.string = this.blood;
         //bBar.string = "lh";
         // cc.log("bBar =   "+bBar.string);
-        cc.log("bbblood   " + this.blood);
+        //cc.log("bbblood   " + this.blood);
         this.node.addChild(nodeBar);
         nodeBar.setPosition(0, 0);
         nodeBar.rotation = 180;
