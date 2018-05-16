@@ -2,6 +2,7 @@
 
 //var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
 var generateType = require("enemyPlaneDatas").generateType;
+var bulletType = require("enemyPlaneDatas").bulletType;
 var globalEnemyPlaneData = require("enemyPlaneDatas").enemyPlaneData;
 cc.Class({
     extends: cc.Component,
@@ -74,9 +75,9 @@ cc.Class({
 
     enterCallback:function() {
 
-        cc.log("enemy enterCallback  enemyID"+ this.enemyID);
+        //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
 
-        // this.schedule(this.bICallback1, this.bulletIntelval, 10000, 0.01);
+        this.schedule(this.bICallback, 1 / this.shootingSpeed);
         // //this.scheduleOnce(this.bICallback1, 2);
         // var moveRight1 = cc.moveBy(1, cc.p(40, 0));
         // var moveLeft1 = cc.moveBy(1, cc.p(-40, 0));
@@ -89,7 +90,8 @@ cc.Class({
     },
 
     bICallback: function () {
-
+      
+        
 
         // var bl = cc.instantiate(this.bullet);
         // bl.getComponent('bullet1').enemys = this.node.parent.enemys;
@@ -104,43 +106,21 @@ cc.Class({
 
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
         var bl = null;
-        if (this.bulletType === 0) {
+        if (this.bulletType === bulletType.jipao) {
             bl = cc.instantiate(this.bullet0); //预制体未做 未加入
-        } else if (this.bulletType === 1) {
+        } else if (this.bulletType === bulletType.huopao) {
             bl = cc.instantiate(this.bullet1);//预制体未做 未加入
         }
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         this.node.parent.addChild(bl);
 
-        bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
-        bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2 + bl.height / 2);
+        bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
+        bl.getComponent("enemyBullet").damage = this.damage;
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
     },
 
-    start() {
-
-    },
-
-    update(dt) {
 
 
-
-        for (var i = 0; i < D.enemys.length; i++) {
-
-            if (this.getEnemyDistance(D.enemys[i]) < this.Radius) {
-                cc.log("游戏结束");
-
-                this.node.parent.getComponent('Game').gameOver();
-            }
-        }
-    },
-
-    getEnemyDistance: function (enemy) {
-
-        var enemy = enemy.getPosition();
-
-        var dist = cc.pDistance(this.node.position, enemy);
-        return dist;
-    },
 
     onCollisionEnter: function (other, self) {
         //    console.log('on collision enter');

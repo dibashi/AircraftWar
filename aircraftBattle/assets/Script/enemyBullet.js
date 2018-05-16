@@ -15,86 +15,78 @@ cc.Class({
 
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-        // enemys : [],
-        Radius: 15,
-        speed : 100,
-        aX : 0.0,
-        bY: 0.0,
+       
+        flyingSpeed :0,//一帧飞行像素 目前只是Y轴的移动速度
+        damage:0,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-     onLoad () {
-
-        //  var positionX = this.node.getPosition().x;
-        //  var positionY = this.node.getPosition().y;
-        //  cc.log(positionX + ' positionX000   ' + positionY);
-        // // var position = this.node.parent.convertToNodeSpaceAR(this.node.getPosition());
-        // // var positionX = position.x;
-        //  //var positionY = position.y;
-        //  cc.log(positionX + ' positionX111   ' + positionY);
-        //  //cc.log(this.node.parent.getPosition().x + ' positionXx   ' + this.node.parent.getPosition().y);
-        //  var playerPosition = this.node.parent.getComponent('Game').player.getPosition();
-        //  cc.log(playerPosition.x + ' playerPosition.x   ' + playerPosition.y);
-        //  //速度方向
-        //  var vecX = playerPosition.x - positionX;
-        //  var vecY = playerPosition.y - positionY;
-        //  //cc.log(vecX + '    ' + vecY);
-        //  var s = Math.sqrt(vecX*vecX + vecY *vecY);
-        //  var t = s/this.speed;
-        //  this.aX = vecX/t;
-        //  this.bY = vecY/t;
-     },
+    // onLoad () {},
 
     start() {
 
     },
 
     update(dt) {
+       
 
-        // if (this.node.getPosition().y < -500) {
-        //     this.node.destroy();
+       var p = this.node.parent.getContentSize().height/2+this.node.height/2;
+      // cc.log(p);
+     // this.node.x += this.flyingSpeed;
+      this.node.y -= this.flyingSpeed;
+        if (this.node.getPosition().y > p) {
+            this.node.destroy();
+        }
+
+        // for(var i = 0; i<D.enemys.length;i++) {
+            
+        //     if(this.getEnemyDistance(D.enemys[i]) < this.Radius) {
+        //         this.node.destroy();
+             
+               
+        //         var e = D.enemys[i].name;
+              
+        //         cc.log(e);
+        //         D.enemys[i].getComponent(e).bleed();
+        //     }
         // }
-        if (this.node.getPosition().y < -500 || this.node.getPosition().y > 500 || this.node.getPosition().x > 400 || this.node.getPosition().x < -400) {
-            this.node.destroy();
-        }
-
-
-        
-
-
-        this.node.x += this.aX*dt;
-       this.node.y += this.bY*dt;
-
-        if (this.getPlayerDistance() < this.Radius) {
-            this.node.parent.getComponent('Game').gameOver();
-            this.node.destroy();
-            //cc.log('游戏结束');
-
-        }
-
     },
 
-    getPlayerDistance: function () {
-
-        var player = this.node.parent.getComponent('Game').player.getPosition();
-
-        var dist = cc.pDistance(this.node.position, player);
+    getEnemyDistance: function (enemy) {
+      
+        var enemy = enemy.getPosition();
+      
+        var dist = cc.pDistance(this.node.position, enemy);
         return dist;
+    },
+
+    onCollisionEnter: function (other, self) {
+        //console.log('on collision enter');
+    
+        // // 碰撞系统会计算出碰撞组件在世界坐标系下的相关的值，并放到 world 这个属性里面
+        // var world = self.world;
+    
+        // // 碰撞组件的 aabb 碰撞框
+        // var aabb = world.aabb;
+    
+        // // 上一次计算的碰撞组件的 aabb 碰撞框
+        // var preAabb = world.preAabb;
+    
+        // // 碰撞框的世界矩阵
+        // var t = world.transform;
+    
+        // // 以下属性为圆形碰撞组件特有属性
+        // var r = world.radius;
+        // var p = world.position;
+    
+        // // 以下属性为 矩形 和 多边形 碰撞组件特有属性
+        // var ps = world.points;
+
+        // cc.log("self");
+        // cc.log(self);
+        // cc.log("other");
+        // cc.log(other);
+        this.node.destroy();
     },
 });

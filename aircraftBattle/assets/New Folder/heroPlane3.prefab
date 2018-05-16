@@ -109,7 +109,11 @@
     "shootingSpeed": 1,
     "blood": 1,
     "bulletType": 0,
-    "damage": 0
+    "damage": 0,
+    "bloodBar": {
+      "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
+    },
+    "bBar": null
   },
   {
     "__type__": "cc.PolygonCollider",

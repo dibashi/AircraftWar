@@ -19,11 +19,21 @@ cc.Class({
         bulletType:0,//0普通 1 光束
         //Radius: 50,
         damage:0,
+
+        bloodBar: {//并不是单纯的label 
+            default: null,
+            type: cc.Prefab,
+        },
+        bBar: null,//label
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+
+      
+
+
         
 
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
@@ -42,6 +52,23 @@ cc.Class({
         cc.log("this.shootingSpeed = " + this.shootingSpeed);
         cc.log("this.blood = " + this.blood);
         cc.log("this.bulletType = " + this.bulletType);
+
+
+
+        //血条 以后要改成进度条
+        var nodeBar = cc.instantiate(this.bloodBar);
+        this.bBar = nodeBar.getComponent(cc.Label);
+        cc.log(this.bBar);
+        this.bBar.string = this.blood;
+        //bBar.string = "lh";
+        // cc.log("bBar =   "+bBar.string);
+        cc.log("bbblood   " + this.blood);
+        this.node.addChild(nodeBar);
+        nodeBar.setPosition(0, 0);
+       // nodeBar.rotation = 180;
+       
+
+
         this.startFire();
 
         this.onDrag();
@@ -142,29 +169,44 @@ cc.Class({
         bl.setPosition(this.node.position.x, this.node.position.y+this.node.height/2+bl.height/2);
     },
 
-    start() {
-
-    },
-
-    update(dt) {
+    onCollisionEnter: function (other, self) {
+      
+        var bDamage = other.node.getComponent("enemyBullet").damage;
        
-
-
-        for(var i = 0; i<D.enemys.length;i++) {
+        if ((this.blood - bDamage) <= 0) {//游戏结束
+           
             
-            if(this.getEnemyDistance(D.enemys[i]) < this.Radius) {
-                cc.log("游戏结束");
+            
+            cc.log("游戏结束");
                
-                this.node.parent.getComponent('Game').gameOver();
-            }
+            this.node.parent.getComponent('Game').gameOver();
+        } else {
+            this.blood -= bDamage;
+            this.bBar.string = this.blood;
         }
     },
 
-    getEnemyDistance: function (enemy) {
+
+    // update(dt) {
+       
+
+
+    //     for(var i = 0; i<D.enemys.length;i++) {
+            
+    //         if(this.getEnemyDistance(D.enemys[i]) < this.Radius) {
+    //             cc.log("游戏结束");
+               
+    //             this.node.parent.getComponent('Game').gameOver();
+    //         }
+    //     }
+    // },
+
+    // getEnemyDistance: function (enemy) {
       
-        var enemy = enemy.getPosition();
+    //     var enemy = enemy.getPosition();
       
-        var dist = cc.pDistance(this.node.position, enemy);
-        return dist;
-    },
+    //     var dist = cc.pDistance(this.node.position, enemy);
+    //     return dist;
+    // },
+
 });
