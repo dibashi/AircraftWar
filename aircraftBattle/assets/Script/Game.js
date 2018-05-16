@@ -143,7 +143,7 @@ cc.Class({
         cc._initDebugSetting(cc.DebugMode.INFO);
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
         //留个接口，以后根据用户选择来决定HeroPlaneID
-        D.globalHeroPlaneID = heroPlaneID.heroPlane2;
+        //D.globalHeroPlaneID = heroPlaneID.heroPlane2;
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
 
         //根据globalHeroPlaneID来加载不同的预制体
@@ -166,7 +166,7 @@ cc.Class({
             //cc.log(player);
         }
         else if (D.globalHeroPlaneID === heroPlaneID.heroPlane5) {
-            player = cc.instantiate(this.heroPlane5);
+            this.player = cc.instantiate(this.heroPlane5);
         }
 
         this.node.addChild(this.player);

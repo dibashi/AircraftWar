@@ -7,7 +7,7 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
+var heroPlaneID = require("heroPlaneID").heroPlaneID;
 cc.Class({
     extends: cc.Component,
 
@@ -42,6 +42,27 @@ cc.Class({
         cc.director.loadScene('game');
         //cc.director.resume();
     },
+
+    selectedPlane0: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane0;
+    },
+    selectedPlane1: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane1;
+    },
+    selectedPlane2: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane2;
+    },
+    selectedPlane3: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane3;
+    },
+    selectedPlane4: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane4;
+    },
+    selectedPlane5: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane5;
+    },
+
+
     
     // update (dt) {},
 });
