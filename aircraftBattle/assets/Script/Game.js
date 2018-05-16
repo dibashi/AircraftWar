@@ -331,6 +331,7 @@ cc.Class({
     },
     getJiSuSheSu:function() {
         cc.log("jisushesu");
+        this.player.getComponent("Player").raiseTheSpeedOfFire();
     },
     getHuoJianPao:function() {
         cc.log("huojianpao");

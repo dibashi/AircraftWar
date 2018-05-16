@@ -1,7 +1,7 @@
 
 
 var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
-
+var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 cc.Class({
     extends: cc.Component,
 
@@ -144,6 +144,12 @@ cc.Class({
     addBlood: function () {
         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
         this.bBar.string = this.blood;
+    },
+
+    raiseTheSpeedOfFire:function() {
+        this.shootingSpeed = this.shootingSpeed + globalJiSuTiSu*this.shootingSpeed;
+        //如何把现有的定时器属性修改呢？
+        this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },
 
     bICallback: function () {
