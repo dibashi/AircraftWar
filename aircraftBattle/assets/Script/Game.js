@@ -175,13 +175,6 @@ cc.Class({
         this.stage = 0;
         this.runStage();
 
-        // this.stage = 1;
-        // this.checkStageCount = 0;
-        // this.stage1();
-
-        //    this.onDrag();
-
-        // cc.log(this.enemyGroup);
     },
     
 //一个敌人被消除就会调用这个函数，所以 enemyCount要先缩减。
@@ -260,13 +253,6 @@ cc.Class({
     
             
         }
-
-//cc.log(enemy);
-
-        //this.node.addChild(enemy);
-       // enemy.setPosition(200, zzz[i]);
-
-
 
     },
     generatePrize:function(enemyID,prizePosition) {
