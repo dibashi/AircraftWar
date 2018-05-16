@@ -35,7 +35,7 @@ cc.Class({
         },
         bBar: null,//label
 
-        
+
 
     },
 
@@ -57,7 +57,7 @@ cc.Class({
         //cc.log(bBar.getPosition());
     },
 
-  
+
 
     startFire: function () {
 
@@ -73,7 +73,7 @@ cc.Class({
 
     },
 
-    enterCallback:function() {
+    enterCallback: function () {
 
         //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
 
@@ -90,8 +90,8 @@ cc.Class({
     },
 
     bICallback: function () {
-      
-        
+
+
 
         // var bl = cc.instantiate(this.bullet);
         // bl.getComponent('bullet1').enemys = this.node.parent.enemys;
@@ -129,40 +129,42 @@ cc.Class({
 
         //     cc.log("self");
         //     cc.log(self.node);
+        //碰撞过来的也有可能是敌人飞机，需要过滤
+        if (other.node.group === "heroBullet") {
+            var bDamage = other.node.getComponent("heroBullet").damage;
+            // cc.log("Damage!!  "+ bDamage);
+            if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
-        var bDamage = other.node.getComponent("heroBullet").damage;
-        // cc.log("Damage!!  "+ bDamage);
-        if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
-           
-            //根据enemyID来生成掉落物品
-            //globalEnemyPlaneData[enemyID].fallingObject
-            var r = Math.random();
-            cc.log("random dropProbability  " + r);
-            if (r <= globalEnemyPlaneData[this.enemyID].dropProbability) {
-                switch (globalEnemyPlaneData[this.enemyID].fallingObject) {
-                    case generateType.jinbi:
-                        cc.log("jinbi!");
-                        break;
-                    case generateType.wudichongci:
-                        cc.log("wudichongci!");
-                        break;
-                    case generateType.xinjiaxue:
-                        cc.log("xinjiaxue!");
-                        break;
-                    case generateType.jisushesu:
-                        cc.log("jisushesu!");
-                        break;
-                    case generateType.huojianpao:
-                        cc.log("huojianpao!");
-                        break;
+                //根据enemyID来生成掉落物品
+                //globalEnemyPlaneData[enemyID].fallingObject
+                var r = Math.random();
+                cc.log("random dropProbability  " + r);
+                if (r <= globalEnemyPlaneData[this.enemyID].dropProbability) {
+                    switch (globalEnemyPlaneData[this.enemyID].fallingObject) {
+                        case generateType.jinbi:
+                            cc.log("jinbi!");
+                            break;
+                        case generateType.wudichongci:
+                            cc.log("wudichongci!");
+                            break;
+                        case generateType.xinjiaxue:
+                            cc.log("xinjiaxue!");
+                            break;
+                        case generateType.jisushesu:
+                            cc.log("jisushesu!");
+                            break;
+                        case generateType.huojianpao:
+                            cc.log("huojianpao!");
+                            break;
+                    }
                 }
+
+                this.node.parent.getComponent('Game').checkNextStage();
+                this.node.destroy();
+            } else {
+                this.blood -= bDamage;
+                this.bBar.string = this.blood;
             }
-            
-            this.node.parent.getComponent('Game').checkNextStage();
-            this.node.destroy();
-        } else {
-            this.blood -= bDamage;
-            this.bBar.string = this.blood;
         }
 
 
