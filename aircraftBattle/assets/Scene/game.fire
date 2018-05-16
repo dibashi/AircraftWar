@@ -244,6 +244,13 @@
     "bloodBar": {
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
+    "prizeJinBi": {
+      "__uuid__": "2787c894-d409-4b53-bd6e-cd6c4f35986a"
+    },
+    "prizeWuDiChongCi": null,
+    "prizeXinJiaXue": null,
+    "prizeJiSuSheSu": null,
+    "PrizeHuoJianPao": null,
     "enemyBullet1": null,
     "enemyBullet2": null,
     "enemyBullet3": null,
@@ -251,6 +258,7 @@
     "stage": 0,
     "checkStageCount": 0,
     "enemyMoveTime": 1,
-    "enemyBulletMoveTime": 4
+    "enemyBulletMoveTime": 4,
+    "enemyCount": -1
   }
 ]

@@ -8,34 +8,68 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
+var generateType = require("enemyPlaneDatas").generateType;
+
 cc.Class({
     extends: cc.Component,
-
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+       
+        prizeType:-1,//决定其是什么类型的奖品
+      
     },
 
-    // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
 
-    start () {
 
+    update(dt) {
+       
+
+    //    var p = this.node.parent.getContentSize().height/2+this.node.height/2;
+    //   // cc.log(p);
+    //  // this.node.x += this.flyingSpeed;
+    //   this.node.y -= this.flyingSpeed;
+    //     if (this.node.getPosition().y > p) {
+    //         this.node.destroy();
+    //     }
+
+      
     },
 
-    // update (dt) {},
+    
+
+    onCollisionEnter: function (other, self) {
+        if(other.node.group === "hero"){
+            
+            //根据奖品类型来触发属性，game中的引用较多，直接传给game让其处理。
+            switch (this.prizeType) {
+                case generateType.jinbi:
+                    cc.log("get jinbi!");
+                    // var jinbiPrefab = cc.instantiate(this.prizeJinBi);
+                    // this.node.addChild(jinbiPrefab);
+                    // jinbiPrefab.setPosition(prizePosition);
+                    // jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
+                    this.node.parent.getComponent("Game").getJinBi();
+                    break;
+                case generateType.wudichongci:
+                    cc.log("get wudichongci!");
+                    this.node.parent.getComponent("Game").getWuDiChongCi();
+                    break;
+                case generateType.xinjiaxue:
+                    cc.log("get xinjiaxue!");
+                    this.node.parent.getComponent("Game").getXinJiaXue();
+                    break;
+                case generateType.jisushesu:
+                    cc.log("get jisushesu!");
+                    this.node.parent.getComponent("Game").getJiSuSheSu();
+                    break;
+                case generateType.huojianpao:
+                    cc.log("get huojianpao!");
+                    this.node.parent.getComponent("Game").getHuoJianPao();
+                    break;
+            }
+
+            this.node.destroy();
+        }
+        
+    },
 });

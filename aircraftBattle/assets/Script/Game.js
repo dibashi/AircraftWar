@@ -92,6 +92,28 @@ cc.Class({
         },
 
 
+        prizeJinBi: {
+            default: null,
+            type: cc.Prefab,
+        },
+        prizeWuDiChongCi: {
+            default: null,
+            type: cc.Prefab,
+        },
+        prizeXinJiaXue: {
+            default: null,
+            type: cc.Prefab,
+        },
+        prizeJiSuSheSu: {
+            default: null,
+            type: cc.Prefab,
+        },
+        PrizeHuoJianPao: {
+            default: null,
+            type: cc.Prefab,
+        },
+
+
         enemyBullet1: cc.Prefab,
         enemyBullet2: cc.Prefab,
         enemyBullet3: cc.Prefab,
@@ -248,13 +270,17 @@ cc.Class({
 
 
     },
-    generatePrize:function(enemyID) {
+    generatePrize:function(enemyID,prizePosition) {
         var r = Math.random();
         cc.log("random dropProbability  " + r);
         if (r <= globalEnemyPlaneData[enemyID].dropProbability) {
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
+                    var jinbiPrefab = cc.instantiate(this.prizeJinBi);
+                    this.node.addChild(jinbiPrefab);
+                    jinbiPrefab.setPosition(prizePosition);
+                    jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
                     break;
                 case generateType.wudichongci:
                     cc.log("wudichongci!");
@@ -270,6 +296,22 @@ cc.Class({
                     break;
             }
         }
+    },
+
+    getJinBi:function() {
+        cc.log("getJinBi")
+    },
+    getWuDiChongCi:function() {
+        cc.log("getWuDiChongCi")
+    },
+    xinjiaxue:function() {
+        cc.log("xinjiaxue")
+    },
+    jisushesu:function() {
+        cc.log("jisushesu")
+    },
+    huojianpao:function() {
+        cc.log("huojianpao")
     },
 
 

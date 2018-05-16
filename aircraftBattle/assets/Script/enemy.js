@@ -139,7 +139,7 @@ cc.Class({
             if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
-                this.node.parent.getComponent('Game').generatePrize(this.enemyID);
+                this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
                 this.node.parent.getComponent('Game').checkNextStage();
                 this.node.destroy();
             } else {
