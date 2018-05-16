@@ -13,7 +13,7 @@ var heroPlaneID = require("heroPlaneID").heroPlaneID;
 var globalEnemyPlaneData = require("enemyPlaneDatas").enemyPlaneData;
 var globalStageData = require("enemyPlaneDatas").stageData;
 
-
+var generateType = require("enemyPlaneDatas").generateType;
 
 
 cc.Class({
@@ -248,6 +248,30 @@ cc.Class({
 
 
     },
+    generatePrize:function(enemyID) {
+        var r = Math.random();
+        cc.log("random dropProbability  " + r);
+        if (r <= globalEnemyPlaneData[enemyID].dropProbability) {
+            switch (globalEnemyPlaneData[enemyID].fallingObject) {
+                case generateType.jinbi:
+                    cc.log("jinbi!");
+                    break;
+                case generateType.wudichongci:
+                    cc.log("wudichongci!");
+                    break;
+                case generateType.xinjiaxue:
+                    cc.log("xinjiaxue!");
+                    break;
+                case generateType.jisushesu:
+                    cc.log("jisushesu!");
+                    break;
+                case generateType.huojianpao:
+                    cc.log("huojianpao!");
+                    break;
+            }
+        }
+    },
+
 
     stage1() {
         D.enemys.length = 1;
