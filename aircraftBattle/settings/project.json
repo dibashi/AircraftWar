@@ -37,6 +37,14 @@
       true,
       false,
       false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
     ]
   ],
   "design-resolution-height": 640,
@@ -49,7 +57,8 @@
     "eBullet",
     "hero",
     "enemy",
-    "prize"
+    "prize",
+    "NOOOOOOO"
   ],
   "simulator-orientation": false,
   "simulator-resolution": {

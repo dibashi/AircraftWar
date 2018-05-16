@@ -63,10 +63,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 5
+        "__id__": 6
       },
       {
-        "__id__": 6
+        "__id__": 7
       }
     ],
     "_prefab": null,
@@ -119,6 +119,9 @@
     "_components": [
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": null,
@@ -139,8 +142,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1080,
-      "height": 1920
+      "width": 960,
+      "height": 640
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -170,7 +173,7 @@
       "__uuid__": "50c93179-eb3e-4f25-a469-eab3b49e0745"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -183,6 +186,24 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "ff2fb4Lgh1P7I23BVun3Q+N",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "yun1": {
+      "__uuid__": "689dbe5c-1b5f-4a81-908b-5ec42b91a201"
+    },
+    "yun2": {
+      "__uuid__": "643978b6-d897-4329-ad95-1ead4858a1f8"
+    },
+    "yun3": {
+      "__uuid__": "43f909d3-37b0-44ef-b3e8-a7846a29d4f4"
+    }
   },
   {
     "__type__": "cc.Canvas",
@@ -267,6 +288,7 @@
     "checkStageCount": 0,
     "enemyMoveTime": 1,
     "enemyBulletMoveTime": 4,
-    "enemyCount": -1
+    "enemyCount": -1,
+    "player": null
   }
 ]
