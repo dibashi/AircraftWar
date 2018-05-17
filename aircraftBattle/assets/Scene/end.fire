@@ -106,7 +106,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 640,
-      "height": 1136
+      "height": 960
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -115,7 +115,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 320,
-      "y": 568
+      "y": 480
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1795,9 +1795,9 @@
     "_designResolution": {
       "__type__": "cc.Size",
       "width": 640,
-      "height": 1136
+      "height": 960
     },
-    "_fitWidth": true,
+    "_fitWidth": false,
     "_fitHeight": true
   },
   {

@@ -19,6 +19,11 @@ var globalDropJinBiCount = require("enemyPlaneDatas").dropJinBiCount;
 var globalJinBiCount = require("enemyPlaneDatas").jinBiCount;
 
 
+var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
+var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
+var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
+
+
 cc.Class({
     extends: cc.Component,
 
@@ -99,6 +104,12 @@ cc.Class({
         },
 
 
+        prizeTeXiao: {
+            default: null,
+            type: cc.Prefab,
+        },
+
+       // teXiao:null,
         enemyBullet1: cc.Prefab,
         enemyBullet2: cc.Prefab,
         enemyBullet3: cc.Prefab,
@@ -146,6 +157,9 @@ cc.Class({
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
         //留个接口，以后根据用户选择来决定HeroPlaneID
         //D.globalHeroPlaneID = heroPlaneID.heroPlane2;
+        if(typeof(D.globalHeroPlaneID) == "undefined") {
+            D.globalHeroPlaneID = heroPlaneID.heroPlane2;
+        }
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
 
         //根据globalHeroPlaneID来加载不同的预制体
@@ -341,6 +355,12 @@ cc.Class({
     },
     getWuDiChongCi:function() {
         cc.log("getWuDiChongCi");
+        let wudiTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+        let armatureDisplay =  wudiTeXiao.getComponent(dragonBones.ArmatureDisplay);
+        let wudiTX = armatureDisplay.buildArmature("TXwudi");
+        armatureDisplay.playAnimation("wudi");
+        this.node.addChild(wudiTeXiao);
+        wudiTeXiao.setPosition(this.player.getPosition());
     },
     getXinJiaXue:function() {
         cc.log("xinjiaxue");

@@ -13,8 +13,12 @@ var _bulletType = cc.Enum({
 
 var _dropJinBiCount = 1;//默认一个金币加1数值
 var _jinBiCount = 100;//默认金币数
-
+//激素提速多少速度
 var _jiSuTiSu = 0.2;
+
+//激素与无敌的持续时间
+var _jiSuTime = 8;
+var _wuDiTime = 8;
 
 //bullet type 0:机炮 1:火炮
 //gid从1开始
@@ -29,10 +33,10 @@ var _enemyPlaneData = [
 
 var _stage = [
     [
-        {enemyID:3},{enemyID:3}
+        {enemyID:1},{enemyID:1}
     ],
     [
-        {enemyID:3},{enemyID:3},{enemyID:3}
+        {enemyID:1},{enemyID:1},{enemyID:1}
     ],
     [
         {enemyID:0},{enemyID:4}
@@ -75,3 +79,6 @@ export const dropJinBiCount = _dropJinBiCount;
 export const jinBiCount = _jinBiCount;
 
 export const jiSuTiSu = _jiSuTiSu;
+
+export const jiSuTime = _jiSuTime;
+export const wuDiTime = _wuDiTime;

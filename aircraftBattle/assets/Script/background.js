@@ -43,31 +43,53 @@ cc.Class({
         cc.log(this.y1);
        // cc.log(yun1);
         //随机一个位置
-        var pos = this.node.getPosition();
+        // var pos = this.node.getPosition();
           
-        var rx = -300 + Math.random()*320;
+        // var rx = -300 + Math.random()*320;
         
         
-        pos.x = rx;
-        pos.y = this.y;
+        // pos.x = rx;
+        // pos.y = this.y;
 
-        this.y1.setPosition(pos);
-        pos.y = -this.y;
-        var callback = cc.callFunc(this.yun1Callback,this);
-        var seq = cc.sequence(cc.moveTo(1,pos),callback);
-        this.y1.runAction(cc.repeatForever(seq));
+        // this.y1.setPosition(pos);
+        // pos.y = -this.y;
+        // var callback = cc.callFunc(this.yun1Callback,this, this.y1);
+        // var seq = cc.sequence(cc.moveTo(1,pos),callback);
+        // cc.log("pos1 xxx-->" + pos.x);
+        // this.y1.runAction(cc.repeatForever(seq));
+
+        // var pos2 =  cc.v2(-100 + Math.random()*320,pos.y);
+        // var callback2 = cc.callFunc(this.yun2Callback,this, this.y2);
+        // var seq2 = cc.sequence(cc.moveTo(1,pos2),callback2);
+        // cc.log("pos2 xxx-->" + pos2.x);
+        // this.y2.runAction(cc.repeatForever(seq2));
+       
+        this.createYun1(this.y1);
+        this.createYun1(this.y2);
+        this.createYun1(this.y3);
        // this.yun2.runAction();
         //this.yun3.runAction();
     },
 
-    yun1Callback:function() {
-        var rx = -480 + Math.random()*320;
-        cc.log(rx);
-        //cc.log(posy);
-      // cc.log(this.yun1);
-        //cc.log(this.getPosition());
-         this.y1.setPosition(rx,this.y);
+    createYun1:function(yun){
+        let vx = cc.director.getVisibleSize().width*0.5;
+
+        let origin = cc.director.getVisibleOrigin();
+        let rx = origin.x + cc.randomMinus1To1()*vx;
+        cc.log("rx " + rx);
+        let vy = origin.y + cc.director.getVisibleSize().height*0.5 + 200;
+
+        yun.setPosition(cc.v2(rx, vy));
+
+        let rt = 3+ Math.random()*2;
+
+        let callback = cc.callFunc(this.createYun1,this, this.y1);
+        let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);
+        // cc.log("pos1 xxx-->" + pos.x);
+        yun.runAction(seq);
     },
+
+ 
 
     start () {
 
