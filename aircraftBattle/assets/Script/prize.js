@@ -15,7 +15,7 @@ cc.Class({
     properties: {
        
         prizeType:-1,//决定其是什么类型的奖品
-        t:4,
+        t:1.0,
     },
 
 
@@ -36,14 +36,25 @@ cc.Class({
         let bPos = this.node.getPosition();
         let dx = ePos.x - bPos.x;
         let dy = ePos.y - bPos.y;
-        // if(Math.sqrt(dx*dx+dy*dy)>50) {
-        //     this.node.setPosition(bPos.x + dx/(60*this.t),bPos.y + dy/(60*this.t));
-        // }
-        this.node.setPosition(bPos.x + dx/(60*this.t),bPos.y + dy/(60*this.t) -1);
+        let ndx = dx/(Math.sqrt(dx*dx+dy*dy));
+        let ndy = dy/(Math.sqrt(dx*dx+dy*dy));
+
+        let rdx = ndx*this.t;
+        let rdy = ndy*this.t;
+        if(Math.sqrt(dx*dx+dy*dy)<100) {
+            this.node.setPosition(bPos.x + (rdx*5),bPos.y + (rdy*5));
+        } else {
+            this.node.setPosition(bPos.x + rdx,bPos.y + rdy);
+        }
+       
         
         if(this.node.getPosition().y<-this.node.parent.height/2) {
             this.node.destroy();
-        }
+        } 
+    },
+
+    normalizeVector:function(x,y) {
+
     },
 
     

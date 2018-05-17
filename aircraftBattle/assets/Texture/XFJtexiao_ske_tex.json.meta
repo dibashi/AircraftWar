@@ -1,0 +1,7 @@
+{
+  "ver": "1.0.0",
+  "uuid": "05f61dd3-16ff-4056-84d0-18da479b9c92",
+  "atlasJson": "{\"SubTexture\":[{\"frameY\":0,\"y\":1,\"frameWidth\":250,\"frameX\":-13,\"frameHeight\":96,\"width\":238,\"height\":96,\"name\":\"baozha1\",\"x\":1},{\"width\":150,\"y\":99,\"height\":150,\"name\":\"baozha2\",\"x\":1},{\"width\":96,\"y\":99,\"height\":96,\"name\":\"baozha3\",\"x\":153},{\"width\":25,\"y\":197,\"height\":28,\"name\":\"hudun1\",\"x\":194},{\"width\":12,\"y\":220,\"height\":26,\"name\":\"hudun2\",\"x\":221},{\"width\":25,\"y\":227,\"height\":21,\"name\":\"hudun3\",\"x\":194},{\"width\":24,\"y\":197,\"height\":21,\"name\":\"huifu2\",\"x\":221},{\"width\":39,\"y\":197,\"height\":39,\"name\":\"huifu1\",\"x\":153}],\"width\":256,\"height\":256,\"name\":\"XFJtexiao_ske\",\"imagePath\":\"XFJtexiao_ske_tex.png\"}",
+  "texture": "eb8ab946-00f9-499a-95a2-48297e568f5f",
+  "subMetas": {}
+}
