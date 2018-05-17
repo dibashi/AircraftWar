@@ -150,6 +150,8 @@ cc.Class({
                 this.node.parent.getComponent('Game').checkNextStage();
 
                 this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+               
+                this.node.parent.getComponent('Game').enemyBoomAni();
                 this.node.destroy();
             } else {
                 this.blood -= bDamage;

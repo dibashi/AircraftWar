@@ -26,6 +26,7 @@ cc.Class({
             type: cc.Prefab,
         },
         bBar: null,//label
+        wudi:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -198,8 +199,11 @@ cc.Class({
 
                 this.node.parent.getComponent('Game').gameOver();
             } else {
-                this.blood -= bDamage; //屏蔽后无敌 方便调试
-                this.bBar.string = this.blood;
+                if(!this.wudi) {
+                    this.blood -= bDamage; //屏蔽后无敌 方便调试
+                    this.bBar.string = this.blood;
+                }
+               
             }
         } else if (other.node.group === "enemy") {
             cc.log("游戏结束");

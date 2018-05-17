@@ -126,6 +126,8 @@ cc.Class({
 
         enemyCount:-1,//存储当前游戏的敌机个数，来实现stage切换。
         player:null,
+        //无敌骨骼动画
+       // wudiTeXiao:null,
     },
 
 
@@ -349,6 +351,9 @@ cc.Class({
         }
     },
 
+enemyBoomAni:function() {
+
+},
     getJinBi:function() {
         //cc.log("getJinBi");
         var c = cc.sys.localStorage.getItem('jinBiCount');
@@ -368,7 +373,23 @@ cc.Class({
         armatureDisplay.playAnimation("wudi");
         this.node.addChild(wudiTeXiao);
         wudiTeXiao.setPosition(this.player.getPosition());
+        //this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        this.schedule(wudiTeXiaoCallback);
+        this.player.getComponent("Player").wudi = true;
+        this.node.runAction(cc.sequence(cc.delayTime(globalWuDiTime),cc.callFunc(this.removeWuDi,this,wudiTeXiao)));
     },
+
+    wudiTeXiaoCallback:function() {
+        wudiTeXiao.setPosition(this.player.getPosition());
+
+    },
+
+    removeWuDi:function(wudiTeXiao) {
+        wudiTeXiao.destroy();
+        this.player.getComponent("Player").wudi = false;
+
+    },
+
     getXinJiaXue:function() {
         cc.log("xinjiaxue");
         this.player.getComponent("Player").addBlood();

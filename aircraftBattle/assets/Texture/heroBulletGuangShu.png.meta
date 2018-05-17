@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "d891ebff-7770-4233-83f7-02d95e73760c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "heroBulletGuangShu": {
+      "ver": "1.0.3",
+      "uuid": "1b03991c-fead-43f4-b94e-6cd844c741cd",
+      "rawTextureUuid": "d891ebff-7770-4233-83f7-02d95e73760c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 202,
+      "height": 60,
+      "rawWidth": 202,
+      "rawHeight": 60,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
