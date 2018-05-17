@@ -203,7 +203,11 @@
     },
     "yun3": {
       "__uuid__": "43f909d3-37b0-44ef-b3e8-a7846a29d4f4"
-    }
+    },
+    "y1": null,
+    "y2": null,
+    "y3": null,
+    "y": 550
   },
   {
     "__type__": "cc.Canvas",
@@ -266,16 +270,16 @@
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
     "prizeJinBi": {
-      "__uuid__": "2787c894-d409-4b53-bd6e-cd6c4f35986a"
+      "__uuid__": "122d3b6d-199b-4757-b2d4-a760304a8395"
     },
     "prizeWuDiChongCi": {
-      "__uuid__": "ef4c75dc-5198-48b2-aa9a-3fe68880d8d9"
+      "__uuid__": "c30c883f-e4c8-4e14-81ea-cf396d670bbe"
     },
     "prizeXinJiaXue": {
-      "__uuid__": "775d56f0-90c7-4321-9c05-08543b50838b"
+      "__uuid__": "c84c2c07-0059-467a-9546-c11d12ddb732"
     },
     "prizeJiSuSheSu": {
-      "__uuid__": "3ced3287-a16b-41cb-9f86-65e89368e0c2"
+      "__uuid__": "c67963a0-321a-408a-8730-2eb247e8a3ae"
     },
     "prizeHuoJianPao": {
       "__uuid__": "2889e716-abd0-490b-ab55-755d71857292"

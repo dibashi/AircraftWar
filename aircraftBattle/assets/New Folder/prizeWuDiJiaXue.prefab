@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "prizeWuDiChongCi",
+    "_name": "prizeWuDiJiaXue",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -47,17 +47,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 21,
-      "height": 24
+      "width": 82,
+      "height": 82
     },
-    "_rotationX": 270,
-    "_rotationY": 270,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 0.4,
+    "_scaleY": 0.4,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 713,
+      "y": 328
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -75,10 +75,10 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "6cc49c8b-f70d-4fca-9d3e-91fd941ec17c"
+      "__uuid__": "d544b8bb-859e-4a73-9376-8503d4ba94c1"
     },
     "_type": 0,
-    "_sizeMode": 0,
+    "_sizeMode": 1,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -93,7 +93,17 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.CircleCollider",
+    "__type__": "ca3578Cj0tL7ZRK+IR5dk+H",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "prizeType": -1
+  },
+  {
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -106,17 +116,11 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 13
-  },
-  {
-    "__type__": "ca3578Cj0tL7ZRK+IR5dk+H",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "prizeType": -1
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 82,
+      "height": 82
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -124,9 +128,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ef4c75dc-5198-48b2-aa9a-3fe68880d8d9"
+      "__uuid__": "c30c883f-e4c8-4e14-81ea-cf396d670bbe"
     },
-    "fileId": "48whAz9IRFu4w2Rrs42Q1z",
+    "fileId": "3dOxtAMoJMF4cHHqDMx5Jq",
     "sync": false
   }
 ]
