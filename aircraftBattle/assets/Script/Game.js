@@ -265,43 +265,64 @@ cc.Class({
         var r = Math.random();
         cc.log("random dropProbability  " + r);
         if (r <= globalEnemyPlaneData[enemyID].dropProbability) {
+            let pf = null;
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
-                    var pf = cc.instantiate(this.prizeJinBi);
+                     pf = cc.instantiate(this.prizeJinBi);
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.jinbi;
                     break;
                 case generateType.wudichongci:
                     cc.log("wudichongci!");
-                    var pf = cc.instantiate(this.prizeWuDiChongCi);
+                     pf = cc.instantiate(this.prizeWuDiChongCi);
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.wudichongci;
                     break;
                 case generateType.xinjiaxue:
                     cc.log("xinjiaxue!");
-                    var pf = cc.instantiate(this.prizeXinJiaXue);
+                     pf = cc.instantiate(this.prizeXinJiaXue);
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.xinjiaxue;
                     break;
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
-                    var pf = cc.instantiate(this.prizeJiSuSheSu);
+                     pf = cc.instantiate(this.prizeJiSuSheSu);
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.jisushesu;
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
-                    var pf = cc.instantiate(this.prizeHuoJianPao);
+                     pf = cc.instantiate(this.prizeHuoJianPao);
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.huojianpao;
                     break;
             }
+            //写在这里则所有奖品的动画都是一样的，将来可能要分别实现
+            pf.runAction(cc.moveTo(5,this.player.getPosition()));
+
+        //     let jumpDuration = 5;
+        //     //let jumpHeight = 50;
+        //     let down = -50;
+
+            
+        //    // let jumpUp = cc.moveTo(jumpDuration, cc.p(0, pf.getPosition().y+jumpHeight));
+        //     let jumpDown = cc.moveBy(jumpDuration, cc.p(0, down));
+        //     //let seq1 = cc.sequence(jumpUp, jumpDown);
+    
+        //     let moveRight = cc.moveTo(jumpDuration/2, cc.p(-this.node.width/2+pf.width/2, pf.getPosition().y));
+        //     let moveLeft = cc.moveTo(jumpDuration/2, cc.p(this.node.width/2-pf.width/2    , pf.getPosition().y));
+        //     let seq2 = cc.sequence(moveRight, moveLeft);
+    
+        //     let sp1 = cc.spawn(jumpDown,seq2);
+    
+        //     pf.runAction(cc.repeatForever(sp1));
+           
         }
     },
 

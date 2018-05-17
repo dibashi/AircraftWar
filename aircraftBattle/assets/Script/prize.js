@@ -15,7 +15,7 @@ cc.Class({
     properties: {
        
         prizeType:-1,//决定其是什么类型的奖品
-      
+        t:4,
     },
 
 
@@ -31,8 +31,19 @@ cc.Class({
     //     if (this.node.getPosition().y > p) {
     //         this.node.destroy();
     //     }
-
-      
+    //cc.log(this.node.parent);
+        let ePos = this.node.parent.getComponent('Game').player.getPosition();
+        let bPos = this.node.getPosition();
+        let dx = ePos.x - bPos.x;
+        let dy = ePos.y - bPos.y;
+        // if(Math.sqrt(dx*dx+dy*dy)>50) {
+        //     this.node.setPosition(bPos.x + dx/(60*this.t),bPos.y + dy/(60*this.t));
+        // }
+        this.node.setPosition(bPos.x + dx/(60*this.t),bPos.y + dy/(60*this.t) -1);
+        
+        if(this.node.getPosition().y<-this.node.parent.height/2) {
+            this.node.destroy();
+        }
     },
 
     
