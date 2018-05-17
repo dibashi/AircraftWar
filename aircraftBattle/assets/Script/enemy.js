@@ -148,10 +148,17 @@ cc.Class({
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
                 this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
                 this.node.parent.getComponent('Game').checkNextStage();
+
+                this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
                 this.node.destroy();
             } else {
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
+                //根据掉血量来加分吧
+                this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
+                //cc.log(this.node.parent);
+                //cc.log(this.node.parent.getChildByName("score"));
+                //cc.log(this.node.parent.getChildByName("score").string);
             }
         }
 
