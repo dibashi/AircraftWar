@@ -100,6 +100,9 @@
       "__id__": 1
     },
     "_enabled": true,
+    "prizeTeXiao": {
+      "__uuid__": "c4bc3fd3-2823-466b-bcfc-ecc174b83cc7"
+    },
     "bullet0": {
       "__uuid__": "c5165205-0d90-41fb-aa81-9b0b624cbe7c"
     },
@@ -113,7 +116,8 @@
     "bloodBar": {
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
-    "bBar": null
+    "bBar": null,
+    "wudi": false
   },
   {
     "__type__": "cc.PolygonCollider",

@@ -21,7 +21,7 @@ var globalJinBiCount = require("enemyPlaneDatas").jinBiCount;
 
 var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
-var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
+
 
 
 cc.Class({
@@ -367,28 +367,10 @@ enemyBoomAni:function() {
     },
     getWuDiChongCi:function() {
         cc.log("getWuDiChongCi");
-        let wudiTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        let armatureDisplay =  wudiTeXiao.getComponent(dragonBones.ArmatureDisplay);
-        let wudiTX = armatureDisplay.buildArmature("TXwudi");
-        armatureDisplay.playAnimation("wudi");
-        this.node.addChild(wudiTeXiao);
-        wudiTeXiao.setPosition(this.player.getPosition());
-        //this.schedule(this.bICallback, 1 / this.shootingSpeed);
-        this.schedule(wudiTeXiaoCallback);
-        this.player.getComponent("Player").wudi = true;
-        this.node.runAction(cc.sequence(cc.delayTime(globalWuDiTime),cc.callFunc(this.removeWuDi,this,wudiTeXiao)));
+        
     },
 
-    wudiTeXiaoCallback:function() {
-        wudiTeXiao.setPosition(this.player.getPosition());
-
-    },
-
-    removeWuDi:function(wudiTeXiao) {
-        wudiTeXiao.destroy();
-        this.player.getComponent("Player").wudi = false;
-
-    },
+   
 
     getXinJiaXue:function() {
         cc.log("xinjiaxue");

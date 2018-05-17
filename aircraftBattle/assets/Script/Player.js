@@ -2,12 +2,17 @@
 
 var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
 var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
+
+var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
 cc.Class({
     extends: cc.Component,
 
     properties: {
 
-
+        prizeTeXiao: {
+            default: null,
+            type: cc.Prefab,
+        },
         //子弹预制体
         bullet0: cc.Prefab,
         bullet1: cc.Prefab,
@@ -27,6 +32,8 @@ cc.Class({
         },
         bBar: null,//label
         wudi:false,
+        _wuditexiao:null,
+        _wudiTime:0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -206,14 +213,59 @@ cc.Class({
                
             }
         } else if (other.node.group === "enemy") {
-            cc.log("游戏结束");
-
-            this.node.parent.getComponent('Game').gameOver();
+           
+            if(!this.wudi) {
+                cc.log("游戏结束");
+                this.node.parent.getComponent('Game').gameOver();
+            }
+            
         }
 
 
     },
 
+    wudichongci:function() {
+        if(this.wudi == false) {
+            this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
+            let armatureDisplay =  this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
+            let wudiTX = armatureDisplay.buildArmature("TXwudi");
+            armatureDisplay.playAnimation("wudi");
+            this.node.addChild(this._wuditexiao);
+            //this.wudiTeXiao.setPosition(this.node.get);
+            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
+            
+            this.wudi = true;
+           this._wudiTime = globalWuDiTime;
+        } else {
+            this._wudiTime = globalWuDiTime;
+        }
+       
+    },
+
+     update(dt) {
+
+        if(this.wudi && this._wudiTime <=0) {
+            this.wudi =false;
+            if(this._wuditexiao) {
+                this._wuditexiao.destroy();
+                this._wuditexiao = null;
+            }
+        }
+
+        if(this.wudi) {
+            this._wudiTime -= dt;
+        } 
+
+      
+    },
+
+    getEnemyDistance: function (enemy) {
+
+        var enemy = enemy.getPosition();
+
+        var dist = cc.pDistance(this.node.position, enemy);
+        return dist;
+    }
 
     // update(dt) {
 

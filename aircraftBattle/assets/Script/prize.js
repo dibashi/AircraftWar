@@ -76,6 +76,7 @@ cc.Class({
                     cc.log("get wudichongci!");
                     //this.node.parent.getComponent("Game").getWuDiChongCi();
                     //todo
+                    other.node.getComponent("Player").wudichongci();
                     break;
                 case generateType.xinjiaxue:
                     cc.log("get xinjiaxue!");
