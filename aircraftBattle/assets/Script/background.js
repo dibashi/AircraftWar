@@ -81,7 +81,7 @@ cc.Class({
 
         yun.setPosition(cc.v2(rx, vy));
 
-        let rt = 3+ Math.random()*2;
+        let rt = 3+ Math.random()*3;
 
         let callback = cc.callFunc(this.createYun1,this, this.y1);
         let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);

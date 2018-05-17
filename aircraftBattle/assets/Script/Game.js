@@ -148,6 +148,13 @@ cc.Class({
 
         cc.log("isloaded " + cc.sys.localStorage.getItem('isLoaded') );
         cc.log("jinBiCount " + cc.sys.localStorage.getItem('jinBiCount') );
+
+        let wx = cc.director.getVisibleSize().width*0.5;
+        let hy = cc.director.getVisibleSize().height*0.5;
+
+        this.node.getChildByName("score").setPosition(wx,hy);//锚点1,1
+        this.node.getChildByName("jinbi").setPosition(-wx,hy);//锚点0,1
+
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
@@ -260,7 +267,7 @@ cc.Class({
             this.node.addChild(enemy);
         
 
-          enemy.setPosition(0, 380);
+          enemy.setPosition(0, cc.director.getVisibleSize().height*0.5 +100);
         //enemy.setPosition(0, 320);
          
            
