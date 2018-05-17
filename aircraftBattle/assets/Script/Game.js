@@ -203,6 +203,12 @@ cc.Class({
         zzz[2] = -70 ; 
         zzz[3] = 140 ; 
         zzz[4] = -140 ; 
+        var yzzz = new Array();
+        yzzz[0] = 180 ;   
+        yzzz[1] = 220 ;    
+        yzzz[2] = 260 ; 
+        yzzz[3] = 140 ; 
+        yzzz[4] = 140 ; 
        // zzz[5] = 300 ; 
         this.enemyCount = globalStageData[this.stage].length;
    
@@ -236,19 +242,19 @@ cc.Class({
             enemy.getComponent("enemy").fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
             enemy.getComponent("enemy").enemyID = globalEnemyPlaneData[enemyID].enemyID;
             this.node.addChild(enemy);
-           // var tempBloodBar = cc.instantiate(this.bloodBar);
-            //cc.log(tempBloodBar);
-           // bloodBar.getComponents[0].string = "1222";
-           // enemy.getComponent("enemy").bloodBar = tempBloodBar;
-           enemy.setPosition(0, 380);
-           // enemy.setPosition(100, zzz[i]);
+        
+
+          enemy.setPosition(0, 380);
+        //enemy.setPosition(0, 320);
+         
            
            var pos = enemy.getPosition();
            pos.x = zzz[i];
-           pos.y = 180;
+           pos.y = yzzz[i];
            var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
            //var seq = cc.sequence(cc.moveTo(10, cc.Vec2(zzz[i],200)), callback);//代码有问题 不知道为什么 cc.Vec2用法不对？
-           var seq = cc.sequence(cc.moveTo(this.enemyMoveTime, pos), callback);
+           //var seq = cc.sequence(cc.moveTo(this.enemyMoveTime, pos), callback);
+           var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
            enemy.runAction(seq);
     
             

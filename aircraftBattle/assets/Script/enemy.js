@@ -78,15 +78,22 @@ cc.Class({
         //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
 
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
-        // //this.scheduleOnce(this.bICallback1, 2);
-        // var moveRight1 = cc.moveBy(1, cc.p(40, 0));
-        // var moveLeft1 = cc.moveBy(1, cc.p(-40, 0));
-        // var moveLeft2 = cc.moveBy(1, cc.p(-40, 0));
-        // var moveRight2 = cc.moveBy(1, cc.p(40, 0));
+        let jumpDuration = 3;
+        let jumpHeight = Math.random()*100;
+        let moveDis = Math.random()*100;
+       // let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight)).easing(cc.easeCubicActionOut());
+       // let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight)).easing(cc.easeCubicActionIn());
+        let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight));
+        let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight));
+        let seq1 = cc.sequence(jumpUp, jumpDown);
 
-        // var seq = cc.sequence(moveRight1, moveLeft1, moveLeft2, moveRight2);
-        // var act = cc.repeatForever(seq);
-        // D.enemys[0].runAction(act);
+        let moveRight = cc.moveBy(jumpDuration, cc.p(moveDis, 0));
+        let moveLeft = cc.moveBy(jumpDuration, cc.p(-moveDis, 0));
+        let seq2 = cc.sequence(moveRight, moveLeft);
+
+        let sp1 = cc.spawn(seq1,seq2);
+
+        this.node.runAction(cc.repeatForever(sp1));
     },
 
     bICallback: function () {
