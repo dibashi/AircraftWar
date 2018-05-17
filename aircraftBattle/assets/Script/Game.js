@@ -336,6 +336,8 @@ cc.Class({
        // cc.log("getJinBi --------->"+newC);
         cc.sys.localStorage.setItem('jinBiCount', newC);
 
+        this.node.getChildByName("jinbi").getComponent(cc.Label).string = parseInt(this.node.getChildByName("jinbi").getComponent(cc.Label).string)  + globalDropJinBiCount;
+
     },
     getWuDiChongCi:function() {
         cc.log("getWuDiChongCi");
