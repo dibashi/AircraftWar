@@ -13,7 +13,7 @@ var _bulletType = cc.Enum({
 
 var _dropJinBiCount = 1;//默认一个金币加1数值
 var _jinBiCount = 100;//默认金币数
-//激素提速多少速度
+//激素提速多少速度 不在提速 而是数值上直接加上去 以前的实现到最后会逼近无穷
 var _jiSuTiSu = 0.2;
 
 //激素与无敌的持续时间
@@ -39,10 +39,10 @@ var _stage = [
         {enemyID:1},{enemyID:1},{enemyID:1}
     ],
     [
-        {enemyID:0},{enemyID:4}
+        {enemyID:1},{enemyID:1}
     ],
     [
-        {enemyID:0},{enemyID:3},{enemyID:1}
+        {enemyID:1},{enemyID:1},{enemyID:1}
     ],
     [
         {enemyID:2},{enemyID:0},{enemyID:1}

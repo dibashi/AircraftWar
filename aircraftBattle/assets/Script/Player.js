@@ -155,7 +155,7 @@ cc.Class({
     },
 
     raiseTheSpeedOfFire:function() {
-        this.shootingSpeed = this.shootingSpeed + globalJiSuTiSu*this.shootingSpeed;
+        this.shootingSpeed = this.shootingSpeed + globalJiSuTiSu;
         //如何把现有的定时器属性修改呢？
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },

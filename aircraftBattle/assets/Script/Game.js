@@ -222,18 +222,22 @@ cc.Class({
         //cc.log(globalStageData);
         // globalStageData[stage],
         //var zzz = [50, 100, 150, 200, 250, 300],
+        let w = cc.director.getVisibleSize().width;
+        let h = cc.director.getVisibleSize().height/2 - this.player.getContentSize().height/2;
+
         var zzz = new Array();    
         zzz[0] = 0 ;   
-        zzz[1] = 70 ;    
-        zzz[2] = -70 ; 
-        zzz[3] = 140 ; 
-        zzz[4] = -140 ; 
+        zzz[1] = w/4 ;    
+        zzz[2] = -w/4 ; 
+        //zzz[1] = (w/4) *2 ; 
+        //zzz[2] = -(w/4) *2 ; 
         var yzzz = new Array();
-        yzzz[0] = 180 ;   
-        yzzz[1] = 220 ;    
-        yzzz[2] = 260 ; 
-        yzzz[3] = 140 ; 
-        yzzz[4] = 140 ; 
+        
+        yzzz[0] = (h/5)*2 ;    
+        yzzz[1] = (h/5)*3 ; 
+        yzzz[2] = (h/5)*4 ; 
+       // yzzz[0] = h/5 ;  
+        //yzzz[4] = (h/5)*5 ; 
        // zzz[5] = 300 ; 
         this.enemyCount = globalStageData[this.stage].length;
    
@@ -274,8 +278,8 @@ cc.Class({
          
            
            var pos = enemy.getPosition();
-           pos.x = zzz[i];
-           pos.y = yzzz[i];
+           pos.x = zzz[Math.floor(Math.random()*3)];
+           pos.y = yzzz[Math.floor(Math.random()*3)];
            var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
            //var seq = cc.sequence(cc.moveTo(10, cc.Vec2(zzz[i],200)), callback);//代码有问题 不知道为什么 cc.Vec2用法不对？
            //var seq = cc.sequence(cc.moveTo(this.enemyMoveTime, pos), callback);
@@ -365,24 +369,14 @@ enemyBoomAni:function() {
         this.node.getChildByName("jinbi").getComponent(cc.Label).string = parseInt(this.node.getChildByName("jinbi").getComponent(cc.Label).string)  + globalDropJinBiCount;
 
     },
-    getWuDiChongCi:function() {
-        cc.log("getWuDiChongCi");
+    // getWuDiChongCi:function() {
+    //     cc.log("getWuDiChongCi");
         
-    },
+    // },
 
    
 
-    getXinJiaXue:function() {
-        cc.log("xinjiaxue");
-        this.player.getComponent("Player").addBlood();
-    },
-    getJiSuSheSu:function() {
-        cc.log("jisushesu");
-        this.player.getComponent("Player").raiseTheSpeedOfFire();
-    },
-    getHuoJianPao:function() {
-        cc.log("huojianpao");
-    },
+   
 
     gameOver() {
         var currentScore = parseInt(this.node.getChildByName("score").getComponent(cc.Label).string);

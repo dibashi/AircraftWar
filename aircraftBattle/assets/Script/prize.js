@@ -80,15 +80,15 @@ cc.Class({
                     break;
                 case generateType.xinjiaxue:
                     cc.log("get xinjiaxue!");
-                    this.node.parent.getComponent("Game").getXinJiaXue();
+                    other.node.getComponent("Player").addBlood();
                     break;
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
-                    this.node.parent.getComponent("Game").getJiSuSheSu();
+                    other.node.getComponent("Player").raiseTheSpeedOfFire();
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");
-                    this.node.parent.getComponent("Game").getHuoJianPao();
+                    //this.node.parent.getComponent("Game").getHuoJianPao();
                     break;
             }
 
