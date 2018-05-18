@@ -109,6 +109,9 @@
     "bullet1": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
+    "bullet2": {
+      "__uuid__": "923602a2-3da6-4fae-9d60-ce57b14128f8"
+    },
     "shootingSpeed": 1,
     "blood": 1,
     "bulletType": 0,
@@ -117,7 +120,9 @@
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
     "bBar": null,
-    "wudi": false
+    "wudi": false,
+    "_wuditexiao": null,
+    "_wudiTime": 0
   },
   {
     "__type__": "cc.PolygonCollider",

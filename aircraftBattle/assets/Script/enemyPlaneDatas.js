@@ -9,6 +9,7 @@ var _generateType = cc.Enum({
 var _bulletType = cc.Enum({
     jipao:0,
     huopao:1,
+    guangshu:2,
 });
 
 var _dropJinBiCount = 1;//默认一个金币加1数值

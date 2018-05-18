@@ -134,22 +134,7 @@ cc.Class({
 
 
     onLoad() {
-        var isloaded = cc.sys.localStorage.getItem("isLoaded");
         
-        if(!isloaded) {
-            cc.sys.localStorage.setItem('isLoaded', 1);
-            cc.sys.localStorage.setItem('jinBiCount', globalJinBiCount);
-            //分数一般是从服务器读取，这里先用本地存储。
-            cc.sys.localStorage.setItem('bestScore', 0);
-
-        } else {
-            var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;
-            cc.sys.localStorage.setItem('isLoaded', countLoaded);
-            //cc.log("第" + countLoaded +"次登陆");
-        }
-
-        cc.log("isloaded " + cc.sys.localStorage.getItem('isLoaded') );
-        cc.log("jinBiCount " + cc.sys.localStorage.getItem('jinBiCount') );
 
         let wx = cc.director.getVisibleSize().width*0.5;
         let hy = cc.director.getVisibleSize().height*0.5;
@@ -160,7 +145,7 @@ cc.Class({
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
-        //manager.enabledDebugDraw = true;
+        manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);

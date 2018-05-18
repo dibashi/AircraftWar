@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "enemyBullet0",
+    "_name": "heroBullet1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -47,24 +47,24 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 36.5,
-      "height": 23
+      "width": 49,
+      "height": 23.5
     },
-    "_rotationX": 90,
-    "_rotationY": 90,
+    "_rotationX": 270,
+    "_rotationY": 270,
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 223,
+      "y": 154
     },
     "_skewX": 0,
     "_skewY": 0,
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 1
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -75,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "83e32d4a-8b64-45d2-b17c-58b8640a9964"
+      "__uuid__": "1b03991c-fead-43f4-b94e-6cd844c741cd"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -93,7 +93,7 @@
     "_atlas": null
   },
   {
-    "__type__": "a1824AcW/VO4phvTkWsJjJ7",
+    "__type__": "293f6n44ilGV7HhQPppjCLb",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -120,28 +120,23 @@
     "points": [
       {
         "__type__": "cc.Vec2",
-        "x": 4.25,
-        "y": 11.5
+        "x": -23.287128712871286,
+        "y": 11.75
       },
       {
         "__type__": "cc.Vec2",
-        "x": -18.25,
-        "y": 2
+        "x": -23.287128712871286,
+        "y": -11.75
       },
       {
         "__type__": "cc.Vec2",
-        "x": -11.25,
-        "y": -10
+        "x": 24.5,
+        "y": -9.008333333333333
       },
       {
         "__type__": "cc.Vec2",
-        "x": 11.25,
-        "y": -10.5
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 18.25,
-        "y": 3.5
+        "x": 23.287128712871286,
+        "y": 11.75
       }
     ]
   },
@@ -151,9 +146,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d66ec1d7-00d8-4a7b-9f27-6e764b2a769e"
+      "__uuid__": "923602a2-3da6-4fae-9d60-ce57b14128f8"
     },
-    "fileId": "35G1DJjRxNAJ5oeJgRcs1N",
+    "fileId": "6bCmSZRtlHtbQs8xDTgUAb",
     "sync": false
   }
 ]

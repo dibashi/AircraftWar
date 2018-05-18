@@ -38,24 +38,29 @@ cc.Class({
     },
 
     //游戏重新运行
-    gameRestart: function(){ 
+    gameStart: function(){ 
         cc.director.loadScene('game');
         //cc.director.resume();
     },
 
-    share: function(){ 
-       cc.log("share");
+    selectedPlane0: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane0;
     },
-    ad: function(){ 
-        cc.log("ad");
+    selectedPlane1: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane1;
     },
-    coin: function(){ 
-        cc.log("coin");
+    selectedPlane2: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane2;
     },
-    giveup: function(){ 
-        cc.log("giveup");
-        cc.director.loadScene("start");
-    }
+    selectedPlane3: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane3;
+    },
+    selectedPlane4: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane4;
+    },
+    selectedPlane5: function(){ 
+        D.globalHeroPlaneID = heroPlaneID.heroPlane5;
+    },
 
 
     

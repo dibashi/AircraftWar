@@ -16,6 +16,7 @@ cc.Class({
         //子弹预制体
         bullet0: cc.Prefab,
         bullet1: cc.Prefab,
+        bullet2: cc.Prefab,
 
         //bulletIsOpen: false,
         // bulletIntelval: 0.75,
@@ -174,6 +175,8 @@ cc.Class({
             bl = cc.instantiate(this.bullet0);
         } else if (this.bulletType === 1) {
             bl = cc.instantiate(this.bullet1);
+        } else if(this.bulletType === 2) {
+            bl = cc.instantiate(this.bullet2);
         }
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         this.node.parent.addChild(bl);
