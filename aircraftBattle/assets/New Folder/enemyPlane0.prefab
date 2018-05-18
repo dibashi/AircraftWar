@@ -106,6 +106,9 @@
     "bullet1": {
       "__uuid__": "113e61f3-a1fb-484e-99ab-3b70c7692c45"
     },
+    "baoZhaTeXiao": {
+      "__uuid__": "c4bc3fd3-2823-466b-bcfc-ecc174b83cc7"
+    },
     "enemyID": 0,
     "blood": 1,
     "shootingSpeed": 1,

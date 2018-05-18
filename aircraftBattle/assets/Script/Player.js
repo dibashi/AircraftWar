@@ -41,19 +41,8 @@ cc.Class({
     onLoad() {
 
 
-
-
-
-
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
-        //this.bulletPool = new cc.NodePool("BulletScript");
-        // var initBulletCount = 30;
-        // for(var i=0; i<initBulletCount; ++i){
-        //     var bullet = cc.instantiate(this.bullet);
-        //     this.bulletPool.put(bullet);
-        // }
-        //地图内子弹列表
-        //this.bulletList = [];
+      
         this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
         this.bulletType = globalHeroPlaneData[D.globalHeroPlaneID].bulletType;
@@ -121,37 +110,51 @@ cc.Class({
     },
 
     dragStart: function (event) {
-        //cc.log("anxia");
-
-        //this.startFire();
-        // if(this.startFire(this.bulletPool)){
-        //播放射击音效
-        // cc.audioEngine.play(this._playerTankCtrl.shootAudio, false, 1);
-        // }
+        
     },
     dragEnd: function (event) {
-        //cc.log("songkai");
-        // this.bulletIsOpen = false;
-        // this.unschedule(this.bICallback);
+      
     },
 
     startFire: function () {
 
-        // if(this.bulletIsOpen == false) {
-        //     this.schedule(this.bICallback, this.bulletIntelval,10000,0.01);
-        //    // this.schedule(bICallback,this,bulletIntelval);
-
-        //     this.bulletIsOpen = true;
-        // }
+        
 
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
 
 
     },
+    wudichongci:function() {
+        if(this.wudi == false) {
+            this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
+            let armatureDisplay =  this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
+            let wudiTX = armatureDisplay.buildArmature("TXwudi");
+            armatureDisplay.playAnimation("wudi");
+            this.node.addChild(this._wuditexiao);
+            //this.wudiTeXiao.setPosition(this.node.get);
+            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
+            
+            this.wudi = true;
+           this._wudiTime = globalWuDiTime;
+        } else {
+            this._wudiTime = globalWuDiTime;
+        }
+       
+    },
 
     addBlood: function () {
-        this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
-        this.bBar.string = this.blood;
+         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
+         this.bBar.string = this.blood;
+        //代码有问题
+        // var jiaxueTX = cc.instantiate(this.prizeTeXiao);//!!!
+        //     let armatureDisplay =  jiaxueTX.getComponent(dragonBones.ArmatureDisplay);
+        //     armatureDisplay.buildArmature("TXbaoizha");
+        //     armatureDisplay.playAnimation("baozha");
+        //     this.node.addChild(this.jiaxueTX);
+            //this.wudiTeXiao.setPosition(this.node.get);
+            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
+            
+            
     },
 
     raiseTheSpeedOfFire:function() {
@@ -162,15 +165,6 @@ cc.Class({
 
     bICallback: function () {
 
-
-        // var bl = cc.instantiate(this.bullet);
-        // bl.getComponent('bullet1').enemys = this.node.parent.enemys;
-        // this.node.parent.addChild(bl);
-        // bl.setPosition(this.node.position.x, this.node.position.y+this.node.height/2);
-
-        // var pos = bl.getPosition();
-        // pos.y = 400;
-        // bl.runAction(cc.moveTo(5, pos));
         //TODO：！！这里应该以后应该加入子弹池来优化
 
 
@@ -224,23 +218,7 @@ cc.Class({
 
     },
 
-    wudichongci:function() {
-        if(this.wudi == false) {
-            this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
-            let armatureDisplay =  this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
-            let wudiTX = armatureDisplay.buildArmature("TXwudi");
-            armatureDisplay.playAnimation("wudi");
-            this.node.addChild(this._wuditexiao);
-            //this.wudiTeXiao.setPosition(this.node.get);
-            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
-            
-            this.wudi = true;
-           this._wudiTime = globalWuDiTime;
-        } else {
-            this._wudiTime = globalWuDiTime;
-        }
-       
-    },
+   
 
      update(dt) {
 

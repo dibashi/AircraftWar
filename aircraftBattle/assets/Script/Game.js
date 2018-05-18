@@ -355,9 +355,7 @@ cc.Class({
         }
     },
 
-enemyBoomAni:function() {
 
-},
     getJinBi:function() {
         //cc.log("getJinBi");
         var c = cc.sys.localStorage.getItem('jinBiCount');
