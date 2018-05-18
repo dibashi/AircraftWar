@@ -129,7 +129,7 @@ cc.Class({
         if(this.wudi == false) {
             this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
             let armatureDisplay =  this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
-            let wudiTX = armatureDisplay.buildArmature("TXwudi");
+           // let wudiTX = armatureDisplay.buildArmature("TXwudi");
             armatureDisplay.playAnimation("wudi");
             this.node.addChild(this._wuditexiao);
             //this.wudiTeXiao.setPosition(this.node.get);
@@ -236,6 +236,8 @@ cc.Class({
         if(this.wudi) {
             this._wudiTime -= dt;
         } 
+
+       // this._wudiTime(this.wuDiTime);
 
       
     },

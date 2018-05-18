@@ -38,7 +38,7 @@ cc.Class({
             type: cc.Prefab,
         },
         bBar: null,//label
-        _baoZhaTeXiao:null,
+        baoZhaTeXiao:null,
         
 
     },
@@ -113,14 +113,27 @@ cc.Class({
     },
 
     enemyBoomAni:function() {
+        //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
+       this.node.group = "NOOOOOOO";
         
-        // this.baoZhaTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        //     let armatureDisplay =  this.baoZhaTeXiao.getComponent(dragonBones.ArmatureDisplay);
-        //     let wudiTX = armatureDisplay.buildArmature("TXbaozha");
-        //     armatureDisplay.playAnimation("baozha");
-        //    // armatureDisplay.
-        //     this.node.parent.addChild(this.baoZhaTeXiao);
-        //     baoZhaTeXiao.setPosition(this.node.getPosition());
+        this.baoZhaTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+            let armatureDisplay =  this.baoZhaTeXiao.getComponent(dragonBones.ArmatureDisplay);
+           // let baoizhaTX = armatureDisplay.buildArmature("TXbaozha");
+            armatureDisplay.playAnimation("baozha");
+           // armatureDisplay.
+            this.node.addChild(this.baoZhaTeXiao);
+            armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE,this.baozhaOver,this);
+  //  baoZhaTeXiao.setPosition(this.node.getPosition());
+    },
+
+    baozhaOver:function(event) {
+        cc.log("爆炸动画结束");
+        //这个有问题 要放动画回调 TODO!
+        this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+
+        this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+        this.node.parent.getComponent('Game').checkNextStage();
+        this.node.destroy();
     },
 
 
@@ -133,13 +146,11 @@ cc.Class({
             if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
-                this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
-                this.node.parent.getComponent('Game').checkNextStage();
-
-                this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
                
-                //this.enemyBoomAni();
-                this.node.destroy();
+               
+                this.enemyBoomAni();
+                
+               // this.node.destroy();
             } else {
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;

@@ -88,7 +88,7 @@ cc.Class({
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");
-                    //this.node.parent.getComponent("Game").getHuoJianPao();
+                    this.node.parent.getComponent("Game").getHuoJianPao();
                     break;
             }
 

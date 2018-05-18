@@ -107,7 +107,7 @@
       "__uuid__": "113e61f3-a1fb-484e-99ab-3b70c7692c45"
     },
     "prizeTeXiao": {
-      "__uuid__": "c4bc3fd3-2823-466b-bcfc-ecc174b83cc7"
+      "__uuid__": "e6684075-a6d9-4028-a9db-2c3b81fb07a4"
     },
     "enemyID": 0,
     "blood": 1,
@@ -121,7 +121,7 @@
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
     "bBar": null,
-    "_baoZhaTeXiao": null
+    "baoZhaTeXiao": null
   },
   {
     "__type__": "cc.PolygonCollider",

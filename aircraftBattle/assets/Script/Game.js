@@ -128,6 +128,11 @@ cc.Class({
         player:null,
         //无敌骨骼动画
        // wudiTeXiao:null,
+
+         bombSprite: cc.Node,
+        bombNo:0,
+        bombLabel:cc.Label,
+        //players:null,
     },
 
 
@@ -145,7 +150,7 @@ cc.Class({
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
-        manager.enabledDebugDraw = true;
+       // manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
         cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
@@ -185,6 +190,49 @@ cc.Class({
         this.stage = 0;
         this.runStage();
 
+        this.bombNo = 0;
+        this.bombSprite.on('touchstart',this.bombOnclick,this);//这个精灵旋转过了，所以长宽不好说
+        this.bombLabel.string = this.bombNo;
+
+      // this.bombSprite.setPosition(-wx+this.bombSprite.height/2+this.bombLabel.height/2,-hy+this.bombSprite.width/2+this.bombLabel.width/2);
+        this.bombSprite.setPosition(-wx+50,-hy+50);
+
+        // this.players = new Array();
+        // for(let i = 0; i<10; i++) {
+        //     this.players[i] = cc.instantiate(this.heroPlane0);
+        // }   
+    },
+
+    bombOnclick: function(){
+       
+        
+        if (this.bombNo>0){
+            this.bombLabel.string = this.bombNo-1;
+            //this.removeEnemy();
+            //cc.audioEngine.playEffect(this.useBombClip, false);
+            //TODO!!!!
+            //生成集群
+
+           // this.players = 
+        //     this.player = cc.instantiate(this.heroPlane5);
+        
+            let cs = this.node.children;
+            let cc = this.node.childrenCount;
+            for(let i =0; i <cc;i++) {
+                if(this.node.children[i].group === 'enemy') {
+                    this.node.children[i].getComponent('enemy').enemyBoomAni();
+                }
+            }
+        // this.node.addChild(this.player);
+        // this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);
+            // for(let i =0 ;  i< this.players.length; i++) {
+            //     this.node.addChild(this.players[i]);
+            // }
+        //3秒后删除集群
+        } else {
+            console.log('没有子弹');
+
+        }
     },
     
 //一个敌人被消除就会调用这个函数，所以 enemyCount要先缩减。
@@ -356,7 +404,10 @@ cc.Class({
     //     cc.log("getWuDiChongCi");
         
     // },
-
+    getHuoJianPao:function() {
+        this.bombNo += 1;
+        this.bombLabel.string = this.bombNo;
+    },
    
 
    
