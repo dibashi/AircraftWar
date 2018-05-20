@@ -146,10 +146,12 @@ cc.Class({
 
         let wx = cc.director.getVisibleSize().width*0.5;
         let hy = cc.director.getVisibleSize().height*0.5;
-
-        this.node.getChildByName("score").setPosition(wx,hy);//锚点1,1
+        
+        let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
+        newRecordLabel.active = false;
+        this.node.getChildByName("score").setPosition(0,hy-30-newRecordLabel.getContentSize().height-this.node.getChildByName("score").getContentSize().height/2);//锚点0.5  0.5
         this.node.getChildByName("jinbi").setPosition(-wx,hy);//锚点0,1
-
+        this.node.getChildByName("score").setLocalZOrder(100);
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
@@ -466,6 +468,15 @@ cc.log("game dragMove");
         }
         cc.log("best score--> " + cc.sys.localStorage.getItem('bestScore'));
         cc.director.loadScene('end');
+    },
+
+
+    addScore(fenshu) {
+        let fs = fenshu +parseInt(this.node.getChildByName("score").getComponent(cc.Label).string) ;
+        this.node.getChildByName("score").getComponent(cc.Label).string = fs;
+        if(fs > cc.sys.localStorage.getItem('bestScore')) {
+            this.node.getChildByName("score").getChildByName("newRecord").active = true;
+        }
     },
 
 

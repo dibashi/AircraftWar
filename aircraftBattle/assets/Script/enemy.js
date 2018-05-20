@@ -155,7 +155,8 @@ cc.Class({
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
                 //根据掉血量来加分吧
-                this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
+                this.node.parent.getComponent('Game').addScore(bDamage)
+                //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
                 //cc.log(this.node.parent);
                 //cc.log(this.node.parent.getChildByName("score"));
                 //cc.log(this.node.parent.getChildByName("score").string);
