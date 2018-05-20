@@ -63,17 +63,12 @@ cc.Class({
 
 
 
-    startFire: function () {
-
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
-
-
-    },
+    
 
     enterCallback: function () {
 
         //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
-
+        //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
         let jumpDuration = 3;
         let jumpHeight = Math.random()*100;
