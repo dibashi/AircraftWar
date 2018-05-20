@@ -132,6 +132,9 @@ cc.Class({
          bombSprite: cc.Node,
         bombNo:0,
         bombLabel:cc.Label,
+
+        touchBeginPoint: null,
+        touchMovePoint: null,
         //players:null,
     },
 
@@ -201,6 +204,49 @@ cc.Class({
         // for(let i = 0; i<10; i++) {
         //     this.players[i] = cc.instantiate(this.heroPlane0);
         // }   
+        this.node.on('touchmove', this.dragMove, this);
+        this.node.on('touchstart', this.dragStart, this);
+
+    },
+
+    dragStart: function (event) {
+        cc.log("game dragStart");
+        this.touchBeginPoint = event.getLocation();
+    },
+
+    dragMove: function (event) {
+cc.log("game dragMove");
+        this.touchMovePoint = event.getLocation();
+        let dx = this.touchMovePoint.x - this.touchBeginPoint.x;
+        let dy = this.touchMovePoint.y - this.touchBeginPoint.y;
+
+        let location = this.player.getPosition();
+
+        location.x += dx;
+        location.y += dy;
+
+         //飞机不移出屏幕 
+         let minX = -this.node.width / 2;
+         let maxX = -minX;
+         let minY = -this.node.height / 2;
+         let maxY = -minY;
+         if (location.x < minX) {
+             location.x = minX;
+         }
+         if (location.x > maxX) {
+             location.x = maxX;
+         }
+         if (location.y < minY) {
+             location.y = minY;
+         }
+         if (location.y > maxY) {
+             location.y = maxY;
+         }
+
+         this.player.setPosition(location);
+
+         this.touchBeginPoint = this.touchMovePoint;
+
     },
 
     bombOnclick: function(){

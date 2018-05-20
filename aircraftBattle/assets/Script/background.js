@@ -76,7 +76,7 @@ cc.Class({
 
         let origin = cc.director.getVisibleOrigin();
         let rx = origin.x + cc.randomMinus1To1()*vx;
-        cc.log("rx " + rx);
+        //cc.log("rx " + rx);
         let vy = origin.y + cc.director.getVisibleSize().height*0.5 + 200;
 
         yun.setPosition(cc.v2(rx, vy));
