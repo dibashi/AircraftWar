@@ -351,6 +351,9 @@ cc.log("game dragMove");
             enemy.getComponent("enemy").dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
             enemy.getComponent("enemy").fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
             enemy.getComponent("enemy").enemyID = globalEnemyPlaneData[enemyID].enemyID;
+
+            enemy.getComponent("enemy").bulletTrack = globalEnemyPlaneData[enemyID].bulletTrack;
+            enemy.getComponent("enemy").enemyTrack = globalEnemyPlaneData[enemyID].enemyTrack;
             this.node.addChild(enemy);
         
 

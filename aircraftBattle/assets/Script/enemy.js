@@ -4,6 +4,9 @@
 var generateType = require("enemyPlaneDatas").generateType;
 var bulletType = require("enemyPlaneDatas").bulletType;
 var globalEnemyPlaneData = require("enemyPlaneDatas").enemyPlaneData;
+
+var bulletTrack = require("enemyPlaneDatas").bulletTrack;
+var enemyTrack = require("enemyPlaneDatas").enemyTrack;
 cc.Class({
     extends: cc.Component,
 
@@ -39,7 +42,10 @@ cc.Class({
         },
         bBar: null,//label
         baoZhaTeXiao:null,
-        
+
+        bulletTrack:0,
+
+        enemyTrack:0,
 
     },
 
@@ -63,13 +69,7 @@ cc.Class({
 
 
 
-    
-
-    enterCallback: function () {
-
-        //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
-        //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+    zuoyoushangxia:function() {
         let jumpDuration = 3;
         let jumpHeight = Math.random()*100;
         let moveDis = Math.random()*100;
@@ -88,23 +88,79 @@ cc.Class({
         this.node.runAction(cc.repeatForever(sp1));
     },
 
-    bICallback: function () {
+    enterCallback: function () {
 
-        //TODO：！！这里应该以后应该加入子弹池来优化
+        //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
+        //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！  
+        //这里的射击速度是 单次射击  将来 像三连发 然后停顿的 如何设计 ？
+        //其实应该在这里根据子弹射击方式来定义
+        //1 根据 敌机的 运动轨迹数据 来调用相关轨迹动画函数
+        //2 根据 敌机的 子弹发射方式 来 调用相关的 发射动画函数
+        if(this.enemyTrack == enemyTrack.guding) {
+            //固定不动就不需要实现什么了
+        } else if( this.enemyTrack == enemyTrack.zuoyoushangxia) {
+            this.zuoyoushangxia();
+        }
 
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-        var bl = null;
+
+        if(this.bulletTrack == bulletTrack.zhixianxiangxia) {
+            this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
+        } else if( this.bulletTrack == bulletTrack.dingwei) {
+            this.schedule(this.dingwei, 1 / this.shootingSpeed);
+        } else if( this.bulletTrack == bulletTrack.sanfasanshe) {
+
+        }
+
+        
+        
+    },
+
+    generateBullet:function() {
+        let bl = null;
         if (this.bulletType === bulletType.jipao) {
             bl = cc.instantiate(this.bullet0); //预制体未做 未加入
         } else if (this.bulletType === bulletType.huopao) {
             bl = cc.instantiate(this.bullet1);//预制体未做 未加入
         }
-        // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
-        this.node.parent.addChild(bl);
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
+        
+        return bl;
+    },
+
+   
+   
+    //直线与斜线其实是一个概念，给敌机子弹传递一个目标位置,让其运行到那个位置即可
+    zhixianxiangxia: function () {
+
+        //TODO：！！这里应该以后应该加入子弹池来优化
+
+        //根据子弹类型来生成子弹，类型决定加载什么预制体。
+        
+        // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
+        let bl = this.generateBullet();
+        //分离出来是为了以后 如果有轨迹是发射很多子弹,可以遍历,然后每个子弹的位置单独设置,或者设置在飞机中心
         bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+        
+        //极其重要的分类化,简单的代码保证了 不同的运动轨迹显示.
+        bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height/2-50;
+
+        //cc.log("bl positionX--> " + bl.getPosition().x + "  bl positionY---> " + bl.getPosition().y);
+        //cc.log("bl vecX--> " + bl.getComponent("enemyBullet").targetPositionX + "  bl vecY---> " + bl.getComponent("enemyBullet").targetPositionY);
+
+        this.node.parent.addChild(bl);
+    },
+
+    dingwei:function() {
+        let bl = this.generateBullet();
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
+        bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
+
+        this.node.parent.addChild(bl);
     },
 
     enemyBoomAni:function() {

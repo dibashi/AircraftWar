@@ -6,6 +6,21 @@ var _generateType = cc.Enum({
     huojianpao: 4
 });
 
+//敌人子弹发射轨迹 跟机型挂钩？ 目前是这样实现的
+var _bulletTrack = cc.Enum({
+    zhixianxiangxia: 0, //普通的直线向下
+    dingwei: 1,//普通的定位发射
+    sanfasanshe: 2,//普通的三发散射 中间定位 两边一个角度
+   // jisushesu: 3,
+   // huojianpao: 4
+});
+
+//敌人运动轨迹 跟机型挂钩？ 目前是这样实现的
+var _enemyTrack = cc.Enum({
+    zuoyoushangxia: 0, //左右上下摇动
+    guding: 1,//固定不动
+});
+
 var _bulletType = cc.Enum({
     jipao:0,
     huopao:1,
@@ -24,17 +39,17 @@ var _wuDiTime = 8;
 //bullet type 0:机炮 1:火炮
 //gid从1开始
 var _enemyPlaneData = [
-    {enemyID:0, planeImage: "enemyPlane0", blood: 3, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi },
-    {enemyID:1, planeImage: "enemyPlane1", blood: 4, shootingSpeed: 0.5, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci },
-    {enemyID:2, planeImage: "enemyPlane2", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue },
-    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu },
-    {enemyID:4, planeImage: "enemyPlane4", blood: 4, shootingSpeed:0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao },
+    {enemyID:0, planeImage: "enemyPlane0", blood: 3, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.zhixianxiangxia,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:1, planeImage: "enemyPlane1", blood: 4, shootingSpeed: 0.5, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.sanfasanshe,enemyTrack:_enemyTrack.guding },
+    {enemyID:2, planeImage: "enemyPlane2", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.sanfasanshe,enemyTrack:_enemyTrack.guding },
+    {enemyID:4, planeImage: "enemyPlane4", blood: 4, shootingSpeed:0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
 
 ];
 
 var _stage = [
     [
-        {enemyID:4},{enemyID:4}
+        {enemyID:0},{enemyID:2}
     ],
     [
         {enemyID:4},{enemyID:4},{enemyID:4}
@@ -83,3 +98,6 @@ export const jiSuTiSu = _jiSuTiSu;
 
 export const jiSuTime = _jiSuTime;
 export const wuDiTime = _wuDiTime;
+
+export const bulletTrack = _bulletTrack;
+export const enemyTrack = _enemyTrack;
