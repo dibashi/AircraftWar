@@ -86,6 +86,7 @@ cc.Class({
         let sp1 = cc.spawn(seq1,seq2);
 
         this.node.runAction(cc.repeatForever(sp1));
+
     },
 
     enterCallback: function () {
@@ -107,12 +108,83 @@ cc.Class({
             this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
         } else if( this.bulletTrack == bulletTrack.dingwei) {
             this.schedule(this.dingwei, 1 / this.shootingSpeed);
+        }else if( this.bulletTrack == bulletTrack.banquan) {
+           // this.schedule(this.xiexian, 1 / this.shootingSpeed);
+           this.schedule(this.banquan, 1 / this.shootingSpeed);
         } else if( this.bulletTrack == bulletTrack.sanfasanshe) {
-
+            this.schedule(this.sanfasanshe, 1 / this.shootingSpeed);
         }
 
+       
         
         
+    },
+
+    banquan:function() {
+      
+        for(let jiaodu =-45; jiaodu>-136;jiaodu-=30) {
+            this.xiexianByjiaodu(jiaodu);
+            //this.xiexian(jiaodu);
+        }
+        //this.xiexianByjiaodu(30);
+
+    },
+
+    xiexianByjiaodu:function(jiaodu) {
+        if(-90<jiaodu && jiaodu<90) {
+            this.xiexianRight(jiaodu);
+        } else if(jiaodu>90 || jiaodu<-90) {
+            this.xiexianLeft(jiaodu);
+        } else if( jiaodu == -90) {
+            this.zhixianxiangxia();
+        }else if( jiaodu == 90) {
+            this.zhixianxiangshang();
+        }
+    },
+    //往右边倾斜
+    xiexianRight:function(jiaodu) {
+        cc.log("jiaodu---> " + jiaodu);
+        let bl = this.generateBullet();
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
+        bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
+        bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100*Math.tan(jiaodu*0.017453293));//2pi/360 = 0.017453293
+        
+        //  cc.log("bl.position.x---> " + bl.position.x);
+        //  cc.log("bl.position.y---> " + bl.position.y);
+        
+        
+        //  cc.log("targetPositionX---> " + bl.getComponent("enemyBullet").targetPositionX);
+        //  cc.log("targetPositionY---> " + bl.getComponent("enemyBullet").targetPositionY);
+
+        //  cc.log("100*Math.tan(jiaodu)---> " + 100*Math.tan(jiaodu*0.017453293));
+        this.node.parent.addChild(bl);
+    },
+
+    xiexianLeft:function(jiaodu) {
+        cc.log("jiaodu---> " + jiaodu);
+        let bl = this.generateBullet();
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
+        bl.getComponent("enemyBullet").targetPositionX = bl.position.x - 100;
+        bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100*Math.tan(jiaodu*0.017453293));
+        
+        this.node.parent.addChild(bl);
+    },
+
+    sanfasanshe:function() {
+        // let bl1 = this.generateBullet();
+        // let bl2 = this.generateBullet();
+        // let bl3 = this.generateBullet();
+        // bl1.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+        // bl2.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);
+        // bl3.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);
+        // //bl1定位
+        // bl1.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
+        // bl1.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
+        // //bl2, bl3 斜线
+
+        // this.node.parent.addChild(bl);
     },
 
     generateBullet:function() {
@@ -128,6 +200,8 @@ cc.Class({
         
         return bl;
     },
+
+    
 
    
    
@@ -149,6 +223,23 @@ cc.Class({
 
         //cc.log("bl positionX--> " + bl.getPosition().x + "  bl positionY---> " + bl.getPosition().y);
         //cc.log("bl vecX--> " + bl.getComponent("enemyBullet").targetPositionX + "  bl vecY---> " + bl.getComponent("enemyBullet").targetPositionY);
+
+        this.node.parent.addChild(bl);
+    },
+
+
+    zhixianxiangshang: function () {
+
+      
+        let bl = this.generateBullet();
+        
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+        
+        
+        bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height/2+50;
+
+     
 
         this.node.parent.addChild(bl);
     },

@@ -105,7 +105,9 @@
     "targetPositionX": 0,
     "targetPositionY": 0,
     "bjX": 0,
-    "bjY": 0
+    "bjY": 0,
+    "ax": 0,
+    "by": 0
   },
   {
     "__type__": "cc.PolygonCollider",
