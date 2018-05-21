@@ -164,36 +164,34 @@ cc.Class({
        // manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
-        cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
-        //留个接口，以后根据用户选择来决定HeroPlaneID
-        //D.globalHeroPlaneID = heroPlaneID.heroPlane2;
-        if(typeof(D.globalHeroPlaneID) == "undefined") {
-            D.globalHeroPlaneID = heroPlaneID.heroPlane2;
-        }
-        cc.log('globalHeroPlaneID  ' + D.globalHeroPlaneID);
+       
 
         //根据globalHeroPlaneID来加载不同的预制体
         //var player = null;
-        if (D.globalHeroPlaneID === heroPlaneID.heroPlane0) {
+        let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
+       
+        if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
         }
-        else if (D.globalHeroPlaneID === heroPlaneID.heroPlane1) {
+        else if (dddd == heroPlaneID.heroPlane1) {
             this.player = cc.instantiate(this.heroPlane1);
         }
-        else if (D.globalHeroPlaneID === heroPlaneID.heroPlane2) {
+        else if (dddd == heroPlaneID.heroPlane2) {
             this.player = cc.instantiate(this.heroPlane2);
         }
-        else if (D.globalHeroPlaneID === heroPlaneID.heroPlane3) {
+        else if (dddd == heroPlaneID.heroPlane3) {
             this.player = cc.instantiate(this.heroPlane3);
         }
-        else if (D.globalHeroPlaneID === heroPlaneID.heroPlane4) {
+        else if (dddd == heroPlaneID.heroPlane4) {
             //cc.log('zhixing111111');
             this.player = cc.instantiate(this.heroPlane4);
             //cc.log(player);
         }
-        else if (D.globalHeroPlaneID === heroPlaneID.heroPlane5) {
+        else if (dddd == heroPlaneID.heroPlane5) {
             this.player = cc.instantiate(this.heroPlane5);
         }
+
+        
 
         this.node.addChild(this.player);
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)

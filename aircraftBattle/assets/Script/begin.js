@@ -7,6 +7,10 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
+
+var heroPlaneID = require("heroPlaneID").heroPlaneID;
+
+
 var globalJinBiCount = require("enemyPlaneDatas").jinBiCount;
 cc.Class({
     extends: cc.Component,
@@ -27,6 +31,33 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+
+        heroPlane0: {
+            default: null,
+            type: cc.Prefab,
+        },
+        heroPlane1: {
+            default: null,
+            type: cc.Prefab,
+        },
+        heroPlane2: {
+            default: null,
+            type: cc.Prefab,
+        },
+        heroPlane3: {
+            default: null,
+            type: cc.Prefab,
+        },
+        heroPlane4: {
+            default: null,
+            type: cc.Prefab,
+        },
+        heroPlane5: {
+            default: null,
+            type: cc.Prefab,
+        },
+        playerImg:null,
+
         spriteCoin:null,
         labelCoin:null,
         personalBestScore: null,
@@ -52,6 +83,8 @@ cc.Class({
             //分数一般是从服务器读取，这里先用本地存储。
             cc.sys.localStorage.setItem('bestScore', 0);
 
+            cc.sys.localStorage.setItem('globalHeroPlaneID',0);
+
         }
         //  else {
         //     var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;
@@ -64,7 +97,38 @@ cc.Class({
         //cc.log( this.labelCoin);
        // cc.log(cc.sys.localStorage.getItem("jinBiCount"));
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
-        this.personalBestScore.string = cc.sys.localStorage.getItem("bestScore");
+        this.personalBestScore.string = "最佳得分："+cc.sys.localStorage.getItem("bestScore");
+
+        let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
+        D.globalHeroPlaneID = dddd;
+        // if (dddd == heroPlaneID.heroPlane0) {
+        //     cc.log("jinru plane0!")
+        //     this.playerImg = cc.instantiate(this.heroPlane0);
+        // }
+        // else if (dddd == heroPlaneID.heroPlane1) {
+        //     this.playerImg = cc.instantiate(this.heroPlane1);
+        // }
+        // else if (dddd == heroPlaneID.heroPlane2) {
+        //     this.playerImg = cc.instantiate(this.heroPlane2);
+        // }
+        // else if (dddd == heroPlaneID.heroPlane3) {
+        //     this.playerImg = cc.instantiate(this.heroPlane3);
+        // }
+        // else if (dddd == heroPlaneID.heroPlane4) {
+        //     //cc.log('zhixing111111');
+        //     this.playerImg = cc.instantiate(this.heroPlane4);
+        //     //cc.log(player);
+        // }
+        // else if (dddd == heroPlaneID.heroPlane5) {
+        //     this.playerImg = cc.instantiate(this.heroPlane5);
+        // }
+        // this.node.getChildByName("currentPlane").getComponent(cc.Sprite).spriteFrame.setTexture(cc.url.raw("Texture/heroPlane4.png")); 
+
+        // cc.log("D.globalHeroPlaneID" + dddd);
+        // cc.log("sadadsad --->" + this.playerImg);
+
+        //this.node.addChild(this.playerImg);
+        
     },
 
     beginClick:function() {
