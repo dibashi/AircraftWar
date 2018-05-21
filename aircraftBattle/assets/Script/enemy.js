@@ -42,6 +42,7 @@ cc.Class({
         },
         bBar: null,//label
         baoZhaTeXiao:null,
+        damagedTeXiao:null,
 
         bulletTrack:0,
 
@@ -331,6 +332,29 @@ cc.Class({
     },
 
 
+
+    enemyDamagedAni:function() {
+        
+        
+        this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+            let armatureDisplay =  this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
+         
+            armatureDisplay.playAnimation("baozha");
+         
+            this.node.addChild(this.damagedTeXiao);
+            armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE,this.damagedOver,this);
+  
+    },
+
+    damagedOver:function(event) {
+        cc.log("爆炸动画结束");
+        //这个有问题 要放动画回调 TODO!
+      
+
+        this.damagedTeXiao.destroy();
+    },
+
+
     onCollisionEnter: function (other, self) {
 
         if (other.node.group === "hBullet") {
@@ -348,6 +372,7 @@ cc.Class({
             } else {
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
+                this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 this.node.parent.getComponent('Game').addScore(bDamage)
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
