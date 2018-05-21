@@ -135,12 +135,12 @@
     ],
     "_prefab": null,
     "_id": "45ez6qRuRNmIJJqPRLhqR3",
-    "_opacity": 163.20000000000002,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 13,
-      "g": 53,
-      "b": 56,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -179,7 +179,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "50c93179-eb3e-4f25-a469-eab3b49e0745"
+      "__uuid__": "a00bb2a4-2a2a-4b1d-b417-67717eee3392"
     },
     "_type": 0,
     "_sizeMode": 0,

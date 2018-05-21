@@ -120,9 +120,8 @@ cc.Class({
     startFire: function () {
 
         
-
+        this.bICallback();
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
-
 
     },
     wudichongci:function() {
@@ -132,8 +131,6 @@ cc.Class({
            // let wudiTX = armatureDisplay.buildArmature("TXwudi");
             armatureDisplay.playAnimation("wudi");
             this.node.addChild(this._wuditexiao);
-            //this.wudiTeXiao.setPosition(this.node.get);
-            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
             
             this.wudi = true;
            this._wudiTime = globalWuDiTime;
@@ -146,15 +143,7 @@ cc.Class({
     addBlood: function () {
          this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
          this.bBar.string = this.blood;
-        //代码有问题
-        // var jiaxueTX = cc.instantiate(this.prizeTeXiao);//!!!
-        //     let armatureDisplay =  jiaxueTX.getComponent(dragonBones.ArmatureDisplay);
-        //     armatureDisplay.buildArmature("TXbaoizha");
-        //     armatureDisplay.playAnimation("baozha");
-        //     this.node.addChild(this.jiaxueTX);
-            //this.wudiTeXiao.setPosition(this.node.get);
-            //this.schedule(this.bICallback, 1 / this.shootingSpeed);
-            
+        
             
     },
 
@@ -164,12 +153,13 @@ cc.Class({
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },
 
-    bICallback: function () {
-
+    susheCallback:function() {
+        
         //TODO：！！这里应该以后应该加入子弹池来优化
 
 
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
+        
         var bl = null;
         if (this.bulletType === 0) {
             bl = cc.instantiate(this.bullet0);
@@ -184,6 +174,16 @@ cc.Class({
         bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
         bl.getComponent("heroBullet").damage = this.damage;
         bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2 + bl.height / 2);
+    },
+
+    bICallback: function () {
+        //连射三发 0.6时长
+        
+        for(let i = 0; i<3;i++) {
+            // this.scheduleOnce(this.susheCallback,0.2);
+            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.susheCallback,this)));
+        }
+       
     },
 
     onCollisionEnter: function (other, self) {
