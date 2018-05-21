@@ -142,7 +142,8 @@ cc.Class({
 
 
     onLoad() {
-        
+       
+       
 
         let wx = cc.director.getVisibleSize().width*0.5;
         let hy = cc.director.getVisibleSize().height*0.5;
@@ -169,7 +170,7 @@ cc.Class({
         //根据globalHeroPlaneID来加载不同的预制体
         //var player = null;
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
-       
+        D.globalHeroPlaneID = dddd;
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
         }

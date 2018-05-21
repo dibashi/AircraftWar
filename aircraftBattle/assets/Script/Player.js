@@ -173,15 +173,15 @@ cc.Class({
 
         bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
         bl.getComponent("heroBullet").damage = this.damage;
-        bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2 + bl.height / 2);
+        bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2);
     },
 
     bICallback: function () {
         //连射三发 0.6时长
         
-        for(let i = 0; i<3;i++) {
+        for(let i = 0; i<7;i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.susheCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
         }
        
     },

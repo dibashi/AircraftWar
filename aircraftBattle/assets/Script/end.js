@@ -52,6 +52,9 @@ cc.Class({
     coin: function(){ 
         cc.log("coin");
     },
+    reStart:function() {
+        cc.director.loadScene("game");
+    },
     giveup: function(){ 
         cc.log("giveup");
         cc.director.loadScene("start");

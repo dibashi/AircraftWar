@@ -313,6 +313,9 @@ cc.Class({
         cc.log(this.node.getComponent(cc.Animation));
        var anim = this.node.getComponent(cc.Animation);
        anim.play("baozhaAni");
+       cc.log("--------------");
+       cc.log(anim);
+       anim.scale = 10;
        this.unscheduleAllCallbacks();
   //  baoZhaTeXiao.setPosition(this.node.getPosition());
     },
