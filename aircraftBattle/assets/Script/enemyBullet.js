@@ -52,7 +52,9 @@ cc.Class({
 
         //R =(R-90)+(-A)//r-90归位 旋转是顺时针 与角度 相反 ===》R = R-90-A=R-(A+90);
         let A = cc.pToAngle(cc.v2(vecX, vecY));
-        this.node.rotation -= ((A / Math.PI * 180) + 90);
+
+        this.node.rotation = (this.node.rotation) -(A / Math.PI * 180)
+       // this.node.rotation -= ((A / Math.PI * 180) -90);
         this.ax = Math.cos(A) * this.flyingSpeed;
         this.by = Math.sin(A) * this.flyingSpeed;
 
