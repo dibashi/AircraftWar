@@ -387,10 +387,15 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
-                     pf = cc.instantiate(this.prizeJinBi);
-                    this.node.addChild(pf);
-                    pf.setPosition(prizePosition);
-                    pf.getComponent("prize").prizeType = generateType.jinbi;
+                    let jinBiCount = Math.floor(Math.random()*20);
+                    for(let i = 0 ; i<jinBiCount; i++) {
+                        pf = cc.instantiate(this.prizeJinBi);
+                        this.node.addChild(pf);
+                        pf.setPosition(prizePosition);
+                        pf.getComponent("prize").prizeType = generateType.jinbi;
+                    }
+                    
+                  
                     break;
                 case generateType.wudichongci:
                     cc.log("wudichongci!");

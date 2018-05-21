@@ -13,55 +13,58 @@ var generateType = require("enemyPlaneDatas").generateType;
 cc.Class({
     extends: cc.Component,
     properties: {
-       
-        prizeType:-1,//决定其是什么类型的奖品
-        t:1.0,
+
+        prizeType: -1,//决定其是什么类型的奖品
+        t: 1.0,
     },
 
 
 
 
     update(dt) {
-       
 
-    //    var p = this.node.parent.getContentSize().height/2+this.node.height/2;
-    //   // cc.log(p);
-    //  // this.node.x += this.flyingSpeed;
-    //   this.node.y -= this.flyingSpeed;
-    //     if (this.node.getPosition().y > p) {
-    //         this.node.destroy();
-    //     }
-    //cc.log(this.node.parent);
-        let ePos = this.node.parent.getComponent('Game').player.getPosition();
-        let bPos = this.node.getPosition();
-        let dx = ePos.x - bPos.x;
-        let dy = ePos.y - bPos.y;
-        let ndx = dx/(Math.sqrt(dx*dx+dy*dy));
-        let ndy = dy/(Math.sqrt(dx*dx+dy*dy));
 
-        let rdx = ndx*this.t;
-        let rdy = ndy*this.t;
-        if(Math.sqrt(dx*dx+dy*dy)<100) {
-            this.node.setPosition(bPos.x + (rdx*5),bPos.y + (rdy*5));
-        } else {
-            this.node.setPosition(bPos.x + rdx,bPos.y + rdy);
+        //    var p = this.node.parent.getContentSize().height/2+this.node.height/2;
+        //   // cc.log(p);
+        //  // this.node.x += this.flyingSpeed;
+        //   this.node.y -= this.flyingSpeed;
+        //     if (this.node.getPosition().y > p) {
+        //         this.node.destroy();
+        //     }
+        //cc.log(this.node.parent);
+        if (this.prizeType != generateType.jinbi) {
+            let ePos = this.node.parent.getComponent('Game').player.getPosition();
+            let bPos = this.node.getPosition();
+            let dx = ePos.x - bPos.x;
+            let dy = ePos.y - bPos.y;
+            let ndx = dx / (Math.sqrt(dx * dx + dy * dy));
+            let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
+
+            let rdx = ndx * this.t;
+            let rdy = ndy * this.t;
+            if (Math.sqrt(dx * dx + dy * dy) < 100) {
+                this.node.setPosition(bPos.x + (rdx * 5), bPos.y + (rdy * 5));
+            } else {
+                this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+            }
+
+
+            if (this.node.getPosition().y < -this.node.parent.height / 2) {
+                this.node.destroy();
+            }
         }
-       
-        
-        if(this.node.getPosition().y<-this.node.parent.height/2) {
-            this.node.destroy();
-        } 
-    },
-
-    normalizeVector:function(x,y) {
 
     },
 
-    
+    normalizeVector: function (x, y) {
+
+    },
+
+
 
     onCollisionEnter: function (other, self) {
-        if(other.node.group === "hero"){
-            
+        if (other.node.group === "hero") {
+
             //根据奖品类型来触发属性，game中的引用较多，直接传给game让其处理。
             switch (this.prizeType) {
                 case generateType.jinbi:
@@ -84,7 +87,7 @@ cc.Class({
                     break;
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
-                   // other.node.getComponent("Player").raiseTheSpeedOfFire();
+                    // other.node.getComponent("Player").raiseTheSpeedOfFire();
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");
@@ -94,6 +97,6 @@ cc.Class({
 
             this.node.destroy();
         }
-        
+
     },
 });

@@ -123,13 +123,18 @@
     "bloodBar": {
       "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
     },
+    "nodeBar": null,
     "bBar": null,
     "baoZhaTeXiao": {
       "__uuid__": "c4bc3fd3-2823-466b-bcfc-ecc174b83cc7"
     },
     "damagedTeXiao": null,
     "bulletTrack": 0,
-    "enemyTrack": 0
+    "enemyTrack": 0,
+    "particleSys": {
+      "__uuid__": "c15cc840-24ac-48ba-b48d-e470dc4e3f75"
+    },
+    "partice": null
   },
   {
     "__type__": "cc.PolygonCollider",

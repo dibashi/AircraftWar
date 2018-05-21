@@ -54,10 +54,10 @@ var _enemyPlaneData = [
 
 var _stage = [
     [
-        {enemyID:0},{enemyID:1}
+        {enemyID:0},{enemyID:0}
     ],
     [
-        {enemyID:0},{enemyID:1},{enemyID:2}
+        {enemyID:0},{enemyID:0},{enemyID:0}
     ],
     [
         {enemyID:1},{enemyID:3}

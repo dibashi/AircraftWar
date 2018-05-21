@@ -40,6 +40,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+        nodeBar:null,//label的node
         bBar: null,//label
         baoZhaTeXiao:null,
         damagedTeXiao:null,
@@ -48,23 +49,39 @@ cc.Class({
 
         enemyTrack:0,
 
+        particleSys: {//并不是单纯的label 
+            default: null,
+            type: cc.Prefab,
+        },
+        partice:null,
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
 
+        // let particle = this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
+        // if (particle.particleCount > 0) { // check if particle has fully plaed
+        //     particle.stopSystem(); // stop particle system
+        // }
+       
+
+        //cc.log("particle--->  " );
+       // cc.log(particle);
+
+
         //this.bloodBar.string = this.blood;
-        var nodeBar = cc.instantiate(this.bloodBar);
-        this.bBar = nodeBar.getComponent(cc.Label);
+        this.nodeBar = cc.instantiate(this.bloodBar);
+        this.bBar = this.nodeBar.getComponent(cc.Label);
         cc.log(this.bBar);
         this.bBar.string = this.blood;
         //bBar.string = "lh";
         // cc.log("bBar =   "+bBar.string);
         //cc.log("bbblood   " + this.blood);
-        this.node.addChild(nodeBar);
-        nodeBar.setPosition(0, 0);
-        nodeBar.rotation = 180;
+        this.node.addChild(this.nodeBar);
+        this.nodeBar.setPosition(0, 0);
+        this.nodeBar.rotation = 180;
         //cc.log(bBar.getPosition());
     },
 
@@ -309,18 +326,30 @@ cc.Class({
 
     enemyBoomAni:function() {
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
-       this.node.group = "NOOOOOOO";
-        cc.log(this.node.getComponent(cc.Animation));
-       var anim = this.node.getComponent(cc.Animation);
-       anim.play("baozhaAni");
-       cc.log("--------------");
-       cc.log(anim);
-       anim.scale = 10;
-       this.unscheduleAllCallbacks();
-  //  baoZhaTeXiao.setPosition(this.node.getPosition());
-    },
+    //    this.node.group = "NOOOOOOO";
+    //     cc.log(this.node.getComponent(cc.Animation));
+    //    var anim = this.node.getComponent(cc.Animation);
+    //    anim.play("baozhaAni");
+    //    cc.log("--------------");
+    //    cc.log(anim);
+    //    anim.scale = 10;
+//this.unscheduleAllCallbacks();
+    this.node.group = "NOOOOOOO";
 
-    baozhaOver:function(event) {
+    this.partice = cc.instantiate(this.particleSys);
+    this.node.parent.addChild(this.partice);
+    this.partice.setPosition(this.node.getPosition());
+  //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
+        this.partice.getComponent(cc.ParticleSystem).resetSystem();
+       
+        //this.nodeBar.destroy();//删除血条
+        this.node.opacity = 0;
+        this.scheduleOnce(this.baozhaOver,0.7);
+    },  
+
+    baozhaOver:function() {
+        this.unscheduleAllCallbacks();
+        this.partice.destroy();
         cc.log("爆炸动画结束~~~~");
         //这个有问题 要放动画回调 TODO!
         this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
@@ -329,6 +358,16 @@ cc.Class({
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
     },
+    //以前动画的
+    // baozhaOver:function(event) {
+    //     cc.log("爆炸动画结束~~~~");
+    //     //这个有问题 要放动画回调 TODO!
+    //     this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+
+    //     this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+    //     this.node.parent.getComponent('Game').checkNextStage();
+    //     this.node.destroy();
+    // },
 
 
 
@@ -343,6 +382,8 @@ cc.Class({
             this.node.addChild(this.damagedTeXiao);
             armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE,this.damagedOver,this);
   
+
+           // this.node.getChildByName("particlesystem")
     },
 
     damagedOver:function(event) {
