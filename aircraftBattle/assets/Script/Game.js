@@ -150,7 +150,13 @@ cc.Class({
         let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
         newRecordLabel.active = false;
         this.node.getChildByName("score").setPosition(0,hy-30-newRecordLabel.getContentSize().height-this.node.getChildByName("score").getContentSize().height/2);//锚点0.5  0.5
-        this.node.getChildByName("jinbi").setPosition(-wx,hy);//锚点0,1
+       // this.node.getChildByName("jinbi").setPosition(-wx,hy);//锚点0,1
+       
+       let sjbw = this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").getContentSize().width;
+       let sjbh = this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").getContentSize().height;
+       this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").setLocalZOrder(-1);
+       this.node.getChildByName("jinbi").setPosition(-wx+sjbw/2,hy-sjbh/2);//锚点0,1
+
         this.node.getChildByName("score").setLocalZOrder(100);
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;

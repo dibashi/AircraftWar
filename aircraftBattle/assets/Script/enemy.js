@@ -111,13 +111,27 @@ cc.Class({
         }else if( this.bulletTrack == bulletTrack.banquan) {
            // this.schedule(this.xiexian, 1 / this.shootingSpeed);
            this.schedule(this.banquan, 1 / this.shootingSpeed);
-        } else if( this.bulletTrack == bulletTrack.sanfasanshe) {
+        } else if( this.bulletTrack == bulletTrack.yiquan) {
+            // this.schedule(this.xiexian, 1 / this.shootingSpeed);
+            this.schedule(this.yiquan, 1 / this.shootingSpeed);
+         }else if( this.bulletTrack == bulletTrack.sanfasanshe) {
             this.schedule(this.sanfasanshe, 1 / this.shootingSpeed);
         }
 
        
         
         
+    },
+
+    yiquan:function() {
+      
+        for(let jiaodu =-180; jiaodu<180;jiaodu+=30) {
+            this.xiexianByjiaodu(jiaodu);
+            //this.xiexian(jiaodu);
+        }
+        
+        //this.xiexianByjiaodu(30);
+
     },
 
     banquan:function() {

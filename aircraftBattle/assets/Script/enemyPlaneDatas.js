@@ -12,7 +12,8 @@ var _bulletTrack = cc.Enum({
     dingwei: 1,//普通的定位发射
    // xiexian: 2,//斜线 给定角度 逆时针0～180 顺时针 0～-180  以后作为别的弹道的子函数调用，单独使用没有任何意义
    banquan:2, //半圈
-   sanfasanshe: 3,//普通的三发散射 中间定位 两边一个角度
+   yiquan:3,//一圈
+   sanfasanshe: 4,//普通的三发散射 中间定位 两边一个角度
    // jisushesu: 3,
    // huojianpao: 4
 });
@@ -21,6 +22,7 @@ var _bulletTrack = cc.Enum({
 var _enemyTrack = cc.Enum({
     zuoyoushangxia: 0, //左右上下摇动
     guding: 1,//固定不动
+
 });
 
 var _bulletType = cc.Enum({
@@ -44,20 +46,20 @@ var _enemyPlaneData = [
     {enemyID:0, planeImage: "enemyPlane0", blood: 3, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.zhixianxiangxia,enemyTrack:_enemyTrack.zuoyoushangxia },
     {enemyID:1, planeImage: "enemyPlane1", blood: 4, shootingSpeed: 0.5, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.guding },
     {enemyID:2, planeImage: "enemyPlane2", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.sanfasanshe,enemyTrack:_enemyTrack.guding },
+    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.guding },
     {enemyID:4, planeImage: "enemyPlane4", blood: 4, shootingSpeed:0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
 
 ];
 
 var _stage = [
     [
-        {enemyID:1},{enemyID:1}
+        {enemyID:3},{enemyID:1}
     ],
     [
-        {enemyID:1},{enemyID:4},{enemyID:4}
+        {enemyID:3},{enemyID:4},{enemyID:4}
     ],
     [
-        {enemyID:4},{enemyID:4}
+        {enemyID:3},{enemyID:4}
     ],
     [
         {enemyID:0},{enemyID:4},{enemyID:1}
