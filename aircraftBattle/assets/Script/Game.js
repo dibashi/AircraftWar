@@ -393,6 +393,21 @@ cc.Class({
                         this.node.addChild(pf);
                         pf.setPosition(prizePosition);
                         pf.getComponent("prize").prizeType = generateType.jinbi;
+
+                        let ramPosX = Math.random()*60;
+                        let ramPosY = Math.random()*60
+                        if(Math.random()>0.5) {
+                            ramPosX = -ramPosX;
+                        }
+                        if(Math.random()>0.5) {
+                            ramPosY = -ramPosY;
+                        }
+                        let p = cc.v2(pf.getPosition().x+ramPosX,pf.getPosition().y+ramPosY);
+
+                        let act1 = cc.moveTo(1,p).easing(cc.easeOut(3.0));
+                        let act2 = cc.moveTo(2,this.player.getPosition()).easing(cc.easeIn(3.0));
+                        pf.runAction(cc.sequence(act1,act2));
+                       
                     }
                     
                   
@@ -403,6 +418,7 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.wudichongci;
+                    pf.runAction(cc.moveTo(5,this.player.getPosition()));
                     break;
                 case generateType.xinjiaxue:
                     cc.log("xinjiaxue!");
@@ -410,6 +426,7 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.xinjiaxue;
+                    pf.runAction(cc.moveTo(5,this.player.getPosition()));
                     break;
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
@@ -417,6 +434,7 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.jisushesu;
+                    pf.runAction(cc.moveTo(5,this.player.getPosition()));
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
@@ -424,10 +442,11 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.huojianpao;
+                    pf.runAction(cc.moveTo(5,this.player.getPosition()));
                     break;
             }
             //写在这里则所有奖品的动画都是一样的，将来可能要分别实现
-            pf.runAction(cc.moveTo(5,this.player.getPosition()));
+            
 
         //     let jumpDuration = 5;
         //     //let jumpHeight = 50;
