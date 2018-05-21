@@ -217,12 +217,12 @@ cc.Class({
     },
 
     dragStart: function (event) {
-        cc.log("game dragStart");
+       // cc.log("game dragStart");
         this.touchBeginPoint = event.getLocation();
     },
 
     dragMove: function (event) {
-cc.log("game dragMove");
+//cc.log("game dragMove");
         this.touchMovePoint = event.getLocation();
         let dx = this.touchMovePoint.x - this.touchBeginPoint.x;
         let dy = this.touchMovePoint.y - this.touchBeginPoint.y;

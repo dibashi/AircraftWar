@@ -194,7 +194,7 @@ cc.Class({
     },
     //往右边倾斜
     xiexianRight:function(jiaodu) {
-        cc.log("jiaodu---> " + jiaodu);
+        //cc.log("jiaodu---> " + jiaodu);
         let bl = this.generateBullet();
       //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 

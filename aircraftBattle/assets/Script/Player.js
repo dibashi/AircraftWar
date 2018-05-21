@@ -56,6 +56,7 @@ cc.Class({
         let len = this.node.children.length;
         for(let i = 0; i<len; i++) {
             this.node.children[i].getComponent("guandao").damage = this.damage;
+            this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
         }
 
 
