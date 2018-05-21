@@ -13,10 +13,10 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        //子弹预制体
-        bullet0: cc.Prefab,
-        bullet1: cc.Prefab,
-        bullet2: cc.Prefab,
+        // //子弹预制体
+        // bullet0: cc.Prefab,
+        // bullet1: cc.Prefab,
+        // bullet2: cc.Prefab,
 
         //bulletIsOpen: false,
         // bulletIntelval: 0.75,
@@ -53,6 +53,15 @@ cc.Class({
         cc.log("this.bulletType = " + this.bulletType);
 
 
+        let len = this.node.children.length;
+        for(let i = 0; i<len; i++) {
+            this.node.children[i].getComponent("guandao").damage = this.damage;
+        }
+
+
+
+
+
 
         //血条 以后要改成进度条
         var nodeBar = cc.instantiate(this.bloodBar);
@@ -65,10 +74,6 @@ cc.Class({
         this.node.addChild(nodeBar);
         nodeBar.setPosition(0, 0);
         // nodeBar.rotation = 180;
-
-
-
-        this.startFire();
 
      //   this.onDrag();
     },
@@ -117,13 +122,13 @@ cc.Class({
       
     },
 
-    startFire: function () {
+    // startFire: function () {
 
         
-        this.bICallback();
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+    //     this.bICallback();
+    //     this.schedule(this.bICallback, 1 / this.shootingSpeed);
 
-    },
+    // },
     wudichongci:function() {
         if(this.wudi == false) {
             this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
@@ -147,44 +152,49 @@ cc.Class({
             
     },
 
-    raiseTheSpeedOfFire:function() {
-        this.shootingSpeed = this.shootingSpeed + globalJiSuTiSu;
-        //如何把现有的定时器属性修改呢？
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
-    },
+    // raiseTheSpeedOfFire:function() {
+    //     this.shootingSpeed = this.shootingSpeed + globalJiSuTiSu;
+    //     //如何把现有的定时器属性修改呢？
+    //     this.schedule(this.bICallback, 1 / this.shootingSpeed);
+    // },
 
-    susheCallback:function() {
+    // susheCallback:function() {
         
-        //TODO：！！这里应该以后应该加入子弹池来优化
+    //     //TODO：！！这里应该以后应该加入子弹池来优化
 
 
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
+    //     //根据子弹类型来生成子弹，类型决定加载什么预制体。
         
-        var bl = null;
-        if (this.bulletType === 0) {
-            bl = cc.instantiate(this.bullet0);
-        } else if (this.bulletType === 1) {
-            bl = cc.instantiate(this.bullet1);
-        } else if(this.bulletType === 2) {
-            bl = cc.instantiate(this.bullet2);
-        }
-        // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
-        this.node.parent.addChild(bl);
+    //     var bl = null;
+    //     if (this.bulletType === 0) {
+    //         bl = cc.instantiate(this.bullet0);
+    //     } else if (this.bulletType === 1) {
+    //         bl = cc.instantiate(this.bullet1);
+    //     } else if(this.bulletType === 2) {
+    //         bl = cc.instantiate(this.bullet2);
+    //     }
+    //     // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
+    //     // this.node.parent.addChild(bl);
 
-        bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
-        bl.getComponent("heroBullet").damage = this.damage;
-        bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2);
-    },
-
-    bICallback: function () {
-        //连射三发 0.6时长
         
-        for(let i = 0; i<7;i++) {
-            // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
-        }
+
+    //     let canvas = cc.director.getScene().getChildByName("Canvas");
+    //     canvas.addChild(bl);
+
+    //     bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
+    //     bl.getComponent("heroBullet").damage = this.damage;
+    //     bl.setPosition(this.node.position.x, this.node.position.y + this.node.height / 2);
+    // },
+
+    // bICallback: function () {
+    //     //连射三发 0.6时长
+        
+    //     for(let i = 0; i<7;i++) {
+    //         // this.scheduleOnce(this.susheCallback,0.2);
+    //         this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
+    //     }
        
-    },
+    // },
 
     onCollisionEnter: function (other, self) {
 

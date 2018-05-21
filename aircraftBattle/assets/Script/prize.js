@@ -84,7 +84,7 @@ cc.Class({
                     break;
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
-                    other.node.getComponent("Player").raiseTheSpeedOfFire();
+                   // other.node.getComponent("Player").raiseTheSpeedOfFire();
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");

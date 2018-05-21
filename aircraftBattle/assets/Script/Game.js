@@ -129,7 +129,7 @@ cc.Class({
         //无敌骨骼动画
        // wudiTeXiao:null,
 
-         bombSprite: cc.Node,
+        bombSprite: cc.Node,
         bombNo:0,
         bombLabel:cc.Label,
 

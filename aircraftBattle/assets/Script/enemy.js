@@ -369,6 +369,7 @@ cc.Class({
                 
                // this.node.destroy();
             } else {
+                //cc.log
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
                 this.enemyDamagedAni();
