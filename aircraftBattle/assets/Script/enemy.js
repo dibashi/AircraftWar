@@ -114,7 +114,10 @@ cc.Class({
         } else if( this.bulletTrack == bulletTrack.yiquan) {
             // this.schedule(this.xiexian, 1 / this.shootingSpeed);
             this.schedule(this.yiquan, 1 / this.shootingSpeed);
-         }else if( this.bulletTrack == bulletTrack.sanfasanshe) {
+        } else if(this.bulletTrack == bulletTrack.sanfazhixian) {
+            this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
+        }
+         else if( this.bulletTrack == bulletTrack.sanfasanshe) {
             this.schedule(this.sanfasanshe, 1 / this.shootingSpeed);
         }
 
@@ -123,7 +126,40 @@ cc.Class({
         
     },
 
+    sanfazhixian:function() {
+      
+        for(let i = 0; i<3;i++) {
+            // this.scheduleOnce(this.susheCallback,0.2);
+            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.susheCallback,this)));
+        }
+
+    },
+
+    susheCallback:function() {
+        
+        //TODO：！！这里应该以后应该加入子弹池来优化
+
+
+        //根据子弹类型来生成子弹，类型决定加载什么预制体。
+        
+       this.zhixianxiangxia();
+
+  
+         
+    },
+
     yiquan:function() {
+      
+        for(let jiaodu =-180; jiaodu<180;jiaodu+=30) {
+            this.xiexianByjiaodu(jiaodu);
+            //this.xiexian(jiaodu);
+        }
+        
+        //this.xiexianByjiaodu(30);
+
+    },
+
+     yiquan:function() {
       
         for(let jiaodu =-180; jiaodu<180;jiaodu+=30) {
             this.xiexianByjiaodu(jiaodu);
@@ -159,7 +195,7 @@ cc.Class({
     xiexianRight:function(jiaodu) {
         cc.log("jiaodu---> " + jiaodu);
         let bl = this.generateBullet();
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100*Math.tan(jiaodu*0.017453293));//2pi/360 = 0.017453293
@@ -178,7 +214,7 @@ cc.Class({
     xiexianLeft:function(jiaodu) {
         cc.log("jiaodu---> " + jiaodu);
         let bl = this.generateBullet();
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+       
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x - 100;
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100*Math.tan(jiaodu*0.017453293));
@@ -211,7 +247,9 @@ cc.Class({
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
-        
+
+        //bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 );
         return bl;
     },
 
@@ -229,7 +267,7 @@ cc.Class({
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         let bl = this.generateBullet();
         //分离出来是为了以后 如果有轨迹是发射很多子弹,可以遍历,然后每个子弹的位置单独设置,或者设置在飞机中心
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+       // bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
         
         //极其重要的分类化,简单的代码保证了 不同的运动轨迹显示.
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
@@ -247,7 +285,7 @@ cc.Class({
       
         let bl = this.generateBullet();
         
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
         
         
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
@@ -260,7 +298,7 @@ cc.Class({
 
     dingwei:function() {
         let bl = this.generateBullet();
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 
         bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;

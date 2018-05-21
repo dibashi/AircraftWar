@@ -13,7 +13,8 @@ var _bulletTrack = cc.Enum({
    // xiexian: 2,//斜线 给定角度 逆时针0～180 顺时针 0～-180  以后作为别的弹道的子函数调用，单独使用没有任何意义
    banquan:2, //半圈
    yiquan:3,//一圈
-   sanfasanshe: 4,//普通的三发散射 中间定位 两边一个角度
+   sanfazhizhixian:4,//三发直线
+   sanfasanshe: 5,//普通的三发散射 中间定位 两边一个角度
    // jisushesu: 3,
    // huojianpao: 4
 });
@@ -43,11 +44,11 @@ var _wuDiTime = 8;
 //bullet type 0:机炮 1:火炮
 //gid从1开始
 var _enemyPlaneData = [
-    {enemyID:0, planeImage: "enemyPlane0", blood: 3, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.zhixianxiangxia,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:1, planeImage: "enemyPlane1", blood: 4, shootingSpeed: 0.5, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:2, planeImage: "enemyPlane2", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:4, planeImage: "enemyPlane4", blood: 4, shootingSpeed:0.5, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:0, planeImage: "enemyPlane0", blood: 3, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.sanfazhixian,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:1, planeImage: "enemyPlane1", blood: 4, shootingSpeed: 1, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:2, planeImage: "enemyPlane2", blood: 4, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:3, planeImage: "enemyPlane3", blood: 4, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:4, planeImage: "enemyPlane4", blood: 4, shootingSpeed:1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
 
 ];
 
