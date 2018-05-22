@@ -270,13 +270,7 @@ cc.Class({
         
         if (this.bombNo>0){
             this.bombLabel.string = this.bombNo-1;
-            //this.removeEnemy();
-            //cc.audioEngine.playEffect(this.useBombClip, false);
-            //TODO!!!!
-            //生成集群
-
-           // this.players = 
-        //     this.player = cc.instantiate(this.heroPlane5);
+            this.bombNo -= this.bombNo;
         
             let cs = this.node.children;
             let cc = this.node.childrenCount;
@@ -302,7 +296,7 @@ cc.Class({
         
         if (this.shieldNo>0){
             this.shieldLabel.string = this.shieldNo-1;
-       
+            this.shieldNo -= this.shieldNo;
         
             let cs = this.node.children;
             let cc = this.node.childrenCount;
