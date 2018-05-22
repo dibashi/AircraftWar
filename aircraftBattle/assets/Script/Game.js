@@ -133,6 +133,10 @@ cc.Class({
         bombNo:0,
         bombLabel:cc.Label,
 
+        shieldSprite: cc.Node,
+        shieldNo:0,
+        shieldLabel:cc.Label,
+
         touchBeginPoint: null,
         touchMovePoint: null,
         //players:null,
@@ -203,9 +207,14 @@ cc.Class({
         this.bombNo = 0;
         this.bombSprite.on('touchstart',this.bombOnclick,this);//这个精灵旋转过了，所以长宽不好说
         this.bombLabel.string = this.bombNo;
-
-      // this.bombSprite.setPosition(-wx+this.bombSprite.height/2+this.bombLabel.height/2,-hy+this.bombSprite.width/2+this.bombLabel.width/2);
         this.bombSprite.setPosition(-wx+50,-hy+50);
+
+        this.shieldNo = 0;
+        this.shieldSprite.on('touchstart',this.shieldOnclick,this);//这个精灵旋转过了，所以长宽不好说
+        this.shieldLabel.string = this.shieldNo;
+        this.shieldSprite.setPosition(wx-50,-hy+50);
+     
+        
 
         // this.players = new Array();
         // for(let i = 0; i<10; i++) {
@@ -284,6 +293,27 @@ cc.Class({
         //3秒后删除集群
         } else {
             console.log('没有子弹');
+
+        }
+    },
+
+    shieldOnclick: function(){
+       
+        
+        if (this.shieldNo>0){
+            this.shieldLabel.string = this.shieldNo-1;
+       
+        
+            let cs = this.node.children;
+            let cc = this.node.childrenCount;
+            for(let i =0; i <cc;i++) {
+                if(this.node.children[i].group === 'eBullet') {
+                    this.node.children[i].getComponent('enemyBullet').bulletToCoinAndRun();
+                }
+            }
+        
+        } else {
+            console.log('没有护盾');
 
         }
     },
@@ -468,6 +498,14 @@ cc.Class({
         }
     },
 
+    generateJinBi:function(pos) {
+        let pf = cc.instantiate(this.prizeJinBi);
+        this.node.addChild(pf);
+        pf.setPosition(pos);
+        pf.getComponent("prize").prizeType = generateType.jinbi;
+        
+    },
+
 
     getJinBi:function() {
         //cc.log("getJinBi");
@@ -487,6 +525,11 @@ cc.Class({
     getHuoJianPao:function() {
         this.bombNo += 1;
         this.bombLabel.string = this.bombNo;
+    },
+
+    getShield:function() {
+        this.shieldNo += 1;
+        this.shieldLabel.string = this.shieldNo;
     },
    
 

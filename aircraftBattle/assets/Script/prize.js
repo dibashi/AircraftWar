@@ -23,36 +23,39 @@ cc.Class({
 
     update(dt) {
 
-
-        //    var p = this.node.parent.getContentSize().height/2+this.node.height/2;
-        //   // cc.log(p);
-        //  // this.node.x += this.flyingSpeed;
-        //   this.node.y -= this.flyingSpeed;
-        //     if (this.node.getPosition().y > p) {
-        //         this.node.destroy();
-        //     }
-        //cc.log(this.node.parent);
+        // if (this.node.getPosition().y < -this.node.parent.height / 2) {
+        //     this.node.destroy();
+        // }
+        let ePos = this.node.parent.getComponent('Game').player.getPosition();
+        let bPos = this.node.getPosition();
+        let dx = ePos.x - bPos.x;
+        let dy = ePos.y - bPos.y;
+        let ndx = dx / (Math.sqrt(dx * dx + dy * dy));
+        let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
+        let speed = 0;
         if (this.prizeType != generateType.jinbi) {
-            let ePos = this.node.parent.getComponent('Game').player.getPosition();
-            let bPos = this.node.getPosition();
-            let dx = ePos.x - bPos.x;
-            let dy = ePos.y - bPos.y;
-            let ndx = dx / (Math.sqrt(dx * dx + dy * dy));
-            let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
-
-            let rdx = ndx * this.t;
-            let rdy = ndy * this.t;
-            if (Math.sqrt(dx * dx + dy * dy) < 100) {
-                this.node.setPosition(bPos.x + (rdx * 5), bPos.y + (rdy * 5));
-            } else {
-                this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-            }
 
 
-            if (this.node.getPosition().y < -this.node.parent.height / 2) {
-                this.node.destroy();
-            }
+            // let rdx = ndx * this.t;
+            // let rdy = ndy * this.t;
+            // if (Math.sqrt(dx * dx + dy * dy) < 100) {
+            //     this.node.setPosition(bPos.x + (rdx * 5), bPos.y + (rdy * 5));
+            // } else {
+            //     this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+            // }
+
+            speed = 2;
+
+        } else if (this.prizeType == generateType.jinbi) {
+            speed = 8;
+
         }
+
+        let rdx = ndx * speed;
+        let rdy = ndy * speed;
+        this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+
+
 
     },
 
@@ -76,10 +79,11 @@ cc.Class({
                     this.node.parent.getComponent("Game").getJinBi();
                     break;
                 case generateType.wudichongci:
-                    cc.log("get wudichongci!");
+                    //cc.log("get wudichongci!");
                     //this.node.parent.getComponent("Game").getWuDiChongCi();
                     //todo
-                    other.node.getComponent("Player").wudichongci();
+                    //other.node.getComponent("Player").wudichongci();
+                    this.node.parent.getComponent("Game").getShield();
                     break;
                 case generateType.xinjiaxue:
                     cc.log("get xinjiaxue!");

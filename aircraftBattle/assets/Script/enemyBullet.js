@@ -92,6 +92,17 @@ cc.Class({
         // }
     },
 
+    //实现子弹变成金币，然后飞向当前player
+    bulletToCoinAndRun:function() {
+        cc.log("bullet to coin and run");
+      //1，创建金币，
+      //2，将金币加入node，将金币位置设置为子弹位置，
+      //3，将子弹删除
+      //4，金币自身的update 往当前player上移动
+      this.node.parent.getComponent("Game").generateJinBi(this.node.getPosition());
+      this.node.destroy();
+    },
+
     getEnemyDistance: function (enemy) {
 
         var enemy = enemy.getPosition();
