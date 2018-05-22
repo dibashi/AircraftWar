@@ -91,13 +91,13 @@ cc.Class({
             //分数一般是从服务器读取，这里先用本地存储。
             cc.sys.localStorage.setItem('bestScore', 0);
 
-            cc.sys.localStorage.setItem('globalHeroPlaneID',0);
+            cc.sys.localStorage.setItem('globalHeroPlaneID',2);
 
             cc.log("运行到了");
 
             cc.sys.localStorage.setItem('heroPlaneWingmanCount0',3);
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount1',0);
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount2',0);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount1',6);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount2',6);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount3',0);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount4',0);
 

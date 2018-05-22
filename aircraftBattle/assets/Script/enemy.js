@@ -89,8 +89,8 @@ cc.Class({
 
     zuoyoushangxia:function() {
         let jumpDuration = 3;
-        let jumpHeight = Math.random()*100;
-        let moveDis = Math.random()*100;
+        let jumpHeight = Math.random()*200;
+        let moveDis = Math.random()*200;
        // let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight)).easing(cc.easeCubicActionOut());
        // let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight)).easing(cc.easeCubicActionIn());
         let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight));
