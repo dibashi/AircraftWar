@@ -230,7 +230,7 @@ cc.Class({
     },
 
     xiexianLeft:function(jiaodu) {
-        cc.log("jiaodu---> " + jiaodu);
+      
         let bl = this.generateBullet();
        
 

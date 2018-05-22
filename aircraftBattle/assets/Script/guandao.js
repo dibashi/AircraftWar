@@ -8,7 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
-
+var globalHeroBulletType = require("heroPlaneDatas").heroBulletType;
 cc.Class({
     extends: cc.Component,
 
@@ -31,7 +31,7 @@ cc.Class({
         //子弹预制体
         bullet0: cc.Prefab,
         bullet1: cc.Prefab,
-        bullet2: cc.Prefab,
+       // bullet2: cc.Prefab,
         bulletType:0,
         enableGuanDao:true,
         shootingSpeed:2,
@@ -40,14 +40,17 @@ cc.Class({
 
     
     onLoad () {        
-        this.startFire();
+        //this.startFire();
     },
 
     setEnableGuanDao( ena ){
+        if(this.enableGuanDao == ena) {
+            return;
+        }
         this.enableGuanDao = ena;
-        if(ene)
+        if(ena)
         {
-            startFire();
+            this.startFire();
         }
         else{
             this.unschedule(this.bICallback);
@@ -67,13 +70,11 @@ cc.Class({
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
         
         var bl = null;
-        if (this.bulletType === 0) {
+        if (this.bulletType === globalHeroBulletType.ordinary) {
             bl = cc.instantiate(this.bullet0);
-        } else if (this.bulletType === 1) {
+        } else if (this.bulletType === globalHeroBulletType.upgrade) {
             bl = cc.instantiate(this.bullet1);
-        } else if(this.bulletType === 2) {
-            bl = cc.instantiate(this.bullet2);
-        }
+        } 
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         // this.node.parent.addChild(bl);
 

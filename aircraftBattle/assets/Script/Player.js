@@ -4,6 +4,8 @@ var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
 var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 
 var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
+
+var globalHeroBulletType = require("heroPlaneDatas").heroBulletType;
 cc.Class({
     extends: cc.Component,
 
@@ -35,12 +37,15 @@ cc.Class({
         wudi:false,
         _wuditexiao:null,
         _wudiTime:0,
+
+        guandaoCount:0, //管道1~5决定了5个弹道，
+        guandaoArrays:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        
 
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
       
@@ -52,17 +57,18 @@ cc.Class({
         cc.log("this.blood = " + this.blood);
         cc.log("this.bulletType = " + this.bulletType);
 
-
-        let len = this.node.children.length;
-        for(let i = 0; i<len; i++) {
-            this.node.children[i].getComponent("guandao").damage = this.damage;
-            this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+        this.guandaoArrays = new Array();
+        //let len = this.node.children.length;
+        for(let i = 0; i<5; i++) {
+            // this.node.children[i].getComponent("guandao").damage = this.damage;
+            // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            //管道控制集合
+            this.guandaoArrays[i] = this.node.getChildByName("guandao"+i);
+            this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
+            this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
+            this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
         }
-
-
-
-
-
 
         //血条 以后要改成进度条
         var nodeBar = cc.instantiate(this.bloodBar);
@@ -76,60 +82,32 @@ cc.Class({
         nodeBar.setPosition(0, 0);
         // nodeBar.rotation = 180;
 
-     //   this.onDrag();
+     
+        //初始管道设置为0
+        this.guandaoCount = 0;
+        this.upgradePlane();
     },
 
-    // onDrag: function () {
-    //     this.node.on('touchmove', this.dragMove, this);
-    //     this.node.on('touchstart', this.dragStart, this);
-    //     this.node.on('touchend', this.dragEnd, this);
-    // },
 
-    // offDrag: function () {
-    //     this.node.off('touchmove', this.dragMove, this);
-    //     this.node.off('touchstart', this.dragStart, this);
-    //     this.node.off('touchend', this.dragEnd, this);
-    // },
+    upgradePlane:function() {
+        if(this.guandaoCount<5) {
+            this.guandaoCount++;
+            for(let i = 0; i<this.guandaoCount; i++) {
+                this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(true);
+            }
+        } else {
+            for(let i = 0; i<this.guandaoCount; i++) {
+                if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
+                    this.guandaoArrays[i].getComponent("guandao").bulletType = globalHeroBulletType.upgrade;
+                    return;
+                }
+            }
+        }
 
-    //拖动
-    // dragMove: function (event) {
-    //     var locationv = event.getLocation();
-    //     var location = this.node.parent.convertToNodeSpaceAR(locationv);
-    //     //飞机不移出屏幕 
-    //     var minX = -this.node.parent.width / 2 + this.node.width / 2;
-    //     var maxX = -minX;
-    //     var minY = -this.node.parent.height / 2 + this.node.height / 2;
-    //     var maxY = -minY;
-    //     if (location.x < minX) {
-    //         location.x = minX;
-    //     }
-    //     if (location.x > maxX) {
-    //         location.x = maxX;
-    //     }
-    //     if (location.y < minY) {
-    //         location.y = minY;
-    //     }
-    //     if (location.y > maxY) {
-    //         location.y = maxY;
-    //     }
-    //     this.node.setPosition(location);
-
-    // },
-
-    dragStart: function (event) {
-        
-    },
-    dragEnd: function (event) {
-      
     },
 
-    // startFire: function () {
 
-        
-    //     this.bICallback();
-    //     this.schedule(this.bICallback, 1 / this.shootingSpeed);
-
-    // },
+    
     wudichongci:function() {
         if(this.wudi == false) {
             this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
