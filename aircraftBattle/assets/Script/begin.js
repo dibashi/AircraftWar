@@ -75,9 +75,17 @@ cc.Class({
         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
         this.personalBestScore = this.node.getChildByName("personalHistory").getChildByName("personalBestScore").getComponent(cc.Label);
 
-        var isloaded = cc.sys.localStorage.getItem("isLoaded");
+        //！！！由于现在不知道怎么把本地存储的数据删掉，为了调试方便 只要游戏进来都按第一次登陆
+       // cc.sys.localStorage.setItem("isLoaded",0);
         
-        if(!isloaded) {
+        let isloaded = cc.sys.localStorage.getItem("isLoaded");
+        cc.log("isloaded----> " +isloaded);
+        // var zzzzzz=  cc.sys.localStorage.getItem("zzzzzz");
+        // var ppppppp=  cc.sys.localStorage.getItem("ppppp",0);
+        // var tttttt=  cc.sys.localStorage.getItem("tttttt",1);
+        // cc.log(" zzzzzz   " + zzzzzz + "  ppppppp" + ppppppp + " tttttt " +tttttt);
+       
+        if(isloaded==0||isloaded==null)  {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', globalJinBiCount);
             //分数一般是从服务器读取，这里先用本地存储。
@@ -85,6 +93,17 @@ cc.Class({
 
             cc.sys.localStorage.setItem('globalHeroPlaneID',0);
 
+            cc.log("运行到了");
+
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount0',3);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount1',0);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount2',0);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount3',0);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount4',0);
+
+        }
+        else {
+            cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded)+1);
         }
         //  else {
         //     var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;

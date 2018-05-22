@@ -525,7 +525,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman0",
+    "_name": "wingman0",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -694,7 +694,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -704,7 +704,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -723,7 +722,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman1",
+    "_name": "wingman1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -892,7 +891,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -902,7 +901,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -921,7 +919,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman2",
+    "_name": "wingman2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1090,7 +1088,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1100,7 +1098,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -1119,7 +1116,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman3",
+    "_name": "wingman3",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1288,7 +1285,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1298,7 +1295,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -1317,7 +1313,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman4",
+    "_name": "wingman4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1486,7 +1482,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1496,7 +1492,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -1515,7 +1510,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hero0Wingman5",
+    "_name": "wingman5",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1684,7 +1679,7 @@
     "sync": false
   },
   {
-    "__type__": "0aefcXtVUFCrJWSabPyj3XU",
+    "__type__": "15f29tDFv1PtZLl7zprjFa5",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1694,7 +1689,6 @@
     "bullet0": {
       "__uuid__": "be9b40ae-d278-4c0d-9e57-36b2ed87a0dd"
     },
-    "bullet1": null,
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 2,
@@ -1760,7 +1754,9 @@
     "_wuditexiao": null,
     "_wudiTime": 0,
     "guandaoCount": 0,
-    "guandaoArrays": null
+    "guandaoArrays": null,
+    "wingmanCount": 0,
+    "wingmanArrays": null
   },
   {
     "__type__": "cc.PolygonCollider",

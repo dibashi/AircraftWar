@@ -6,6 +6,7 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
 
 var globalHeroBulletType = require("heroPlaneDatas").heroBulletType;
+var globalWingmanBulletType = require("heroPlaneDatas").wingmanBulletType;
 cc.Class({
     extends: cc.Component,
 
@@ -40,6 +41,9 @@ cc.Class({
 
         guandaoCount:0, //管道1~5决定了5个弹道，
         guandaoArrays:null,
+
+        wingmanCount:0,
+        wingmanArrays:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -58,7 +62,7 @@ cc.Class({
         cc.log("this.bulletType = " + this.bulletType);
 
         this.guandaoArrays = new Array();
-        //let len = this.node.children.length;
+//初始化管道数据
         for(let i = 0; i<5; i++) {
             // this.node.children[i].getComponent("guandao").damage = this.damage;
             // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
@@ -69,6 +73,22 @@ cc.Class({
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
         }
+        this.wingmanArrays = new Array();
+//初始化僚机数据 现在用的都是 飞机数据//以后可能要做一个僚机表 根据当前飞机的ID 来从表中取数据
+        for(let i = 0; i<6; i++) {
+            // this.node.children[i].getComponent("guandao").damage = this.damage;
+            // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            //管道控制集合
+            this.wingmanArrays[i] = this.node.getChildByName("wingman"+i);
+            this.wingmanArrays[i].getComponent("wingman").damage = this.damage;
+            this.wingmanArrays[i].getComponent("wingman").shootingSpeed = this.shootingSpeed;
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
+            this.wingmanArrays[i].getComponent("wingman").bulletType = this.bulletType;
+            this.wingmanArrays[i].active = false;
+        }
+        //启动僚机
+        this.runWingman();
+        
 
         //血条 以后要改成进度条
         var nodeBar = cc.instantiate(this.bloodBar);
@@ -104,6 +124,18 @@ cc.Class({
             }
         }
 
+    },
+
+    runWingman:function() {
+        let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
+        
+        
+        cc.log("僚机数量----->  " +wmCount);
+        cc.log("~僚机数量----->  " +cc.sys.localStorage.getItem('heroPlaneWingmanCount0'));
+        for(let i= 0;i<wmCount;i++) {
+            this.wingmanArrays[i].active = true;
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(true);
+        }
     },
 
 
