@@ -16,8 +16,14 @@ cc.Class({
 
         prizeType: -1,//决定其是什么类型的奖品
         t: 1.0,
+
+        jinbiRunFlag:true,//由于有些敌机会掉落金币，需要先将金币炸开，
+        //然后飞向本方飞机，做 一个标记 ,正常飞机都可以飞，这种飞机需要先炸开之后飞
     },
 
+    onLoad(){
+        this.jinbiRunFlag =true;
+    },
 
 
 
@@ -26,6 +32,11 @@ cc.Class({
         // if (this.node.getPosition().y < -this.node.parent.height / 2) {
         //     this.node.destroy();
         // }
+
+        if(this.prizeType == generateType.jinbi&&this.jinbiRunFlag == false) {
+            return;
+        }
+
         let ePos = this.node.parent.getComponent('Game').player.getPosition();
         let bPos = this.node.getPosition();
         let dx = ePos.x - bPos.x;
@@ -47,7 +58,7 @@ cc.Class({
             speed = 2;
 
         } else if (this.prizeType == generateType.jinbi) {
-            speed = 8;
+            speed = 10;
 
         }
 

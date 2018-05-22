@@ -409,6 +409,10 @@ cc.Class({
         }
 
     },
+
+    jinbiSanKaiOver:function(pf){
+        pf.getComponent("prize").jinbiRunFlag =true;
+    },
     generatePrize:function(enemyID,prizePosition) {
         var r = Math.random();
         cc.log("random dropProbability  " + r);
@@ -423,7 +427,8 @@ cc.Class({
                         this.node.addChild(pf);
                         pf.setPosition(prizePosition);
                         pf.getComponent("prize").prizeType = generateType.jinbi;
-
+                        //!!先不调用自己的update函数，先自己做一个动作，在动作结束后，再置为true
+                        pf.getComponent("prize").jinbiRunFlag = false;
                         let ramPosX = Math.random()*60;
                         let ramPosY = Math.random()*60
                         if(Math.random()>0.5) {
@@ -435,7 +440,7 @@ cc.Class({
                         let p = cc.v2(pf.getPosition().x+ramPosX,pf.getPosition().y+ramPosY);
 
                         let act1 = cc.moveTo(1,p).easing(cc.easeOut(3.0));
-                        let act2 = cc.moveTo(2,this.player.getPosition()).easing(cc.easeIn(3.0));
+                        let act2 = cc.callFunc(this.jinbiSanKaiOver,this,pf);
                         pf.runAction(cc.sequence(act1,act2));
                        
                     }
@@ -503,7 +508,7 @@ cc.Class({
         this.node.addChild(pf);
         pf.setPosition(pos);
         pf.getComponent("prize").prizeType = generateType.jinbi;
-        
+
     },
 
 
