@@ -29,7 +29,7 @@ cc.Class({
         shootingSpeed: 1,//一秒钟发射子弹数
         flyingSpeed: 0,
 
-        bulletType: 0,//0普通 1 光束
+        bulletType: 0,//0普通 1 光束  已经失效的数据
         damage: 1,
         dropProbability: 65,
         fallingObject: generateType.jinbi,
@@ -54,6 +54,8 @@ cc.Class({
             type: cc.Prefab,
         },
         partice:null,
+
+     
 
     },
 
