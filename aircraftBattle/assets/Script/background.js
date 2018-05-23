@@ -24,10 +24,22 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
         y1:null,
         y2:null,
         y3:null,
+
+        bg1: {
+            default: null,
+            type: cc.Node,
+        },
+        bg2: {
+            default: null,
+            type: cc.Node,
+        },
         y:550,
+
+        bgSpeed:2,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -39,36 +51,13 @@ cc.Class({
         this.node.addChild(this.y1);
         this.node.addChild(this.y2);
         this.node.addChild(this.y3);
-        cc.log("1！");
-        cc.log(this.y1);
-       // cc.log(yun1);
-        //随机一个位置
-        // var pos = this.node.getPosition();
-          
-        // var rx = -300 + Math.random()*320;
-        
-        
-        // pos.x = rx;
-        // pos.y = this.y;
-
-        // this.y1.setPosition(pos);
-        // pos.y = -this.y;
-        // var callback = cc.callFunc(this.yun1Callback,this, this.y1);
-        // var seq = cc.sequence(cc.moveTo(1,pos),callback);
-        // cc.log("pos1 xxx-->" + pos.x);
-        // this.y1.runAction(cc.repeatForever(seq));
-
-        // var pos2 =  cc.v2(-100 + Math.random()*320,pos.y);
-        // var callback2 = cc.callFunc(this.yun2Callback,this, this.y2);
-        // var seq2 = cc.sequence(cc.moveTo(1,pos2),callback2);
-        // cc.log("pos2 xxx-->" + pos2.x);
-        // this.y2.runAction(cc.repeatForever(seq2));
-       
+      
         this.createYun1(this.y1);
         this.createYun1(this.y2);
         this.createYun1(this.y3);
-       // this.yun2.runAction();
-        //this.yun3.runAction();
+        
+
+       // this.runBG();
     },
 
     createYun1:function(yun){
@@ -81,7 +70,7 @@ cc.Class({
 
         yun.setPosition(cc.v2(rx, vy));
 
-        let rt = 3+ Math.random()*3;
+        let rt = 5+ Math.random()*3;
 
         let callback = cc.callFunc(this.createYun1,this, this.y1);
         let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);
@@ -89,11 +78,34 @@ cc.Class({
         yun.runAction(seq);
     },
 
+    // runBG:function() {
+
+    // },
+
  
 
     start () {
 
     },
 
-    // update (dt) {},
+     update (dt) {
+        
+
+        let bg1Y = this.bg1.getPosition().y;
+        let bg2Y = this.bg2.getPosition().y;
+
+        if(bg1Y<=-(cc.director.getVisibleSize().height)) {
+            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height/2);
+        }else {
+            bg1Y -= this.bgSpeed;
+            this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
+        }
+
+        if(bg2Y<=-(cc.director.getVisibleSize().height)) {
+            this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+cc.director.getVisibleSize().height/2);
+        }else {
+            bg2Y -= this.bgSpeed;
+            this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
+        }
+     },
 });
