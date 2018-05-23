@@ -14,7 +14,8 @@ var _bulletTrack = cc.Enum({
    banquan:2, //半圈
    yiquan:3,//一圈
    sanfazhizhixian:4,//三发直线
-   sanfasanshe: 5,//普通的三发散射 中间定位 两边一个角度
+   wufasanshe: 5,//普通的五发散射 中间定位 两边一个角度 
+
    // jisushesu: 3,
    // huojianpao: 4
 });
@@ -45,20 +46,20 @@ var _wuDiTime = 8;
 //gid从1开始
 //bulletType 已失效！！！这个数据暂时先不做，无论如何设置都是根据当前敌机bullet0预制体来设置的！
 var _enemyPlaneData = [
-    {enemyID:0, planeImage: "enemyPlane0", blood: 10, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.sanfazhixian,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:1, planeImage: "enemyPlane1", blood: 15, shootingSpeed: 1, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:2, planeImage: "enemyPlane2", blood: 20, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:3, planeImage: "enemyPlane3", blood: 25, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:4, planeImage: "enemyPlane4", blood: 30, shootingSpeed:1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:0, planeImage: "enemyPlane0", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.sanfazhixian,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:1, planeImage: "enemyPlane1", blood: 5, shootingSpeed: 1, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:2, planeImage: "enemyPlane2", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:1,fallingObject:_generateType.xinjiaxue,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:3, planeImage: "enemyPlane3", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.9,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:4, planeImage: "enemyPlane4", blood: 5, shootingSpeed:1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.wufasanshe,enemyTrack:_enemyTrack.zuoyoushangxia },
 
 ];
 
 var _stage = [
     [
-        {enemyID:3},{enemyID:3}
+        {enemyID:4},
     ],
     [
-        {enemyID:3},{enemyID:3},{enemyID:3}
+        {enemyID:4},{enemyID:4},{enemyID:4}
     ],
     [
         {enemyID:1},{enemyID:0}

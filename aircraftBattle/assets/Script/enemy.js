@@ -15,8 +15,8 @@ cc.Class({
 
         //子弹预制体
         bullet0: cc.Prefab,
-      //  bullet1: cc.Prefab,
-        prizeTeXiao:{
+        //  bullet1: cc.Prefab,
+        prizeTeXiao: {
             default: null,
             type: cc.Prefab,
         },
@@ -40,22 +40,22 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        nodeBar:null,//label的node
+        nodeBar: null,//label的node
         bBar: null,//label
-        baoZhaTeXiao:null,
-        damagedTeXiao:null,
+        baoZhaTeXiao: null,
+        damagedTeXiao: null,
 
-        bulletTrack:0,
+        bulletTrack: 0,
 
-        enemyTrack:0,
+        enemyTrack: 0,
 
         particleSys: {//并不是单纯的label 
             default: null,
             type: cc.Prefab,
         },
-        partice:null,
+        partice: null,
 
-     
+
 
     },
 
@@ -67,10 +67,10 @@ cc.Class({
         // if (particle.particleCount > 0) { // check if particle has fully plaed
         //     particle.stopSystem(); // stop particle system
         // }
-       
+
 
         //cc.log("particle--->  " );
-       // cc.log(particle);
+        // cc.log(particle);
 
 
         //this.bloodBar.string = this.blood;
@@ -89,12 +89,12 @@ cc.Class({
 
 
 
-    zuoyoushangxia:function() {
+    zuoyoushangxia: function () {
         let jumpDuration = 3;
-        let jumpHeight = Math.random()*200;
-        let moveDis = Math.random()*200;
-       // let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight)).easing(cc.easeCubicActionOut());
-       // let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight)).easing(cc.easeCubicActionIn());
+        let jumpHeight = Math.random() * 200;
+        let moveDis = Math.random() * 200;
+        // let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight)).easing(cc.easeCubicActionOut());
+        // let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight)).easing(cc.easeCubicActionIn());
         let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight));
         let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight));
         let seq1 = cc.sequence(jumpUp, jumpDown);
@@ -103,7 +103,7 @@ cc.Class({
         let moveLeft = cc.moveBy(jumpDuration, cc.p(-moveDis, 0));
         let seq2 = cc.sequence(moveRight, moveLeft);
 
-        let sp1 = cc.spawn(seq1,seq2);
+        let sp1 = cc.spawn(seq1, seq2);
 
         this.node.runAction(cc.repeatForever(sp1));
 
@@ -117,113 +117,102 @@ cc.Class({
         //其实应该在这里根据子弹射击方式来定义
         //1 根据 敌机的 运动轨迹数据 来调用相关轨迹动画函数
         //2 根据 敌机的 子弹发射方式 来 调用相关的 发射动画函数
-        if(this.enemyTrack == enemyTrack.guding) {
+        if (this.enemyTrack == enemyTrack.guding) {
             //固定不动就不需要实现什么了
-        } else if( this.enemyTrack == enemyTrack.zuoyoushangxia) {
+        } else if (this.enemyTrack == enemyTrack.zuoyoushangxia) {
             this.zuoyoushangxia();
         }
 
 
-        if(this.bulletTrack == bulletTrack.zhixianxiangxia) {
+        if (this.bulletTrack == bulletTrack.zhixianxiangxia) {
             this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
-        } else if( this.bulletTrack == bulletTrack.dingwei) {
+        } else if (this.bulletTrack == bulletTrack.dingwei) {
             this.schedule(this.dingwei, 1 / this.shootingSpeed);
-        }else if( this.bulletTrack == bulletTrack.banquan) {
-           // this.schedule(this.xiexian, 1 / this.shootingSpeed);
-           this.schedule(this.banquan, 1 / this.shootingSpeed);
-        } else if( this.bulletTrack == bulletTrack.yiquan) {
+        } else if (this.bulletTrack == bulletTrack.banquan) {
+            // this.schedule(this.xiexian, 1 / this.shootingSpeed);
+            this.schedule(this.banquan, 1 / this.shootingSpeed);
+        } else if (this.bulletTrack == bulletTrack.yiquan) {
             // this.schedule(this.xiexian, 1 / this.shootingSpeed);
             this.schedule(this.yiquan, 1 / this.shootingSpeed);
-        } else if(this.bulletTrack == bulletTrack.sanfazhixian) {
+        } else if (this.bulletTrack == bulletTrack.sanfazhixian) {
             this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
         }
-         else if( this.bulletTrack == bulletTrack.sanfasanshe) {
-            this.schedule(this.sanfasanshe, 1 / this.shootingSpeed);
+        else if (this.bulletTrack == bulletTrack.wufasanshe) {
+            this.schedule(this.wufasanshe, 1 / this.shootingSpeed);
         }
+        
 
-       
-        
-        
+
+
     },
 
-    sanfazhixian:function() {
-      
-        for(let i = 0; i<3;i++) {
+    sanfazhixian: function () {
+
+        for (let i = 0; i < 3; i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.susheCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.susheCallback, this)));
         }
 
     },
 
-    susheCallback:function() {
-        
+    susheCallback: function () {
+
         //TODO：！！这里应该以后应该加入子弹池来优化
 
 
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
-        
-       this.zhixianxiangxia();
 
-  
-         
+        this.zhixianxiangxia();
+
+
+
     },
 
-    yiquan:function() {
+    yiquan: function () {
+
+        for (let jiaodu = -180; jiaodu < 180; jiaodu += 30) {
+            this.xiexianByjiaodu(jiaodu);
       
-        for(let jiaodu =-180; jiaodu<180;jiaodu+=30) {
+        }
+
+
+    },
+
+
+    banquan: function () {
+
+        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
             this.xiexianByjiaodu(jiaodu);
             //this.xiexian(jiaodu);
         }
-        
-        //this.xiexianByjiaodu(30);
+
 
     },
 
-     yiquan:function() {
-      
-        for(let jiaodu =-180; jiaodu<180;jiaodu+=30) {
-            this.xiexianByjiaodu(jiaodu);
-            //this.xiexian(jiaodu);
-        }
-        
-        //this.xiexianByjiaodu(30);
-
-    },
-
-    banquan:function() {
-      
-        for(let jiaodu =-45; jiaodu>-136;jiaodu-=30) {
-            this.xiexianByjiaodu(jiaodu);
-            //this.xiexian(jiaodu);
-        }
-        //this.xiexianByjiaodu(30);
-
-    },
-
-    xiexianByjiaodu:function(jiaodu) {
-        if(-90<jiaodu && jiaodu<90) {
+    xiexianByjiaodu: function (jiaodu) {
+        if (-90 < jiaodu && jiaodu < 90) {
             this.xiexianRight(jiaodu);
-        } else if(jiaodu>90 || jiaodu<-90) {
+        } else if (jiaodu > 90 || jiaodu < -90) {
             this.xiexianLeft(jiaodu);
-        } else if( jiaodu == -90) {
+        } else if (jiaodu == -90) {
             this.zhixianxiangxia();
-        }else if( jiaodu == 90) {
+        } else if (jiaodu == 90) {
             this.zhixianxiangshang();
         }
     },
     //往右边倾斜
-    xiexianRight:function(jiaodu) {
+    xiexianRight: function (jiaodu) {
         //cc.log("jiaodu---> " + jiaodu);
         let bl = this.generateBullet();
-      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
-        bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100*Math.tan(jiaodu*0.017453293));//2pi/360 = 0.017453293
-        
+        bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100 * Math.tan(jiaodu * 0.017453293));//2pi/360 = 0.017453293
+
         //  cc.log("bl.position.x---> " + bl.position.x);
         //  cc.log("bl.position.y---> " + bl.position.y);
-        
-        
+
+
         //  cc.log("targetPositionX---> " + bl.getComponent("enemyBullet").targetPositionX);
         //  cc.log("targetPositionY---> " + bl.getComponent("enemyBullet").targetPositionY);
 
@@ -231,33 +220,45 @@ cc.Class({
         this.node.parent.addChild(bl);
     },
 
-    xiexianLeft:function(jiaodu) {
-      
+    xiexianLeft: function (jiaodu) {
+
         let bl = this.generateBullet();
-       
+
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x - 100;
-        bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100*Math.tan(jiaodu*0.017453293));
-        
+        bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100 * Math.tan(jiaodu * 0.017453293));
+
         this.node.parent.addChild(bl);
     },
 
-    sanfasanshe:function() {
-        // let bl1 = this.generateBullet();
-        // let bl2 = this.generateBullet();
-        // let bl3 = this.generateBullet();
-        // bl1.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-        // bl2.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);
-        // bl3.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);
-        // //bl1定位
-        // bl1.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
-        // bl1.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
-        // //bl2, bl3 斜线
+    
 
-        // this.node.parent.addChild(bl);
+    wufasanshe:function() {
+        // for(let i = 0; i<5;i++) {
+        //     // this.scheduleOnce(this.susheCallback,0.2);
+        //     this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.wufasansheCallback,this)));
+        // }
+        // for (let jiaodu = -75; jiaodu > -106; jiaodu -= 15) {
+        //     this.xiexianByjiaodu(jiaodu);
+        //     //this.xiexian(jiaodu);
+        // }
+
+        this.xiexianByjiaodu(-75);
+        this.xiexianByjiaodu(-105);
+        this.node.runAction(cc.sequence(cc.delayTime(0.1), cc.callFunc(this.wufasansheCallbackZhong,this)));
+        this.node.runAction(cc.sequence(cc.delayTime(0.2), cc.callFunc(this.wufasansheCallbackLiangBian,this)));
     },
 
-    generateBullet:function() {
+    wufasansheCallbackZhong:function() {
+        this.xiexianByjiaodu(-90);
+    },
+
+    wufasansheCallbackLiangBian:function() {
+        this.xiexianByjiaodu(-75);
+        this.xiexianByjiaodu(-105);
+    },
+
+    generateBullet: function () {
         let bl = null;
         // if (this.bulletType === bulletType.jipao) {
         //     bl = cc.instantiate(this.bullet0); //预制体未做 未加入
@@ -266,37 +267,37 @@ cc.Class({
         // }
         //为了方便。这里的敌机的子弹一律先按照cocos creator中bullet0的预制体来设置
         //这样维护也较为方便
- 
-        bl = cc.instantiate(this.bullet0); 
-    
+
+        bl = cc.instantiate(this.bullet0);
+
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
 
         //bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 );
+        bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2);
         return bl;
     },
 
-    
 
-   
-   
+
+
+
     //直线与斜线其实是一个概念，给敌机子弹传递一个目标位置,让其运行到那个位置即可
     zhixianxiangxia: function () {
 
         //TODO：！！这里应该以后应该加入子弹池来优化
 
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
-        
+
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         let bl = this.generateBullet();
         //分离出来是为了以后 如果有轨迹是发射很多子弹,可以遍历,然后每个子弹的位置单独设置,或者设置在飞机中心
-       // bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-        
+        // bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
         //极其重要的分类化,简单的代码保证了 不同的运动轨迹显示.
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height/2-50;
+        bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
 
         //cc.log("bl positionX--> " + bl.getPosition().x + "  bl positionY---> " + bl.getPosition().y);
         //cc.log("bl vecX--> " + bl.getComponent("enemyBullet").targetPositionX + "  bl vecY---> " + bl.getComponent("enemyBullet").targetPositionY);
@@ -307,71 +308,71 @@ cc.Class({
 
     zhixianxiangshang: function () {
 
-      
-        let bl = this.generateBullet();
-        
-      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-        
-        
-        bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height/2+50;
 
-     
+        let bl = this.generateBullet();
+
+        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
+
+        bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height / 2 + 50;
+
+
 
         this.node.parent.addChild(bl);
     },
 
     //定位前的生成处理 之后调用定位
-    dingwei:function() {
+    dingwei: function () {
 
-        for(let i = 0; i<2;i++) {
+        for (let i = 0; i < 2; i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.dingweiCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback, this)));
         }
-      
+
     },
 
-    dingweiCallback:function() {
+    dingweiCallback: function () {
         let bl = this.generateBullet();
         //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-  
-          bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
-          bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
-  
-          this.node.parent.addChild(bl);
+
+        bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
+
+        this.node.parent.addChild(bl);
     },
 
-    enemyBoomAni:function() {
+    enemyBoomAni: function () {
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
-    //    this.node.group = "NOOOOOOO";
-    //     cc.log(this.node.getComponent(cc.Animation));
-    //    var anim = this.node.getComponent(cc.Animation);
-    //    anim.play("baozhaAni");
-    //    cc.log("--------------");
-    //    cc.log(anim);
-    //    anim.scale = 10;
-//this.unscheduleAllCallbacks();
-    this.node.group = "NOOOOOOO";
+        //    this.node.group = "NOOOOOOO";
+        //     cc.log(this.node.getComponent(cc.Animation));
+        //    var anim = this.node.getComponent(cc.Animation);
+        //    anim.play("baozhaAni");
+        //    cc.log("--------------");
+        //    cc.log(anim);
+        //    anim.scale = 10;
+        //this.unscheduleAllCallbacks();
+        this.node.group = "NOOOOOOO";
 
-    this.partice = cc.instantiate(this.particleSys);
-    this.node.parent.addChild(this.partice);
-    this.partice.setPosition(this.node.getPosition());
-  //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
+        this.partice = cc.instantiate(this.particleSys);
+        this.node.parent.addChild(this.partice);
+        this.partice.setPosition(this.node.getPosition());
+        //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
         this.partice.getComponent(cc.ParticleSystem).resetSystem();
-       
+
         //this.nodeBar.destroy();//删除血条
         this.node.opacity = 0;
-        this.scheduleOnce(this.baozhaOver,0.7);
-    },  
+        this.scheduleOnce(this.baozhaOver, 0.7);
+    },
 
-    baozhaOver:function() {
+    baozhaOver: function () {
         this.unscheduleAllCallbacks();
         this.partice.destroy();
         cc.log("爆炸动画结束~~~~");
         //这个有问题 要放动画回调 TODO!
-        this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+        this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
 
-        this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+        this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string) + this.blood;
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
     },
@@ -388,25 +389,25 @@ cc.Class({
 
 
 
-    enemyDamagedAni:function() {
-        
-        
-        this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-            let armatureDisplay =  this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
-         
-            armatureDisplay.playAnimation("baozha");
-         
-            this.node.addChild(this.damagedTeXiao);
-            armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE,this.damagedOver,this);
-  
+    enemyDamagedAni: function () {
 
-           // this.node.getChildByName("particlesystem")
+
+        this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+        let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
+
+        armatureDisplay.playAnimation("baozha");
+
+        this.node.addChild(this.damagedTeXiao);
+        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
+
+
+        // this.node.getChildByName("particlesystem")
     },
 
-    damagedOver:function(event) {
-    
+    damagedOver: function (event) {
+
         //这个有问题 要放动画回调 TODO!
-      
+
 
         this.damagedTeXiao.destroy();
     },
@@ -415,17 +416,17 @@ cc.Class({
     onCollisionEnter: function (other, self) {
 
         if (other.node.group === "hBullet") {
-           
+
             var bDamage = other.node.getComponent("heroBullet").damage;
             // cc.log("Damage!!  "+ bDamage);
             if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
-               
-               
+
+
                 this.enemyBoomAni();
-                
-               // this.node.destroy();
+
+                // this.node.destroy();
             } else {
                 //cc.log
                 this.blood -= bDamage;

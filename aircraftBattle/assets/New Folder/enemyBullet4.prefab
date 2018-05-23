@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "enemyBullet3",
+    "_name": "enemyBullet4",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -50,8 +50,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 57,
-      "height": 61
+      "width": 44,
+      "height": 44
     },
     "_rotationX": 90,
     "_rotationY": 90,
@@ -78,7 +78,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "c4746b80-d6c7-40d4-9b39-32b9b423e890"
+      "__uuid__": "1ce650f2-7be4-4fb7-b317-792a8c6ac866"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -129,33 +129,33 @@
     "points": [
       {
         "__type__": "cc.Vec2",
-        "x": -14.777777777777777,
-        "y": 30.499999999999993
+        "x": -8,
+        "y": 22
       },
       {
         "__type__": "cc.Vec2",
-        "x": -28.5,
-        "y": 14.685185185185183
+        "x": -22,
+        "y": 4.604651162790699
       },
       {
         "__type__": "cc.Vec2",
-        "x": -25.333333333333332,
-        "y": -21.462962962962962
+        "x": -14,
+        "y": -17.906976744186046
       },
       {
         "__type__": "cc.Vec2",
-        "x": 10.555555555555557,
-        "y": -30.5
+        "x": 8,
+        "y": -20.97674418604651
       },
       {
         "__type__": "cc.Vec2",
-        "x": 28.5,
-        "y": -13.555555555555557
+        "x": 22,
+        "y": -3.5813953488372086
       },
       {
         "__type__": "cc.Vec2",
-        "x": 24.27777777777778,
-        "y": 22.592592592592588
+        "x": 15,
+        "y": 17.906976744186046
       }
     ]
   },
@@ -168,11 +168,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "484e9256-a28a-430b-b301-b788c93e9fd3"
+      "__uuid__": "0df4d06a-2109-456b-b2f7-4435182f5a3c"
     },
     "_clips": [
       {
-        "__uuid__": "484e9256-a28a-430b-b301-b788c93e9fd3"
+        "__uuid__": "0df4d06a-2109-456b-b2f7-4435182f5a3c"
       }
     ],
     "playOnLoad": true
@@ -183,9 +183,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "c777ae38-2ecb-4b77-a2de-76764fb095c8"
+      "__uuid__": "3dc36f78-8a37-4a69-9a0a-13216737e665"
     },
-    "fileId": "35G1DJjRxNAJ5oeJgRcs1N",
+    "fileId": "ee7+MoLw1CDqiav0BEk1Kd",
     "sync": false
   }
 ]
