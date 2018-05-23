@@ -213,12 +213,12 @@ cc.Class({
         this.bombNo = 0;
         this.bombSprite.on('touchstart', this.bombOnclick, this);//这个精灵旋转过了，所以长宽不好说
         this.bombLabel.string = this.bombNo;
-        this.bombSprite.setPosition(-wx + 50, -hy + 50);
+        this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
         this.shieldNo = 0;
         this.shieldSprite.on('touchstart', this.shieldOnclick, this);//这个精灵旋转过了，所以长宽不好说
         this.shieldLabel.string = this.shieldNo;
-        this.shieldSprite.setPosition(wx - 50, -hy + 50);
+        this.shieldSprite.setPosition(-wx + this.shieldSprite.getContentSize().width/2, -hy + this.shieldSprite.getContentSize().height/2);
 
 
 
