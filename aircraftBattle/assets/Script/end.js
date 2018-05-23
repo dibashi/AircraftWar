@@ -27,11 +27,29 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+        coinLabel :{
+            default:null,
+            type:cc.Node,
+        },
+
+        historyLabel :{
+            default:null,
+            type:cc.Node,
+        },
+
+        currentLabel :{
+            default:null,
+            type:cc.Node,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+     onLoad () {
+        // var c = cc.sys.localStorage.getItem('jinBiCount');
+
+        // var cs = cc.sys.localStorage.setItem("currentScore",currentScore);
+     },
 
     start () {
 

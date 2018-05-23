@@ -1820,6 +1820,9 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": true
+    "_enabled": true,
+    "coinLabel": null,
+    "historyLabel": null,
+    "currentLabel": null
   }
 ]

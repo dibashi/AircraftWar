@@ -621,6 +621,7 @@ cc.Class({
             cc.sys.localStorage.setItem('bestScore', currentScore);
         }
         cc.log("best score--> " + cc.sys.localStorage.getItem('bestScore'));
+        cc.sys.localStorage.setItem("currentScore",currentScore);
         cc.director.loadScene('end');
     },
 
