@@ -267,7 +267,7 @@ cc.Class({
         //为了方便。这里的敌机的子弹一律先按照cocos creator中bullet0的预制体来设置
         //这样维护也较为方便
  
-            bl = cc.instantiate(this.bullet0); 
+        bl = cc.instantiate(this.bullet0); 
     
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
@@ -321,14 +321,24 @@ cc.Class({
         this.node.parent.addChild(bl);
     },
 
+    //定位前的生成处理 之后调用定位
     dingwei:function() {
+
+        for(let i = 0; i<2;i++) {
+            // this.scheduleOnce(this.susheCallback,0.2);
+            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.dingweiCallback,this)));
+        }
+      
+    },
+
+    dingweiCallback:function() {
         let bl = this.generateBullet();
-      //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-        bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
-
-        this.node.parent.addChild(bl);
+        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+  
+          bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
+          bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
+  
+          this.node.parent.addChild(bl);
     },
 
     enemyBoomAni:function() {

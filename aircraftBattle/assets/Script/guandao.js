@@ -98,7 +98,7 @@ cc.Class({
         {
             return;
         }
-        for(let i = 0; i<7;i++) {
+        for(let i = 0; i<3;i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
             this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
         }
