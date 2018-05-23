@@ -140,6 +140,12 @@ cc.Class({
         touchBeginPoint: null,
         touchMovePoint: null,
         //players:null,
+
+        dazhaoPlane: {
+            default: null,
+            type: cc.Prefab,
+        },
+        dazhaoPlanes:null,
     },
 
 
@@ -271,20 +277,33 @@ cc.Class({
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= this.bombNo;
-
-            let cs = this.node.children;
-            let cc = this.node.childrenCount;
-            for (let i = 0; i < cc; i++) {
-                if (this.node.children[i].group === 'enemy') {
-                    this.node.children[i].getComponent('enemy').enemyBoomAni();
-                }
-            }
+            //全屏炸，该功能已删除
+            // let cs = this.node.children;
+            // let cc = this.node.childrenCount;
+            // for (let i = 0; i < cc; i++) {
+            //     if (this.node.children[i].group === 'enemy') {
+            //         this.node.children[i].getComponent('enemy').enemyBoomAni();
+            //     }
+            // }
             // this.node.addChild(this.player);
             // this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);
             // for(let i =0 ;  i< this.players.length; i++) {
             //     this.node.addChild(this.players[i]);
             // }
-            //3秒后删除集群
+
+            //必须让按钮先不能点，否则将引发bug！
+            //this.bombSprite.off('touchstart', this.bombOnclick, this);
+            //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
+            //动画回调，按钮可点击
+            //若没敌方飞机，飞出屏幕，回调，按钮可点击
+            this.dazhaoPlanes = new Array();
+            for(let i = 0; i<3;i++) {
+                this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
+                cc.log(this.dazhaoPlanes[i]);
+                this.dazhaoPlanes[i].setPosition(-100+100*i,-200);
+                this.node.addChild(this.dazhaoPlanes[i]);
+            }
+            // 3秒后删除集群
         } else {
             console.log('没有子弹');
 

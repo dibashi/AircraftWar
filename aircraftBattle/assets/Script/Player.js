@@ -62,12 +62,32 @@ cc.Class({
         cc.log("this.bulletType = " + this.bulletType);
 
         this.guandaoArrays = new Array();
+        // let childcount = this.nodechildrenCount;
+        // for(let i = 0; i<childcount;i++) {
+        //     if(this.node.children[i].name == "guandao0" ||
+        //     this.node.children[i].name == "guandao1" ||
+        //     this.node.children[i].name == "guandao2" ||
+        //     this.node.children[i].name == "guandao3" ||
+        //     this.node.children[i].name == "guandao4" ||
+        //     this.node.children[i].name == "guandao5" ||
+        //     this.node.children[i].name == "guandao6" ) {
+
+        //     }
+        // }
+        
 //初始化管道数据
         for(let i = 0; i<5; i++) {
             // this.node.children[i].getComponent("guandao").damage = this.damage;
             // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             //管道控制集合
+            
+            cc.log("~~~~~---> " + ("guandao"+i));
+            cc.log(this.guandaoArrays[i]);
+            if( this.node.getChildByName("guandao"+i) == null){
+                break;
+            }
             this.guandaoArrays[i] = this.node.getChildByName("guandao"+i);
+            
             this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
             this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
@@ -79,7 +99,12 @@ cc.Class({
             // this.node.children[i].getComponent("guandao").damage = this.damage;
             // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             //管道控制集合
+            
+            if(this.node.getChildByName("wingman"+i) == null){
+                break;
+            }
             this.wingmanArrays[i] = this.node.getChildByName("wingman"+i);
+
             this.wingmanArrays[i].getComponent("wingman").damage = this.damage;
             this.wingmanArrays[i].getComponent("wingman").shootingSpeed = this.shootingSpeed;
             this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
@@ -87,7 +112,11 @@ cc.Class({
             this.wingmanArrays[i].active = false;
         }
         //启动僚机
-        this.runWingman();
+        cc.log("llll---> " +this.wingmanArrays.length);
+        if(this.wingmanArrays.length>0) {
+            this.runWingman();
+        }
+      
         
 
         //血条 以后要改成进度条

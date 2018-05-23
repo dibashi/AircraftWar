@@ -1143,6 +1143,9 @@
       "__id__": 19
     },
     "touchBeginPoint": null,
-    "touchMovePoint": null
+    "touchMovePoint": null,
+    "dazhaoPlane": {
+      "__uuid__": "8cecc7dc-2869-467b-ad47-a478ab76818a"
+    }
   }
 ]
