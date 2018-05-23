@@ -43,6 +43,7 @@ var _wuDiTime = 8;
 
 //bullet type 0:机炮 1:火炮
 //gid从1开始
+//bulletType 已失效！！！这个数据暂时先不做，无论如何设置都是根据当前敌机bullet0预制体来设置的！
 var _enemyPlaneData = [
     {enemyID:0, planeImage: "enemyPlane0", blood: 10, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.65,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.sanfazhixian,enemyTrack:_enemyTrack.zuoyoushangxia },
     {enemyID:1, planeImage: "enemyPlane1", blood: 15, shootingSpeed: 1, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.5,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },

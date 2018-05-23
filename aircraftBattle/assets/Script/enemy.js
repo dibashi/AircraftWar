@@ -15,7 +15,7 @@ cc.Class({
 
         //子弹预制体
         bullet0: cc.Prefab,
-        bullet1: cc.Prefab,
+      //  bullet1: cc.Prefab,
         prizeTeXiao:{
             default: null,
             type: cc.Prefab,
@@ -257,11 +257,16 @@ cc.Class({
 
     generateBullet:function() {
         let bl = null;
-        if (this.bulletType === bulletType.jipao) {
-            bl = cc.instantiate(this.bullet0); //预制体未做 未加入
-        } else if (this.bulletType === bulletType.huopao) {
-            bl = cc.instantiate(this.bullet1);//预制体未做 未加入
-        }
+        // if (this.bulletType === bulletType.jipao) {
+        //     bl = cc.instantiate(this.bullet0); //预制体未做 未加入
+        // } else if (this.bulletType === bulletType.huopao) {
+        //     bl = cc.instantiate(this.bullet1);//预制体未做 未加入
+        // }
+        //为了方便。这里的敌机的子弹一律先按照cocos creator中bullet0的预制体来设置
+        //这样维护也较为方便
+ 
+            bl = cc.instantiate(this.bullet0); 
+    
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
