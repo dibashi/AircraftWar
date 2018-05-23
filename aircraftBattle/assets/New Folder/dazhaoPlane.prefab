@@ -56,8 +56,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 0.5,
+    "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -293,7 +293,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "shootingSpeed": 1,
+    "shootingSpeed": 2,
     "damage": 1,
     "guandaoCount": 0,
     "guandaoArrays": null

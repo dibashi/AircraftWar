@@ -12,7 +12,7 @@ cc.Class({
 
     properties: {
 
-       
+
         // //子弹预制体
         // bullet0: cc.Prefab,
         // bullet1: cc.Prefab,
@@ -22,43 +22,43 @@ cc.Class({
         // bulletIntelval: 0.75,
         shootingSpeed: 1,//一秒钟发射子弹数
         //flyingSpeed:0,
-       
-       // bulletType: 0,//0普通 1 光束
+
+        // bulletType: 0,//0普通 1 光束
         //Radius: 50,
         damage: 1,
 
-     
-       
 
-        guandaoCount:0, //管道1~5决定了5个弹道，
-        guandaoArrays:null,
 
-      
+
+        guandaoCount: 0, //管道1~5决定了5个弹道，
+        guandaoArrays: null,
+
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-     
-        this.guandaoArrays = new Array();   
-        
+
+        this.guandaoArrays = new Array();
+
         //初始化管道数据
-        for(let i = 0; i<5; i++) {
+        for (let i = 0; i < 5; i++) {
             //管道控制集合
-            
-            cc.log("~~~~~---> " + ("guandao"+i));
-            cc.log(this.node.getChildByName("guandao"+i));
-            if( this.node.getChildByName("guandao"+i) == null){
+
+            cc.log("~~~~~---> " + ("guandao" + i));
+            cc.log(this.node.getChildByName("guandao" + i));
+            if (this.node.getChildByName("guandao" + i) == null) {
                 break;
             }
-            this.guandaoArrays[i] = this.node.getChildByName("guandao"+i);
-            
+            this.guandaoArrays[i] = this.node.getChildByName("guandao" + i);
+
             this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
             this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(true);//这里写了两遍这行代码，是因为这个函数是伟伟写的，头太晕不想改了，以后重构
         }
- 
+
     },
 
 
@@ -68,19 +68,26 @@ cc.Class({
         //子弹eBullet, 敌机enemy，奖品 prize由于类型较多做在自己的脚本中，prefab,碰撞配置，分组，js脚本等
         //cc.log("other node    ");
         //cc.log(other.node);
-       if (other.node.group === "enemy") {
-           
-          cc.log("dazhao plane coll!!");
-              
-                this.node.destory();
-            
-            
+        if (other.node.group === "enemy") {
+
+            cc.log("dazhao plane coll!!");
+
+            this.node.destory();
+
+
         }
 
 
     },
 
-   
+    closeBullet: function () {
+        
+       
+            this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
+        
+    },
+
+
 
 
 

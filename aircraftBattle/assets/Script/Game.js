@@ -145,7 +145,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        dazhaoPlanes:null,
+        dazhaoPlanes: null,
     },
 
 
@@ -292,22 +292,80 @@ cc.Class({
             // }
 
             //必须让按钮先不能点，否则将引发bug！
-            //this.bombSprite.off('touchstart', this.bombOnclick, this);
+            this.bombSprite.off('touchstart', this.bombOnclick, this);
             //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
             //动画回调，按钮可点击
             //若没敌方飞机，飞出屏幕，回调，按钮可点击
             this.dazhaoPlanes = new Array();
-            for(let i = 0; i<3;i++) {
+            for (let i = 0; i < 8; i++) {
                 this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
-                cc.log(this.dazhaoPlanes[i]);
-                this.dazhaoPlanes[i].setPosition(-100+100*i,-200);
+                //  cc.log(this.dazhaoPlanes[i]);
+                //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
                 this.node.addChild(this.dazhaoPlanes[i]);
+                this.dazhaoPlanes[i].setPosition(0, -600);
+
             }
+
+            this.dazhaoPlanes[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
+            this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
+
+            this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
+
+            // this.dazhaoPlanes[0].setPosition(-140,-200);
+            // this.dazhaoPlanes[1].setPosition(140,-200);
+
+            // this.dazhaoPlanes[2].setPosition(-70,-170);
+            // this.dazhaoPlanes[3].setPosition(70,-170);
+
+            // this.dazhaoPlanes[4].setPosition(0,-140);
+            // this.dazhaoPlanes[5].setPosition(0,-220);
+
+            // this.dazhaoPlanes[6].setPosition(-70,-250);
+            // this.dazhaoPlanes[7].setPosition(70,-250);
+
             // 3秒后删除集群
         } else {
             console.log('没有子弹');
 
         }
+    },
+
+    dazhaoPlaneOver: function () {
+        
+        for(let i = 0; i<this.dazhaoPlanes.length;i++) {
+            this.dazhaoPlanes[i].runAction(cc.moveTo(1.5, cc.v2(800, 500)).easing(cc.easeIn(3.0)));
+            this.dazhaoPlanes[i].getComponent("dazhaoPlane").closeBullet();
+
+            let dx = 800 - this.dazhaoPlanes[i].x;
+            let dy = 500 - this.dazhaoPlanes[i].y;
+            //cc.log("angel!!!!! ---> ", cc.pToAngle(cc.v2(dx,dy)));
+            //this.dazhaoPlanes[i].runAction(cc.rotateBy(0.5,cc.pToAngle(cc.v2(dx,dy))));
+            this.dazhaoPlanes[i].runAction(cc.rotateBy(0.5,cc.pToAngle(cc.v2(dx,dy))*180/3.1415926));
+        }
+        this.scheduleOnce(this.dazhaoButtonEnable,1.6);
+        //先不实现这么复杂的逻辑
+        // let cs = this.node.children;
+        // let cc = this.node.childrenCount;
+        // for (let i = 0; i < cc; i++) {
+        //     if (this.node.children[i].group === 'enemy') {
+        //       //  this.node.children[i].getComponent('enemy').enemyBoomAni();
+        //     }
+        // }
+    },
+    dazhaoButtonEnable:function() {
+        this.bombSprite.on('touchstart', this.bombOnclick, this);
+        for(let i = 0; i<this.dazhaoPlanes.length;i++) {
+            this.dazhaoPlanes[i].destroy();
+           
+        }
+
+        this.dazhaoPlanes = null;
     },
 
     shieldOnclick: function () {
@@ -354,16 +412,16 @@ cc.Class({
         let w = cc.director.getVisibleSize().width;
         let h = cc.director.getVisibleSize().height / 2 - this.player.getContentSize().height / 2;
 
-        var zzz = new Array();    
-        zzz[0] = 0 ;   
-        zzz[1] = w/4 ;    
-        zzz[2] = -w/4 ; 
+        var zzz = new Array();
+        zzz[0] = 0;
+        zzz[1] = w / 4;
+        zzz[2] = -w / 4;
 
         var yzzz = new Array();
 
-        yzzz[0] = (h/5)*2 ;    
-        yzzz[1] = (h/5)*3 ; 
-        yzzz[2] = (h/5)*4 ; 
+        yzzz[0] = (h / 5) * 2;
+        yzzz[1] = (h / 5) * 3;
+        yzzz[2] = (h / 5) * 4;
 
         this.enemyCount = globalStageData[this.stage].length;
 
@@ -403,9 +461,9 @@ cc.Class({
 
 
             enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
-               var pos = enemy.getPosition();
-               pos.x = zzz[Math.floor(Math.random()*3)];
-               pos.y = yzzz[Math.floor(Math.random()*3)];
+            var pos = enemy.getPosition();
+            pos.x = zzz[Math.floor(Math.random() * 3)];
+            pos.y = yzzz[Math.floor(Math.random() * 3)];
             var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
             var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
             enemy.runAction(seq);
