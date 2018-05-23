@@ -276,7 +276,7 @@ cc.Class({
 
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
-            this.bombNo -= this.bombNo;
+            this.bombNo -= 1;
             //全屏炸，该功能已删除
             // let cs = this.node.children;
             // let cc = this.node.childrenCount;
@@ -373,7 +373,7 @@ cc.Class({
 
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
-            this.shieldNo -= this.shieldNo;
+            this.shieldNo -= 1;
 
             let cs = this.node.children;
             let cc = this.node.childrenCount;

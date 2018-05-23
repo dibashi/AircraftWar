@@ -47,13 +47,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 21,
-      "height": 24
+      "width": 68,
+      "height": 78
     },
-    "_rotationX": 270,
-    "_rotationY": 270,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 0.5,
+    "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -75,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "6cc49c8b-f70d-4fca-9d3e-91fd941ec17c"
+      "__uuid__": "527622d7-514b-4b29-a875-19082a6dedbc"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -93,7 +93,19 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.CircleCollider",
+    "__type__": "ca3578Cj0tL7ZRK+IR5dk+H",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "prizeType": -1,
+    "t": 1,
+    "jinbiRunFlag": true
+  },
+  {
+    "__type__": "cc.PolygonCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -106,17 +118,38 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 13
-  },
-  {
-    "__type__": "ca3578Cj0tL7ZRK+IR5dk+H",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "prizeType": -1
+    "points": [
+      {
+        "__type__": "cc.Vec2",
+        "x": -10,
+        "y": 39
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -34,
+        "y": 11
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -26,
+        "y": -25
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 19,
+        "y": -38
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 34,
+        "y": -5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 31,
+        "y": 29
+      }
+    ]
   },
   {
     "__type__": "cc.PrefabInfo",
