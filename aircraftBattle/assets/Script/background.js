@@ -95,17 +95,21 @@ cc.Class({
         let bg2Y = this.bg2.getPosition().y;
 
         if(bg1Y<=-(cc.director.getVisibleSize().height)) {
-            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height/2);
+            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed);
         }else {
             bg1Y -= this.bgSpeed;
             this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
         }
 
+        
+
         if(bg2Y<=-(cc.director.getVisibleSize().height)) {
-            this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+cc.director.getVisibleSize().height/2);
+            this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+cc.director.getVisibleSize().height);
         }else {
             bg2Y -= this.bgSpeed;
             this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
         }
+
+       
      },
 });
