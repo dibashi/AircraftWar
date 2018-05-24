@@ -141,9 +141,42 @@ cc.Class({
     upgradePlane:function() {
         if(this.guandaoCount<5) {
             this.guandaoCount++;
-            for(let i = 0; i<this.guandaoCount; i++) {
-                this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(true);
+            //先全部关闭，然后根据个数来设置相应的管道
+            for(let i = 0; i<5; i++) {
+                this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             }
+
+            switch(this.guandaoCount) {
+                case 1:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                break;
+                case 2:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+                case 3:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+                case 4:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+                case 5:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                break;
+            }
+
         } else {
             for(let i = 0; i<this.guandaoCount; i++) {
                 if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
@@ -159,8 +192,8 @@ cc.Class({
         let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
         
         
-        cc.log("僚机数量----->  " +wmCount);
-        cc.log("~僚机数量----->  " +cc.sys.localStorage.getItem('heroPlaneWingmanCount0'));
+        // cc.log("僚机数量----->  " +wmCount);
+        // cc.log("~僚机数量----->  " +cc.sys.localStorage.getItem('heroPlaneWingmanCount0'));
         for(let i= 0;i<wmCount;i++) {
             this.wingmanArrays[i].active = true;
             this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(true);
