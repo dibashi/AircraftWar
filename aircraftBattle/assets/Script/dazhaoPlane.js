@@ -33,6 +33,8 @@ cc.Class({
         guandaoCount: 0, //管道1~5决定了5个弹道，
         guandaoArrays: null,
 
+        onceBulletCount:6,
+
 
     },
 
@@ -55,6 +57,8 @@ cc.Class({
 
             this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
             this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
+
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(true);//这里写了两遍这行代码，是因为这个函数是伟伟写的，头太晕不想改了，以后重构
         }

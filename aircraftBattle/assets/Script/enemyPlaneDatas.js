@@ -56,6 +56,22 @@ var _enemyPlaneData = [
 
 var _stage = [
     [
+        {enemyID:4},
+    ],
+    [
+        {enemyID:4},{enemyID:4},{enemyID:4}
+    ],
+    [
+        {enemyID:4},{enemyID:4}
+    ],
+    [
+        {enemyID:4},
+    ],
+    [
+        {enemyID:4},{enemyID:4},{enemyID:4}
+    ],
+
+    [
         {enemyID:3},
     ],
     [
