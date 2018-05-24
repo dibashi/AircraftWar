@@ -142,10 +142,10 @@ cc.Class({
             this.trackGuandaoArrays[i] = this.node.getChildByName("guandaoTrack"+i);
             
             this.trackGuandaoArrays[i].getComponent("guandaoTrack").damage = 1;
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 1;
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 5;
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 2;
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 8;
             this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
+            //this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
            // this.trackGuandaoArrays[i].getComponent("guandaoTrack").bulletType = 0;
 
             this.trackGuandaoArrays[i].getComponent("guandaoTrack").onceBulletCount = 1;
@@ -214,18 +214,23 @@ cc.Class({
                 break;
             }
 
-        } else {
+        } else if((this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed){
             for(let i = 0; i<this.guandaoCount; i++) {
                 //以前是更改发射子弹图片，已废除！
                 // if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
                 //     this.guandaoArrays[i].getComponent("guandao").bulletType = globalHeroBulletType.upgrade;
                 //     return;
                 // }
-                cc.log("this.guandaoArrays[i].getComponent(guandao).shootingSpeed!--> " +this.guandaoArrays[i].getComponent("guandao").shootingSpeed);
-                if((this.guandaoArrays[i].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed) {
+               //  cc.log("this.guandaoArrays[i].getComponent(guandao).shootingSpeed!--> " +this.guandaoArrays[i].getComponent("guandao").shootingSpeed);
+               // if((this.guandaoArrays[i].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed) {
                    // this.guandaoArrays[i].getComponent("guandao").shootingSpeed += globalOnceAddSpeed;
                    this.guandaoArrays[i].getComponent("guandao").addSpeed(globalOnceAddSpeed);
-                }
+              //  }
+            }
+        } else if(this.trackGuandaoCount<4) {
+            this.trackGuandaoCount++;
+            for(let i =0; i<this.trackGuandaoCount;i++) {
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
             }
         }
 
