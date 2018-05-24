@@ -56,7 +56,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        playerImg:null,
+
 
         spriteCoin:null,
         labelCoin:null,
@@ -120,34 +120,30 @@ cc.Class({
 
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
         D.globalHeroPlaneID = dddd;
-        // if (dddd == heroPlaneID.heroPlane0) {
-        //     cc.log("jinru plane0!")
-        //     this.playerImg = cc.instantiate(this.heroPlane0);
-        // }
-        // else if (dddd == heroPlaneID.heroPlane1) {
-        //     this.playerImg = cc.instantiate(this.heroPlane1);
-        // }
-        // else if (dddd == heroPlaneID.heroPlane2) {
-        //     this.playerImg = cc.instantiate(this.heroPlane2);
-        // }
-        // else if (dddd == heroPlaneID.heroPlane3) {
-        //     this.playerImg = cc.instantiate(this.heroPlane3);
-        // }
-        // else if (dddd == heroPlaneID.heroPlane4) {
-        //     //cc.log('zhixing111111');
-        //     this.playerImg = cc.instantiate(this.heroPlane4);
-        //     //cc.log(player);
-        // }
-        // else if (dddd == heroPlaneID.heroPlane5) {
-        //     this.playerImg = cc.instantiate(this.heroPlane5);
-        // }
-        // this.node.getChildByName("currentPlane").getComponent(cc.Sprite).spriteFrame.setTexture(cc.url.raw("Texture/heroPlane4.png")); 
-
-        // cc.log("D.globalHeroPlaneID" + dddd);
-        // cc.log("sadadsad --->" + this.playerImg);
-
-        //this.node.addChild(this.playerImg);
-        
+        let playerImg = null;
+        if (dddd == heroPlaneID.heroPlane0) {
+            cc.log("jinru plane0!")
+            playerImg = cc.instantiate(this.heroPlane0);
+        }
+        else if (dddd == heroPlaneID.heroPlane1) {
+            playerImg = cc.instantiate(this.heroPlane1);
+        }
+        else if (dddd == heroPlaneID.heroPlane2) {
+            playerImg = cc.instantiate(this.heroPlane2);
+        }
+        else if (dddd == heroPlaneID.heroPlane3) {
+            playerImg = cc.instantiate(this.heroPlane3);
+        }
+        else if (dddd == heroPlaneID.heroPlane4) {
+            //cc.log('zhixing111111');
+            playerImg = cc.instantiate(this.heroPlane4);
+            //cc.log(player);
+        }
+        else if (dddd == heroPlaneID.heroPlane5) {
+            playerImg = cc.instantiate(this.heroPlane5);
+        }
+        this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
+        this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame; 
     },
 
     beginClick:function() {
