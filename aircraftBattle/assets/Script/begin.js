@@ -116,6 +116,7 @@ cc.Class({
         //cc.log( this.labelCoin);
        // cc.log(cc.sys.localStorage.getItem("jinBiCount"));
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
+        //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分："+cc.sys.localStorage.getItem("bestScore");
 
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
@@ -142,8 +143,10 @@ cc.Class({
         else if (dddd == heroPlaneID.heroPlane5) {
             playerImg = cc.instantiate(this.heroPlane5);
         }
+        cc.log("ID-->" + dddd + "  size----> " + playerImg.getContentSize().width + '   ' + playerImg.getContentSize().height);
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
         this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame; 
+        this.node.getChildByName("selectedPlane").scale = 1.5;
     },
 
     beginClick:function() {

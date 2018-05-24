@@ -241,8 +241,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 245,
-      "height": 164
+      "width": 222,
+      "height": 222
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -272,7 +272,7 @@
       "__uuid__": "beb7c69d-8c48-4d2b-84ec-c5f2fbdc6536"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -1384,7 +1384,6 @@
     "heroPlane5": {
       "__uuid__": "cbbe10c9-35f2-49c8-96e8-46abe1ddad09"
     },
-    "playerImg": null,
     "spriteCoin": null,
     "labelCoin": null,
     "personalBestScore": null

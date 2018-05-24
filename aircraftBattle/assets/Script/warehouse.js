@@ -133,9 +133,10 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
     goMain:function() {
         cc.log("goMain");
         cc.director.loadScene('start');
-        D.globalHeroPlaneID = this.currentID;
+       
 
         //bugs 将来要改 现在先按照当前屏幕是什么飞机就设置为什么飞机，将来要改到出战按钮，这里要删掉
+        D.globalHeroPlaneID = this.currentID;
         cc.sys.localStorage.setItem('globalHeroPlaneID',this.currentID);
     },
 
