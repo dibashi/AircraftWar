@@ -153,7 +153,7 @@ cc.Class({
 
     onLoad() {
 
-
+        cc.sys.localStorage.setItem('killedEnemyCount',0);
 
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;

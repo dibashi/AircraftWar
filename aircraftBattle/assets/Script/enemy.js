@@ -363,6 +363,11 @@ cc.Class({
         //this.nodeBar.destroy();//删除血条
         this.node.opacity = 0;
         this.scheduleOnce(this.baozhaOver, 0.7);
+
+
+        //敌机销毁数据+1
+        let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
+        cc.sys.localStorage.setItem('killedEnemyCount',kc);
     },
 
     baozhaOver: function () {
