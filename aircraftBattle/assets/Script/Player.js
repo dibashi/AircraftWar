@@ -7,6 +7,9 @@ var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
 
 var globalHeroBulletType = require("heroPlaneDatas").heroBulletType;
 var globalWingmanBulletType = require("heroPlaneDatas").wingmanBulletType;
+
+var globalMaxShootingSpeed = require("heroPlaneDatas").maxShootingSpeed;
+var globalOnceAddSpeed = require("heroPlaneDatas").onceAddSpeed;
 cc.Class({
     extends: cc.Component,
 
@@ -44,6 +47,8 @@ cc.Class({
 
         wingmanCount:0,
         wingmanArrays:null,
+
+        onceBulletCount:1,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -57,6 +62,8 @@ cc.Class({
         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
         this.bulletType = globalHeroPlaneData[D.globalHeroPlaneID].bulletType;
         this.damage = globalHeroPlaneData[D.globalHeroPlaneID].damage;
+
+        this.onceBulletCount = globalHeroPlaneData[D.globalHeroPlaneID].onceBulletCount;
         cc.log("this.shootingSpeed = " + this.shootingSpeed);
         cc.log("this.blood = " + this.blood);
         cc.log("this.bulletType = " + this.bulletType);
@@ -92,6 +99,8 @@ cc.Class({
             this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
+
+            this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
         }
         this.wingmanArrays = new Array();
 //初始化僚机数据 现在用的都是 飞机数据//以后可能要做一个僚机表 根据当前飞机的ID 来从表中取数据
@@ -179,9 +188,15 @@ cc.Class({
 
         } else {
             for(let i = 0; i<this.guandaoCount; i++) {
-                if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
-                    this.guandaoArrays[i].getComponent("guandao").bulletType = globalHeroBulletType.upgrade;
-                    return;
+                //以前是更改发射子弹图片，已废除！
+                // if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
+                //     this.guandaoArrays[i].getComponent("guandao").bulletType = globalHeroBulletType.upgrade;
+                //     return;
+                // }
+                cc.log("this.guandaoArrays[i].getComponent(guandao).shootingSpeed!--> " +this.guandaoArrays[i].getComponent("guandao").shootingSpeed);
+                if((this.guandaoArrays[i].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed) {
+                   // this.guandaoArrays[i].getComponent("guandao").shootingSpeed += globalOnceAddSpeed;
+                   this.guandaoArrays[i].getComponent("guandao").addSpeed(globalOnceAddSpeed);
                 }
             }
         }

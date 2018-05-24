@@ -13,21 +13,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+      
         //子弹预制体
         bullet0: cc.Prefab,
         bullet1: cc.Prefab,
@@ -36,6 +22,8 @@ cc.Class({
         enableGuanDao:true,
         shootingSpeed:2,
         damage:0,
+
+        onceBulletCount:1,
     },
 
     
@@ -59,6 +47,11 @@ cc.Class({
     
     startFire(){
         this.bICallback();
+        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+    },
+
+    addSpeed:function(sp) {
+        this.shootingSpeed+=sp;
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },
 
@@ -98,9 +91,9 @@ cc.Class({
         {
             return;
         }
-        for(let i = 0; i<5;i++) {
+        for(let i = 0; i<this.onceBulletCount;i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.15*(i)), cc.callFunc(this.susheCallback,this)));
         }
        
     },
