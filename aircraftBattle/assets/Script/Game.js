@@ -161,12 +161,12 @@ cc.Class({
         let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
         newRecordLabel.active = false;
         this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
-        // this.node.getChildByName("jinbi").setPosition(-wx,hy);//锚点0,1
+  
 
-        let sjbw = this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").getContentSize().width;
-        let sjbh = this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").getContentSize().height;
-        this.node.getChildByName("jinbi").getChildByName("kuangti_jinbi").setLocalZOrder(-1);
-        this.node.getChildByName("jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);//锚点0,1
+        let sjbw = this.node.getChildByName("kuangti_jinbi").getContentSize().width;
+        let sjbh = this.node.getChildByName("kuangti_jinbi").getContentSize().height;
+        
+        this.node.getChildByName("kuangti_jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);
 
         this.node.getChildByName("score").setLocalZOrder(100);
         var manager = cc.director.getCollisionManager();
@@ -589,14 +589,16 @@ cc.Class({
 
 
     getJinBi: function () {
-        //cc.log("getJinBi");
+    
         var c = cc.sys.localStorage.getItem('jinBiCount');
-        // cc.log("getJinBi --------->"+c);
+     
         var newC = parseInt(c) + globalDropJinBiCount;
-        // cc.log("getJinBi --------->"+newC);
+      
         cc.sys.localStorage.setItem('jinBiCount', newC);
 
-        this.node.getChildByName("jinbi").getComponent(cc.Label).string = parseInt(this.node.getChildByName("jinbi").getComponent(cc.Label).string) + globalDropJinBiCount;
+        let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+
+        jinbilabel.string = parseInt(jinbilabel.string) + globalDropJinBiCount;
 
     },
     // getWuDiChongCi:function() {
