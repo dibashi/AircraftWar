@@ -41,33 +41,40 @@ cc.Class({
         let bPos = this.node.getPosition();
         let dx = ePos.x - bPos.x;
         let dy = ePos.y - bPos.y;
-        let ndx = dx / (Math.sqrt(dx * dx + dy * dy));
-        let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
-        let speed = 0;
+
+        let dis = Math.sqrt(dx * dx + dy * dy);
+        let ndx = dx / dis;
+        let ndy = dy / dis;
+
         if (this.prizeType != generateType.jinbi) {
 
 
             // let rdx = ndx * this.t;
             // let rdy = ndy * this.t;
-            // if (Math.sqrt(dx * dx + dy * dy) < 100) {
-            //     this.node.setPosition(bPos.x + (rdx * 5), bPos.y + (rdy * 5));
-            // } else {
-            //     this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-            // }
+            if ( dis< 80) {
+                let speed = 10
+                let rdx = ndx * speed;
+                let rdy = ndy * speed;
+                this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
-            speed = 2;
+            } else {
+                let speed = 3;
+                this.node.setPosition(bPos.x, bPos.y - speed);
+            }
 
+           
         } else if (this.prizeType == generateType.jinbi) {
-            speed = 10;
+            
+           
+            let speed = 10;
+
+            let rdx = ndx * speed;
+            let rdy = ndy * speed;
+            this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
         }
 
-        let rdx = ndx * speed;
-        let rdy = ndy * speed;
-        this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-
-
-
+       
     },
 
     normalizeVector: function (x, y) {
