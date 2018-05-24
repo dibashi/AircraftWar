@@ -389,6 +389,8 @@ cc.Class({
         }
     },
 
+    
+
     //一个敌人被消除就会调用这个函数，所以 enemyCount要先缩减。
     checkNextStage: function () {
 

@@ -32,8 +32,9 @@ cc.Class({
         // },
         // enemys : [],
         //Radius:33,
-        flyingSpeed :0,//一帧飞行像素 目前只是Y轴的移动速度
-        damage:0,
+        flyingSpeed: 0,//一帧飞行像素 目前只是Y轴的移动速度
+        damage: 0,
+        trackOpen: false, //是否为追踪弹
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -45,34 +46,56 @@ cc.Class({
     },
 
     update(dt) {
-       
 
-       var p = this.node.parent.getContentSize().height/2+this.node.height/2;
-      // cc.log(p);
-     // this.node.x += this.flyingSpeed;
-      this.node.y += this.flyingSpeed;
+
+        var p = this.node.parent.getContentSize().height / 2 + this.node.height / 2;
+        // cc.log(p);
+        // this.node.x += this.flyingSpeed;
+        if (this.trackOpen == true) {
+            // cc.log('~~~');
+            let gameNode = this.node.parent;
+            let gameJS = gameNode.getComponent('Game');
+            let cs = gameNode.children;
+            let cc = gameNode.childrenCount;
+            let i = 0;
+            for (i = 0; i < cc; i++) {
+                if (cs[i].group === 'enemy' && cs[i].getComponent("enemy").blood>0) {
+                    break;
+                }
+            }
+            if(i!=cc) {
+                let ePos = cs[i].getPosition();
+                let bPos = this.node.getPosition();
+                let dx = ePos.x - bPos.x;
+                let dy = ePos.y - bPos.y;
+                let ndx = dx / (Math.sqrt(dx * dx + dy * dy));
+                let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
+
+
+                let rdx = ndx * this.flyingSpeed;
+                let rdy = ndy * this.flyingSpeed;
+                this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+            } else {
+                this.node.y += this.flyingSpeed;
+            }
+           
+            //获得敌机，然后追踪
+
+
+        } else {
+            this.node.y += this.flyingSpeed;
+        }
+
         if (this.node.getPosition().y > p) {
             this.node.destroy();
         }
 
-        // for(var i = 0; i<D.enemys.length;i++) {
-            
-        //     if(this.getEnemyDistance(D.enemys[i]) < this.Radius) {
-        //         this.node.destroy();
-             
-               
-        //         var e = D.enemys[i].name;
-              
-        //         cc.log(e);
-        //         D.enemys[i].getComponent(e).bleed();
-        //     }
-        // }
     },
 
     getEnemyDistance: function (enemy) {
-      
+
         var enemy = enemy.getPosition();
-      
+
         var dist = cc.pDistance(this.node.position, enemy);
         return dist;
     },

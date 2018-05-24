@@ -49,6 +49,9 @@ cc.Class({
         wingmanArrays:null,
 
         onceBulletCount:1,
+
+        trackGuandaoCount:0,
+        trackGuandaoArrays:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -88,8 +91,8 @@ cc.Class({
             // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
             //管道控制集合
             
-            cc.log("~~~~~---> " + ("guandao"+i));
-            cc.log(this.guandaoArrays[i]);
+            // cc.log("~~~~~---> " + ("guandao"+i));
+            // cc.log(this.guandaoArrays[i]);
             if( this.node.getChildByName("guandao"+i) == null){
                 break;
             }
@@ -125,6 +128,28 @@ cc.Class({
         if(this.wingmanArrays.length>0) {
             this.runWingman();
         }
+
+
+
+        this.trackGuandaoArrays = new Array();
+     //这里先都用飞机那套数据，以后再重构  算了 这里自己定义的数据
+        for(let i = 0; i<4; i++) {
+           
+           // cc.log(this.trackGuandaoArrays[i]);
+            if( this.node.getChildByName("guandaoTrack"+i) == null){
+                break;
+            }
+            this.trackGuandaoArrays[i] = this.node.getChildByName("guandaoTrack"+i);
+            
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").damage = 1;
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 1;
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 5;
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
+           // this.trackGuandaoArrays[i].getComponent("guandaoTrack").bulletType = 0;
+
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").onceBulletCount = 1;
+        }
       
         
 
@@ -143,6 +168,9 @@ cc.Class({
      
         //初始管道设置为0
         this.guandaoCount = 0;
+        //跟踪导弹管道设置为0
+        this.trackGuandaoCount = 0;
+
         this.upgradePlane();
     },
 
