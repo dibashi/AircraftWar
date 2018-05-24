@@ -426,6 +426,8 @@ cc.Class({
 
                 this.enemyBoomAni();
 
+                this.node.parent.getComponent('Game').addScore(this.blood);
+
                 // this.node.destroy();
             } else {
                 //cc.log
@@ -433,7 +435,7 @@ cc.Class({
                 this.bBar.string = this.blood;
                 this.enemyDamagedAni();
                 //根据掉血量来加分吧
-                this.node.parent.getComponent('Game').addScore(bDamage)
+                this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
                 //cc.log(this.node.parent);
                 //cc.log(this.node.parent.getChildByName("score"));
