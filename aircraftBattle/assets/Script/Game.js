@@ -23,7 +23,7 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
-
+    
 cc.Class({
     extends: cc.Component,
 

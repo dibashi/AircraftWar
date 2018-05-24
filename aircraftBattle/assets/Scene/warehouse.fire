@@ -5534,6 +5534,14 @@
       "__id__": 7
     },
     "planeArray": null,
-    "currentID": 0
+    "currentID": 0,
+    "gouMaiAndChuZhan": {
+      "__id__": 161
+    },
+    "wingmanAndClosed": {
+      "__id__": 157
+    },
+    "isPlaneGouMai": true,
+    "isWingmanGouMai": true
   }
 ]
