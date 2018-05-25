@@ -35,6 +35,8 @@ cc.Class({
         flyingSpeed: 0,//一帧飞行像素 目前只是Y轴的移动速度
         damage: 0,
         trackOpen: false, //是否为追踪弹
+
+        p:0,//上边界 超出就销毁子弹
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -42,13 +44,18 @@ cc.Class({
     // onLoad () {},
 
     start() {
+       // this.p = this.node.parent.getContentSize().height / 2 + this.node.getContentSize().height / 2;
+       
+       // cc.log("this.node.getContentSize().height  " + this.node.getBoundingBox().height  );
 
+       this.p = this.node.parent.getContentSize().height / 2 + this.node.getBoundingBox().height / 2;
+        cc.log("~P--》 " + this.p);
     },
 
     update(dt) {
 
 
-        var p = this.node.parent.getContentSize().height / 2 + this.node.height / 2;
+        
         // cc.log(p);
         // this.node.x += this.flyingSpeed;
         if (this.trackOpen == true) {
@@ -86,7 +93,7 @@ cc.Class({
             this.node.y += this.flyingSpeed;
         }
 
-        if (this.node.getPosition().y > p) {
+        if (this.node.getPosition().y > this.p) {
             this.node.destroy();
         }
 
