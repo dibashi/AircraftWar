@@ -3,39 +3,14 @@
   "_name": "heroBullet3Ani",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5166666666666667,
+  "_duration": 0,
   "sample": 60,
   "speed": 1,
   "wrapMode": 22,
   "curveData": {
     "comps": {
       "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "af52583c-91bf-4591-a4bc-814718896ecc"
-            }
-          },
-          {
-            "frame": 0.16666666666666666,
-            "value": {
-              "__uuid__": "4e05fcb3-f07c-497c-8c88-6f107256bbdb"
-            }
-          },
-          {
-            "frame": 0.3333333333333333,
-            "value": {
-              "__uuid__": "0e5b9fea-225c-4546-a581-971dee62ab00"
-            }
-          },
-          {
-            "frame": 0.5,
-            "value": {
-              "__uuid__": "87043498-20b9-4448-9e14-b0dc8e6b644d"
-            }
-          }
-        ]
+        "spriteFrame": []
       }
     }
   },
