@@ -1,0 +1,811 @@
+[第一关卡小飞机]
+pos = 150
+x = 150
+y = -37
+model = 138
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = 80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 150
+x = 390
+y = -37
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[左起中]
+pos = 160
+x = -27
+y = 5
+model = 139
+num = 1
+waitPrev = true
+delay = 0.0
+action = run96
+- end -
+
+[第一关卡小飞机]
+pos = 170
+x = 450
+y = -24
+model = 140
+num = 3
+waitPrev = true
+delay = 0.0
+action = run95
+offX = -80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 170
+x = 210
+y = -24
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[右起中]
+pos = 180
+x = 540
+y = 1
+model = 141
+num = 1
+waitPrev = true
+delay = 0.0
+action = run105
+- end -
+
+[左弧线]
+pos = 190
+x = -33
+y = 83
+model = 142
+num = 3
+waitPrev = true
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[左弧线掉宝]
+pos = 190
+x = -33
+y = 83
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[右起大]
+pos = 200
+x = 323
+y = -34
+model = 143
+num = 1
+waitPrev = true
+delay = 0.0
+action = run106
+- end -
+
+[第一关卡小飞机]
+pos = 500
+x = 150
+y = -37
+model = 138
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = 80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 500
+x = 390
+y = -37
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[第一关卡小飞机]
+pos = 900
+x = 450
+y = -24
+model = 140
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = -80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机添加]
+pos = 900
+x = 210
+y = -24
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[左弧线添加]
+pos = 1200
+x = -33
+y = 83
+model = 142
+num = 3
+waitPrev = false
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[左弧线掉宝添加]
+pos = 1200
+x = -33
+y = 83
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[右弧线]
+pos = 210
+x = 542
+y = 120
+model = 144
+num = 4
+waitPrev = true
+delay = 0.0
+action = run98
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[右弧线掉宝]
+pos = 210
+x = 542
+y = 120
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run98
+- end -
+
+[左起大]
+pos = 220
+x = 109
+y = -38
+model = 145
+num = 1
+waitPrev = true
+delay = 0.0
+action = run106
+- end -
+
+[第一关卡小飞机添加]
+pos = 1500
+x = 150
+y = -37
+model = 138
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = 80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机添加]
+pos = 1800
+x = 210
+y = -24
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[左弧线掉宝添加]
+pos = 1800
+x = -33
+y = 83
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[左弧线添加]
+pos = 2100
+x = -33
+y = 83
+model = 142
+num = 3
+waitPrev = false
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[教学1]
+pos = 220
+x = 100
+y = -30
+model = 146
+num = 2
+waitPrev = true
+delay = 0.0
+action = run107
+offX = 320
+offY = 0
+waitTime = 0.0
+- end -
+
+[教学2]
+pos = 220
+x = 260
+y = -28
+model = 147
+num = 1
+waitPrev = false
+delay = 0.0
+action = run107
+- end -
+
+[左弧线掉宝添加]
+pos = 2300
+x = -33
+y = 83
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[左弧线添加]
+pos = 2300
+x = -33
+y = 83
+model = 142
+num = 3
+waitPrev = false
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[右弧线]
+pos = 2600
+x = 542
+y = 120
+model = 144
+num = 4
+waitPrev = false
+delay = 0.0
+action = run98
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[右弧线掉宝]
+pos = 2600
+x = 542
+y = 120
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run98
+- end -
+
+[斜出小飞机左]
+pos = 320
+x = -20
+y = -5
+model = 148
+num = 4
+waitPrev = true
+delay = 0.0
+action = run99
+offX = -80
+offY = 10
+waitTime = 0.5
+- end -
+
+[斜出小飞机左掉宝]
+pos = 273
+x = -340
+y = -5
+model = 174
+num = 1
+waitPrev = false
+delay = 2.0
+action = run99
+- end -
+
+[右出大飞机1]
+pos = 330
+x = 550
+y = 150
+model = 149
+num = 1
+waitPrev = true
+delay = 0.0
+action = run108
+- end -
+
+[斜出小飞机右]
+pos = 340
+x = 545
+y = -3
+model = 150
+num = 4
+waitPrev = true
+delay = 0.0
+action = run100
+offX = 80
+offY = 10
+waitTime = 0.5
+- end -
+
+[斜出小飞机右掉宝]
+pos = 340
+x = 875
+y = -5
+model = 174
+num = 1
+waitPrev = false
+delay = 2.0
+action = run100
+- end -
+
+[左出大飞机2]
+pos = 350
+x = -36
+y = 177
+model = 151
+num = 1
+waitPrev = true
+delay = 0.0
+action = run109
+- end -
+
+[教学2]
+pos = 360
+x = 400
+y = -10
+model = 152
+num = 3
+waitPrev = true
+delay = 0.0
+action = run110
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 390
+x = 330
+y = -70
+model = 153
+num = 3
+waitPrev = false
+delay = 0.0
+action = run110
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2拷贝]
+pos = 420
+x = 360
+y = -130
+model = 153
+num = 3
+waitPrev = false
+delay = 0.0
+action = run110
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 380
+x = 120
+y = -10
+model = 154
+num = 3
+waitPrev = true
+delay = 0.0
+action = run111
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 410
+x = 200
+y = -90
+model = 155
+num = 3
+waitPrev = false
+delay = 0.0
+action = run111
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2拷贝]
+pos = 440
+x = 160
+y = -170
+model = 155
+num = 3
+waitPrev = false
+delay = 0.0
+action = run111
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[同时出现弧线小]
+pos = 700
+x = -22
+y = 95
+model = 156
+num = 3
+waitPrev = true
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[同时出现弧线小拷贝]
+pos = 700
+x = -22
+y = 95
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[同时出现弧线小]
+pos = 700
+x = 547
+y = 558
+model = 156
+num = 4
+waitPrev = false
+delay = 0.0
+action = run112
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[同时出现弧线小拷贝]
+pos = 700
+x = 547
+y = 558
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run112
+- end -
+
+[同时出现弧线大]
+pos = 420
+x = 130
+y = -40
+model = 157
+num = 1
+waitPrev = true
+delay = 0.0
+action = run134
+- end -
+
+[同时出现弧线大]
+pos = 440
+x = 350
+y = -40
+model = 157
+num = 1
+waitPrev = true
+delay = 0.0
+action = run134
+- end -
+
+[第一关卡小飞机]
+pos = 2900
+x = 150
+y = -37
+model = 138
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = 80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 2900
+x = 390
+y = -37
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[第一关卡小飞机]
+pos = 3200
+x = 450
+y = -24
+model = 140
+num = 3
+waitPrev = false
+delay = 0.0
+action = run95
+offX = -80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机添加]
+pos = 3200
+x = 210
+y = -24
+model = 175
+num = 1
+waitPrev = false
+delay = 1.5
+action = run95
+- end -
+
+[左弧线添加]
+pos = 3500
+x = -33
+y = 83
+model = 142
+num = 3
+waitPrev = false
+delay = 0.0
+action = run97
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[左弧线掉宝添加]
+pos = 3500
+x = -33
+y = 83
+model = 174
+num = 1
+waitPrev = false
+delay = 1.5
+action = run97
+- end -
+
+[飞机4拷贝拷贝]
+pos = 460
+x = 200
+y = -40
+model = 145
+num = 1
+waitPrev = false
+delay = 0.0
+action = run102
+- end -
+
+[飞机32]
+pos = 470
+x = 350
+y = -180
+model = 174
+num = 1
+waitPrev = true
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝]
+pos = 480
+x = 350
+y = -20
+model = 175
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝拷贝]
+pos = 490
+x = 240
+y = -60
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝拷贝拷贝]
+pos = 500
+x = 460
+y = -60
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝拷贝拷贝拷贝]
+pos = 510
+x = 240
+y = -140
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝拷贝拷贝拷贝拷贝]
+pos = 520
+x = 460
+y = -140
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[第二波拷贝拷贝拷贝拷贝拷贝拷贝]
+pos = 540
+x = 150
+y = -180
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机3]
+pos = 550
+x = 150
+y = -20
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机3拷贝]
+pos = 560
+x = 40
+y = -60
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机3拷贝拷贝]
+pos = 570
+x = 260
+y = -60
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机2拷贝]
+pos = 580
+x = 40
+y = -140
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机2拷贝拷贝]
+pos = 590
+x = 260
+y = -140
+model = 159
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[飞机2]
+pos = 620
+x = -30
+y = 100
+model = 145
+num = 1
+waitPrev = true
+delay = 0.0
+action = run113
+- end -
+
+[飞机1]
+pos = 630
+x = 300
+y = -130
+model = 114
+num = 1
+waitPrev = true
+delay = 5.0
+action = boss7
+- end -

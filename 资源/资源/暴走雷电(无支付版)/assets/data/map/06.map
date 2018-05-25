@@ -1,0 +1,673 @@
+[·É»ú1]
+pos = 10
+x = 150
+y = -180
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3]
+pos = 20
+x = 150
+y = -20
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´]
+pos = 30
+x = 40
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´¿½±´]
+pos = 40
+x = 260
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´]
+pos = 50
+x = 40
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´¿½±´]
+pos = 60
+x = 260
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2]
+pos = 70
+x = 150
+y = -100
+model = 121
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[µÚ¶þ²¨]
+pos = 160
+x = 350
+y = -180
+model = 125
+num = 1
+waitPrev = true
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´]
+pos = 170
+x = 350
+y = -20
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´]
+pos = 180
+x = 240
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´]
+pos = 190
+x = 460
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´]
+pos = 200
+x = 240
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´¿½±´]
+pos = 210
+x = 460
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´¿½±´¿½±´]
+pos = 220
+x = 350
+y = -100
+model = 121
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[·É»ú4]
+pos = 300
+x = 560
+y = 150
+model = 126
+num = 1
+waitPrev = true
+delay = 0.0
+action = run85
+- end -
+
+[·É»ú4¿½±´]
+pos = 300
+x = -40
+y = 200
+model = 126
+num = 1
+waitPrev = true
+delay = 0.0
+action = run86
+- end -
+
+[·É»ú5]
+pos = 310
+x = -40
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run87
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú6]
+pos = 320
+x = 540
+y = 450
+model = 128
+num = 1
+waitPrev = true
+delay = 0.0
+action = run88
+- end -
+
+[·É»ú5¿½±´]
+pos = 310
+x = 560
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run89
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú6¿½±´]
+pos = 320
+x = -40
+y = 450
+model = 128
+num = 1
+waitPrev = true
+delay = 0.0
+action = run90
+- end -
+
+[·É»ú7]
+pos = 330
+x = -40
+y = 100
+model = 129
+num = 4
+waitPrev = true
+delay = 0.0
+action = run47
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[·É»ú8]
+pos = 330
+x = 540
+y = 100
+model = 129
+num = 4
+waitPrev = false
+delay = 0.0
+action = run48
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[·É»ú9]
+pos = 430
+x = 200
+y = -50
+model = 130
+num = 2
+waitPrev = false
+delay = 0.0
+action = run91
+offX = 200
+offY = 0
+waitTime = 0.0
+- end -
+
+[·É»ú10]
+pos = 530
+x = 300
+y = -10
+model = 130
+num = 1
+waitPrev = false
+delay = 0.0
+action = run91
+- end -
+
+[·É»ú1¿½±´]
+pos = 730
+x = 150
+y = -180
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´]
+pos = 740
+x = 150
+y = -20
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´¿½±´]
+pos = 750
+x = 40
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´¿½±´¿½±´]
+pos = 760
+x = 260
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´¿½±´]
+pos = 770
+x = 40
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´¿½±´¿½±´]
+pos = 780
+x = 260
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´]
+pos = 790
+x = 150
+y = -100
+model = 121
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú11]
+pos = 890
+x = 343
+y = -22
+model = 131
+num = 1
+waitPrev = false
+delay = 0.0
+action = run92
+- end -
+
+[µÚ¶þ²¨¿½±´]
+pos = 900
+x = 350
+y = -180
+model = 125
+num = 1
+waitPrev = true
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´]
+pos = 910
+x = 350
+y = -20
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´]
+pos = 920
+x = 240
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´]
+pos = 930
+x = 460
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´¿½±´]
+pos = 940
+x = 240
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´¿½±´¿½±´]
+pos = 950
+x = 460
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[µÚ¶þ²¨¿½±´¿½±´¿½±´¿½±´¿½±´¿½±´¿½±´]
+pos = 960
+x = 350
+y = -100
+model = 121
+num = 1
+waitPrev = false
+delay = 0.0
+action = run84
+- end -
+
+[·É»ú11¿½±´]
+pos = 970
+x = 139
+y = -28
+model = 131
+num = 1
+waitPrev = true
+delay = 0.0
+action = run92
+- end -
+
+[·É»ú5¿½±´]
+pos = 980
+x = -40
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run87
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú5¿½±´¿½±´]
+pos = 980
+x = 560
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run89
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú11¿½±´¿½±´]
+pos = 1080
+x = 240
+y = -28
+model = 132
+num = 1
+waitPrev = true
+delay = 0.0
+action = run92
+- end -
+
+[·É»ú5¿½±´¿½±´]
+pos = 1090
+x = -40
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run87
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú5¿½±´¿½±´¿½±´]
+pos = 1090
+x = 560
+y = 120
+model = 127
+num = 4
+waitPrev = true
+delay = 0.0
+action = run89
+offX = 0
+offY = 0
+waitTime = 0.3
+- end -
+
+[·É»ú12]
+pos = 1190
+x = 200
+y = -20
+model = 133
+num = 2
+waitPrev = false
+delay = 0.0
+action = run92
+offX = 100
+offY = 0
+waitTime = 0.0
+- end -
+
+[·É»ú1¿½±´]
+pos = 1290
+x = 150
+y = -180
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´]
+pos = 1300
+x = 150
+y = -20
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´¿½±´]
+pos = 1310
+x = 40
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú3¿½±´¿½±´¿½±´]
+pos = 1320
+x = 260
+y = -60
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´¿½±´]
+pos = 1330
+x = 40
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´¿½±´¿½±´]
+pos = 1340
+x = 260
+y = -140
+model = 125
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú2¿½±´]
+pos = 1350
+x = 150
+y = -100
+model = 121
+num = 1
+waitPrev = false
+delay = 0.0
+action = run83
+- end -
+
+[·É»ú13]
+pos = 1360
+x = -22
+y = 95
+model = 135
+num = 4
+waitPrev = true
+delay = 0.0
+action = run5
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[·É»ú13¿½±´]
+pos = 1360
+x = 547
+y = 558
+model = 135
+num = 4
+waitPrev = false
+delay = 0.0
+action = run16
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[·É»ú14]
+pos = 1370
+x = 555
+y = 100
+model = 136
+num = 1
+waitPrev = true
+delay = 0.0
+action = run94
+- end -
+
+[·É»ú14¿½±´]
+pos = 1370
+x = -32
+y = 500
+model = 136
+num = 1
+waitPrev = false
+delay = 0.0
+action = run93
+- end -
+
+[·É»ú15]
+pos = 1380
+x = 300
+y = -190
+model = 113
+num = 1
+waitPrev = true
+delay = 5.0
+action = boss6
+- end -

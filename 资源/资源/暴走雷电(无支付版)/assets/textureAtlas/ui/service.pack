@@ -1,0 +1,11 @@
+service.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+servicebg
+  rotate: false
+  xy: 2, 2
+  size: 341, 460
+  orig: 341, 460
+  offset: 0, 0
+  index: -1

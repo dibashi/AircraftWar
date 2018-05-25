@@ -1,0 +1,25 @@
+dec2.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+4
+  rotate: false
+  xy: 2, 2
+  size: 402, 392
+  orig: 416, 424
+  offset: 14, 27
+  index: -1
+5
+  rotate: false
+  xy: 406, 2
+  size: 397, 176
+  orig: 397, 176
+  offset: 0, 0
+  index: -1
+6
+  rotate: false
+  xy: 406, 180
+  size: 251, 223
+  orig: 251, 223
+  offset: 0, 0
+  index: -1

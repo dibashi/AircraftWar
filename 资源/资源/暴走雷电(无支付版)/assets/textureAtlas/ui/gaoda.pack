@@ -1,0 +1,32 @@
+gaoda.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+018
+  rotate: false
+  xy: 2, 2
+  size: 450, 430
+  orig: 450, 430
+  offset: 0, 0
+  index: -1
+015
+  rotate: false
+  xy: 1358, 2
+  size: 450, 430
+  orig: 450, 430
+  offset: 0, 0
+  index: -1
+016
+  rotate: false
+  xy: 906, 2
+  size: 450, 430
+  orig: 450, 430
+  offset: 0, 0
+  index: -1
+017
+  rotate: false
+  xy: 454, 2
+  size: 450, 430
+  orig: 450, 430
+  offset: 0, 0
+  index: -1

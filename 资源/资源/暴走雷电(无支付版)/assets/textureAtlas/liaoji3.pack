@@ -1,0 +1,18 @@
+liaoji3.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+001
+  rotate: false
+  xy: 2, 2
+  size: 42, 50
+  orig: 42, 56
+  offset: 0, 4
+  index: -1
+002
+  rotate: false
+  xy: 46, 2
+  size: 21, 47
+  orig: 21, 47
+  offset: 0, 0
+  index: -1

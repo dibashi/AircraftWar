@@ -1,0 +1,11 @@
+wing1.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+000
+  rotate: false
+  xy: 2, 2
+  size: 35, 54
+  orig: 35, 62
+  offset: 0, 5
+  index: -1

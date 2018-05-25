@@ -1,0 +1,11 @@
+dec3.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+7
+  rotate: false
+  xy: 2, 2
+  size: 188, 802
+  orig: 264, 804
+  offset: 74, 2
+  index: -1

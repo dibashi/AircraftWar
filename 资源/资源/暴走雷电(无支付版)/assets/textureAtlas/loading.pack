@@ -1,0 +1,158 @@
+loading.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+ring3
+  rotate: false
+  xy: 44, 156
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+light4
+  rotate: false
+  xy: 454, 313
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+hello
+  rotate: false
+  xy: 537, 210
+  size: 120, 30
+  orig: 120, 30
+  offset: 0, 0
+  index: -1
+rain1
+  rotate: false
+  xy: 196, 382
+  size: 106, 11
+  orig: 106, 11
+  offset: 0, 0
+  index: -1
+streak
+  rotate: false
+  xy: 44, 384
+  size: 106, 11
+  orig: 106, 11
+  offset: 0, 0
+  index: -1
+wedge
+  rotate: false
+  xy: 346, 54
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+can
+  rotate: false
+  xy: 537, 184
+  size: 148, 24
+  orig: 148, 24
+  offset: 0, 0
+  index: -1
+talk
+  rotate: false
+  xy: 44, 34
+  size: 300, 120
+  orig: 300, 120
+  offset: 0, 0
+  index: -1
+026
+  rotate: false
+  xy: 602, 334
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+ring1
+  rotate: false
+  xy: 619, 268
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Damn
+  rotate: false
+  xy: 537, 268
+  size: 80, 50
+  orig: 80, 50
+  offset: 0, 0
+  index: -1
+fight_frame4
+  rotate: false
+  xy: 246, 156
+  size: 159, 158
+  orig: 159, 158
+  offset: 0, 0
+  index: -1
+light2
+  rotate: false
+  xy: 446, 2
+  size: 256, 50
+  orig: 256, 50
+  offset: 0, 0
+  index: -1
+big
+  rotate: false
+  xy: 537, 242
+  size: 123, 24
+  orig: 123, 24
+  offset: 0, 0
+  index: -1
+die
+  rotate: false
+  xy: 44, 358
+  size: 150, 24
+  orig: 150, 24
+  offset: 0, 0
+  index: -1
+lazer1
+  rotate: false
+  xy: 2, 2
+  size: 40, 400
+  orig: 40, 400
+  offset: 0, 0
+  index: -1
+tutorial_Aim01
+  rotate: false
+  xy: 578, 54
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+flashslow
+  rotate: false
+  xy: 448, 54
+  size: 128, 127
+  orig: 128, 127
+  offset: 0, 0
+  index: -1
+light3
+  rotate: false
+  xy: 44, 2
+  size: 400, 30
+  orig: 400, 30
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 246, 316
+  size: 206, 64
+  orig: 206, 64
+  offset: 0, 0
+  index: -1
+spark-alt2
+  rotate: false
+  xy: 536, 320
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+light1
+  rotate: false
+  xy: 407, 183
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,11 @@
+jiesuo_bg.jpg
+format: RGB565
+filter: Linear,Linear
+repeat: none
+jiesuo_bg
+  rotate: false
+  xy: 0, 0
+  size: 480, 854
+  orig: 480, 854
+  offset: 0, 0
+  index: -1

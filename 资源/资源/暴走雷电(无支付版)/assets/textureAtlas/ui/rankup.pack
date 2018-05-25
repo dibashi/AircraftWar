@@ -1,0 +1,32 @@
+rankup.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+008
+  rotate: false
+  xy: 120, 156
+  size: 229, 67
+  orig: 229, 67
+  offset: 0, 0
+  index: -1
+004
+  rotate: false
+  xy: 0, 0
+  size: 421, 156
+  orig: 421, 156
+  offset: 0, 0
+  index: -1
+005
+  rotate: false
+  xy: 60, 156
+  size: 60, 80
+  orig: 60, 80
+  offset: 0, 0
+  index: -1
+006
+  rotate: false
+  xy: 0, 156
+  size: 60, 80
+  orig: 60, 80
+  offset: 0, 0
+  index: -1

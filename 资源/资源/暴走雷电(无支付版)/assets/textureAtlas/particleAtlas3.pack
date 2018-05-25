@@ -1,0 +1,32 @@
+particleAtlas3.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flashslow
+  rotate: false
+  xy: 2, 2
+  size: 128, 127
+  orig: 128, 127
+  offset: 0, 0
+  index: -1
+streak
+  rotate: false
+  xy: 2, 197
+  size: 106, 11
+  orig: 106, 11
+  offset: 0, 0
+  index: -1
+026
+  rotate: false
+  xy: 68, 131
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+spark-alt2
+  rotate: false
+  xy: 2, 131
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

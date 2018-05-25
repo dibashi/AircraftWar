@@ -1,0 +1,88 @@
+achievement.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+018
+  rotate: false
+  xy: 1660, 2
+  size: 105, 45
+  orig: 105, 45
+  offset: 0, 0
+  index: -1
+019
+  rotate: false
+  xy: 423, 2
+  size: 419, 88
+  orig: 419, 88
+  offset: 0, 0
+  index: -1
+021
+  rotate: false
+  xy: 1432, 55
+  size: 200, 21
+  orig: 200, 21
+  offset: 0, 0
+  index: -1
+022
+  rotate: false
+  xy: 1634, 55
+  size: 150, 16
+  orig: 150, 16
+  offset: 0, 0
+  index: -1
+001
+  rotate: false
+  xy: 1363, 55
+  size: 67, 32
+  orig: 67, 32
+  offset: 0, 0
+  index: -1
+023
+  rotate: false
+  xy: 1786, 46
+  size: 13, 15
+  orig: 13, 15
+  offset: 0, 0
+  index: -1
+024
+  rotate: false
+  xy: 1363, 2
+  size: 295, 51
+  orig: 295, 51
+  offset: 0, 0
+  index: -1
+003
+  rotate: false
+  xy: 1634, 73
+  size: 150, 16
+  orig: 150, 16
+  offset: 0, 0
+  index: -1
+025
+  rotate: false
+  xy: 1767, 2
+  size: 41, 42
+  orig: 41, 42
+  offset: 0, 0
+  index: -1
+015
+  rotate: false
+  xy: 2, 2
+  size: 419, 90
+  orig: 419, 90
+  offset: 0, 0
+  index: -1
+026
+  rotate: false
+  xy: 942, 2
+  size: 419, 80
+  orig: 419, 80
+  offset: 0, 0
+  index: -1
+017
+  rotate: false
+  xy: 844, 2
+  size: 96, 82
+  orig: 96, 82
+  offset: 0, 0
+  index: -1

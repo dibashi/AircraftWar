@@ -1,0 +1,407 @@
+[第一关卡小飞机]
+pos = 216
+x = 150
+y = -37
+model = 1
+num = 3
+waitPrev = false
+delay = 0.0
+action = run2
+offX = 80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 216
+x = 390
+y = -37
+model = 23
+num = 1
+waitPrev = false
+delay = 1.5
+action = run2
+- end -
+
+[左起中]
+pos = 160
+x = -27
+y = 5
+model = 2
+num = 1
+waitPrev = true
+delay = 0.0
+action = run3
+- end -
+
+[第一关卡小飞机]
+pos = 170
+x = 450
+y = -24
+model = 3
+num = 3
+waitPrev = true
+delay = 0.0
+action = run2
+offX = -80
+offY = 0
+waitTime = 0.5
+- end -
+
+[第一关卡掉宝小飞机]
+pos = 170
+x = 210
+y = -24
+model = 24
+num = 1
+waitPrev = false
+delay = 1.5
+action = run2
+- end -
+
+[右起中]
+pos = 180
+x = 540
+y = 1
+model = 4
+num = 1
+waitPrev = true
+delay = 0.0
+action = run4
+- end -
+
+[左弧线]
+pos = 190
+x = -33
+y = 83
+model = 5
+num = 3
+waitPrev = true
+delay = 0.0
+action = run5
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[左弧线掉宝]
+pos = 190
+x = -33
+y = 83
+model = 25
+num = 1
+waitPrev = false
+delay = 1.5
+action = run5
+- end -
+
+[右起大]
+pos = 200
+x = 323
+y = -34
+model = 6
+num = 1
+waitPrev = true
+delay = 0.0
+action = run6
+- end -
+
+[右弧线]
+pos = 210
+x = 542
+y = 120
+model = 7
+num = 4
+waitPrev = true
+delay = 0.0
+action = run7
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[右弧线掉宝]
+pos = 210
+x = 542
+y = 120
+model = 26
+num = 1
+waitPrev = false
+delay = 1.5
+action = run7
+- end -
+
+[左起大]
+pos = 220
+x = 109
+y = -38
+model = 8
+num = 1
+waitPrev = true
+delay = 0.0
+action = run6
+- end -
+
+[教学1]
+pos = 220
+x = 100
+y = -30
+model = 9
+num = 2
+waitPrev = true
+delay = 0.0
+action = run8
+offX = 320
+offY = 0
+waitTime = 0.0
+- end -
+
+[教学2]
+pos = 220
+x = 260
+y = -28
+model = 10
+num = 1
+waitPrev = false
+delay = 0.0
+action = run9
+- end -
+
+[斜出小飞机左]
+pos = 320
+x = -20
+y = -5
+model = 11
+num = 4
+waitPrev = true
+delay = 0.0
+action = run10
+offX = -80
+offY = 10
+waitTime = 0.5
+- end -
+
+[斜出小飞机左掉宝]
+pos = 273
+x = -340
+y = -5
+model = 27
+num = 1
+waitPrev = false
+delay = 2.0
+action = run10
+- end -
+
+[右出大飞机1]
+pos = 330
+x = 550
+y = 150
+model = 12
+num = 1
+waitPrev = true
+delay = 0.0
+action = run11
+- end -
+
+[斜出小飞机右]
+pos = 340
+x = 545
+y = -3
+model = 13
+num = 4
+waitPrev = true
+delay = 0.0
+action = run12
+offX = 80
+offY = 10
+waitTime = 0.5
+- end -
+
+[斜出小飞机右掉宝]
+pos = 340
+x = 875
+y = -5
+model = 28
+num = 1
+waitPrev = false
+delay = 2.0
+action = run12
+- end -
+
+[左出大飞机2]
+pos = 350
+x = -36
+y = 177
+model = 14
+num = 1
+waitPrev = true
+delay = 0.0
+action = run13
+- end -
+
+[教学2]
+pos = 360
+x = 400
+y = -10
+model = 15
+num = 3
+waitPrev = true
+delay = 0.0
+action = run14
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 390
+x = 330
+y = -70
+model = 16
+num = 3
+waitPrev = false
+delay = 0.0
+action = run14
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2拷贝]
+pos = 420
+x = 360
+y = -130
+model = 16
+num = 3
+waitPrev = false
+delay = 0.0
+action = run14
+offX = 80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 380
+x = 120
+y = -10
+model = 17
+num = 3
+waitPrev = true
+delay = 0.0
+action = run15
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2]
+pos = 410
+x = 200
+y = -90
+model = 18
+num = 3
+waitPrev = false
+delay = 0.0
+action = run15
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[教学2拷贝]
+pos = 440
+x = 160
+y = -170
+model = 18
+num = 3
+waitPrev = false
+delay = 0.0
+action = run15
+offX = -80
+offY = 0
+waitTime = 0.3
+- end -
+
+[同时出现弧线小]
+pos = 700
+x = -22
+y = 95
+model = 19
+num = 3
+waitPrev = true
+delay = 0.0
+action = run5
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[同时出现弧线小拷贝]
+pos = 700
+x = -22
+y = 95
+model = 29
+num = 1
+waitPrev = false
+delay = 1.5
+action = run5
+- end -
+
+[同时出现弧线小]
+pos = 700
+x = 547
+y = 558
+model = 19
+num = 4
+waitPrev = false
+delay = 0.0
+action = run16
+offX = 0
+offY = 0
+waitTime = 0.5
+- end -
+
+[同时出现弧线小拷贝]
+pos = 700
+x = 547
+y = 558
+model = 30
+num = 1
+waitPrev = false
+delay = 1.5
+action = run16
+- end -
+
+[同时出现弧线大]
+pos = 420
+x = 555
+y = 100
+model = 20
+num = 1
+waitPrev = true
+delay = 0.0
+action = run18
+- end -
+
+[同时出现弧线大]
+pos = 420
+x = -32
+y = 500
+model = 21
+num = 1
+waitPrev = false
+delay = 0.0
+action = run17
+- end -
+
+[boss]
+pos = 430
+x = 300
+y = -130
+model = 22
+num = 1
+waitPrev = true
+delay = 5.0
+action = boss1
+- end -

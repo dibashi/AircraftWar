@@ -1,0 +1,11 @@
+014.jpg
+format: RGB565
+filter: Linear,Linear
+repeat: none
+014
+  rotate: false
+  xy: 0, 0
+  size: 480, 853
+  orig: 480, 853
+  offset: 0, 0
+  index: -1

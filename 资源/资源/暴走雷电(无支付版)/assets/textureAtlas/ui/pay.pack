@@ -1,0 +1,25 @@
+pay.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+007
+  rotate: false
+  xy: 2, 2
+  size: 392, 36
+  orig: 392, 36
+  offset: 0, 0
+  index: -1
+001
+  rotate: false
+  xy: 2, 78
+  size: 335, 36
+  orig: 335, 36
+  offset: 0, 0
+  index: -1
+006
+  rotate: false
+  xy: 2, 40
+  size: 385, 36
+  orig: 385, 36
+  offset: 0, 0
+  index: -1
