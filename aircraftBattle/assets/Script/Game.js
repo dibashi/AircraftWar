@@ -23,7 +23,7 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
-    
+
 cc.Class({
     extends: cc.Component,
 
@@ -153,7 +153,7 @@ cc.Class({
 
     onLoad() {
 
-        cc.sys.localStorage.setItem('killedEnemyCount',0);
+        cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
@@ -161,11 +161,11 @@ cc.Class({
         let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
         newRecordLabel.active = false;
         this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
-  
+
 
         let sjbw = this.node.getChildByName("kuangti_jinbi").getContentSize().width;
         let sjbh = this.node.getChildByName("kuangti_jinbi").getContentSize().height;
-        
+
         this.node.getChildByName("kuangti_jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);
 
         this.node.getChildByName("score").setLocalZOrder(100);
@@ -180,7 +180,11 @@ cc.Class({
         //根据globalHeroPlaneID来加载不同的预制体
         //var player = null;
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
+        if (dddd == null) {
+            dddd = 0;
+        }
         D.globalHeroPlaneID = dddd;
+
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
         }
@@ -215,12 +219,12 @@ cc.Class({
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
-        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
+        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width / 2, -hy + this.bombSprite.getContentSize().height / 2);
 
         this.shieldNo = 0;
         this.shieldSprite.on('touchstart', this.shieldOnclick, this);
         this.shieldLabel.string = this.shieldNo;
-        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width/2, -hy + this.shieldSprite.getContentSize().height/2);
+        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width / 2, -hy + this.shieldSprite.getContentSize().height / 2);
 
 
 
@@ -339,8 +343,8 @@ cc.Class({
     },
 
     dazhaoPlaneOver: function () {
-        
-        for(let i = 0; i<this.dazhaoPlanes.length;i++) {
+
+        for (let i = 0; i < this.dazhaoPlanes.length; i++) {
             this.dazhaoPlanes[i].runAction(cc.moveTo(1.5, cc.v2(800, 500)).easing(cc.easeIn(3.0)));
             this.dazhaoPlanes[i].getComponent("dazhaoPlane").closeBullet();
 
@@ -348,9 +352,9 @@ cc.Class({
             let dy = 500 - this.dazhaoPlanes[i].y;
             //cc.log("angel!!!!! ---> ", cc.pToAngle(cc.v2(dx,dy)));
             //this.dazhaoPlanes[i].runAction(cc.rotateBy(0.5,cc.pToAngle(cc.v2(dx,dy))));
-            this.dazhaoPlanes[i].runAction(cc.rotateBy(0.5,cc.pToAngle(cc.v2(dx,dy))*180/3.1415926));
+            this.dazhaoPlanes[i].runAction(cc.rotateBy(0.5, cc.pToAngle(cc.v2(dx, dy)) * 180 / 3.1415926));
         }
-        this.scheduleOnce(this.dazhaoButtonEnable,1.6);
+        this.scheduleOnce(this.dazhaoButtonEnable, 1.6);
         //先不实现这么复杂的逻辑
         // let cs = this.node.children;
         // let cc = this.node.childrenCount;
@@ -360,11 +364,11 @@ cc.Class({
         //     }
         // }
     },
-    dazhaoButtonEnable:function() {
+    dazhaoButtonEnable: function () {
         this.bombSprite.on('touchstart', this.bombOnclick, this);
-        for(let i = 0; i<this.dazhaoPlanes.length;i++) {
+        for (let i = 0; i < this.dazhaoPlanes.length; i++) {
             this.dazhaoPlanes[i].destroy();
-           
+
         }
 
         this.dazhaoPlanes = null;
@@ -391,7 +395,7 @@ cc.Class({
         }
     },
 
-    
+
 
     //一个敌人被消除就会调用这个函数，所以 enemyCount要先缩减。
     checkNextStage: function () {
@@ -591,11 +595,11 @@ cc.Class({
 
 
     getJinBi: function () {
-    
+
         var c = cc.sys.localStorage.getItem('jinBiCount');
-     
+
         var newC = parseInt(c) + globalDropJinBiCount;
-      
+
         cc.sys.localStorage.setItem('jinBiCount', newC);
 
         let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
@@ -627,7 +631,7 @@ cc.Class({
             cc.sys.localStorage.setItem('bestScore', currentScore);
         }
         cc.log("best score--> " + cc.sys.localStorage.getItem('bestScore'));
-        cc.sys.localStorage.setItem("currentScore",currentScore);
+        cc.sys.localStorage.setItem("currentScore", currentScore);
         cc.director.loadScene('end');
     },
 
