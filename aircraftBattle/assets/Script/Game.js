@@ -422,19 +422,7 @@ cc.Class({
         //cc.log(globalStageData);
         // globalStageData[stage],
         //var zzz = [50, 100, 150, 200, 250, 300],
-        let w = cc.director.getVisibleSize().width;
-        let h = cc.director.getVisibleSize().height / 2 - this.player.getContentSize().height / 2;
-
-        var zzz = new Array();
-        zzz[0] = 0;
-        zzz[1] = w / 4;
-        zzz[2] = -w / 4;
-
-        var yzzz = new Array();
-
-        yzzz[0] = (h / 5) * 2;
-        yzzz[1] = (h / 5) * 3;
-        yzzz[2] = (h / 5) * 4;
+        
 
         this.enemyCount = globalStageData[this.stage].length;
 
@@ -473,12 +461,34 @@ cc.Class({
             this.node.addChild(enemy);
 
 
-            enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
+        let w = cc.director.getVisibleSize().width;
+        let h = cc.director.getVisibleSize().height / 2 - enemy.getContentSize().height / 2;
+
+        var zzz = new Array();
+        zzz[0] = 0;
+        zzz[1] = w / 4;
+        zzz[2] = -w / 4;
+
+        var yzzz = new Array();
+
+        yzzz[0] = (h / 5) * 2;
+        yzzz[1] = (h / 5) * 3;
+        yzzz[2] = (h / 5) * 4;
+// let beginRandomX = -w +(2*w)*Math.random(); //-width----width
+// let beginRandomY = cc.director.getVisibleSize().height / 2 +30+100*Math.random(); //h/2+30-----h/2+130
+let beginRandomX = -w/2+enemy.getContentSize().width/2 +(w-enemy.getContentSize().width)*Math.random();
+let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
+          //  enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
+          enemy.setPosition(beginRandomX,beginRandomY);
+
             var pos = enemy.getPosition();
-            pos.x = zzz[Math.floor(Math.random() * 3)];
-            pos.y = yzzz[Math.floor(Math.random() * 3)];
+            pos.x = beginRandomX;
+            pos.y =  60+(cc.director.getVisibleSize().height / 2 -60)*Math.random();
+           // pos.x = zzz[Math.floor(Math.random() * 3)];
+           // pos.y = yzzz[Math.floor(Math.random() * 3)];
             var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
-            var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
+           // var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
+           var seq = cc.sequence(cc.moveTo(1, pos), callback);
             enemy.runAction(seq);
 
             // let pos = enemy.getPosition();
