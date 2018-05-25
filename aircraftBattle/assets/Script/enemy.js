@@ -362,6 +362,7 @@ cc.Class({
 
         //this.nodeBar.destroy();//删除血条
         this.node.opacity = 0;
+        this.unscheduleAllCallbacks();
         this.scheduleOnce(this.baozhaOver, 0.7);
 
 
