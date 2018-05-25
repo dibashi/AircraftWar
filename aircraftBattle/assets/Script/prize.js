@@ -110,6 +110,8 @@ cc.Class({
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
                     // other.node.getComponent("Player").raiseTheSpeedOfFire();
+                    //播放火力提升动画
+                    this.node.parent.getComponent("Game").fireBoostAni();
                     other.node.getComponent("Player").upgradePlane();
                     break;
                 case generateType.huojianpao:

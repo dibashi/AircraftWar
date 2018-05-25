@@ -176,6 +176,8 @@ cc.Class({
 
 
     upgradePlane:function() {
+
+        
         if(this.guandaoCount<5) {
             this.guandaoCount++;
             //先全部关闭，然后根据个数来设置相应的管道

@@ -146,6 +146,11 @@ cc.Class({
             type: cc.Prefab,
         },
         dazhaoPlanes: null,
+
+        fireBoost: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
 
@@ -583,6 +588,14 @@ cc.Class({
             //     pf.runAction(cc.repeatForever(sp1));
 
         }
+    },
+
+    fireBoostAni:function(){
+       // this.fireBoost
+       cc.log("火力提升");
+       let anim = this.fireBoost.getComponent(cc.Animation);
+       anim.play();
+
     },
 
     generateJinBi: function (pos) {
