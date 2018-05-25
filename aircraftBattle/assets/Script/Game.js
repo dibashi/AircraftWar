@@ -211,14 +211,16 @@ cc.Class({
         this.runStage();
 
         this.bombNo = 0;
-        this.bombSprite.on('touchstart', this.bombOnclick, this);//这个精灵旋转过了，所以长宽不好说
+        this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombLabel.string = this.bombNo;
-        this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
+        //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
+
+        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
         this.shieldNo = 0;
-        this.shieldSprite.on('touchstart', this.shieldOnclick, this);//这个精灵旋转过了，所以长宽不好说
+        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
         this.shieldLabel.string = this.shieldNo;
-        this.shieldSprite.setPosition(-wx + this.shieldSprite.getContentSize().width/2, -hy + this.shieldSprite.getContentSize().height/2);
+        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width/2, -hy + this.shieldSprite.getContentSize().height/2);
 
 
 

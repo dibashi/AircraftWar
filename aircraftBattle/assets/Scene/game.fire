@@ -716,8 +716,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -233,
-      "y": -417
+      "x": 238,
+      "y": -433
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -757,12 +757,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 67,
+      "width": 22,
       "height": 40
     },
     "_rotationX": 0,
@@ -771,7 +771,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -19,
+      "x": 5,
       "y": 0
     },
     "_skewX": 0,
@@ -797,7 +797,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "222",
+    "_N$string": "2",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -815,7 +815,7 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": -100,
-    "_right": 70.5,
+    "_right": 80,
     "_top": 33.5,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -901,8 +901,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 227,
-      "y": -421
+      "x": -235,
+      "y": -426
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -942,12 +942,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 67,
+      "width": 22,
       "height": 40
     },
     "_rotationX": 0,
@@ -956,7 +956,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 19,
+      "x": -10,
       "y": 0
     },
     "_skewX": 0,
@@ -982,7 +982,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "555",
+    "_N$string": "0",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -1000,7 +1000,7 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": -100,
-    "_right": 32.5,
+    "_right": 73,
     "_top": 33.5,
     "_bottom": 0,
     "_verticalCenter": 0,
