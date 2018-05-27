@@ -1384,6 +1384,9 @@
     "heroPlane5": {
       "__uuid__": "cbbe10c9-35f2-49c8-96e8-46abe1ddad09"
     },
+    "audio": {
+      "__uuid__": "1353a94c-6ed6-486f-8d60-8de66b02878f"
+    },
     "spriteCoin": null,
     "labelCoin": null,
     "personalBestScore": null

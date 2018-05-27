@@ -57,10 +57,20 @@ cc.Class({
             type: cc.Prefab,
         },
 
+       
+
+
+        audio: {
+            url: cc.AudioClip,
+            default: null
+        },
+     
+
 
         spriteCoin:null,
         labelCoin:null,
         personalBestScore: null,
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -110,16 +120,6 @@ cc.Class({
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded)+1);
         }
-        //  else {
-        //     var countLoaded = parseInt(cc.sys.localStorage.getItem('isLoaded')) +1;
-        //     cc.sys.localStorage.setItem('isLoaded', countLoaded);
-        //     //cc.log("第" + countLoaded +"次登陆");
-        // }
-
-        // cc.log("isloaded " + cc.sys.localStorage.getItem('isLoaded') );
-        // cc.log("jinBiCount " + cc.sys.localStorage.getItem('jinBiCount') );
-        //cc.log( this.labelCoin);
-       // cc.log(cc.sys.localStorage.getItem("jinBiCount"));
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分："+cc.sys.localStorage.getItem("bestScore");
@@ -152,6 +152,12 @@ cc.Class({
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
         this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame; 
         this.node.getChildByName("selectedPlane").scale = 1.5;
+
+        // cc.game.addPersistRootNode(this.gameMusic);
+        // this.gameMusic.play();
+
+        cc.audioEngine.play(this.audio, true, 0.5);
+        
     },
 
     beginClick:function() {

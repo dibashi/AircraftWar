@@ -46,6 +46,14 @@ cc.Class({
 
         isPlaneGouMai:true,
         isWingmanGouMai:true,
+
+        spriteCoin:null,
+        labelCoin:null,
+
+        gameMusic: {
+            default: null,
+            type: cc.AudioSource,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -80,6 +88,16 @@ cc.Class({
 
    
     onLoad () {
+
+         //适配
+         let wx = cc.director.getVisibleSize().width*0.5;
+         let hy = cc.director.getVisibleSize().height*0.5;
+         this.spriteCoin = this.node.getChildByName("spriteCoin");
+         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2));
+         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
+
+
         this.planeArray = this.planes.children;
         this.currentID = 0;
         //哪些飞机显示，哪些飞机隐藏，显示的飞机的僚机哪些显示，哪些隐藏
@@ -91,7 +109,7 @@ cc.Class({
 
       
     
-        
+        this.gameMusic.play();
        
      },
      planeGouMaiJudgment:function() {
@@ -177,6 +195,8 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
         } else {
             let afterCoint = currentCoin -200;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
+            this.labelCoin.string = afterCoint;
+
             let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount'+this.currentID))+1;
             cc.sys.localStorage.setItem('heroPlaneWingmanCount'+this.currentID,wmCount);
             this.refresh();
@@ -198,6 +218,8 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
             } else {
                 let afterCoint = currentCoin -200;
                 cc.sys.localStorage.setItem('jinBiCount', afterCoint);
+                this.labelCoin.string = afterCoint;
+                
                 cc.sys.localStorage.setItem('heroPlanePossess'+this.currentID,1);
                 //this.wingmanGouMaiJudgment();//觉得这个函数没必要调用
                 this.planeGouMaiJudgment();
