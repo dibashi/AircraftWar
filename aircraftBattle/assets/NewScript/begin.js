@@ -57,7 +57,10 @@ cc.Class({
             type: cc.Prefab,
         },
 
-       
+        soundSetting: {
+            default: null,
+            type: cc.Prefab,
+        },
 
 
         audio: {
@@ -65,7 +68,10 @@ cc.Class({
             default: null
         },
      
-
+        buttonAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
 
         spriteCoin:null,
         labelCoin:null,
@@ -116,7 +122,9 @@ cc.Class({
             cc.sys.localStorage.setItem('heroPlanePossess0',1);
             cc.sys.localStorage.setItem('heroPlanePossess1',0);
             cc.sys.localStorage.setItem('heroPlanePossess2',0);
-     
+     //背景音乐 与音效 1为播放 0 为停止
+            cc.sys.localStorage.setItem('gameSoundBG',1);
+            cc.sys.localStorage.setItem('effectSound',1);
 
         }
         else {
@@ -164,7 +172,7 @@ cc.Class({
         //     this.audioIsPlay = true;
         // }
        cc.audioEngine.stopAll();
-      cc.audioEngine.play(this.audio, true, 0.5);
+   //   cc.audioEngine.play(this.audio, true, 0.5);
         
         
     },
@@ -177,9 +185,14 @@ cc.Class({
         cc.director.loadScene('warehouse');
     },
 
-    start () {
+    onSoundButtonClick:function() {
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.soundSetting);
+        ss.setPosition(0,0);
+
+        ss.getComponent("sound").onWho = this.node;
+        this.node.addChild(ss);
 
     },
-
     // update (dt) {},
 });
