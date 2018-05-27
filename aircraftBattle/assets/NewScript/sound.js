@@ -44,6 +44,16 @@ cc.Class({
             default: null,
             type: cc.Sprite,
         },
+
+        audio: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        buttonAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
         
         onWho:null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
     },
@@ -83,35 +93,46 @@ cc.Class({
     },
 
     onEffectButtonClick: function () {
-        cc.log("onEffectButtonClick");
+    
         let effectSound = cc.sys.localStorage.getItem('effectSound');
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         if (effectSound == 1) {
+            cc.log("offEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 0);
             this.effectButton.spriteFrame = this.offSprite.spriteFrame;
             //关闭的实际代码
+           // cc.audioEngine.pauseAllEffects();
+           cc.audioEngine.setEffectsVolume(0.0);
+           
         } else {
+            cc.log("onEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 1);
             this.effectButton.spriteFrame = this.onSprite.spriteFrame;
             //打开的实际代码
+            cc.audioEngine.setEffectsVolume(0.5);
         }
     },
 
     onBgButtonClick: function () {
         cc.log("onBgButtonClick");
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
         if (gameSoundBG == 1) {
             cc.sys.localStorage.setItem('gameSoundBG', 0);
             this.gameBgButton.spriteFrame = this.offSprite.spriteFrame;
             //关闭的实际代码
+            cc.audioEngine.stopMusic();
         } else {
             cc.sys.localStorage.setItem('gameSoundBG', 1);
             this.gameBgButton.spriteFrame = this.onSprite.spriteFrame;
             //打开的实际代码
+            cc.audioEngine.playMusic(this.audio, true);
         }
     },
 
     onCancelClick: function () {
         cc.log("onCancelClick");
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.eventManager.pauseTarget(this.node, true);
 
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);

@@ -171,21 +171,29 @@ cc.Class({
         //     cc.audioEngine.play(this.audio, true, 0.5);
         //     this.audioIsPlay = true;
         // }
-       cc.audioEngine.stopAll();
-   //   cc.audioEngine.play(this.audio, true, 0.5);
+     //  cc.audioEngine.stopAll();
+     let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+     if (gameSoundBG == 1) {
+        cc.audioEngine.playMusic(this.audio, true);
+    } 
         
         
     },
 
     beginClick:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.director.loadScene('game');
     },
 
     planesClick:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+
         cc.director.loadScene('warehouse');
     },
 
     onSoundButtonClick:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.soundSetting);
         ss.setPosition(0,0);

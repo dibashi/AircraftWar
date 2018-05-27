@@ -1355,7 +1355,14 @@
     },
     "offSprite": {
       "__id__": 6
-    }
+    },
+    "audio": {
+      "__uuid__": "1353a94c-6ed6-486f-8d60-8de66b02878f"
+    },
+    "buttonAudio": {
+      "__uuid__": "fa0bfb69-7891-4fde-8363-b408db4e214d"
+    },
+    "onWho": null
   },
   {
     "__type__": "cc.PrefabInfo",
