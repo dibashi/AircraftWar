@@ -2140,6 +2140,9 @@
     "settingButton": null,
     "soundSetting": {
       "__uuid__": "f171c76d-53e8-4785-b31c-e7c3ac73fbd6"
+    },
+    "buttonAudio": {
+      "__uuid__": "fa0bfb69-7891-4fde-8363-b408db4e214d"
     }
   }
 ]

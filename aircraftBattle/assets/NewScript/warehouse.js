@@ -61,6 +61,11 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        buttonAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:

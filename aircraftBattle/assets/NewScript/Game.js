@@ -158,6 +158,11 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        buttonAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
 
 
@@ -689,7 +694,7 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
 
         ss.getComponent("sound").onWho = this.node;
         this.node.addChild(ss);
-
+        cc.director.pause();
     },
 
 
