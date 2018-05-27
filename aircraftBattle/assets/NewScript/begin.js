@@ -67,72 +67,76 @@ cc.Class({
             url: cc.AudioClip,
             default: null
         },
-     
+
         buttonAudio: {
             default: null,
             url: cc.AudioClip
         },
 
-        spriteCoin:null,
-        labelCoin:null,
+        spriteCoin: null,
+        labelCoin: null,
         personalBestScore: null,
 
+        settingButton:null,
 
-        
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
+    onLoad() {
         //适配
-        let wx = cc.director.getVisibleSize().width*0.5;
-        let hy = cc.director.getVisibleSize().height*0.5;
+        let wx = cc.director.getVisibleSize().width * 0.5;
+        let hy = cc.director.getVisibleSize().height * 0.5;
         this.spriteCoin = this.node.getChildByName("spriteCoin");
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2));
-       
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+
         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
         this.personalBestScore = this.node.getChildByName("personalHistory").getChildByName("personalBestScore").getComponent(cc.Label);
 
+     this.settingButton = this.node.getChildByName("soundSetting");
+     this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+
         //！！！由于现在不知道怎么把本地存储的数据删掉，为了调试方便 只要游戏进来都按第一次登陆
-       // cc.sys.localStorage.setItem("isLoaded",0);
-        
+        // cc.sys.localStorage.setItem("isLoaded",0);
+
         let isloaded = cc.sys.localStorage.getItem("isLoaded");
-        cc.log("isloaded----> " +isloaded);
+        cc.log("isloaded----> " + isloaded);
         // var zzzzzz=  cc.sys.localStorage.getItem("zzzzzz");
         // var ppppppp=  cc.sys.localStorage.getItem("ppppp",0);
         // var tttttt=  cc.sys.localStorage.getItem("tttttt",1);
         // cc.log(" zzzzzz   " + zzzzzz + "  ppppppp" + ppppppp + " tttttt " +tttttt);
-       
-        if(isloaded==0||isloaded==null)  {
+
+        if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', globalJinBiCount);
             //分数一般是从服务器读取，这里先用本地存储。
             cc.sys.localStorage.setItem('bestScore', 0);
 
-            cc.sys.localStorage.setItem('globalHeroPlaneID',0);
+            cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
             cc.log("运行到了");
-//初始化一下玩家对各个飞机拥有的僚机数量
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount0',6);
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount1',0);
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount2',0);
+            //初始化一下玩家对各个飞机拥有的僚机数量
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 6);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount1', 0);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount2', 0);
             // cc.sys.localStorage.setItem('heroPlaneWingmanCount3',0);
             // cc.sys.localStorage.setItem('heroPlaneWingmanCount4',0);
-//初始化一下玩家拥有的飞机 1代表玩家拥有 0代表 玩家没有
-            cc.sys.localStorage.setItem('heroPlanePossess0',1);
-            cc.sys.localStorage.setItem('heroPlanePossess1',0);
-            cc.sys.localStorage.setItem('heroPlanePossess2',0);
-     //背景音乐 与音效 1为播放 0 为停止
-            cc.sys.localStorage.setItem('gameSoundBG',1);
-            cc.sys.localStorage.setItem('effectSound',1);
+            //初始化一下玩家拥有的飞机 1代表玩家拥有 0代表 玩家没有
+            cc.sys.localStorage.setItem('heroPlanePossess0', 1);
+            cc.sys.localStorage.setItem('heroPlanePossess1', 0);
+            cc.sys.localStorage.setItem('heroPlanePossess2', 0);
+            //背景音乐 与音效 1为播放 0 为停止
+            cc.sys.localStorage.setItem('gameSoundBG', 1);
+            cc.sys.localStorage.setItem('effectSound', 1);
 
         }
         else {
-            cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded)+1);
+            cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
         }
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
-        this.personalBestScore.string = "最佳得分："+cc.sys.localStorage.getItem("bestScore");
+        this.personalBestScore.string = "最佳得分：" + cc.sys.localStorage.getItem("bestScore");
 
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
         D.globalHeroPlaneID = dddd;
@@ -160,43 +164,43 @@ cc.Class({
         }
         cc.log("ID-->" + dddd + "  size----> " + playerImg.getContentSize().width + '   ' + playerImg.getContentSize().height);
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
-        this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame; 
+        this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame;
         this.node.getChildByName("selectedPlane").scale = 1.5;
 
-        // cc.game.addPersistRootNode(this.gameMusic);
-        // this.gameMusic.play();
-        //如果当前没播放 并且用户的播放按钮打开了 则播放 目前只实现了一半
-        
-        // if(this.audioIsPlay == false ) {
-        //     cc.audioEngine.play(this.audio, true, 0.5);
-        //     this.audioIsPlay = true;
-        // }
-     //  cc.audioEngine.stopAll();
-     let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
-     if (gameSoundBG == 1) {
-        cc.audioEngine.playMusic(this.audio, true);
-    } 
-        
-        
+
+        let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+        if (gameSoundBG == 1) {
+            cc.audioEngine.playMusic(this.audio, true);
+        }
+
+
+
+
     },
 
-    beginClick:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    beginClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.director.loadScene('game');
     },
 
-    planesClick:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    planesClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
 
         cc.director.loadScene('warehouse');
     },
 
-    onSoundButtonClick:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    leaderboardClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.director.loadScene('Leaderboard');
+    },
+
+    onSoundButtonClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
 
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.soundSetting);
-        ss.setPosition(0,0);
+        ss.setPosition(0, 0);
 
         ss.getComponent("sound").onWho = this.node;
         this.node.addChild(ss);

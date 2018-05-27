@@ -151,6 +151,8 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+
+        settingButton:null,
     },
 
 
@@ -174,6 +176,11 @@ cc.Class({
         this.node.getChildByName("kuangti_jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);
 
         this.node.getChildByName("score").setLocalZOrder(100);
+
+
+        this.settingButton = this.node.getChildByName("soundSetting");
+        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - sjbh-10 -(this.settingButton.getContentSize().height / 2));
+
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制

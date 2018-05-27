@@ -54,6 +54,8 @@ cc.Class({
             default: null,
             type: cc.AudioSource,
         },
+
+        settingButton:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -96,7 +98,8 @@ cc.Class({
          this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2));
          this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
          this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
-
+         this.settingButton = this.node.getChildByName("soundSetting");
+         this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
 
         this.planeArray = this.planes.children;
         this.currentID = 0;

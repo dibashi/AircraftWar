@@ -46,6 +46,12 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+
+        spriteCoin: null,
+        labelCoin: null,
+       
+
+        settingButton:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -64,9 +70,19 @@ cc.Class({
         this.killedEnemyLabel.getComponent(cc.Label).string = "击落目标：" +kc;
 
         //适配
-        let sp = this.node.getChildByName("spriteCoin");
-        sp.setPosition(-this.node.getContentSize().width/2+sp.getContentSize().width/2,this.node.getContentSize().height/2-sp.getContentSize().height/2);
-     },
+         //适配
+         let wx = cc.director.getVisibleSize().width * 0.5;
+         let hy = cc.director.getVisibleSize().height * 0.5;
+         this.spriteCoin = this.node.getChildByName("spriteCoin");
+         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+ 
+         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+       
+ 
+      this.settingButton = this.node.getChildByName("soundSetting");
+      this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+     
+    },
 
     start () {
 

@@ -166,8 +166,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 720,
-      "height": 1280
+      "width": 640,
+      "height": 960
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -197,7 +197,7 @@
       "__uuid__": "873b14ee-4c63-445b-ac2d-c43648cbe22c"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -247,8 +247,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 102,
-      "height": 104
+      "width": 80,
+      "height": 80
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -256,8 +256,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -251,
-      "y": 339
+      "x": -193,
+      "y": -7
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1030,9 +1030,11 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
-    "component": "end",
-    "handler": "gameRestart",
+    "target": {
+      "__id__": 2
+    },
+    "component": "begin",
+    "handler": "leaderboardClick",
     "customEventData": ""
   },
   {
@@ -1546,6 +1548,7 @@
     },
     "spriteCoin": null,
     "labelCoin": null,
-    "personalBestScore": null
+    "personalBestScore": null,
+    "settingButton": null
   }
 ]
