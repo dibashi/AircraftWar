@@ -1178,9 +1178,11 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
-    "component": "end",
-    "handler": "gameRestart",
+    "target": {
+      "__id__": 2
+    },
+    "component": "begin",
+    "handler": "storeClick",
     "customEventData": ""
   },
   {

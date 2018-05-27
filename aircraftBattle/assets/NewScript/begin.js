@@ -195,6 +195,12 @@ cc.Class({
         cc.director.loadScene('Leaderboard');
     },
 
+    storeClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.director.loadScene('store');
+    },
+
     onSoundButtonClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
 
