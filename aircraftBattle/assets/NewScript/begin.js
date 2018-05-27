@@ -71,6 +71,8 @@ cc.Class({
         labelCoin:null,
         personalBestScore: null,
 
+
+        
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -155,8 +157,15 @@ cc.Class({
 
         // cc.game.addPersistRootNode(this.gameMusic);
         // this.gameMusic.play();
-
-        cc.audioEngine.play(this.audio, true, 0.5);
+        //如果当前没播放 并且用户的播放按钮打开了 则播放 目前只实现了一半
+        
+        // if(this.audioIsPlay == false ) {
+        //     cc.audioEngine.play(this.audio, true, 0.5);
+        //     this.audioIsPlay = true;
+        // }
+       cc.audioEngine.stopAll();
+      cc.audioEngine.play(this.audio, true, 0.5);
+        
         
     },
 

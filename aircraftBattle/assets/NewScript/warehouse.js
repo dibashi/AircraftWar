@@ -109,7 +109,7 @@ cc.Class({
 
       
     
-        this.gameMusic.play();
+        
        
      },
      planeGouMaiJudgment:function() {
