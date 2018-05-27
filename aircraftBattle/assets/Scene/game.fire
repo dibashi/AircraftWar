@@ -621,8 +621,10 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
-    "component": "begin",
+    "target": {
+      "__id__": 2
+    },
+    "component": "Game",
     "handler": "onSoundButtonClick",
     "customEventData": ""
   },
@@ -1414,6 +1416,10 @@
     "dazhaoPlanes": null,
     "fireBoost": {
       "__id__": 9
+    },
+    "settingButton": null,
+    "soundSetting": {
+      "__uuid__": "f171c76d-53e8-4785-b31c-e7c3ac73fbd6"
     }
   }
 ]

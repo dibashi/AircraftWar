@@ -153,6 +153,11 @@ cc.Class({
         },
 
         settingButton:null,
+
+        soundSetting: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
 
@@ -672,6 +677,19 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
         if (fs > cc.sys.localStorage.getItem('bestScore')) {
             this.node.getChildByName("score").getChildByName("newRecord").active = true;
         }
+    },
+
+
+    onSoundButtonClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.soundSetting);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("sound").onWho = this.node;
+        this.node.addChild(ss);
+
     },
 
 

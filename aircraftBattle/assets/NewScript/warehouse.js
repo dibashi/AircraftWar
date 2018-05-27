@@ -56,6 +56,11 @@ cc.Class({
         },
 
         settingButton:null,
+
+        soundSetting: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -246,6 +251,18 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
         // cc.sys.localStorage.setItem('globalHeroPlaneID',this.currentID);
     },
 
+
+    onSoundButtonClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.soundSetting);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("sound").onWho = this.node;
+        this.node.addChild(ss);
+
+    },
     
     // update (dt) {},
 });
