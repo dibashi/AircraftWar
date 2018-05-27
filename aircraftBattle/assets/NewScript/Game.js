@@ -169,6 +169,8 @@ cc.Class({
 
 
     onLoad() {
+   
+      
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
@@ -256,6 +258,10 @@ cc.Class({
         // }   
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
+
+
+
+       
 
     },
 
@@ -693,8 +699,13 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
         ss.setPosition(0, 0);
 
         ss.getComponent("sound").onWho = this.node;
+         
+       // cc.director.getActionManager().pauseTarget(this.node,true);
+    //    this.node.pauseAllActions();
+    //    cc.log(this.node);
+
         this.node.addChild(ss);
-        cc.director.pause();
+         
     },
 
 

@@ -49,7 +49,7 @@ cc.Class({
        // cc.log("this.node.getContentSize().height  " + this.node.getBoundingBox().height  );
 
        this.p = this.node.parent.getContentSize().height / 2 + this.node.getBoundingBox().height / 2;
-        cc.log("~P--》 " + this.p);
+       // cc.log("~P--》 " + this.p);
     },
 
     update(dt) {
