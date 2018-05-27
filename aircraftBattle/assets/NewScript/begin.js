@@ -168,12 +168,25 @@ cc.Class({
         this.node.getChildByName("selectedPlane").scale = 1.5;
 
 
-        let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
-        if (gameSoundBG == 1) {
-            cc.audioEngine.playMusic(this.audio, true);
+        let effectSound = cc.sys.localStorage.getItem('effectSound');
+        if (effectSound == 1) {
+            cc.audioEngine.setEffectsVolume(0.5);
+       
+        } else {
+            //这真的是引擎的bug，没办法 http://forum.cocos.com/t/bug/45242/9
+            cc.audioEngine.setEffectsVolume(0.0000001);
+            cc.audioEngine.setMusicVolume(0.5);
         }
 
 
+        let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+        if (gameSoundBG == 1) {
+            cc.audioEngine.playMusic(this.audio, true);
+        } else {
+            cc.audioEngine.stopMusic();
+        }
+
+        
 
 
     },
