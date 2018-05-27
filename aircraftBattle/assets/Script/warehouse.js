@@ -172,7 +172,8 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
         if(currentCoin<200){
-            cc.log("金币不够，请购买！");
+            cc.log("金币不足，请购买！");
+            Alert.show("金币不足，请购买！",null,false);
         } else {
             let afterCoint = currentCoin -200;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
@@ -193,6 +194,7 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
             let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
             if(currentCoin<200){
                 cc.log("金币不够，请购买！");
+                Alert.show("金币不足，请购买！",null,false);
             } else {
                 let afterCoint = currentCoin -200;
                 cc.sys.localStorage.setItem('jinBiCount', afterCoint);
