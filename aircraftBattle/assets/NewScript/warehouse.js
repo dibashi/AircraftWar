@@ -50,10 +50,7 @@ cc.Class({
         spriteCoin:null,
         labelCoin:null,
 
-        gameMusic: {
-            default: null,
-            type: cc.AudioSource,
-        },
+        
 
         settingButton:null,
 
