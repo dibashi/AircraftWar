@@ -184,7 +184,10 @@
     "enableGuanDao": true,
     "shootingSpeed": 0.5,
     "damage": 0,
-    "onceBulletCount": 1
+    "onceBulletCount": 1,
+    "bullet2Audio": {
+      "__uuid__": "09324852-67c5-4f8b-9caa-bef9aa6b4d1b"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
