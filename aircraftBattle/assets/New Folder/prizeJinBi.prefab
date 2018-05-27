@@ -104,7 +104,11 @@
     },
     "_enabled": true,
     "prizeType": -1,
-    "t": 1
+    "t": 1,
+    "jinbiRunFlag": true,
+    "prizeAudio": {
+      "__uuid__": "cc8189aa-a971-4778-b3fe-cfb500613739"
+    }
   },
   {
     "__type__": "cc.BoxCollider",

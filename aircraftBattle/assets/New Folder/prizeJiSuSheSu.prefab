@@ -100,7 +100,12 @@
       "__id__": 1
     },
     "_enabled": true,
-    "prizeType": -1
+    "prizeType": -1,
+    "t": 1,
+    "jinbiRunFlag": true,
+    "prizeAudio": {
+      "__uuid__": "cc35f357-3c53-422e-914a-1b3330bb0681"
+    }
   },
   {
     "__type__": "cc.BoxCollider",
