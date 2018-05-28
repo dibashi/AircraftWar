@@ -1,0 +1,7 @@
+{
+  "ver": "1.0.0",
+  "uuid": "c07bbfa5-82ac-4ba1-b384-c9ef7352061f",
+  "atlasJson": "{\"width\":512,\"imagePath\":\"WXxfj_tex.png\",\"height\":512,\"name\":\"WXxfj\",\"SubTexture\":[{\"width\":16,\"y\":1,\"height\":245,\"name\":\"chongci3\",\"x\":485},{\"width\":133,\"y\":314,\"height\":87,\"name\":\"chongci4\",\"x\":1},{\"width\":85,\"y\":314,\"height\":123,\"name\":\"chongci2\",\"x\":243},{\"width\":257,\"y\":1,\"height\":311,\"name\":\"chongci1\",\"x\":1},{\"width\":240,\"y\":439,\"height\":37,\"name\":\"baozou1\",\"x\":243},{\"width\":240,\"y\":403,\"height\":47,\"name\":\"baozou2\",\"x\":1},{\"width\":241,\"y\":478,\"height\":21,\"name\":\"baozou3\",\"x\":1},{\"width\":89,\"y\":314,\"height\":56,\"name\":\"ziti_baozou\",\"x\":136}]}",
+  "texture": "0b5f59a3-a6b6-448a-902c-953d5a0890e9",
+  "subMetas": {}
+}
