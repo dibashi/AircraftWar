@@ -174,7 +174,7 @@ cc.Class({
 
         baozouFlag:false,//当前是否暴走，在大招里面释放
 
-        baozouInterval:6,//暴走效果间隔
+        baozouInterval:30,//暴走效果间隔
 
     baozouPossession:5.5,//暴走持续时间 比大招的5秒稍长点
     },
