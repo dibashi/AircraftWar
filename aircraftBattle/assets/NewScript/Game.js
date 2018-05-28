@@ -180,9 +180,11 @@ cc.Class({
 
         baozouFlag:false,//当前是否暴走，在大招里面释放
 
-        baozouInterval:30,//暴走效果间隔
+        baozouInterval:3000000000,//暴走效果间隔
 
     baozouPossession:5.5,//暴走持续时间 比大招的5秒稍长点
+
+        sself:null,
     },
 
 
@@ -284,13 +286,15 @@ cc.Class({
 
 cc.log("baozouInterval  --->" + this.baozouInterval);
 
-          this.schedule(this.baozouProcessing,this.baozouInterval);
+       //   this.schedule(this.baozouProcessing,this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
 
        
        if(this.shieldNo>0) {
            this.shieldTeXiao();
        }
+
+       
     },
 
     shieldTeXiao:function() {
@@ -448,14 +452,16 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
 
     shieldOnclick: function () {
 
-
+        // cc.log("gggame! --> ");
+        // cc.log(this);
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
             if(this.shieldNo == 0) {
-                this.huDunTeXiao.destroy();
+                //
+                this.hudunPartice.destroy();     
             }
-            cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
+           
 
             let cs = this.node.children;
             let cc = this.node.childrenCount;
