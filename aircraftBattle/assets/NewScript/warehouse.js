@@ -27,32 +27,23 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        planes:{
-            default: null, 
-            type:cc.Node,
-               
+        planes: {
+            default: null,
+            type: cc.Node,
+
         },
-        planeArray:null,
-        currentID:0,
+        planeArray: null,
+        currentID: 0,
 
-        gouMaiAndChuZhan:{
-            default:null,
-            type:cc.Node,
-        },
-        wingmanAndClosed:{
-            default:null,
-            type:cc.Node,
-        },
 
-        isPlaneGouMai:true,
-        isWingmanGouMai:true,
 
-        spriteCoin:null,
-        labelCoin:null,
 
-        
+        spriteCoin: null,
+        labelCoin: null,
 
-        settingButton:null,
+
+
+        settingButton: null,
 
         soundSetting: {
             default: null,
@@ -64,33 +55,56 @@ cc.Class({
             url: cc.AudioClip
         },
 
-        
-       
+        gouMai: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        addLevel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        maxLevel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        goBattle: {
+            default: null,
+            type: cc.Node,
+        },
+
+
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-  
+
 
     //游戏重新运行
-    gameStart: function(){ 
+    gameStart: function () {
         cc.director.loadScene('game');
         //cc.director.resume();
     },
 
 
-   
-    onLoad () {
 
-         //适配
-         let wx = cc.director.getVisibleSize().width*0.5;
-         let hy = cc.director.getVisibleSize().height*0.5;
-         this.spriteCoin = this.node.getChildByName("spriteCoin");
-         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2));
-         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
-         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
-         this.settingButton = this.node.getChildByName("soundSetting");
-         this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+    onLoad() {
+
+        //适配
+        let wx = cc.director.getVisibleSize().width * 0.5;
+        let hy = cc.director.getVisibleSize().height * 0.5;
+        this.spriteCoin = this.node.getChildByName("spriteCoin");
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+        this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+        this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
+        this.settingButton = this.node.getChildByName("soundSetting");
+        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
 
         this.planeArray = this.planes.children;
         this.currentID = 0;
@@ -101,77 +115,78 @@ cc.Class({
         //是购买僚机还是僚机数量已经满了 需要禁用
         this.wingmanGouMaiJudgment();
 
-      
-    
-        
-       
-     },
-     planeGouMaiJudgment:function() {
-         //1拥有 0没有
-        let isPossess = cc.sys.localStorage.getItem("heroPlanePossess"+this.currentID);
-        cc.log("ispossess--> "+ isPossess);
-        if(isPossess == 1) {
-            this.gouMaiAndChuZhan.getComponent(cc.Sprite).spriteFrame = this.node.getChildByName("goBattale").getComponent(cc.Sprite).spriteFrame;
-            this.isPlaneGouMai = false;
-            cc.log("aaaa");
-            
-        } else {
-            this.gouMaiAndChuZhan.getComponent(cc.Sprite).spriteFrame = this.node.getChildByName("planeGouMai").getComponent(cc.Sprite).spriteFrame;
-            this.isPlaneGouMai = true;
-        }
-     },
+    },
+    planeGouMaiJudgment: function () {
+        //1拥有 0没有
+        let isPossess = cc.sys.localStorage.getItem("heroPlanePossess" + this.currentID);
+        cc.log("ispossess--> " + isPossess);
+        if (isPossess == 1) {
 
-     wingmanGouMaiJudgment:function() {
-        let wingManCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+this.currentID);
-        if(wingManCount>=6) {
-            this.wingmanAndClosed.getComponent(cc.Sprite).spriteFrame = this.node.getChildByName("NanWingManGouMai").getComponent(cc.Sprite).spriteFrame;
+            this.addLevel.setPosition(0, -246);
+            this.gouMai.setPosition(734, -85);
+
+            this.goBattle.getComponent(cc.Button).enabled = true;
+
+        } else {
+            this.addLevel.setPosition(734, -85);
+            this.gouMai.setPosition(0, -246);
+            this.goBattle.getComponent(cc.Button).enabled = false;
+        }
+    },
+
+    wingmanGouMaiJudgment: function () {
+        let wingManCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID);
+        if (wingManCount >= 6) {
+
             this.isWingmanGouMai = false;
-            this.wingmanAndClosed.getComponent(cc.Button).enabled = false;
+            this.maxLevel.opacity = 255;
+            this.addLevel.getComponent(cc.Button).enabled = false;
         } else {
-            this.wingmanAndClosed.getComponent(cc.Sprite).spriteFrame = this.node.getChildByName("WingmanGouMai").getComponent(cc.Sprite).spriteFrame;
             this.isWingmanGouMai = true;
-            this.wingmanAndClosed.getComponent(cc.Button).enabled = true;
+            this.maxLevel.opacity = 0;
+            this.addLevel.getComponent(cc.Button).enabled = true;
         }
-     },
+    },
 
 
-     refresh:function() {
-        for(let i = 0; i<this.planeArray.length;i++) {
+    refresh: function () {
+        for (let i = 0; i < this.planeArray.length; i++) {
             this.planeArray[i].active = false;
 
-           // cc.log("adasdada--> "+this.planeArray[i].name);
+            // cc.log("adasdada--> "+this.planeArray[i].name);
         }
-         this.planeArray[this.currentID].active = true;
-        
-         let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount'+this.currentID));
-cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
-        for(let i= 0;i<this.planeArray[this.currentID].childrenCount;i++) {
-            this.planeArray[this.currentID].children[i].active = false;
-        }
-       
-        for(let i= 0;i<wmCount;i++) {
-            this.planeArray[this.currentID].children[i].active = true;
-        }
-       
-     },
+        this.planeArray[this.currentID].active = true;
 
-    back:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
-     //   cc.log("back");
-        if(this.currentID==0) {
-            this.currentID = this.planeArray.length-1;
+        let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID));
+        cc.log("!!!-->" + 'heroPlaneWingmanCount' + this.currentID);
+        for (let i = 0; i < this.planeArray[this.currentID].childrenCount; i++) {
+            this.planeArray[this.currentID].getChildByName("wingman" + i).active = true;
+            this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active =false;
+        }
+
+        for (let i = 0; i < wmCount; i++) {
+            this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active = true;
+        }
+
+    },
+
+    back: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+        //   cc.log("back");
+        if (this.currentID == 0) {
+            this.currentID = this.planeArray.length - 1;
         } else {
             this.currentID--;
         }
         this.refresh();
         this.planeGouMaiJudgment();
         this.wingmanGouMaiJudgment();
-    },  
+    },
 
-    next:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
-       // cc.log("next");
-        if(this.currentID==this.planeArray.length-1) {
+    next: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+        // cc.log("next");
+        if (this.currentID == this.planeArray.length - 1) {
             this.currentID = 0;
         } else {
             this.currentID++;
@@ -180,62 +195,63 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
         this.planeGouMaiJudgment();
         this.wingmanGouMaiJudgment();
     },
-//既然能够被点击 就正常购买 如果不能购买 按钮是禁用的。
-    addWingman:function(){
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    //既然能够被点击 就正常购买 如果不能购买 按钮是禁用的。
+    addWingman: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.log("addWingman");
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
-        if(currentCoin<200){
+        if (currentCoin < 200) {
             cc.log("金币不足，请购买！");
-            Alert.show("金币不足，请购买！",null,false);
+            Alert.show("金币不足，请购买！", null, false);
         } else {
-            let afterCoint = currentCoin -200;
+            let afterCoint = currentCoin - 200;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
             this.labelCoin.string = afterCoint;
 
-            let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount'+this.currentID))+1;
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount'+this.currentID,wmCount);
+            let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID)) + 1;
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount' + this.currentID, wmCount);
             this.refresh();
             this.wingmanGouMaiJudgment();
         }
 
     },
 
-    addPlane:function(){
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    addPlane: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.log("addPlane");
-        if(this.isPlaneGouMai === true) {
-            //购买飞机逻辑 先判断钱是否够，不够就提示，够则1扣钱，2，add进本地存储，3刷新this.planeGouMaiJudgment();
-            //这里先将每架飞机的价钱置为200;TODO!!!
-            
-            let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
-            if(currentCoin<200){
-                cc.log("金币不够，请购买！");
-                Alert.show("金币不足，请购买！",null,false);
-            } else {
-                let afterCoint = currentCoin -200;
-                cc.sys.localStorage.setItem('jinBiCount', afterCoint);
-                this.labelCoin.string = afterCoint;
-                
-                cc.sys.localStorage.setItem('heroPlanePossess'+this.currentID,1);
-                //this.wingmanGouMaiJudgment();//觉得这个函数没必要调用
-                this.planeGouMaiJudgment();
-            }
+
+        //购买飞机逻辑 先判断钱是否够，不够就提示，够则1扣钱，2，add进本地存储，3刷新this.planeGouMaiJudgment();
+        //这里先将每架飞机的价钱置为200;TODO!!!
+
+        let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
+        if (currentCoin < 200) {
+            cc.log("金币不够，请购买！");
+            Alert.show("金币不足，请购买！", null, false);
         } else {
-            //出战
-            D.globalHeroPlaneID = this.currentID;
-            cc.sys.localStorage.setItem('globalHeroPlaneID',this.currentID);
-            cc.director.loadScene("game");
+            let afterCoint = currentCoin - 200;
+            cc.sys.localStorage.setItem('jinBiCount', afterCoint);
+            this.labelCoin.string = afterCoint;
+
+            cc.sys.localStorage.setItem('heroPlanePossess' + this.currentID, 1);
+            //this.wingmanGouMaiJudgment();//觉得这个函数没必要调用
+            this.planeGouMaiJudgment();
         }
-        
+
     },
 
-    goMain:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    //游戏重新运行
+    gameStart: function () {
+        D.globalHeroPlaneID = this.currentID;
+        cc.sys.localStorage.setItem('globalHeroPlaneID', this.currentID);
+        cc.director.loadScene("game");
+    },
+
+    goMain: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.log("goMain");
         cc.director.loadScene('start');
-       
+
 
         //bugs 将来要改 现在先按照当前屏幕是什么飞机就设置为什么飞机，将来要改到出战按钮，这里要删掉
         // D.globalHeroPlaneID = this.currentID;
@@ -254,6 +270,6 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
         this.node.addChild(ss);
 
     },
-    
+
     // update (dt) {},
 });
