@@ -380,6 +380,14 @@ cc.Class({
         //cc.log("other node    ");
         //cc.log(other.node);
         if (other.node.group === "eBullet") {
+            //先判断是否有护盾
+            let hdCount = parseInt( cc.sys.localStorage.getItem('hudunCount'));
+            if(hdCount>0) {
+                this.node.parent.getComponent('Game').shieldOnclick();
+                return;
+            }
+
+
             var bDamage = other.node.getComponent("enemyBullet").damage;
 
             if ((this.blood - bDamage) <= 0) {//游戏结束
@@ -397,6 +405,13 @@ cc.Class({
                
             }
         } else if (other.node.group === "enemy") {
+
+            let hdCount = parseInt( cc.sys.localStorage.getItem('hudunCount'));
+            if(hdCount>0) {
+                this.node.parent.getComponent('Game').shieldOnclick();
+                other.enemyDamagedAni();
+                return;
+            }
            
             if(!this.wudi) {
                 cc.log("游戏结束");

@@ -407,7 +407,8 @@ cc.Class({
 
     enemyDamagedAni: function () {
 
-
+        this.node.parent.getComponent('Game').addScore(this.blood);
+        
         this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
         let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
 
@@ -442,7 +443,7 @@ cc.Class({
 
                 this.enemyBoomAni();
 
-                this.node.parent.getComponent('Game').addScore(this.blood);
+             //   this.node.parent.getComponent('Game').addScore(this.blood);
 
                 // this.node.destroy();
             } else {

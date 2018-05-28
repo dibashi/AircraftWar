@@ -266,7 +266,7 @@ cc.Class({
         this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width / 2, -hy + this.bombSprite.getContentSize().height / 2);
 
         this.shieldNo = 0;
-        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
+     //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width / 2, -hy + this.shieldSprite.getContentSize().height / 2);
 
@@ -284,7 +284,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
           this.schedule(this.baozouProcessing,this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
 
-       let hudunCount = cc.sys.localStorage.getItem('hudunCount');
+       let hudunCount =parseInt( cc.sys.localStorage.getItem('hudunCount'));
        if(hudunCount>0) {
            this.hudunPartice = cc.instantiate(this.huDunTeXiao);
            this.player.addChild(this.hudunPartice);
