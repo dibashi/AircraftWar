@@ -284,8 +284,9 @@ cc.Class({
         moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
        
 
-     //   let lifeLabel =  this.node.getChildByName("lifeLabel");
-     //   lifeLabel.setPosition(0,moBanSprite.getPosition().y);
+        let lifeLabel =  this.node.getChildByName("lifeLabel");
+      //  lifeLabel.setPosition(0,moBanSprite.getPosition().y);
+        lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
 
 
         this.node.addChild(this.player);
