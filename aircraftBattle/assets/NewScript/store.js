@@ -74,5 +74,27 @@ cc.Class({
         this.node.addChild(ss);
 
     },
+    button0Click:function() {
+        cc.log("btn0 click!");
+        //1 弹窗 把物品放在 弹窗 上  确定则购买， 取消则返回
+
+    },
+    button1Click:function() {
+
+    },
+    button2Click:function() {
+
+    },
+    button3Click:function() {
+
+    },
+    button4Click:function() {
+
+    },
+    button5Click:function() {
+        
+    },
+    
+
 
 });

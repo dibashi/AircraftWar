@@ -8055,6 +8055,9 @@
     },
     "goBattle": {
       "__id__": 240
+    },
+    "currentLevelLabel": {
+      "__id__": 13
     }
   }
 ]
