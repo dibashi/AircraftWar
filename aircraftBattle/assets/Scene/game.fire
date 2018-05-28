@@ -1529,6 +1529,7 @@
       "__uuid__": "8cecc7dc-2869-467b-ad47-a478ab76818a"
     },
     "dazhaoPlanes": null,
+    "dazhaoPlanes1": null,
     "fireBoost": {
       "__id__": 9
     },
@@ -1545,8 +1546,10 @@
     "huDunTeXiao": {
       "__uuid__": "32ffb470-36bd-4a70-8bbc-ad40f4207590"
     },
+    "hudunPartice": null,
     "baozouFlag": false,
-    "baozouInterval": 10,
-    "baozouPossession": 5.5
+    "baozouInterval": 30,
+    "baozouPossession": 5.5,
+    "sself": null
   }
 ]

@@ -413,7 +413,9 @@ cc.Class({
             let hdCount = parseInt( cc.sys.localStorage.getItem('hudunCount'));
             if(hdCount>0) {
                 this.node.parent.getComponent('Game').shieldOnclick();
-                other.enemyDamagedAni();
+              //  other.enemyDamagedAni();
+              //cc.log(other.node);
+                other.node.getComponent("enemy").enemyBoomAni();
                 return;
             }
            

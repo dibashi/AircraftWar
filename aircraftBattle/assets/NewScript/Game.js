@@ -181,9 +181,9 @@ cc.Class({
 
         baozouFlag: false,//当前是否暴走，在大招里面释放
 
-        baozouInterval: 30,//暴走效果间隔
+        baozouInterval: 0,//暴走效果间隔
 
-        baozouPossession: 5.5,//暴走持续时间 比大招的5秒稍长点
+        baozouPossession: 0.0,//暴走持续时间 比大招的5秒稍长点
 
         sself: null,
     },
@@ -282,9 +282,9 @@ cc.Class({
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
 
-        cc.log("baozouInterval  --->" + this.baozouInterval);
+    
 
-        this.schedule(this.baozouProcessing, this.baozouInterval);
+       // this.schedule(this.baozouProcessing, this.baozouInterval);
         // this.node.runAction(cc.rotateTo(10,90));
 
 
@@ -303,6 +303,7 @@ cc.Class({
 
 
     baozouProcessing: function () {
+        cc.log("我被一直调用！");
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
         // 1
         let anim = this.baozouWenZi.getComponent(cc.Animation);
@@ -641,7 +642,7 @@ cc.Class({
     },
     generatePrize: function (enemyID, prizePosition) {
         var r = Math.random();
-        cc.log("random dropProbability  " + r);
+      //  cc.log("random dropProbability  " + r);
         if (r <= globalEnemyPlaneData[enemyID].dropProbability) {
             let pf = null;
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
