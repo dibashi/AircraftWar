@@ -133,6 +133,9 @@ cc.Class({
             //大招 护盾数量初始化
             cc.sys.localStorage.setItem('dazhaoCount', 1);
             cc.sys.localStorage.setItem('hudunCount', 1);
+
+            //飞机命数 初始化
+            cc.sys.localStorage.setItem('planeLifeCount', 0);
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
@@ -190,7 +193,8 @@ cc.Class({
         }
 
         
-
+        //测试用
+        cc.sys.localStorage.setItem('planeLifeCount', 2);
 
     },
 

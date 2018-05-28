@@ -194,6 +194,11 @@ cc.Class({
         baozouPossession: 0.0,//暴走持续时间 比大招的5秒稍长点
 
         sself: null,
+
+        // lifeLabel: {
+        //     default: null,
+        //     type: cc.Node,
+        // },//label外的node
     },
 
 
@@ -224,6 +229,8 @@ cc.Class({
         this.settingButton = this.node.getChildByName("soundSetting");
         this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - sjbh - 10 - (this.settingButton.getContentSize().height / 2));
 
+        
+
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
         //debug绘制
@@ -240,14 +247,23 @@ cc.Class({
         }
         D.globalHeroPlaneID = dddd;
 
+        //模板精灵
+        let  moBanSprite = null;
+
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
+
+            moBanSprite = this.node.getChildByName("lifeSprite0");
         }
         else if (dddd == heroPlaneID.heroPlane1) {
             this.player = cc.instantiate(this.heroPlane1);
+
+            moBanSprite = this.node.getChildByName("lifeSprite1");
         }
         else if (dddd == heroPlaneID.heroPlane2) {
             this.player = cc.instantiate(this.heroPlane2);
+
+            moBanSprite = this.node.getChildByName("lifeSprite2");
         }
         else if (dddd == heroPlaneID.heroPlane3) {
             this.player = cc.instantiate(this.heroPlane3);
@@ -261,6 +277,15 @@ cc.Class({
             this.player = cc.instantiate(this.heroPlane5);
         }
 
+
+
+        //适配生命条
+        moBanSprite.scale = 60/moBanSprite.getContentSize().height;
+        moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
+       
+
+     //   let lifeLabel =  this.node.getChildByName("lifeLabel");
+     //   lifeLabel.setPosition(0,moBanSprite.getPosition().y);
 
 
         this.node.addChild(this.player);
