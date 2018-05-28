@@ -59,6 +59,17 @@ cc.Class({
         tempSpeed :0.0,
         tempTrackGuandaoCount :0,
         tempWMCount :0,
+
+        boomAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
+        //爆炸动画
+        particleSys: {
+            default: null,
+            type: cc.Prefab,
+        },
+        partice: null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -399,8 +410,8 @@ cc.Class({
 
 
                 cc.log("游戏结束");
-
-                this.node.parent.getComponent('Game').gameOver();
+                this.dead();
+               
             } else {
                 if(!this.wudi) {
                     this.blood -= bDamage; //屏蔽后无敌 方便调试
@@ -421,10 +432,56 @@ cc.Class({
            
             if(!this.wudi) {
                 cc.log("游戏结束");
-                this.node.parent.getComponent('Game').gameOver();
+                this.dead();
+                
             }
             
         }
+    },
+
+    dead:function() {
+        //1 先判断是否还有飞机，
+       
+        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        if(lifeCount>0) {
+             //2 若有 则 销毁当前飞机，
+            this.boomAni();
+            //3 飞入新飞机 在爆炸完的回调中处理
+        } else {
+            this.node.parent.getComponent('Game').gameOver();
+        }
+
+        
+    },
+
+    boomAni: function () {
+    
+        cc.audioEngine.playEffect(this.boomAudio,false);
+
+        this.node.group = "NOOOOOOO";
+
+        this.partice = cc.instantiate(this.particleSys);
+        this.node.parent.addChild(this.partice);
+        this.partice.setPosition(this.node.getPosition());
+        //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
+        this.partice.getComponent(cc.ParticleSystem).resetSystem();
+
+        //this.nodeBar.destroy();//删除血条
+        this.node.opacity = 0;
+        this.unscheduleAllCallbacks();
+        this.scheduleOnce(this.baozhaOver, 0.7);
+
+        this.node.parent.getComponent("Game").closeBaoZou();
+      
+
+    },
+
+    baozhaOver: function () {
+        this.unscheduleAllCallbacks();
+        this.partice.destroy();
+        cc.log("爆炸动画结束~~~~");
+       this.node.parent.getComponent("Game").goNewPlane();
+        this.node.destroy();
     },
 
    

@@ -285,8 +285,9 @@ cc.Class({
        
 
         let lifeLabel =  this.node.getChildByName("lifeLabel");
-      //  lifeLabel.setPosition(0,moBanSprite.getPosition().y);
+     
         lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
+        lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
 
 
         this.node.addChild(this.player);
@@ -317,8 +318,9 @@ cc.Class({
         this.node.on('touchstart', this.dragStart, this);
 
     
+        this.goBaoZou();
 
-        this.schedule(this.baozouProcessing, this.baozouInterval);
+        
         // this.node.runAction(cc.rotateTo(10,90));
 
 
@@ -327,6 +329,70 @@ cc.Class({
         }
 
 
+    },
+
+    goNewPlane:function(){
+        //从飞机生命数中扣除1辆
+        //创建 飞入 然后可以操作
+        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        lifeCount = lifeCount -1;
+        cc.sys.localStorage.setItem('planeLifeCount',lifeCount);
+
+        let lifeLabel =  this.node.getChildByName("lifeLabel");
+        lifeLabel.getComponent(cc.Label).string = lifeCount;
+
+
+        let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');
+        if (dddd == null) {
+            dddd = 0;
+        }
+      
+
+        if (dddd == heroPlaneID.heroPlane0) {
+            this.player = cc.instantiate(this.heroPlane0);
+
+        }
+        else if (dddd == heroPlaneID.heroPlane1) {
+            this.player = cc.instantiate(this.heroPlane1);
+
+        }
+        else if (dddd == heroPlaneID.heroPlane2) {
+            this.player = cc.instantiate(this.heroPlane2);
+        }
+        else if (dddd == heroPlaneID.heroPlane3) {
+            this.player = cc.instantiate(this.heroPlane3);
+        }
+        else if (dddd == heroPlaneID.heroPlane4) {
+            //cc.log('zhixing111111');
+            this.player = cc.instantiate(this.heroPlane4);
+            //cc.log(player);
+        }
+        else if (dddd == heroPlaneID.heroPlane5) {
+            this.player = cc.instantiate(this.heroPlane5);
+        }
+        this.node.addChild(this.player);
+        this.player.setPosition(0,-500);
+        //this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
+       this.node.off('touchmove', this.dragMove, this);
+       this.node.off('touchstart', this.dragStart, this);
+
+
+       let seq = cc.sequence(cc.moveTo(0.8,cc.v2(0,50+this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)),cc.callFunc(this.newPlaneMoved,this));
+       this.player.runAction(seq);
+        
+    },
+
+    newPlaneMoved:function() {
+        this.node.on('touchmove', this.dragMove, this);
+        this.node.on('touchstart', this.dragStart, this);
+    },
+
+    goBaoZou:function(){
+        this.schedule(this.baozouProcessing, this.baozouInterval);
+    },
+
+    closeBaoZou:function() {
+        this.unschedule(this.baozouProcessing);
     },
 
     shieldTeXiao: function () {
