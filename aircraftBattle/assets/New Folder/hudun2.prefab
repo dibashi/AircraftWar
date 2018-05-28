@@ -44,7 +44,7 @@
       "__id__": 21
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 125,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -205,7 +205,7 @@
       "x": 0,
       "y": 0
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
@@ -364,7 +364,7 @@
       "x": 0,
       "y": -5
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
@@ -523,7 +523,7 @@
       "x": 0,
       "y": 0
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
@@ -682,7 +682,7 @@
       "x": 30,
       "y": 30
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
@@ -841,7 +841,7 @@
       "x": 30,
       "y": 30
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
@@ -1000,7 +1000,7 @@
       "x": 30,
       "y": 30
     },
-    "_positionType": 0,
+    "_positionType": 1,
     "_emitterMode": 0,
     "_gravity": {
       "__type__": "cc.Vec2",
