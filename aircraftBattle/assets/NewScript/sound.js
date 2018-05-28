@@ -103,6 +103,8 @@ cc.Class({
             //关闭的实际代码
            // cc.audioEngine.pauseAllEffects();
            cc.audioEngine.setEffectsVolume(0.0);
+
+           cc.audioEngine.setMusicVolume(0.5);
            
         } else {
             cc.log("onEffectButtonClick");
