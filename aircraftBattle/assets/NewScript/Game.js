@@ -23,7 +23,7 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
- 
+
 
 
 
@@ -149,13 +149,14 @@ cc.Class({
             type: cc.Prefab,
         },
         dazhaoPlanes: null,
+        dazhaoPlanes1: null,
 
         fireBoost: {
             default: null,
             type: cc.Node,
         },
 
-        settingButton:null,
+        settingButton: null,
 
         soundSetting: {
             default: null,
@@ -176,23 +177,23 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        hudunPartice:null,
+        hudunPartice: null,
 
-        baozouFlag:false,//当前是否暴走，在大招里面释放
+        baozouFlag: false,//当前是否暴走，在大招里面释放
 
-        baozouInterval:3000000000,//暴走效果间隔
+        baozouInterval: 30,//暴走效果间隔
 
-    baozouPossession:5.5,//暴走持续时间 比大招的5秒稍长点
+        baozouPossession: 5.5,//暴走持续时间 比大招的5秒稍长点
 
-        sself:null,
+        sself: null,
     },
 
 
 
 
     onLoad() {
-   
-      
+
+
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
@@ -213,7 +214,7 @@ cc.Class({
 
 
         this.settingButton = this.node.getChildByName("soundSetting");
-        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - sjbh-10 -(this.settingButton.getContentSize().height / 2));
+        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - sjbh - 10 - (this.settingButton.getContentSize().height / 2));
 
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
@@ -260,8 +261,8 @@ cc.Class({
         this.stage = 0;
         this.runStage();
 
-      
-        this.bombNo =parseInt( cc.sys.localStorage.getItem('dazhaoCount'));
+
+        this.bombNo = parseInt(cc.sys.localStorage.getItem('dazhaoCount'));
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
@@ -269,47 +270,44 @@ cc.Class({
         this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width / 2, -hy + this.bombSprite.getContentSize().height / 2);
 
 
-        this.shieldNo =parseInt( cc.sys.localStorage.getItem('hudunCount'));
-      
-     //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
+        this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
+
+        //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width / 2, -hy + this.shieldSprite.getContentSize().height / 2);
 
 
 
-        // this.players = new Array();
-        // for(let i = 0; i<10; i++) {
-        //     this.players[i] = cc.instantiate(this.heroPlane0);
-        // }   
+
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
 
-cc.log("baozouInterval  --->" + this.baozouInterval);
+        cc.log("baozouInterval  --->" + this.baozouInterval);
 
-       //   this.schedule(this.baozouProcessing,this.baozouInterval);
-       // this.node.runAction(cc.rotateTo(10,90));
+        this.schedule(this.baozouProcessing, this.baozouInterval);
+        // this.node.runAction(cc.rotateTo(10,90));
 
-       
-       if(this.shieldNo>0) {
-           this.shieldTeXiao();
-       }
 
-       
+        if (this.shieldNo > 0) {
+            this.shieldTeXiao();
+        }
+
+
     },
 
-    shieldTeXiao:function() {
+    shieldTeXiao: function () {
         this.hudunPartice = cc.instantiate(this.huDunTeXiao);
         this.player.addChild(this.hudunPartice);
-        this.hudunPartice.setPosition(cc.v2(0,0));
+        this.hudunPartice.setPosition(cc.v2(0, 0));
     },
-    
 
-    baozouProcessing:function(){
+
+    baozouProcessing: function () {
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
         // 1
         let anim = this.baozouWenZi.getComponent(cc.Animation);
         anim.play();//可能还要加入别的特效，在暴走结束时关闭
-    
+
         // 2
         //1 改射速 2 开管道 
         //1 调用player保存当前状态。
@@ -323,7 +321,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
     },
 
     //关闭暴走
-    closeBaozou:function() {
+    closeBaozou: function () {
         //1 关闭 暴走的那些特效， 现在还不清楚
         //2 恢复飞机属性
         this.player.getComponent("Player").repairPlayerState();
@@ -370,38 +368,66 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
 
     },
 
-    hongzha:function() {
-         //必须让按钮先不能点，否则将引发bug！
-         this.bombSprite.off('touchstart', this.bombOnclick, this);
-         //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
-         //动画回调，按钮可点击
-         //若没敌方飞机，飞出屏幕，回调，按钮可点击
-         this.dazhaoPlanes = new Array();
-         for (let i = 0; i < 8; i++) {
-             this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
-             //  cc.log(this.dazhaoPlanes[i]);
-             //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
-             this.node.addChild(this.dazhaoPlanes[i]);
-             this.dazhaoPlanes[i].setPosition(0, -600);
+    hongzha: function () {
 
-         }
+        //必须让按钮先不能点，否则将引发bug！
+        this.bombSprite.off('touchstart', this.bombOnclick, this);
+        //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
+        //动画回调，按钮可点击
+        //若没敌方飞机，飞出屏幕，回调，按钮可点击
+        this.dazhaoPlanes = new Array();
+        for (let i = 0; i < 8; i++) {
+            this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
+            //  cc.log(this.dazhaoPlanes[i]);
+            //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
+            this.node.addChild(this.dazhaoPlanes[i]);
+            this.dazhaoPlanes[i].setPosition(0, -600);
 
-         this.dazhaoPlanes[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
-         this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
+        }
 
-         this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
+        this.dazhaoPlanes[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
+        this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
+    },
+   
+
+    hongzha1: function () {
+        //必须让按钮先不能点，否则将引发bug！
+        this.bombSprite.off('touchstart', this.bombOnclick, this);
+        //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
+        //动画回调，按钮可点击
+        //若没敌方飞机，飞出屏幕，回调，按钮可点击
+        this.dazhaoPlanes1 = new Array();
+        for (let i = 0; i < 8; i++) {
+            this.dazhaoPlanes1[i] = cc.instantiate(this.dazhaoPlane);
+          
+            this.node.addChild(this.dazhaoPlanes1[i]);
+            this.dazhaoPlanes1[i].setPosition(0, -600);
+
+        }
+
+        this.dazhaoPlanes1[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
+        this.dazhaoPlanes1[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
+
+        this.scheduleOnce(this.dazhaoPlaneOver1, 5.0);
     },
 
     bombOnclick: function () {
         //如果是暴走 则直接 释放
-        if(this.baozouFlag == true) {
-            this.hongzha();
+        if (this.baozouFlag == true) {
+            this.hongzha1();
             this.baozouFlag = false;
             return;
         }
@@ -409,8 +435,8 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= 1;
-            cc.sys.localStorage.setItem('dazhaoCount',this.bombNo);
-           
+            cc.sys.localStorage.setItem('dazhaoCount', this.bombNo);
+
             this.hongzha();
         } else {
             console.log('没有子弹');
@@ -440,6 +466,22 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         //     }
         // }
     },
+
+    dazhaoPlaneOver1: function () {
+
+        for (let i = 0; i < this.dazhaoPlanes1.length; i++) {
+            this.dazhaoPlanes1[i].runAction(cc.moveTo(1.5, cc.v2(800, 500)).easing(cc.easeIn(3.0)));
+            this.dazhaoPlanes1[i].getComponent("dazhaoPlane").closeBullet();
+
+            let dx = 800 - this.dazhaoPlanes1[i].x;
+            let dy = 500 - this.dazhaoPlanes1[i].y;
+           
+            this.dazhaoPlanes1[i].runAction(cc.rotateBy(0.5, cc.pToAngle(cc.v2(dx, dy)) * 180 / 3.1415926));
+        }
+        this.scheduleOnce(this.dazhaoButtonEnable1, 1.6);
+     
+    },
+
     dazhaoButtonEnable: function () {
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         for (let i = 0; i < this.dazhaoPlanes.length; i++) {
@@ -450,6 +492,16 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         this.dazhaoPlanes = null;
     },
 
+    dazhaoButtonEnable1: function () {
+        this.bombSprite.on('touchstart', this.bombOnclick, this);
+        for (let i = 0; i < this.dazhaoPlanes1.length; i++) {
+            this.dazhaoPlanes1[i].destroy();
+
+        }
+
+        this.dazhaoPlanes1 = null;
+    },
+
     shieldOnclick: function () {
 
         // cc.log("gggame! --> ");
@@ -457,11 +509,11 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
-            if(this.shieldNo == 0) {
+            if (this.shieldNo == 0) {
                 //
-                this.hudunPartice.destroy();     
+                this.hudunPartice.destroy();
             }
-           
+
 
             let cs = this.node.children;
             let cc = this.node.childrenCount;
@@ -499,7 +551,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         //cc.log(globalStageData);
         // globalStageData[stage],
         //var zzz = [50, 100, 150, 200, 250, 300],
-        
+
 
         this.enemyCount = globalStageData[this.stage].length;
 
@@ -538,34 +590,34 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
             this.node.addChild(enemy);
 
 
-        let w = cc.director.getVisibleSize().width;
-        let h = cc.director.getVisibleSize().height / 2 - enemy.getContentSize().height / 2;
+            let w = cc.director.getVisibleSize().width;
+            let h = cc.director.getVisibleSize().height / 2 - enemy.getContentSize().height / 2;
 
-        var zzz = new Array();
-        zzz[0] = 0;
-        zzz[1] = w / 4;
-        zzz[2] = -w / 4;
+            var zzz = new Array();
+            zzz[0] = 0;
+            zzz[1] = w / 4;
+            zzz[2] = -w / 4;
 
-        var yzzz = new Array();
+            var yzzz = new Array();
 
-        yzzz[0] = (h / 5) * 2;
-        yzzz[1] = (h / 5) * 3;
-        yzzz[2] = (h / 5) * 4;
-// let beginRandomX = -w +(2*w)*Math.random(); //-width----width
-// let beginRandomY = cc.director.getVisibleSize().height / 2 +30+100*Math.random(); //h/2+30-----h/2+130
-let beginRandomX = -w/2+enemy.getContentSize().width/2 +(w-enemy.getContentSize().width)*Math.random();
-let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
-          //  enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
-          enemy.setPosition(beginRandomX,beginRandomY);
+            yzzz[0] = (h / 5) * 2;
+            yzzz[1] = (h / 5) * 3;
+            yzzz[2] = (h / 5) * 4;
+            // let beginRandomX = -w +(2*w)*Math.random(); //-width----width
+            // let beginRandomY = cc.director.getVisibleSize().height / 2 +30+100*Math.random(); //h/2+30-----h/2+130
+            let beginRandomX = -w / 2 + enemy.getContentSize().width / 2 + (w - enemy.getContentSize().width) * Math.random();
+            let beginRandomY = cc.director.getVisibleSize().height / 2 + 80;
+            //  enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
+            enemy.setPosition(beginRandomX, beginRandomY);
 
             var pos = enemy.getPosition();
             pos.x = beginRandomX;
-            pos.y =  60+(cc.director.getVisibleSize().height / 2 -60)*Math.random();
-           // pos.x = zzz[Math.floor(Math.random() * 3)];
-           // pos.y = yzzz[Math.floor(Math.random() * 3)];
+            pos.y = 60 + (cc.director.getVisibleSize().height / 2 - 60) * Math.random();
+            // pos.x = zzz[Math.floor(Math.random() * 3)];
+            // pos.y = yzzz[Math.floor(Math.random() * 3)];
             var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
-           // var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
-           var seq = cc.sequence(cc.moveTo(1, pos), callback);
+            // var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
+            var seq = cc.sequence(cc.moveTo(1, pos), callback);
             enemy.runAction(seq);
 
             // let pos = enemy.getPosition();
@@ -677,11 +729,11 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
         }
     },
 
-    fireBoostAni:function(){
-       // this.fireBoost
-       cc.log("火力提升");
-       let anim = this.fireBoost.getComponent(cc.Animation);
-       anim.play();
+    fireBoostAni: function () {
+        // this.fireBoost
+        cc.log("火力提升");
+        let anim = this.fireBoost.getComponent(cc.Animation);
+        anim.play();
 
     },
 
@@ -713,16 +765,16 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
     // },
     getHuoJianPao: function () {
         this.bombNo += 1;
-        cc.sys.localStorage.setItem('dazhaoCount',this.bombNo);
+        cc.sys.localStorage.setItem('dazhaoCount', this.bombNo);
         this.bombLabel.string = this.bombNo;
     },
 
     getShield: function () {
-        if(this.shieldNo == 0) {
+        if (this.shieldNo == 0) {
             this.shieldTeXiao();
-        } 
+        }
         this.shieldNo += 1;
-        cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
+        cc.sys.localStorage.setItem('hudunCount', this.shieldNo);
 
         this.shieldLabel.string = this.shieldNo;
     },
@@ -759,18 +811,18 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
         ss.setPosition(0, 0);
 
         ss.getComponent("sound").onWho = this.node;
-         
-      
-     
-    //  cc.director.pause();
-    //  this.player.active = true;
-     
+
+
+
+        //  cc.director.pause();
+        //  this.player.active = true;
+
 
         this.node.addChild(ss);
-         
+
     },
 
-    
+
 
 
     // update (dt) {},
