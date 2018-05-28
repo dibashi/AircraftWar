@@ -385,6 +385,7 @@ cc.Class({
     newPlaneMoved:function() {
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
+        this.goBaoZou();
     },
 
     goBaoZou:function(){

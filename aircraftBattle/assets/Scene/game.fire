@@ -1758,7 +1758,7 @@
     },
     "hudunPartice": null,
     "baozouFlag": false,
-    "baozouInterval": 10,
+    "baozouInterval": 30,
     "baozouPossession": 5.5,
     "sself": null
   }
