@@ -170,8 +170,10 @@ cc.Class({
 
         baozouWenZi: {
             default: null,
-            type: cc.Node,
+            type: cc.Prefab,
         },
+
+        baozouAni:null,
 
         huDunTeXiao: {
             default: null,
@@ -301,13 +303,25 @@ cc.Class({
         this.hudunPartice.setPosition(cc.v2(0, 0));
     },
 
+    bazouWenZidOver:function() {
+        this.baozouAni.destroy();
+    },
+
 
     baozouProcessing: function () {
-        cc.log("我被一直调用！");
+       
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
         // 1
-        let anim = this.baozouWenZi.getComponent(cc.Animation);
-        anim.play();//可能还要加入别的特效，在暴走结束时关闭
+        // let anim = this.baozouWenZi.getComponent(cc.Animation);
+        // anim.play();//可能还要加入别的特效，在暴走结束时关闭
+    
+        this.baozouAni = cc.instantiate(this.baozouWenZi);
+        let armatureDisplay = this.baozouAni.getComponent(dragonBones.ArmatureDisplay);
+
+        armatureDisplay.playAnimation("baozou");
+
+        this.node.addChild(this.baozouAni);
+       armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.bazouWenZidOver, this);
 
         // 2
         //1 改射速 2 开管道 

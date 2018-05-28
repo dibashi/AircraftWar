@@ -46,8 +46,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.5,
-    "_scaleY": 0.5,
+    "_scaleX": 1,
+    "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -70,7 +70,7 @@
     "_enabled": true,
     "_armatureName": "baozou",
     "_animationName": "baozou",
-    "playTimes": 0,
+    "playTimes": 1,
     "_N$dragonAsset": {
       "__uuid__": "502ae239-94b0-4faf-baf3-8d1fbb0b0c3b"
     },
@@ -79,7 +79,7 @@
     },
     "_N$_defaultArmatureIndex": 1,
     "_N$_animationIndex": 1,
-    "_N$timeScale": 2,
+    "_N$timeScale": 0.5,
     "_N$debugBones": false
   },
   {
