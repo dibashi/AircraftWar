@@ -408,7 +408,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node0",
     "_objFlags": 0,
     "_parent": {
       "__id__": 8
@@ -1316,7 +1316,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 31
@@ -2224,7 +2224,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 54
@@ -3132,7 +3132,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node3",
     "_objFlags": 0,
     "_parent": {
       "__id__": 77
@@ -3566,7 +3566,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 88
@@ -4000,7 +4000,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "menu",
+    "_name": "node5",
     "_objFlags": 0,
     "_parent": {
       "__id__": 99
@@ -4880,6 +4880,27 @@
     "soundSetting": {
       "__uuid__": "f171c76d-53e8-4785-b31c-e7c3ac73fbd6"
     },
-    "settingButton": null
+    "storeAlert": {
+      "__uuid__": "3dcf97b7-0dbc-44da-88d4-7359e335a668"
+    },
+    "settingButton": null,
+    "node0": {
+      "__id__": 9
+    },
+    "node1": {
+      "__id__": 32
+    },
+    "node2": {
+      "__id__": 55
+    },
+    "node3": {
+      "__id__": 78
+    },
+    "node4": {
+      "__id__": 89
+    },
+    "node5": {
+      "__id__": 100
+    }
   }
 ]

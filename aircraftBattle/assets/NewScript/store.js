@@ -27,7 +27,38 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        storeAlert: {
+            default: null,
+            type: cc.Prefab,
+        },
+
         settingButton:null,
+
+        node0: {
+            default: null,
+            type:cc.Node,
+        },
+        node1: {
+            default: null,
+            type:cc.Node,
+        },
+        node2: {
+            default: null,
+            type:cc.Node,
+        },
+        node3: {
+            default: null,
+            type:cc.Node,
+        },
+        node4: {
+            default: null,
+            type:cc.Node,
+        },
+        node5: {
+            default: null,
+            type:cc.Node,
+        },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -74,25 +105,74 @@ cc.Class({
         this.node.addChild(ss);
 
     },
+
+    alertPop:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+
+         cc.eventManager.pauseTarget(this.node, true);
+         let ss = cc.instantiate(this.storeAlert);
+         ss.setPosition(0,0);
+
+         ss.getComponent("storeAlert").onWho = this.node;
+         this.node.addChild(ss);
+        // return ss;
+    },
+
+    alertPop:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.storeAlert);
+        ss.setPosition(0,0);
+
+        ss.getComponent("storeAlert").onWho = this.node;
+        this.node.addChild(ss);
+        return ss;
+    },
+
     button0Click:function() {
         cc.log("btn0 click!");
         //1 弹窗 把物品放在 弹窗 上  确定则购买， 取消则返回
+        let ss = this.alertPop();
 
+        ss.getComponent("storeAlert").setTitle("1元大礼包");
+         ss.getComponent("storeAlert").setPriceText("¥1购买");
+         ss.getComponent("storeAlert").setNodeTag(0);
     },
     button1Click:function() {
+        let ss = this.alertPop();
 
+        ss.getComponent("storeAlert").setTitle("超值礼包");
+         ss.getComponent("storeAlert").setPriceText("¥8购买");
+         ss.getComponent("storeAlert").setNodeTag(1);
     },
     button2Click:function() {
+        let ss = this.alertPop();
 
+        ss.getComponent("storeAlert").setTitle("土豪金礼包");
+         ss.getComponent("storeAlert").setPriceText("¥15购买");
+         ss.getComponent("storeAlert").setNodeTag(2);
     },
     button3Click:function() {
+        let ss = this.alertPop();
 
+        ss.getComponent("storeAlert").setTitle("2000金币");
+         ss.getComponent("storeAlert").setPriceText("¥10购买");
+         ss.getComponent("storeAlert").setNodeTag(3);
     },
     button4Click:function() {
+        let ss = this.alertPop();
 
+        ss.getComponent("storeAlert").setTitle("必杀X10");
+         ss.getComponent("storeAlert").setPriceText("¥10购买");
+         ss.getComponent("storeAlert").setNodeTag(4);
     },
     button5Click:function() {
-        
+        let ss = this.alertPop();
+
+        ss.getComponent("storeAlert").setTitle("护盾X10");
+         ss.getComponent("storeAlert").setPriceText("¥10购买");
+         ss.getComponent("storeAlert").setNodeTag(5);
     },
     
 
