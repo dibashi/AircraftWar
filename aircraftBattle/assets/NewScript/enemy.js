@@ -49,7 +49,7 @@ cc.Class({
 
         enemyTrack: 0,
 
-        particleSys: {//并不是单纯的label 
+        particleSys: {
             default: null,
             type: cc.Prefab,
         },

@@ -172,6 +172,11 @@ cc.Class({
             type: cc.Node,
         },
 
+        huDunTeXiao: {
+            default: null,
+            type: cc.Prefab,
+        },
+
         baozouFlag:false,//当前是否暴走，在大招里面释放
 
         baozouInterval:30,//暴走效果间隔
