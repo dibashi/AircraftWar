@@ -56,6 +56,11 @@ cc.Class({
         partice: null,
 
 
+        boomAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
+
 
     },
 
@@ -352,6 +357,8 @@ cc.Class({
         //    cc.log(anim);
         //    anim.scale = 10;
         //this.unscheduleAllCallbacks();
+        cc.audioEngine.playEffect(this.boomAudio,false);
+
         this.node.group = "NOOOOOOO";
 
         this.partice = cc.instantiate(this.particleSys);
@@ -369,6 +376,9 @@ cc.Class({
         //敌机销毁数据+1
         let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
         cc.sys.localStorage.setItem('killedEnemyCount',kc);
+
+        //声音
+
     },
 
     baozhaOver: function () {

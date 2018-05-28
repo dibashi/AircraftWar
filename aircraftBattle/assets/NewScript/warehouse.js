@@ -63,6 +63,9 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
+
+        
+       
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -73,25 +76,6 @@ cc.Class({
     gameStart: function(){ 
         cc.director.loadScene('game');
         //cc.director.resume();
-    },
-
-    selectedPlane0: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane0;
-    },
-    selectedPlane1: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane1;
-    },
-    selectedPlane2: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane2;
-    },
-    selectedPlane3: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane3;
-    },
-    selectedPlane4: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane4;
-    },
-    selectedPlane5: function(){ 
-        D.globalHeroPlaneID = heroPlaneID.heroPlane5;
     },
 
 
@@ -172,7 +156,8 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
      },
 
     back:function() {
-        cc.log("back");
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+     //   cc.log("back");
         if(this.currentID==0) {
             this.currentID = this.planeArray.length-1;
         } else {
@@ -184,7 +169,8 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
     },  
 
     next:function() {
-        cc.log("next");
+        cc.audioEngine.playEffect(this.buttonAudio,false);
+       // cc.log("next");
         if(this.currentID==this.planeArray.length-1) {
             this.currentID = 0;
         } else {
@@ -196,6 +182,7 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
     },
 //既然能够被点击 就正常购买 如果不能购买 按钮是禁用的。
     addWingman:function(){
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.log("addWingman");
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
@@ -216,6 +203,7 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
     },
 
     addPlane:function(){
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.log("addPlane");
         if(this.isPlaneGouMai === true) {
             //购买飞机逻辑 先判断钱是否够，不够就提示，够则1扣钱，2，add进本地存储，3刷新this.planeGouMaiJudgment();
@@ -244,6 +232,7 @@ cc.log("!!!-->" +'heroPlaneWingmanCount'+this.currentID);
     },
 
     goMain:function() {
+        cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.log("goMain");
         cc.director.loadScene('start');
        

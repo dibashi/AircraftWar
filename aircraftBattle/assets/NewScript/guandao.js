@@ -24,6 +24,12 @@ cc.Class({
         damage:0,
 
         onceBulletCount:1,
+
+        bullet2Audio: {
+            default: null,
+            url: cc.AudioClip
+        },
+
     },
 
     
@@ -82,6 +88,13 @@ cc.Class({
         let pos = this.node.parent.convertToWorldSpaceAR(this.node.getPosition());
         let p = cc.v2(pos.x - cc.director.getVisibleSize().width*0.5, pos.y - cc.director.getVisibleSize().height*0.5);
         bl.setPosition( p );
+
+
+        //发射声音
+        if(this.bullet2Audio!=null) {
+            cc.audioEngine.playEffect(this.bullet2Audio,false);
+        }
+        
     },
 
 

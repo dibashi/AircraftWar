@@ -262,7 +262,7 @@ cc.Class({
 
 
        
-
+       // this.node.runAction(cc.rotateTo(10,90));
     },
 
     dragStart: function (event) {
@@ -700,13 +700,17 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
 
         ss.getComponent("sound").onWho = this.node;
          
-       // cc.director.getActionManager().pauseTarget(this.node,true);
-    //    this.node.pauseAllActions();
-    //    cc.log(this.node);
+      
+     
+    //  cc.director.pause();
+    //  this.player.active = true;
+     
 
         this.node.addChild(ss);
          
     },
+
+    
 
 
     // update (dt) {},

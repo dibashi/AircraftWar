@@ -19,6 +19,11 @@ cc.Class({
 
         jinbiRunFlag:true,//由于有些敌机会掉落金币，需要先将金币炸开，
         //然后飞向本方飞机，做 一个标记 ,正常飞机都可以飞，这种飞机需要先炸开之后飞
+
+        prizeAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
 
     onLoad(){
@@ -95,6 +100,7 @@ cc.Class({
                     // jinbiPrefab.setPosition(prizePosition);
                     // jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
                     this.node.parent.getComponent("Game").getJinBi();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.wudichongci:
                     //cc.log("get wudichongci!");
@@ -102,10 +108,12 @@ cc.Class({
                     //todo
                     //other.node.getComponent("Player").wudichongci();
                     this.node.parent.getComponent("Game").getShield();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.xinjiaxue:
                     cc.log("get xinjiaxue!");
                     other.node.getComponent("Player").addBlood();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
@@ -113,10 +121,12 @@ cc.Class({
                     //播放火力提升动画
                     this.node.parent.getComponent("Game").fireBoostAni();
                     other.node.getComponent("Player").upgradePlane();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");
                     this.node.parent.getComponent("Game").getHuoJianPao();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
             }
 
