@@ -100,23 +100,18 @@ cc.Class({
             cc.log("offEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 0);
             this.effectButton.spriteFrame = this.offSprite.spriteFrame;
-<<<<<<< HEAD
             //关闭的实际代码
            // cc.audioEngine.pauseAllEffects();
            cc.audioEngine.setEffectsVolume(0.0);
 
-=======
-            //这两行 只能这些写，真的是引擎的bug，没办法 http://forum.cocos.com/t/bug/45242/9
-           cc.audioEngine.setEffectsVolume(0.0000001);
->>>>>>> 72f4dd5e3379d599fc66f5c50319ca6deb1e1335
-           cc.audioEngine.setMusicVolume(0.5);
+           cc.audioEngine.setMusicVolume(0.1);
            
         } else {
             cc.log("onEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 1);
             this.effectButton.spriteFrame = this.onSprite.spriteFrame;
             //打开的实际代码
-            cc.audioEngine.setEffectsVolume(0.5);
+            cc.audioEngine.setEffectsVolume(0.1);
         }
     },
 
