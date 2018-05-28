@@ -284,7 +284,7 @@ cc.Class({
 
     
 
-       // this.schedule(this.baozouProcessing, this.baozouInterval);
+        this.schedule(this.baozouProcessing, this.baozouInterval);
         // this.node.runAction(cc.rotateTo(10,90));
 
 
