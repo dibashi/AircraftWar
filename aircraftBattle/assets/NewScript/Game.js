@@ -288,12 +288,17 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
 
        
-       if(hudunCount>0) {
-           this.hudunPartice = cc.instantiate(this.huDunTeXiao);
-           this.player.addChild(this.hudunPartice);
-           this.hudunPartice.setPosition(cc.v2(0,0));
+       if(this.shieldNo>0) {
+           this.shieldTeXiao();
        }
     },
+
+    shieldTeXiao:function() {
+        this.hudunPartice = cc.instantiate(this.huDunTeXiao);
+        this.player.addChild(this.hudunPartice);
+        this.hudunPartice.setPosition(cc.v2(0,0));
+    },
+    
 
     baozouProcessing:function(){
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
@@ -447,6 +452,9 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
+            if(this.shieldNo == 0) {
+                this.huDunTeXiao.destroy();
+            }
             cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
 
             let cs = this.node.children;
@@ -704,6 +712,9 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
     },
 
     getShield: function () {
+        if(this.shieldNo == 0) {
+            this.shieldTeXiao();
+        } 
         this.shieldNo += 1;
         cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
 
