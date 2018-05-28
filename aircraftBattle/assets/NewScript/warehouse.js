@@ -78,6 +78,10 @@ cc.Class({
             type: cc.Node,
         },
 
+        currentLevelLabel:{
+            default:null,
+            type:cc.Node,
+        }
 
 
     },
@@ -148,6 +152,11 @@ cc.Class({
         }
     },
 
+    currentLevelFun:function(){
+        let wingManCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID);
+        this.currentLevelLabel.getComponent(cc.Label).string = wingManCount;
+    },
+
 
     refresh: function () {
         for (let i = 0; i < this.planeArray.length; i++) {
@@ -167,7 +176,8 @@ cc.Class({
         for (let i = 0; i < wmCount; i++) {
             this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active = true;
         }
-
+        
+        this.currentLevelFun();
     },
 
     back: function () {
