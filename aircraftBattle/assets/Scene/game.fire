@@ -1542,6 +1542,9 @@
     "baozouWenZi": {
       "__id__": 17
     },
+    "huDunTeXiao": {
+      "__uuid__": "32ffb470-36bd-4a70-8bbc-ad40f4207590"
+    },
     "baozouFlag": false,
     "baozouInterval": 10,
     "baozouPossession": 5.5

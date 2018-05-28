@@ -130,6 +130,9 @@ cc.Class({
             cc.sys.localStorage.setItem('gameSoundBG', 1);
             cc.sys.localStorage.setItem('effectSound', 1);
 
+            //大招 护盾数量初始化
+            cc.sys.localStorage.setItem('dazhaoCount', 1);
+            cc.sys.localStorage.setItem('hudunCount', 1);
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);

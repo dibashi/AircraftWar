@@ -176,6 +176,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+        hudunPartice:null,
 
         baozouFlag:false,//当前是否暴走，在大招里面释放
 
@@ -282,6 +283,13 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
 
           this.schedule(this.baozouProcessing,this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
+
+       let hudunCount = cc.sys.localStorage.getItem('hudunCount');
+       if(hudunCount>0) {
+           this.hudunPartice = cc.instantiate(this.huDunTeXiao);
+           this.player.addChild(this.hudunPartice);
+           this.hudunPartice.setPosition(cc.v2(0,0));
+       }
     },
 
     baozouProcessing:function(){
