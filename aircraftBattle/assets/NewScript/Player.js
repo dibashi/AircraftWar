@@ -52,6 +52,13 @@ cc.Class({
 
         trackGuandaoCount:0,
         trackGuandaoArrays:null,
+
+
+
+        tempGuandaoCount:0,
+        tempSpeed :0.0,
+        tempTrackGuandaoCount :0,
+        tempWMCount :0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -216,7 +223,7 @@ cc.Class({
                 break;
             }
 
-        } else if((this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed){
+        } else if((this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) <= globalMaxShootingSpeed){
             for(let i = 0; i<this.guandaoCount; i++) {
                 //以前是更改发射子弹图片，已废除！
                 // if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
@@ -240,14 +247,61 @@ cc.Class({
 
     runWingman:function() {
         let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
-        
+        for(let i= 0;i<6;i++) {
+            this.wingmanArrays[i].active = false;
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
+        }
         
         // cc.log("僚机数量----->  " +wmCount);
         // cc.log("~僚机数量----->  " +cc.sys.localStorage.getItem('heroPlaneWingmanCount0'));
+       this._runWingman(wmCount);
+    },
+
+    _runWingman:function(wmCount) {
         for(let i= 0;i<wmCount;i++) {
             this.wingmanArrays[i].active = true;
             this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(true);
         }
+    },
+
+    savePlayerState:function(){
+        this.tempGuandaoCount = this.guandaoCount;
+        this.tempSpeed = this.guandaoArrays[0].getComponent("guandao").shootingSpeed;
+        this.tempTrackGuandaoCount = this.trackGuandaoCount;
+        this.tempWMCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
+    },
+
+    baozouState:function() {
+        this.guandaoCount = 4;//实际是5 只是在升级里增加的
+        this.upgradePlane();
+        for(let i = 0; i<this.guandaoCount; i++) {
+        
+            this.guandaoArrays[i].getComponent("guandao").setSpeed(globalMaxShootingSpeed);
+        } 
+
+        this.trackGuandaoCount = 3;//实际是4 理由同上
+        this.upgradePlane();//经过上面的属性更改，这次可以进入跟踪逻辑
+
+        this._runWingman(6);
+    },
+    repairPlayerState:function(){
+        this.guandaoCount = this.tempGuandaoCount-1;
+        this.upgradePlane();
+
+        for(let i = 0; i<5; i++) {
+        
+            this.guandaoArrays[i].getComponent("guandao").setSpeed(this.tempSpeed);
+        }
+
+        this.trackGuandaoCount = this.tempTrackGuandaoCount;
+        for(let i =0; i<4;i++) {
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+        }
+        for(let i =0; i<this.trackGuandaoCount;i++) {
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
+        }
+
+       this.runWingman();
     },
 
 
@@ -350,8 +404,6 @@ cc.Class({
             }
             
         }
-
-
     },
 
    

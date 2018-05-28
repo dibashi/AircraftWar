@@ -13,17 +13,17 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-      
+
         //子弹预制体
         bullet0: cc.Prefab,
         bullet1: cc.Prefab,
-       // bullet2: cc.Prefab,
-        bulletType:0,
-        enableGuanDao:true,
-        shootingSpeed:2,
-        damage:0,
+        // bullet2: cc.Prefab,
+        bulletType: 0,
+        enableGuanDao: true,
+        shootingSpeed: 2,
+        damage: 0,
 
-        onceBulletCount:1,
+        onceBulletCount: 1,
 
         bullet2Audio: {
             default: null,
@@ -32,52 +32,56 @@ cc.Class({
 
     },
 
-    
-    onLoad () {        
+
+    onLoad() {
         //this.startFire();
     },
 
-    setEnableGuanDao( ena ){
-        if(this.enableGuanDao == ena) {
+    setEnableGuanDao(ena) {
+        if (this.enableGuanDao == ena) {
             return;
         }
         this.enableGuanDao = ena;
-        if(ena)
-        {
+        if (ena) {
             this.startFire();
         }
-        else{
+        else {
             this.unschedule(this.bICallback);
         }
     },
-    
-    startFire(){
+
+    startFire() {
         this.bICallback();
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },
 
-    addSpeed:function(sp) {
-        this.shootingSpeed+=sp;
+    addSpeed: function (sp) {
+        this.shootingSpeed += sp;
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
     },
 
-    susheCallback:function() {
-        
+    setSpeed: function (sp) {
+        this.shootingSpeed = sp;
+        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+    },
+
+    susheCallback: function () {
+
         //TODO：！！这里应该以后应该加入子弹池来优化
 
 
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
-        
+
         var bl = null;
         if (this.bulletType === globalHeroBulletType.ordinary) {
             bl = cc.instantiate(this.bullet0);
         } else if (this.bulletType === globalHeroBulletType.upgrade) {
             bl = cc.instantiate(this.bullet1);
-        } 
+        }
         // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         // this.node.parent.addChild(bl);
 
-        
+
 
         let canvas = cc.director.getScene().getChildByName("Canvas");
         canvas.addChild(bl);
@@ -86,36 +90,35 @@ cc.Class({
         //bl.getComponent("heroBullet").damage = this.damage;
         bl.getComponent("heroBullet").damage = this.damage;
         let pos = this.node.parent.convertToWorldSpaceAR(this.node.getPosition());
-        let p = cc.v2(pos.x - cc.director.getVisibleSize().width*0.5, pos.y - cc.director.getVisibleSize().height*0.5);
-        bl.setPosition( p );
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+        bl.setPosition(p);
 
 
         //发射声音
-        if(this.bullet2Audio!=null) {
-            cc.audioEngine.playEffect(this.bullet2Audio,false);
+        if (this.bullet2Audio != null) {
+            cc.audioEngine.playEffect(this.bullet2Audio, false);
         }
-        
+
     },
 
 
     bICallback: function () {
         //连射三发 0.6时长
-        if(!this.enableGuanDao)
-        {
+        if (!this.enableGuanDao) {
             return;
         }
-        for(let i = 0; i<this.onceBulletCount;i++) {
+        for (let i = 0; i < this.onceBulletCount; i++) {
             // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.15*(i)), cc.callFunc(this.susheCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.15 * (i)), cc.callFunc(this.susheCallback, this)));
         }
-       
+
     },
 
 
 
     // LIFE-CYCLE CALLBACKS:
 
-    start () {
+    start() {
 
     },
 

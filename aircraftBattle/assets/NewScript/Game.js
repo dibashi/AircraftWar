@@ -23,6 +23,9 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
+ 
+
+
 
 cc.Class({
     extends: cc.Component,
@@ -163,6 +166,17 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
+
+        baozouWenZi: {
+            default: null,
+            type: cc.Node,
+        },
+
+        baozouFlag:false,//当前是否暴走，在大招里面释放
+
+        baozouInterval:10,//暴走效果间隔
+
+    baozouPossession:5.5,//暴走持续时间 比大招的5秒稍长点
     },
 
 
@@ -259,10 +273,36 @@ cc.Class({
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
 
+cc.log("baozouInterval  --->" + this.baozouInterval);
 
-
-       
+          this.schedule(this.baozouProcessing,this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
+    },
+
+    baozouProcessing:function(){
+        //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
+        // 1
+        let anim = this.baozouWenZi.getComponent(cc.Animation);
+        anim.play();//可能还要加入别的特效，在暴走结束时关闭
+    
+        // 2
+        //1 改射速 2 开管道 
+        //1 调用player保存当前状态。
+        this.player.savePlayerState();
+        this.player.baozouState();
+        // 3
+        this.baozouFlag = true;
+        this.bombOnclick();
+        // 4
+        this.scheduleOnce(this.closeBaozou, this.baozouPossession);
+    },
+
+    //关闭暴走
+    closeBaozou:function() {
+        //1 关闭 暴走的那些特效， 现在还不清楚
+        //2 恢复飞机属性
+        this.player.repairPlayerState();
+        //3 应该没了
     },
 
     dragStart: function (event) {
@@ -305,65 +345,47 @@ cc.Class({
 
     },
 
-    bombOnclick: function () {
+    hongzha:function() {
+         //必须让按钮先不能点，否则将引发bug！
+         this.bombSprite.off('touchstart', this.bombOnclick, this);
+         //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
+         //动画回调，按钮可点击
+         //若没敌方飞机，飞出屏幕，回调，按钮可点击
+         this.dazhaoPlanes = new Array();
+         for (let i = 0; i < 8; i++) {
+             this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
+             //  cc.log(this.dazhaoPlanes[i]);
+             //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
+             this.node.addChild(this.dazhaoPlanes[i]);
+             this.dazhaoPlanes[i].setPosition(0, -600);
 
+         }
+
+         this.dazhaoPlanes[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
+         this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
+
+         this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
+    },
+
+    bombOnclick: function () {
+        //如果是暴走 则直接 释放
+        if(this.baozouFlag == true) {
+            this.hongzha();
+            this.baozouFlag = false;
+            return;
+        }
 
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= 1;
-            //全屏炸，该功能已删除
-            // let cs = this.node.children;
-            // let cc = this.node.childrenCount;
-            // for (let i = 0; i < cc; i++) {
-            //     if (this.node.children[i].group === 'enemy') {
-            //         this.node.children[i].getComponent('enemy').enemyBoomAni();
-            //     }
-            // }
-            // this.node.addChild(this.player);
-            // this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);
-            // for(let i =0 ;  i< this.players.length; i++) {
-            //     this.node.addChild(this.players[i]);
-            // }
-
-            //必须让按钮先不能点，否则将引发bug！
-            this.bombSprite.off('touchstart', this.bombOnclick, this);
-            //生成大招飞机，加入game层，设置位置，摆设动画，动画回调继续动画撞击，
-            //动画回调，按钮可点击
-            //若没敌方飞机，飞出屏幕，回调，按钮可点击
-            this.dazhaoPlanes = new Array();
-            for (let i = 0; i < 8; i++) {
-                this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
-                //  cc.log(this.dazhaoPlanes[i]);
-                //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
-                this.node.addChild(this.dazhaoPlanes[i]);
-                this.dazhaoPlanes[i].setPosition(0, -600);
-
-            }
-
-            this.dazhaoPlanes[0].runAction(cc.moveTo(1.5, cc.v2(-140, -200)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[1].runAction(cc.moveTo(1.5, cc.v2(140, -200)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[2].runAction(cc.moveTo(1.5, cc.v2(-70, -170)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[3].runAction(cc.moveTo(1.5, cc.v2(70, -170)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[4].runAction(cc.moveTo(1.5, cc.v2(0, -140)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[5].runAction(cc.moveTo(1.5, cc.v2(0, -220)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[6].runAction(cc.moveTo(1.5, cc.v2(-70, -250)).easing(cc.easeOut(3.0)));
-            this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
-
-            this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
-
-            // this.dazhaoPlanes[0].setPosition(-140,-200);
-            // this.dazhaoPlanes[1].setPosition(140,-200);
-
-            // this.dazhaoPlanes[2].setPosition(-70,-170);
-            // this.dazhaoPlanes[3].setPosition(70,-170);
-
-            // this.dazhaoPlanes[4].setPosition(0,-140);
-            // this.dazhaoPlanes[5].setPosition(0,-220);
-
-            // this.dazhaoPlanes[6].setPosition(-70,-250);
-            // this.dazhaoPlanes[7].setPosition(70,-250);
-
-            // 3秒后删除集群
+           
+            this.hongzha();
         } else {
             console.log('没有子弹');
 
