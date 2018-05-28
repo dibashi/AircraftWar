@@ -302,14 +302,14 @@ cc.Class({
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
-        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width / 2, -hy + this.bombSprite.getContentSize().height / 2);
+        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width*this.bombSprite.scale*0.5, -hy + this.bombSprite.getContentSize().height*this.bombSprite.scale*0.5);
 
 
         this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
 
         //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
-        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width / 2, -hy + this.shieldSprite.getContentSize().height / 2);
+        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width*this.shieldSprite.scale*0.5, -hy + this.shieldSprite.getContentSize().height*this.shieldSprite.scale*0.5);
 
 
 
