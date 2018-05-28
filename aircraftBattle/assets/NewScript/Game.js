@@ -174,7 +174,7 @@ cc.Class({
 
         baozouFlag:false,//当前是否暴走，在大招里面释放
 
-        baozouInterval:10,//暴走效果间隔
+        baozouInterval:6,//暴走效果间隔
 
     baozouPossession:5.5,//暴走持续时间 比大招的5秒稍长点
     },
@@ -288,8 +288,8 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         // 2
         //1 改射速 2 开管道 
         //1 调用player保存当前状态。
-        this.player.savePlayerState();
-        this.player.baozouState();
+        this.player.getComponent("Player").savePlayerState();
+        this.player.getComponent("Player").baozouState();
         // 3
         this.baozouFlag = true;
         this.bombOnclick();
@@ -301,7 +301,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
     closeBaozou:function() {
         //1 关闭 暴走的那些特效， 现在还不清楚
         //2 恢复飞机属性
-        this.player.repairPlayerState();
+        this.player.getComponent("Player").repairPlayerState();
         //3 应该没了
     },
 

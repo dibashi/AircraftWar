@@ -117,7 +117,7 @@ cc.Class({
 
             cc.log("运行到了");
             //初始化一下玩家对各个飞机拥有的僚机数量
-            cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 6);
+            cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 0);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount1', 0);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount2', 0);
             // cc.sys.localStorage.setItem('heroPlaneWingmanCount3',0);
