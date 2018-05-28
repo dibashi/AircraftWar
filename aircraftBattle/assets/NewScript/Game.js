@@ -258,14 +258,17 @@ cc.Class({
         this.stage = 0;
         this.runStage();
 
-        this.bombNo = 0;
+      
+        this.bombNo =parseInt( cc.sys.localStorage.getItem('dazhaoCount'));
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
         this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width / 2, -hy + this.bombSprite.getContentSize().height / 2);
 
-        this.shieldNo = 0;
+
+        this.shieldNo =parseInt( cc.sys.localStorage.getItem('hudunCount'));
+      
      //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width / 2, -hy + this.shieldSprite.getContentSize().height / 2);
@@ -284,7 +287,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
           this.schedule(this.baozouProcessing,this.baozouInterval);
        // this.node.runAction(cc.rotateTo(10,90));
 
-       let hudunCount =parseInt( cc.sys.localStorage.getItem('hudunCount'));
+       
        if(hudunCount>0) {
            this.hudunPartice = cc.instantiate(this.huDunTeXiao);
            this.player.addChild(this.hudunPartice);
@@ -397,6 +400,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= 1;
+            cc.sys.localStorage.setItem('dazhaoCount',this.bombNo);
            
             this.hongzha();
         } else {
@@ -443,6 +447,7 @@ cc.log("baozouInterval  --->" + this.baozouInterval);
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
+            cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
 
             let cs = this.node.children;
             let cc = this.node.childrenCount;
@@ -694,11 +699,14 @@ let beginRandomY = cc.director.getVisibleSize().height / 2 +80;
     // },
     getHuoJianPao: function () {
         this.bombNo += 1;
+        cc.sys.localStorage.setItem('dazhaoCount',this.bombNo);
         this.bombLabel.string = this.bombNo;
     },
 
     getShield: function () {
         this.shieldNo += 1;
+        cc.sys.localStorage.setItem('hudunCount',this.shieldNo);
+
         this.shieldLabel.string = this.shieldNo;
     },
 
