@@ -175,6 +175,12 @@ cc.Class({
 
         baozouAni:null,
 
+        baozouHuDun:{
+            default: null,
+            type: cc.Prefab,
+        },
+        baozouHuDunAni:null,
+
         huDunTeXiao: {
             default: null,
             type: cc.Prefab,
@@ -323,6 +329,14 @@ cc.Class({
         this.node.addChild(this.baozouAni);
        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.bazouWenZidOver, this);
 
+       this.baozouHuDunAni = cc.instantiate(this.baozouHuDun);
+        let armatureDisplay1 = this.baozouHuDunAni.getComponent(dragonBones.ArmatureDisplay);
+
+        armatureDisplay1.playAnimation("chongci");
+
+        this.player.addChild(this.baozouHuDunAni);
+       
+
         // 2
         //1 改射速 2 开管道 
         //1 调用player保存当前状态。
@@ -340,6 +354,7 @@ cc.Class({
         //1 关闭 暴走的那些特效， 现在还不清楚
         //2 恢复飞机属性
         this.player.getComponent("Player").repairPlayerState();
+        this.baozouHuDunAni.destroy();
         //3 应该没了
     },
 
