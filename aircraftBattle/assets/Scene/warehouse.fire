@@ -7969,6 +7969,9 @@
     "soundSetting": {
       "__uuid__": "f171c76d-53e8-4785-b31c-e7c3ac73fbd6"
     },
+    "alert": {
+      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+    },
     "buttonAudio": {
       "__uuid__": "fa0bfb69-7891-4fde-8363-b408db4e214d"
     },

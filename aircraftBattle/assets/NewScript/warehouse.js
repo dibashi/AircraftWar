@@ -49,6 +49,10 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+        alert: {
+            default: null,
+            type: cc.Prefab,
+        },
 
         buttonAudio: {
             default: null,
@@ -213,7 +217,11 @@ cc.Class({
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
         if (currentCoin < 200) {
             cc.log("金币不足，请购买！");
-            Alert.show("金币不足，请购买！", null, false);
+            let ss = cc.instantiate(this.alert);
+            ss.setPosition(0, 0);
+
+            ss.getComponent("alert").onWho = this.node;
+            this.node.addChild(ss);
         } else {
             let afterCoint = currentCoin - 200;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
@@ -237,7 +245,12 @@ cc.Class({
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
         if (currentCoin < 200) {
             cc.log("金币不够，请购买！");
-            Alert.show("金币不足，请购买！", null, false);
+            let ss = cc.instantiate(this.alert);
+            ss.setPosition(0, 0);
+
+            ss.getComponent("alert").onWho = this.node;
+            this.node.addChild(ss);
+    
         } else {
             let afterCoint = currentCoin - 200;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
