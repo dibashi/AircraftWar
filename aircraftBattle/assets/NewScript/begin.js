@@ -178,16 +178,16 @@ cc.Class({
 
             //记录上一次领取时间 和 观看广告时间
 
-            cc.sys.localStorage.setItem('dazhaoCount', Date.now());
-            cc.sys.localStorage.setItem('hudunCount', Date.now());
+            cc.sys.localStorage.setItem('lqTime', Date.now());
+            cc.sys.localStorage.setItem('ggTime', Date.now());
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
         }
         this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
-        this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
-        this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
-        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+         this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分：" + cc.sys.localStorage.getItem("bestScore");
 

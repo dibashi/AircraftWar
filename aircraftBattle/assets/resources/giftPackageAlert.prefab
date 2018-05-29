@@ -1385,7 +1385,7 @@
       "__id__": 1
     },
     "component": "giftPackageAlert",
-    "handler": "onCertainClick",
+    "handler": "onLingQuClick",
     "customEventData": ""
   },
   {
@@ -1727,8 +1727,8 @@
     "target": {
       "__id__": 1
     },
-    "component": "dailyAlert",
-    "handler": "onCertainClick",
+    "component": "giftPackageAlert",
+    "handler": "onGuangGaoClick",
     "customEventData": ""
   },
   {
@@ -2201,6 +2201,8 @@
     "countdownGG": {
       "__id__": 55
     },
+    "dxLQ": 0,
+    "dxGG": 0,
     "onWho": null
   },
   {

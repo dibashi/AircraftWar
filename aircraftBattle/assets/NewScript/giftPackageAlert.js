@@ -59,28 +59,64 @@ cc.Class({
         //5 定时器一秒调用一次，一次让这个变量减一，然后把变量的值转化为时分秒 赋予label上
 
         //根据时间差来设置btn是否可点击
-        let d1 = parseInt(cc.sys.localStorage.getItem('dazhaoCount'));
+        let d1 = parseInt(cc.sys.localStorage.getItem('lqTime'));
         let d2 = parseInt(Date.now());
         this.dxLQ =parseInt((d2-d1)*0.001);
+      //  cc.log("aaaa  " +this.dxLQ);
         if( this.dxLQ > (4*60*60)) {//超过4个小时
             this.lqBtn.getComponent(cc.Button).enabled = true;
             this.countdownLQ.active = false;
         } else {
+            //剩余时间是4个小时 减去 这个两个的时间差
+            this.dxLQ = 4*60*60-this.dxLQ;
             this.lqBtn.getComponent(cc.Button).enabled = false;
             this.countdownLQ.active = true;
             this.setTimeToLabel(this.dxLQ,this.countdownLQ);
-            this.schedule(this.countdownFUN,this,1,this.dxLQ);
+         //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
+
+            this.schedule(this.countdownFUN,1);
         }
 
+        let d3 = parseInt(cc.sys.localStorage.getItem('ggTime'));
+        let d4 = parseInt(Date.now());
 
+        this.dxGG =parseInt((d4-d3)*0.001);
+       // cc.log("aaaa  " +this.dxLQ);
+        if( this.dxGG > (1*60*60)) {//超过1个小时
+            this.ggBtn.getComponent(cc.Button).enabled = true;
+            this.countdownGG.active = false;
+        } else {
+            this.dxGG = 1*60*60-this.dxGG;
+            this.ggBtn.getComponent(cc.Button).enabled = false;
+            this.countdownGG.active = true;
+            this.setTimeToLabel(this.dxGG,this.countdownGG);
+         //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
+
+            this.schedule(this.countdownFUNGG,1);
+        }
     },
 
     countdownFUN:function() {
+        
         this.dxLQ = this.dxLQ - 1;
+        
         this.setTimeToLabel(this.dxLQ,this.countdownLQ);
         if(this.dxLQ<=0) {
             this.lqBtn.getComponent(cc.Button).enabled = true;
             this.countdownLQ.active = false;
+            this.unschedule(this.countdownFUN);
+        }
+    },
+
+    countdownFUNGG:function() {
+        
+        this.dxGG = this.dxGG - 1;
+        
+        this.setTimeToLabel(this.dxGG,this.countdownGG);
+        if(this.dxGG<=0) {
+            this.ggBtn.getComponent(cc.Button).enabled = true;
+            this.countdownGG.active = false;
+            this.unschedule(this.countdownFUNGG);
         }
     },
 
@@ -125,30 +161,24 @@ cc.Class({
 
 
 
-    onCertainClick: function () {
-        cc.log("onCancelClick");
+    onLingQuClick: function () {
+        cc.log("onLingQuClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
-        let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
-        this.node.runAction(actionFadeOut);
-
+       
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
-
-       
-
         let jbC = cc.sys.localStorage.getItem('jinBiCount');
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-        cc.log("!!plc " + plC);
+     //   cc.log("!!plc " + plC);
 
         let ajbC = parseInt(jbC) + 100;
         let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
         let aplC = parseInt(plC) + 1;
-        cc.log("!!aplc " + aplC);
+     //   cc.log("!!aplc " + aplC);
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
         cc.sys.localStorage.setItem('dazhaoCount', adzC);
@@ -156,8 +186,57 @@ cc.Class({
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
         cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
         //通知调取的页面 数据更新
-        this.onWho.getComponent("begin").refreshPrize();
+        if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
+            this.onWho.getComponent("begin").refreshPrize();
+        }
+        //使用时间记录下
+        cc.sys.localStorage.setItem('lqTime', Date.now());
+      // cc.sys.localStorage.setItem('ggTime', Date.now());
 
+        
+
+        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+        let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
+        this.node.runAction(actionFadeOut);
+    },
+
+    onGuangGaoClick: function () {
+        cc.log("onGuangGaoClick");
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+        cc.eventManager.pauseTarget(this.node, true);
+       
+        //添加 金币 护盾 必杀 生命
+        //1 读取 2 添加 3 写入
+        let jbC = cc.sys.localStorage.getItem('jinBiCount');
+        let dzC = cc.sys.localStorage.getItem('dazhaoCount');
+        let hdC = cc.sys.localStorage.getItem('hudunCount');
+        let plC = cc.sys.localStorage.getItem('planeLifeCount');
+     //   cc.log("!!plc " + plC);
+
+        let ajbC = parseInt(jbC) + 100;
+        let adzC = parseInt(dzC) + 1;
+        let ahdC = parseInt(hdC) + 1;
+        let aplC = parseInt(plC) + 1;
+     //   cc.log("!!aplc " + aplC);
+
+        cc.sys.localStorage.setItem('jinBiCount', ajbC);
+        cc.sys.localStorage.setItem('dazhaoCount', adzC);
+        cc.sys.localStorage.setItem('hudunCount', ahdC);
+        cc.sys.localStorage.setItem('planeLifeCount', aplC);
+        cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
+        //通知调取的页面 数据更新
+        if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
+            this.onWho.getComponent("begin").refreshPrize();
+        }
+        //使用时间记录下
+      //  cc.sys.localStorage.setItem('lqTime', Date.now());
+       cc.sys.localStorage.setItem('ggTime', Date.now());
+
+        
+
+        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+        let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
+        this.node.runAction(actionFadeOut);
     },
 
     onFadeOutFinish: function () {
