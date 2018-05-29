@@ -109,7 +109,7 @@ cc.Class({
 
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
-            cc.sys.localStorage.setItem('jinBiCount', 10000);
+            cc.sys.localStorage.setItem('jinBiCount', 100);
             //分数一般是从服务器读取，这里先用本地存储。
             cc.sys.localStorage.setItem('bestScore', 0);
 
@@ -194,7 +194,7 @@ cc.Class({
 
         
         //测试用
-        cc.sys.localStorage.setItem('planeLifeCount', 2);
+     //   cc.sys.localStorage.setItem('planeLifeCount', 2);
 
     },
 
