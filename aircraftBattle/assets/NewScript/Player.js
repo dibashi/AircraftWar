@@ -38,27 +38,27 @@ cc.Class({
             type: cc.Prefab,
         },
         bBar: null,//label
-        wudi:false,
-        _wuditexiao:null,
-        _wudiTime:0,
+        wudi: false,
+        _wuditexiao: null,
+        _wudiTime: 0,
 
-        guandaoCount:0, //管道1~5决定了5个弹道，
-        guandaoArrays:null,
+        guandaoCount: 0, //管道1~5决定了5个弹道，
+        guandaoArrays: null,
 
-        wingmanCount:0,
-        wingmanArrays:null,
+        wingmanCount: 0,
+        wingmanArrays: null,
 
-        onceBulletCount:1,
+        onceBulletCount: 1,
 
-        trackGuandaoCount:0,
-        trackGuandaoArrays:null,
+        trackGuandaoCount: 0,
+        trackGuandaoArrays: null,
 
 
 
-        tempGuandaoCount:0,
-        tempSpeed :0.0,
-        tempTrackGuandaoCount :0,
-        tempWMCount :0,
+        tempGuandaoCount: 0,
+        tempSpeed: 0.0,
+        tempTrackGuandaoCount: 0,
+        tempWMCount: 0,
 
         boomAudio: {
             default: null,
@@ -75,19 +75,19 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        
+
 
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
-      if(this!=undefined) {
-        this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
-        this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
-        this.bulletType = globalHeroPlaneData[D.globalHeroPlaneID].bulletType;
-        this.damage = globalHeroPlaneData[D.globalHeroPlaneID].damage;
+        if (this != undefined) {
+            this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
+            this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
+            this.bulletType = globalHeroPlaneData[D.globalHeroPlaneID].bulletType;
+            this.damage = globalHeroPlaneData[D.globalHeroPlaneID].damage;
 
-        this.onceBulletCount = globalHeroPlaneData[D.globalHeroPlaneID].onceBulletCount;
-      }
-        
-     
+            this.onceBulletCount = globalHeroPlaneData[D.globalHeroPlaneID].onceBulletCount;
+        }
+
+
 
         this.guandaoArrays = new Array();
         // let childcount = this.nodechildrenCount;
@@ -102,74 +102,74 @@ cc.Class({
 
         //     }
         // }
-        
-//初始化管道数据
-        for(let i = 0; i<5; i++) {
-           
-            if( this.node.getChildByName("guandao"+i) == null){
+
+        //初始化管道数据
+        for (let i = 0; i < 5; i++) {
+
+            if (this.node.getChildByName("guandao" + i) == null) {
                 break;
             }
-            this.guandaoArrays[i] = this.node.getChildByName("guandao"+i);
-            if(this.guandaoArrays[i].getComponent("guandao")!=undefined) {
+            this.guandaoArrays[i] = this.node.getChildByName("guandao" + i);
+            if (this.guandaoArrays[i].getComponent("guandao") != undefined) {
                 this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
                 this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
                 this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
                 this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
-    
+
                 this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
             }
-           
+
         }
         this.wingmanArrays = new Array();
-//初始化僚机数据 现在用的都是 飞机数据//以后可能要做一个僚机表 根据当前飞机的ID 来从表中取数据
-        for(let i = 0; i<6; i++) {
-           
-            
-            if(this.node.getChildByName("wingman"+i) == null){
+        //初始化僚机数据 现在用的都是 飞机数据//以后可能要做一个僚机表 根据当前飞机的ID 来从表中取数据
+        for (let i = 0; i < 6; i++) {
+
+
+            if (this.node.getChildByName("wingman" + i) == null) {
                 break;
             }
-            this.wingmanArrays[i] = this.node.getChildByName("wingman"+i);
-            if( this.wingmanArrays[i].getComponent("wingman")!=undefined) {
+            this.wingmanArrays[i] = this.node.getChildByName("wingman" + i);
+            if (this.wingmanArrays[i].getComponent("wingman") != undefined) {
                 this.wingmanArrays[i].getComponent("wingman").damage = this.damage;
                 this.wingmanArrays[i].getComponent("wingman").shootingSpeed = this.shootingSpeed;
                 this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
                 this.wingmanArrays[i].getComponent("wingman").bulletType = this.bulletType;
                 this.wingmanArrays[i].active = false;
             }
-           
+
         }
         //启动僚机
-        cc.log("llll---> " +this.wingmanArrays.length);
-        if(this.wingmanArrays.length>0) {
+        cc.log("llll---> " + this.wingmanArrays.length);
+        if (this.wingmanArrays.length > 0) {
             this.runWingman();
         }
 
 
 
         this.trackGuandaoArrays = new Array();
-     //这里先都用飞机那套数据，以后再重构  算了 这里自己定义的数据
-        for(let i = 0; i<4; i++) {
-           
-           // cc.log(this.trackGuandaoArrays[i]);
-            if( this.node.getChildByName("guandaoTrack"+i) == null){
+        //这里先都用飞机那套数据，以后再重构  算了 这里自己定义的数据
+        for (let i = 0; i < 4; i++) {
+
+            // cc.log(this.trackGuandaoArrays[i]);
+            if (this.node.getChildByName("guandaoTrack" + i) == null) {
                 break;
             }
-            this.trackGuandaoArrays[i] = this.node.getChildByName("guandaoTrack"+i);
-            if( this.trackGuandaoArrays[i].getComponent("guandaoTrack")!=undefined) {
+            this.trackGuandaoArrays[i] = this.node.getChildByName("guandaoTrack" + i);
+            if (this.trackGuandaoArrays[i].getComponent("guandaoTrack") != undefined) {
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").damage = 1;
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 2;
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 8;
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").onceBulletCount = 1;
             }
-           
-            //this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
-           // this.trackGuandaoArrays[i].getComponent("guandaoTrack").bulletType = 0;
 
-           
+            //this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
+            // this.trackGuandaoArrays[i].getComponent("guandaoTrack").bulletType = 0;
+
+
         }
-      
-        
+
+
 
         //血条 以后要改成进度条
         var nodeBar = cc.instantiate(this.bloodBar);
@@ -183,7 +183,7 @@ cc.Class({
         nodeBar.setPosition(0, 0);
         // nodeBar.rotation = 180;
 
-     
+
         //初始管道设置为0
         this.guandaoCount = 0;
         //跟踪导弹管道设置为0
@@ -193,147 +193,147 @@ cc.Class({
     },
 
 
-    upgradePlane:function() {
+    upgradePlane: function () {
 
-        
-        if(this.guandaoCount<5) {
+
+        if (this.guandaoCount < 5) {
             this.guandaoCount++;
             //先全部关闭，然后根据个数来设置相应的管道
-            for(let i = 0; i<5; i++) {
+            for (let i = 0; i < 5; i++) {
                 this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
             }
 
-            switch(this.guandaoCount) {
+            switch (this.guandaoCount) {
                 case 1:
-                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
-                break;
+                    this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                    break;
                 case 2:
-                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
-                break;
+                    this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                    break;
 
                 case 3:
-                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
-                break;
+                    this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                    break;
 
                 case 4:
-                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
-                break;
+                    this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                    break;
 
                 case 5:
-                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
-                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
-                break;
+                    this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                    this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                    break;
             }
 
-        } else if((this.guandaoArrays[0].getComponent("guandao")!=undefined && this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) <= globalMaxShootingSpeed){
-            for(let i = 0; i<this.guandaoCount; i++) {
-             
-                   this.guandaoArrays[i].getComponent("guandao").addSpeed(globalOnceAddSpeed);
-              //  }
+        } else if ((this.guandaoArrays[0].getComponent("guandao") != undefined && this.guandaoArrays[0].getComponent("guandao").shootingSpeed + globalOnceAddSpeed) <= globalMaxShootingSpeed) {
+            for (let i = 0; i < this.guandaoCount; i++) {
+
+                this.guandaoArrays[i].getComponent("guandao").addSpeed(globalOnceAddSpeed);
+                //  }
             }
-        } else if(this.trackGuandaoCount<4) {
+        } else if (this.trackGuandaoCount < 4) {
             this.trackGuandaoCount++;
-            for(let i =0; i<this.trackGuandaoCount;i++) {
+            for (let i = 0; i < this.trackGuandaoCount; i++) {
                 this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
             }
         }
 
     },
 
-    runWingman:function() {
-        let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
-        for(let i= 0;i<6;i++) {
+    runWingman: function () {
+        let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
+        for (let i = 0; i < 6; i++) {
             this.wingmanArrays[i].active = false;
             this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
         }
-        
+
         // cc.log("僚机数量----->  " +wmCount);
         // cc.log("~僚机数量----->  " +cc.sys.localStorage.getItem('heroPlaneWingmanCount0'));
-       this._runWingman(wmCount);
+        this._runWingman(wmCount);
     },
 
-    _runWingman:function(wmCount) {
-        for(let i= 0;i<wmCount;i++) {
+    _runWingman: function (wmCount) {
+        for (let i = 0; i < wmCount; i++) {
             this.wingmanArrays[i].active = true;
             this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(true);
         }
     },
 
-    savePlayerState:function(){
+    savePlayerState: function () {
         this.tempGuandaoCount = this.guandaoCount;
-        if(this.guandaoArrays[0].getComponent("guandao")!=undefined) {
+        if (this.guandaoArrays[0].getComponent("guandao") != undefined) {
             this.tempSpeed = this.guandaoArrays[0].getComponent("guandao").shootingSpeed;
         }
-     
+
         this.tempTrackGuandaoCount = this.trackGuandaoCount;
-        this.tempWMCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
+        this.tempWMCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
     },
 
-    baozouState:function() {
+    baozouState: function () {
         this.guandaoCount = 4;//实际是5 只是在升级里增加的
         this.upgradePlane();
-        for(let i = 0; i<this.guandaoCount; i++) {
-        
+        for (let i = 0; i < this.guandaoCount; i++) {
+
             this.guandaoArrays[i].getComponent("guandao").setSpeed(globalMaxShootingSpeed);
-        } 
+        }
 
         this.trackGuandaoCount = 3;//实际是4 理由同上
         this.upgradePlane();//经过上面的属性更改，这次可以进入跟踪逻辑
 
         this._runWingman(6);
     },
-    repairPlayerState:function(){
-        this.guandaoCount = this.tempGuandaoCount-1;
+    repairPlayerState: function () {
+        this.guandaoCount = this.tempGuandaoCount - 1;
         this.upgradePlane();
 
-        for(let i = 0; i<5; i++) {
-        
+        for (let i = 0; i < 5; i++) {
+
             this.guandaoArrays[i].getComponent("guandao").setSpeed(this.tempSpeed);
         }
 
         this.trackGuandaoCount = this.tempTrackGuandaoCount;
-        for(let i =0; i<4;i++) {
+        for (let i = 0; i < 4; i++) {
             this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
         }
-        for(let i =0; i<this.trackGuandaoCount;i++) {
+        for (let i = 0; i < this.trackGuandaoCount; i++) {
             this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
         }
 
-       this.runWingman();
+        this.runWingman();
     },
 
 
-    
-    wudichongci:function() {
-        if(this.wudi == false) {
+
+    wudichongci: function () {
+        if (this.wudi == false) {
             this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
-            let armatureDisplay =  this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
-           // let wudiTX = armatureDisplay.buildArmature("TXwudi");
+            let armatureDisplay = this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
+            // let wudiTX = armatureDisplay.buildArmature("TXwudi");
             armatureDisplay.playAnimation("wudi");
             this.node.addChild(this._wuditexiao);
-            
+
             this.wudi = true;
-           this._wudiTime = globalWuDiTime;
+            this._wudiTime = globalWuDiTime;
         } else {
             this._wudiTime = globalWuDiTime;
         }
-       
+
     },
 
     addBlood: function () {
-         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
-         this.bBar.string = this.blood;
-        
-            
+        this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
+        this.bBar.string = this.blood;
+
+
     },
 
     // raiseTheSpeedOfFire:function() {
@@ -343,12 +343,12 @@ cc.Class({
     // },
 
     // susheCallback:function() {
-        
+
     //     //TODO：！！这里应该以后应该加入子弹池来优化
 
 
     //     //根据子弹类型来生成子弹，类型决定加载什么预制体。
-        
+
     //     var bl = null;
     //     if (this.bulletType === 0) {
     //         bl = cc.instantiate(this.bullet0);
@@ -360,7 +360,7 @@ cc.Class({
     //     // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
     //     // this.node.parent.addChild(bl);
 
-        
+
 
     //     let canvas = cc.director.getScene().getChildByName("Canvas");
     //     canvas.addChild(bl);
@@ -372,12 +372,12 @@ cc.Class({
 
     // bICallback: function () {
     //     //连射三发 0.6时长
-        
+
     //     for(let i = 0; i<7;i++) {
     //         // this.scheduleOnce(this.susheCallback,0.2);
     //         this.node.runAction(cc.sequence(cc.delayTime(0.1*(i)), cc.callFunc(this.susheCallback,this)));
     //     }
-       
+
     // },
 
     onCollisionEnter: function (other, self) {
@@ -388,12 +388,12 @@ cc.Class({
         //cc.log(other.node);
         if (other.node.group === "eBullet") {
             //先判断是否有护盾
-            let hdCount = parseInt( cc.sys.localStorage.getItem('hudunCount'));
-            if(hdCount>0) {
-                let p = hdCount -1;
-                cc.log("~~  " +p);
-                 cc.sys.localStorage.setItem('hudunCount',p);
-                 cc.log("hudunCount "+ cc.sys.localStorage.getItem('hudunCount'));
+            let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
+            if (hdCount > 0) {
+                let p = hdCount - 1;
+                cc.log("~~  " + p);
+                cc.sys.localStorage.setItem('hudunCount', p);
+                cc.log("hudunCount " + cc.sys.localStorage.getItem('hudunCount'));
                 this.node.parent.getComponent('Game').shieldOnclick();
                 return;
             }
@@ -407,52 +407,55 @@ cc.Class({
 
                 cc.log("游戏结束");
                 this.dead();
-               
+
             } else {
-                if(!this.wudi) {
+                if (!this.wudi) {
                     this.blood -= bDamage; //屏蔽后无敌 方便调试
                     this.bBar.string = this.blood;
                 }
-               
+
             }
         } else if (other.node.group === "enemy") {
 
-            let hdCount = parseInt( cc.sys.localStorage.getItem('hudunCount'));
-            if(hdCount>0) {
+            let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
+            if (hdCount > 0) {
+
+                let p = hdCount - 1;
+                cc.sys.localStorage.setItem('hudunCount', p);
                 this.node.parent.getComponent('Game').shieldOnclick();
-              //  other.enemyDamagedAni();
-              //cc.log(other.node);
+                //  other.enemyDamagedAni();
+                //cc.log(other.node);
                 other.node.getComponent("enemy").enemyBoomAni();
                 return;
             }
-           
-            if(!this.wudi) {
+
+            if (!this.wudi) {
                 cc.log("游戏结束");
                 this.dead();
-                
+
             }
-            
+
         }
     },
 
-    dead:function() {
+    dead: function () {
         //1 先判断是否还有飞机，
-       
+
         let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
-        if(lifeCount>0) {
-             //2 若有 则 销毁当前飞机，
+        if (lifeCount > 0) {
+            //2 若有 则 销毁当前飞机，
             this.boomAni();
             //3 飞入新飞机 在爆炸完的回调中处理
         } else {
             this.node.parent.getComponent('Game').gameOver();
         }
 
-        
+
     },
 
     boomAni: function () {
-    
-        cc.audioEngine.playEffect(this.boomAudio,false);
+
+        cc.audioEngine.playEffect(this.boomAudio, false);
 
         this.node.group = "NOOOOOOO";
 
@@ -468,7 +471,7 @@ cc.Class({
         this.scheduleOnce(this.baozhaOver, 0.7);
 
         this.node.parent.getComponent("Game").closeBaoZou();
-      
+
 
     },
 
@@ -476,29 +479,29 @@ cc.Class({
         this.unscheduleAllCallbacks();
         this.partice.destroy();
         cc.log("爆炸动画结束~~~~");
-       this.node.parent.getComponent("Game").goNewPlane();
+        this.node.parent.getComponent("Game").goNewPlane();
         this.node.destroy();
     },
 
-   
 
-     update(dt) {
 
-        if(this.wudi && this._wudiTime <=0) {
-            this.wudi =false;
-            if(this._wuditexiao) {
+    update(dt) {
+
+        if (this.wudi && this._wudiTime <= 0) {
+            this.wudi = false;
+            if (this._wuditexiao) {
                 this._wuditexiao.destroy();
                 this._wuditexiao = null;
             }
         }
 
-        if(this.wudi) {
+        if (this.wudi) {
             this._wudiTime -= dt;
-        } 
+        }
 
-       // this._wudiTime(this.wuDiTime);
+        // this._wudiTime(this.wuDiTime);
 
-      
+
     },
 
     getEnemyDistance: function (enemy) {
