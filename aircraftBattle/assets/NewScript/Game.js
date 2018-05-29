@@ -317,7 +317,7 @@ cc.Class({
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
 
-    
+        
         this.goBaoZou();
 
         
