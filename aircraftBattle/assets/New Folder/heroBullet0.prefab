@@ -101,7 +101,9 @@
     },
     "_enabled": true,
     "flyingSpeed": 0,
-    "damage": 0
+    "damage": 0,
+    "trackOpen": false,
+    "p": 0
   },
   {
     "__type__": "cc.PolygonCollider",

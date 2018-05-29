@@ -139,7 +139,8 @@
     "bulletType": 0,
     "enableGuanDao": true,
     "shootingSpeed": 1,
-    "damage": 1
+    "damage": 1,
+    "onceBulletCount": 1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -179,7 +180,21 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.PolygonCollider",
+    "__type__": "f3930cE/LJHNY4A1z4CKGaU",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "shootingSpeed": 2,
+    "damage": 1,
+    "guandaoCount": 0,
+    "guandaoArrays": null,
+    "onceBulletCount": 6
+  },
+  {
+    "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -192,111 +207,7 @@
       "x": 0,
       "y": 0
     },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": -24,
-        "y": 82.4999999999997
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -39,
-        "y": 13.499999999999702
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -25,
-        "y": -12.500000000000298
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -52,
-        "y": -22.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -59,
-        "y": -47.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -21,
-        "y": -52.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -4,
-        "y": -82.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 12,
-        "y": -80.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 21,
-        "y": -52.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 59,
-        "y": -47.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 52,
-        "y": -22.5000000000003
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 25,
-        "y": -12.500000000000298
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 39,
-        "y": -2.5000000000002984
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 37,
-        "y": 66.4999999999997
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 11,
-        "y": 82.4999999999997
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 17,
-        "y": 23.4999999999997
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -11,
-        "y": 14.499999999999702
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -11,
-        "y": 82.4999999999997
-      }
-    ]
-  },
-  {
-    "__type__": "f3930cE/LJHNY4A1z4CKGaU",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "shootingSpeed": 2,
-    "damage": 1,
-    "guandaoCount": 0,
-    "guandaoArrays": null
+    "_radius": 40
   },
   {
     "__type__": "cc.PrefabInfo",
