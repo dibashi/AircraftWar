@@ -108,6 +108,11 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        giftPackageAlert: {
+            default: null,
+            type: cc.Prefab,
+        },
+
 
     },
 
@@ -170,6 +175,11 @@ cc.Class({
             //每日登陆功能 记录今天的年月日
             cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
             cc.log("第一次登陆时间： " +cc.sys.localStorage.getItem("lastLoadDate"));
+
+            //记录上一次领取时间 和 观看广告时间
+
+            cc.sys.localStorage.setItem('dazhaoCount', Date.now());
+            cc.sys.localStorage.setItem('hudunCount', Date.now());
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
@@ -247,6 +257,14 @@ cc.Class({
         //测试用
         //   cc.sys.localStorage.setItem('planeLifeCount', 2);
 
+        // let zzz = Date.now();
+        // cc.log(zzz);
+        // cc.sys.localStorage.setItem('zzz', zzz);
+
+        // let z = parseInt(cc.sys.localStorage.getItem('zzz'));
+
+        // cc.log("~~ " +z);
+
     },
 
     refreshPrize:function() {
@@ -305,6 +323,17 @@ cc.Class({
         ss.getComponent("sound").onWho = this.node;
         this.node.addChild(ss);
 
+    },
+
+    onGiftPackageClick:function() {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.giftPackageAlert);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("giftPackageAlert").onWho = this.node;
+        this.node.addChild(ss);
     },
     // update (dt) {},
 });
