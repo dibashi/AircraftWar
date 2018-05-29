@@ -60,8 +60,11 @@ cc.Class({
     },
     
     startFire(){
-        this.bICallback();
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        if(this != undefined) {
+            this.bICallback();
+            this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        }
+      
     },
 
     susheCallback:function() {

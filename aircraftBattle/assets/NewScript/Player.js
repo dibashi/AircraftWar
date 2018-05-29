@@ -78,16 +78,16 @@ cc.Class({
         
 
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
-      
+      if(this!=undefined) {
         this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
         this.bulletType = globalHeroPlaneData[D.globalHeroPlaneID].bulletType;
         this.damage = globalHeroPlaneData[D.globalHeroPlaneID].damage;
 
         this.onceBulletCount = globalHeroPlaneData[D.globalHeroPlaneID].onceBulletCount;
-        cc.log("this.shootingSpeed = " + this.shootingSpeed);
-        cc.log("this.blood = " + this.blood);
-        cc.log("this.bulletType = " + this.bulletType);
+      }
+        
+     
 
         this.guandaoArrays = new Array();
         // let childcount = this.nodechildrenCount;
@@ -105,41 +105,38 @@ cc.Class({
         
 //初始化管道数据
         for(let i = 0; i<5; i++) {
-            // this.node.children[i].getComponent("guandao").damage = this.damage;
-            // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
-            //管道控制集合
-            
-            // cc.log("~~~~~---> " + ("guandao"+i));
-            // cc.log(this.guandaoArrays[i]);
+           
             if( this.node.getChildByName("guandao"+i) == null){
                 break;
             }
             this.guandaoArrays[i] = this.node.getChildByName("guandao"+i);
-            
-            this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
-            this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
-            this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
-            this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
-
-            this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
+            if(this.guandaoArrays[i].getComponent("guandao")!=undefined) {
+                this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
+                this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+                this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
+    
+                this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
+            }
+           
         }
         this.wingmanArrays = new Array();
 //初始化僚机数据 现在用的都是 飞机数据//以后可能要做一个僚机表 根据当前飞机的ID 来从表中取数据
         for(let i = 0; i<6; i++) {
-            // this.node.children[i].getComponent("guandao").damage = this.damage;
-            // this.node.children[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
-            //管道控制集合
+           
             
             if(this.node.getChildByName("wingman"+i) == null){
                 break;
             }
             this.wingmanArrays[i] = this.node.getChildByName("wingman"+i);
-
-            this.wingmanArrays[i].getComponent("wingman").damage = this.damage;
-            this.wingmanArrays[i].getComponent("wingman").shootingSpeed = this.shootingSpeed;
-            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
-            this.wingmanArrays[i].getComponent("wingman").bulletType = this.bulletType;
-            this.wingmanArrays[i].active = false;
+            if( this.wingmanArrays[i].getComponent("wingman")!=undefined) {
+                this.wingmanArrays[i].getComponent("wingman").damage = this.damage;
+                this.wingmanArrays[i].getComponent("wingman").shootingSpeed = this.shootingSpeed;
+                this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
+                this.wingmanArrays[i].getComponent("wingman").bulletType = this.bulletType;
+                this.wingmanArrays[i].active = false;
+            }
+           
         }
         //启动僚机
         cc.log("llll---> " +this.wingmanArrays.length);
@@ -158,15 +155,18 @@ cc.Class({
                 break;
             }
             this.trackGuandaoArrays[i] = this.node.getChildByName("guandaoTrack"+i);
-            
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").damage = 1;
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 2;
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 8;
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+            if( this.trackGuandaoArrays[i].getComponent("guandaoTrack")!=undefined) {
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").damage = 1;
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").shootingSpeed = 2;
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").flyingSpeed = 8;
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+                this.trackGuandaoArrays[i].getComponent("guandaoTrack").onceBulletCount = 1;
+            }
+           
             //this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
            // this.trackGuandaoArrays[i].getComponent("guandaoTrack").bulletType = 0;
 
-            this.trackGuandaoArrays[i].getComponent("guandaoTrack").onceBulletCount = 1;
+           
         }
       
         
@@ -234,16 +234,9 @@ cc.Class({
                 break;
             }
 
-        } else if((this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) <= globalMaxShootingSpeed){
+        } else if((this.guandaoArrays[0].getComponent("guandao")!=undefined && this.guandaoArrays[0].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) <= globalMaxShootingSpeed){
             for(let i = 0; i<this.guandaoCount; i++) {
-                //以前是更改发射子弹图片，已废除！
-                // if(this.guandaoArrays[i].getComponent("guandao").bulletType == globalHeroBulletType.ordinary) {
-                //     this.guandaoArrays[i].getComponent("guandao").bulletType = globalHeroBulletType.upgrade;
-                //     return;
-                // }
-               //  cc.log("this.guandaoArrays[i].getComponent(guandao).shootingSpeed!--> " +this.guandaoArrays[i].getComponent("guandao").shootingSpeed);
-               // if((this.guandaoArrays[i].getComponent("guandao").shootingSpeed+globalOnceAddSpeed) < globalMaxShootingSpeed) {
-                   // this.guandaoArrays[i].getComponent("guandao").shootingSpeed += globalOnceAddSpeed;
+             
                    this.guandaoArrays[i].getComponent("guandao").addSpeed(globalOnceAddSpeed);
               //  }
             }
@@ -277,7 +270,10 @@ cc.Class({
 
     savePlayerState:function(){
         this.tempGuandaoCount = this.guandaoCount;
-        this.tempSpeed = this.guandaoArrays[0].getComponent("guandao").shootingSpeed;
+        if(this.guandaoArrays[0].getComponent("guandao")!=undefined) {
+            this.tempSpeed = this.guandaoArrays[0].getComponent("guandao").shootingSpeed;
+        }
+     
         this.tempTrackGuandaoCount = this.trackGuandaoCount;
         this.tempWMCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount'+D.globalHeroPlaneID);
     },

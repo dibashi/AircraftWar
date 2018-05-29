@@ -51,18 +51,25 @@ cc.Class({
     },
 
     startFire() {
-        this.bICallback();
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        if(this!=undefined) {
+            this.bICallback();
+            this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        }
+     
     },
 
     addSpeed: function (sp) {
+        if(this!=undefined) {
         this.shootingSpeed += sp;
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        }
     },
 
     setSpeed: function (sp) {
+        if(this!=undefined) {
         this.shootingSpeed = sp;
         this.schedule(this.bICallback, 1 / this.shootingSpeed);
+        }
     },
 
     susheCallback: function () {

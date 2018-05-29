@@ -122,29 +122,32 @@ cc.Class({
         //其实应该在这里根据子弹射击方式来定义
         //1 根据 敌机的 运动轨迹数据 来调用相关轨迹动画函数
         //2 根据 敌机的 子弹发射方式 来 调用相关的 发射动画函数
-        if (this.enemyTrack == enemyTrack.guding) {
-            //固定不动就不需要实现什么了
-        } else if (this.enemyTrack == enemyTrack.zuoyoushangxia) {
-            this.zuoyoushangxia();
+        if(this != undefined) {
+            if (this.enemyTrack == enemyTrack.guding) {
+                //固定不动就不需要实现什么了
+            } else if (this.enemyTrack == enemyTrack.zuoyoushangxia) {
+                this.zuoyoushangxia();
+            }
+    
+    
+            if (this.bulletTrack == bulletTrack.zhixianxiangxia) {
+                this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
+            } else if (this.bulletTrack == bulletTrack.dingwei) {
+                this.schedule(this.dingwei, 1 / this.shootingSpeed);
+            } else if (this.bulletTrack == bulletTrack.banquan) {
+                // this.schedule(this.xiexian, 1 / this.shootingSpeed);
+                this.schedule(this.banquan, 1 / this.shootingSpeed);
+            } else if (this.bulletTrack == bulletTrack.yiquan) {
+                // this.schedule(this.xiexian, 1 / this.shootingSpeed);
+                this.schedule(this.yiquan, 1 / this.shootingSpeed);
+            } else if (this.bulletTrack == bulletTrack.sanfazhixian) {
+                this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
+            }
+            else if (this.bulletTrack == bulletTrack.wufasanshe) {
+                this.schedule(this.wufasanshe, 1 / this.shootingSpeed);
+            }
         }
-
-
-        if (this.bulletTrack == bulletTrack.zhixianxiangxia) {
-            this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
-        } else if (this.bulletTrack == bulletTrack.dingwei) {
-            this.schedule(this.dingwei, 1 / this.shootingSpeed);
-        } else if (this.bulletTrack == bulletTrack.banquan) {
-            // this.schedule(this.xiexian, 1 / this.shootingSpeed);
-            this.schedule(this.banquan, 1 / this.shootingSpeed);
-        } else if (this.bulletTrack == bulletTrack.yiquan) {
-            // this.schedule(this.xiexian, 1 / this.shootingSpeed);
-            this.schedule(this.yiquan, 1 / this.shootingSpeed);
-        } else if (this.bulletTrack == bulletTrack.sanfazhixian) {
-            this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
-        }
-        else if (this.bulletTrack == bulletTrack.wufasanshe) {
-            this.schedule(this.wufasanshe, 1 / this.shootingSpeed);
-        }
+       
         
 
 

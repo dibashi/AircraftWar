@@ -29,7 +29,10 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        this.emitDaoDan(shootingSpeed);
+        if(this!= undefined) {
+            this.emitDaoDan(shootingSpeed);
+        }
+       
       
     },
 
@@ -39,8 +42,10 @@ cc.Class({
 
     emitDaoDan: function (shootingSpeed) {
 
-      
+      if(this!=undefined) {
         this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
+      }
+        
 
 
     },

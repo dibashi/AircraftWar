@@ -56,7 +56,10 @@ cc.Class({
             this.guandaoArrays[i] = this.node.getChildByName("guandao" + i);
 
             this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
-            this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            if( this.guandaoArrays[i].getComponent("guandao")!=undefined){
+                this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
+            }
+            
             this.guandaoArrays[i].getComponent("guandao").onceBulletCount = this.onceBulletCount;
 
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
