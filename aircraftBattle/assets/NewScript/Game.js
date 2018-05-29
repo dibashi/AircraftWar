@@ -147,10 +147,10 @@ cc.Class({
 
         settingButton: null,
 
-        soundSetting: {
-            default: null,
-            type: cc.Prefab,
-        },
+        // soundSetting: {
+        //     default: null,
+        //     type: cc.Prefab,
+        // },
 
         buttonAudio: {
             default: null,
@@ -184,10 +184,15 @@ cc.Class({
 
         sself: null,
 
-        // lifeLabel: {
-        //     default: null,
-        //     type: cc.Node,
-        // },//label外的node
+        lifeLabel: {
+            default: null,
+            type: cc.Node,
+        },//label外的node
+
+        spriteLife: {
+            default: null,
+            type: cc.Node,
+        },//label外的node
     },
 
 
@@ -215,8 +220,8 @@ cc.Class({
         this.node.getChildByName("score").setLocalZOrder(100);
 
 
-        this.settingButton = this.node.getChildByName("soundSetting");
-        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - sjbh - 10 - (this.settingButton.getContentSize().height / 2));
+        // this.settingButton = this.node.getChildByName("soundSetting");
+        // this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - sjbh - 10 - (this.settingButton.getContentSize().height / 2));
 
         
 
@@ -237,22 +242,22 @@ cc.Class({
         D.globalHeroPlaneID = dddd;
 
         //模板精灵
-        let  moBanSprite = null;
+       // let  moBanSprite = null;
 
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
 
-            moBanSprite = this.node.getChildByName("lifeSprite0");
+          //  moBanSprite = this.node.getChildByName("lifeSprite0");
         }
         else if (dddd == heroPlaneID.heroPlane1) {
             this.player = cc.instantiate(this.heroPlane1);
 
-            moBanSprite = this.node.getChildByName("lifeSprite1");
+          //  moBanSprite = this.node.getChildByName("lifeSprite1");
         }
         else if (dddd == heroPlaneID.heroPlane2) {
             this.player = cc.instantiate(this.heroPlane2);
 
-            moBanSprite = this.node.getChildByName("lifeSprite2");
+            //moBanSprite = this.node.getChildByName("lifeSprite2");
         }
         else if (dddd == heroPlaneID.heroPlane3) {
             this.player = cc.instantiate(this.heroPlane3);
@@ -268,16 +273,16 @@ cc.Class({
 
 
 
-        //适配生命条
-        moBanSprite.scale = 60/moBanSprite.getContentSize().height;
-        moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
+        // //适配生命条
+        // moBanSprite.scale = 60/moBanSprite.getContentSize().height;
+        // moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
        
-
-        let lifeLabel =  this.node.getChildByName("lifeLabel");
+this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
+        // let lifeLabel =  this.node.getChildByName("lifeLabel");
      
-        lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
-        lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
-
+        // lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
+        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+        
 
         this.node.addChild(this.player);
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
@@ -327,8 +332,8 @@ cc.Class({
         lifeCount = lifeCount -1;
         cc.sys.localStorage.setItem('planeLifeCount',lifeCount);
 
-        let lifeLabel =  this.node.getChildByName("lifeLabel");
-        lifeLabel.getComponent(cc.Label).string = lifeCount;
+       // let lifeLabel =  this.node.getChildByName("lifeLabel");
+        this.lifeLabel.getComponent(cc.Label).string = lifeCount;
 
 
         let dddd = cc.sys.localStorage.getItem('globalHeroPlaneID');

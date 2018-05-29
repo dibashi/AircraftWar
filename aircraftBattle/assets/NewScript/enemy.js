@@ -410,7 +410,7 @@ cc.Class({
 
     enemyDamagedAni: function () {
 
-        this.node.parent.getComponent('Game').addScore(this.blood);
+       
         this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
         let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
 
@@ -420,7 +420,6 @@ cc.Class({
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
 
 
-        // this.node.getChildByName("particlesystem")
     },
 
     damagedOver: function (event) {
@@ -445,14 +444,14 @@ cc.Class({
 
                 this.enemyBoomAni();
 
-             //   this.node.parent.getComponent('Game').addScore(this.blood);
+                this.node.parent.getComponent('Game').addScore(this.blood);
 
                 // this.node.destroy();
             } else {
                 //cc.log
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
-                this.enemyDamagedAni();
+               // this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;

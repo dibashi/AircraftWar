@@ -172,15 +172,15 @@ cc.Class({
 
 
         //血条 以后要改成进度条
-        var nodeBar = cc.instantiate(this.bloodBar);
-        this.bBar = nodeBar.getComponent(cc.Label);
-        cc.log(this.bBar);
-        this.bBar.string = this.blood;
-        //bBar.string = "lh";
-        // cc.log("bBar =   "+bBar.string);
-        cc.log("bbblood   " + this.blood);
-        this.node.addChild(nodeBar);
-        nodeBar.setPosition(0, 0);
+        // var nodeBar = cc.instantiate(this.bloodBar);
+        // this.bBar = nodeBar.getComponent(cc.Label);
+        // cc.log(this.bBar);
+        // this.bBar.string = this.blood;
+        // //bBar.string = "lh";
+        // // cc.log("bBar =   "+bBar.string);
+        // cc.log("bbblood   " + this.blood);
+        // this.node.addChild(nodeBar);
+        // nodeBar.setPosition(0, 0);
         // nodeBar.rotation = 180;
 
 
