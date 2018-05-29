@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "giftAni",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 4.02,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "rotation": [
+        {
+          "frame": 0,
+          "value": -15
+        },
+        {
+          "frame": 0.21666666666666667,
+          "value": 2.373840000567185
+        },
+        {
+          "frame": 0.4166666666666667,
+          "value": 15
+        },
+        {
+          "frame": 0.6333333333333333,
+          "value": -0.267720000133405
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": -15
+        },
+        {
+          "frame": 1.3,
+          "value": 15
+        },
+        {
+          "frame": 1.6666666666666667,
+          "value": -15
+        },
+        {
+          "frame": 4.016666666666667,
+          "value": -15
+        }
+      ]
+    }
+  },
+  "events": []
+}

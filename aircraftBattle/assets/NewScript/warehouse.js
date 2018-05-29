@@ -43,7 +43,7 @@ cc.Class({
 
 
 
-        settingButton: null,
+      //  settingButton: null,
 
         soundSetting: {
             default: null,
@@ -108,11 +108,11 @@ cc.Class({
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
         this.spriteCoin = this.node.getChildByName("spriteCoin");
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-20);
         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
-        this.settingButton = this.node.getChildByName("soundSetting");
-        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
+     //   this.settingButton = this.node.getChildByName("soundSetting");
+      //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
 
         this.planeArray = this.planes.children;
         this.currentID = 0;
