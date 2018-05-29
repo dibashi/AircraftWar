@@ -32,7 +32,7 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        settingButton:null,
+  //  settingButton:null,
 
         node0: {
             default: null,
@@ -59,6 +59,43 @@ cc.Class({
             type:cc.Node,
         },
 
+
+        spriteDaZhao: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        dazhaoLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        spriteHuDun: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        hudunLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        spriteLife: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        lifeLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -75,13 +112,20 @@ cc.Class({
          let wx = cc.director.getVisibleSize().width*0.5;
          let hy = cc.director.getVisibleSize().height*0.5;
          this.spriteCoin = this.node.getChildByName("spriteCoin");
-         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2));
+         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2)-20);
          this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
          this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
 
-         this.settingButton = this.node.getChildByName("soundSetting");
-         this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
-       
+         this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2+this.spriteDaZhao.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+         this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2+this.spriteHuDun.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+         this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2+this.spriteLife.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+
+        //  this.settingButton = this.node.getChildByName("soundSetting");
+        //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+        this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
+         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+         this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
      },
 
 
@@ -173,6 +217,15 @@ cc.Class({
         ss.getComponent("storeAlert").setTitle("护盾X10");
          ss.getComponent("storeAlert").setPriceText("¥10购买");
          ss.getComponent("storeAlert").setNodeTag(5);
+    },
+
+    refreshPrize:function() {
+        //刷新 金币 必杀 护盾 飞机命数的值
+        this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
+        this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+        this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+
     },
     
 
