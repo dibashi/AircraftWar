@@ -283,7 +283,7 @@ cc.Class({
         this.upgradePlane();
         for (let i = 0; i < this.guandaoCount; i++) {
 
-            this.guandaoArrays[i].getComponent("guandao").setSpeed(globalMaxShootingSpeed);
+            this.guandaoArrays[i].getComponent("guandao").setSpeed(1);
         }
 
         this.trackGuandaoCount = 3;//实际是4 理由同上
