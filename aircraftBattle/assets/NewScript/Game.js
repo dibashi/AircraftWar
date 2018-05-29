@@ -66,18 +66,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        heroPlane3: {
-            default: null,
-            type: cc.Prefab,
-        },
-        heroPlane4: {
-            default: null,
-            type: cc.Prefab,
-        },
-        heroPlane5: {
-            default: null,
-            type: cc.Prefab,
-        },
+    
 
         bloodBar: {
             default: null,
