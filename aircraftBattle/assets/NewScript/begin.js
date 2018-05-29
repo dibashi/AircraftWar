@@ -16,21 +16,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+
 
         heroPlane0: {
             default: null,
@@ -44,7 +30,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-      
+
 
         soundSetting: {
             default: null,
@@ -62,11 +48,65 @@ cc.Class({
             url: cc.AudioClip
         },
 
-        spriteCoin: null,
-        labelCoin: null,
+       
+        spriteCoin: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        labelCoin: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        spriteDaZhao: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        dazhaoLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        spriteHuDun: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        hudunLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        spriteLife: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        lifeLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+
+
         personalBestScore: null,
 
-        settingButton:null,
+        settingButton: null,
+
+        dailyAlert: {
+            default: null,
+            type: cc.Prefab,
+        },
 
 
     },
@@ -77,24 +117,25 @@ cc.Class({
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
-        this.spriteCoin = this.node.getChildByName("spriteCoin");
+      
         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2+this.spriteDaZhao.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2+this.spriteHuDun.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2+this.spriteLife.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
 
-        this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+      
+
+        
         this.personalBestScore = this.node.getChildByName("personalHistory").getChildByName("personalBestScore").getComponent(cc.Label);
 
-     this.settingButton = this.node.getChildByName("soundSetting");
-     this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+        this.settingButton = this.node.getChildByName("soundSetting");
+        this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
 
         //！！！由于现在不知道怎么把本地存储的数据删掉，为了调试方便 只要游戏进来都按第一次登陆
         // cc.sys.localStorage.setItem("isLoaded",0);
 
         let isloaded = cc.sys.localStorage.getItem("isLoaded");
         cc.log("isloaded----> " + isloaded);
-        // var zzzzzz=  cc.sys.localStorage.getItem("zzzzzz");
-        // var ppppppp=  cc.sys.localStorage.getItem("ppppp",0);
-        // var tttttt=  cc.sys.localStorage.getItem("tttttt",1);
-        // cc.log(" zzzzzz   " + zzzzzz + "  ppppppp" + ppppppp + " tttttt " +tttttt);
 
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
@@ -124,12 +165,19 @@ cc.Class({
             cc.sys.localStorage.setItem('hudunCount', 1);
 
             //飞机命数 初始化
-            cc.sys.localStorage.setItem('planeLifeCount', 0);
+            cc.sys.localStorage.setItem('planeLifeCount', 1);
+
+            //每日登陆功能 记录今天的年月日
+            cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
+            cc.log("第一次登陆时间： " +cc.sys.localStorage.getItem("lastLoadDate"));
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
         }
-        this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
+        this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
+        this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+        this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分：" + cc.sys.localStorage.getItem("bestScore");
 
@@ -166,7 +214,7 @@ cc.Class({
         let effectSound = cc.sys.localStorage.getItem('effectSound');
         if (effectSound == 1) {
             cc.audioEngine.setEffectsVolume(0.5);
-       
+
         } else {
             //这真的是引擎的bug，没办法 http://forum.cocos.com/t/bug/45242/9
             cc.audioEngine.setEffectsVolume(0.0000001);
@@ -181,10 +229,47 @@ cc.Class({
             cc.audioEngine.stopMusic();
         }
 
-        
-        //测试用
-     //   cc.sys.localStorage.setItem('planeLifeCount', 2);
 
+        let lastYMD = cc.sys.localStorage.getItem("lastLoadDate");
+        let curYMD = this.currentYMD();
+        cc.log("进入判断时间： " + curYMD);
+
+        if (curYMD != lastYMD) {
+            //与上次记录的时间不在同一天
+            //1 弹出每日登陆奖励  这里的弹窗很可能以后会变，单独做出来
+            //2 在每日登陆奖励中 点击确定就让用户的账上添加给予的奖品
+            //3 更新其领礼物的日期，方便下次判断
+            let ss = cc.instantiate(this.dailyAlert);
+            ss.setPosition(0, 0);
+            ss.getComponent("dailyAlert").onWho = this.node;
+            this.node.addChild(ss);
+        }
+        //测试用
+        //   cc.sys.localStorage.setItem('planeLifeCount', 2);
+
+    },
+
+    refreshPrize:function() {
+        //刷新 金币 必杀 护盾 飞机命数的值，以及保存当前的日期
+        this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
+        this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+        this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+
+        cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
+        cc.log("记录领取时间：" + cc.sys.localStorage.getItem("lastLoadDate"));
+    },
+    //当前年月日
+    currentYMD: function () {
+        let dd = new Date();
+        let y = dd.getFullYear();
+        let m = dd.getMonth();
+        let d = dd.getDate();
+        // cc.log(y);
+        // cc.log(m);
+        // cc.log(d);
+        // cc.log("rrr--> "+ (y+""+m+""+d));
+        return (y + "" + m + "" + d);
     },
 
     beginClick: function () {
