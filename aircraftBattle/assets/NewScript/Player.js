@@ -33,11 +33,11 @@ cc.Class({
         //Radius: 50,
         damage: 0,
 
-        bloodBar: {//并不是单纯的label 
-            default: null,
-            type: cc.Prefab,
-        },
-        bBar: null,//label
+        // bloodBar: {//并不是单纯的label 
+        //     default: null,
+        //     type: cc.Prefab,
+        // },
+        // bBar: null,//label
         wudi: false,
         _wuditexiao: null,
         _wudiTime: 0,
