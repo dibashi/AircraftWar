@@ -68,28 +68,16 @@ cc.Class({
 
     onLoad() {
 
-        // let particle = this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
-        // if (particle.particleCount > 0) { // check if particle has fully plaed
-        //     particle.stopSystem(); // stop particle system
-        // }
-
-
-        //cc.log("particle--->  " );
-        // cc.log(particle);
-
-
-        //this.bloodBar.string = this.blood;
+       
         this.nodeBar = cc.instantiate(this.bloodBar);
         this.bBar = this.nodeBar.getComponent(cc.Label);
         cc.log(this.bBar);
         this.bBar.string = this.blood;
-        //bBar.string = "lh";
-        // cc.log("bBar =   "+bBar.string);
-        //cc.log("bbblood   " + this.blood);
+     
         this.node.addChild(this.nodeBar);
         this.nodeBar.setPosition(0, 0);
         this.nodeBar.rotation = 180;
-        //cc.log(bBar.getPosition());
+      
     },
 
 
