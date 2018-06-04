@@ -344,7 +344,9 @@ cc.Class({
          
            var anim = this.node.getComponent(cc.Animation);
            anim.play("baozhaAni");
-          
+           
+           this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+
            anim.scale = 10;
            this.nodeBar.destroy();
         this.unscheduleAllCallbacks();
@@ -387,8 +389,7 @@ cc.Class({
     baozhaOver:function() {
         cc.log("爆炸动画结束~~~~");
         //这个有问题 要放动画回调 TODO!
-        this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
-
+        
         this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
