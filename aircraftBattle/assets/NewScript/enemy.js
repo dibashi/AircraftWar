@@ -340,17 +340,17 @@ cc.Class({
 
     enemyBoomAni: function () {
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
-        //    this.node.group = "NOOOOOOO";
-        //     cc.log(this.node.getComponent(cc.Animation));
-        //    var anim = this.node.getComponent(cc.Animation);
-        //    anim.play("baozhaAni");
-        //    cc.log("--------------");
-        //    cc.log(anim);
-        //    anim.scale = 10;
-        //this.unscheduleAllCallbacks();
+           this.node.group = "NOOOOOOO";
+         
+           var anim = this.node.getComponent(cc.Animation);
+           anim.play("baozhaAni");
+          
+           anim.scale = 10;
+           this.nodeBar.destroy();
+        this.unscheduleAllCallbacks();
         cc.audioEngine.playEffect(this.boomAudio,false);
 
-        this.node.group = "NOOOOOOO";
+        // this.node.group = "NOOOOOOO";
 
         // this.partice = cc.instantiate(this.particleSys);
         // this.node.parent.addChild(this.partice);
@@ -359,9 +359,9 @@ cc.Class({
         // this.partice.getComponent(cc.ParticleSystem).resetSystem();
 
        
-        this.node.opacity = 0;
-        this.unscheduleAllCallbacks();
-        this.scheduleOnce(this.baozhaOver, 0.7);
+        // this.node.opacity = 0;
+        // this.unscheduleAllCallbacks();
+        // this.scheduleOnce(this.baozhaOver, 0.7);
 
 
         //敌机销毁数据+1
@@ -372,27 +372,27 @@ cc.Class({
 
     },
 
-    baozhaOver: function () {
-        this.unscheduleAllCallbacks();
-      //  this.partice.destroy();
-        cc.log("爆炸动画结束~~~~");
-        //这个有问题 要放动画回调 TODO!
-        this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-        this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string) + this.blood;
-        this.node.parent.getComponent('Game').checkNextStage();
-        this.node.destroy();
-    },
-    //以前动画的
-    // baozhaOver:function(event) {
+    // baozhaOver: function () {
+    //     this.unscheduleAllCallbacks();
+    //    this.partice.destroy();
     //     cc.log("爆炸动画结束~~~~");
     //     //这个有问题 要放动画回调 TODO!
-    //     this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+    //     this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
 
-    //     this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+    //     this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string) + this.blood;
     //     this.node.parent.getComponent('Game').checkNextStage();
     //     this.node.destroy();
     // },
+    //以前动画的
+    baozhaOver:function() {
+        cc.log("爆炸动画结束~~~~");
+        //这个有问题 要放动画回调 TODO!
+        this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+
+        this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
+        this.node.parent.getComponent('Game').checkNextStage();
+        this.node.destroy();
+    },
 
 
 
