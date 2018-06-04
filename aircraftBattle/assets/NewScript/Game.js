@@ -203,7 +203,7 @@ cc.Class({
         jisuPoolSize: 5,
         dazhaoPoolSize: 3,
 
-
+        coinLabel:null,
     },
 
 
@@ -364,6 +364,8 @@ cc.Class({
         }
 
 
+        this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+
     },
 
     goNewPlane: function () {
@@ -433,6 +435,11 @@ cc.Class({
 
     shieldTeXiao: function () {
         this.hudunPartice = cc.instantiate(this.huDunTeXiao);
+
+        let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
+
+        armatureDisplay.playAnimation("hudun");
+
         this.player.addChild(this.hudunPartice);
         this.hudunPartice.setPosition(cc.v2(0, 0));
     },
@@ -955,9 +962,9 @@ cc.Class({
 
         // cc.sys.localStorage.setItem('jinBiCount', newC);
 
-        let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+       //let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
-        jinbilabel.string = parseInt(jinbilabel.string) + globalDropJinBiCount;
+        this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
 
     },
     // getWuDiChongCi:function() {
