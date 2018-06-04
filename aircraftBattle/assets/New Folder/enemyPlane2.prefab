@@ -132,7 +132,10 @@
     "particleSys": {
       "__uuid__": "c15cc840-24ac-48ba-b48d-e470dc4e3f75"
     },
-    "partice": null
+    "partice": null,
+    "boomAudio": {
+      "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"
+    }
   },
   {
     "__type__": "cc.Animation",

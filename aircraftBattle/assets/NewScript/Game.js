@@ -66,7 +66,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-    
+
 
         bloodBar: {
             default: null,
@@ -162,13 +162,13 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        baozouAni:null,
+        baozouAni: null,
 
-        baozouHuDun:{
+        baozouHuDun: {
             default: null,
             type: cc.Prefab,
         },
-        baozouHuDunAni:null,
+        baozouHuDunAni: null,
 
         huDunTeXiao: {
             default: null,
@@ -194,16 +194,16 @@ cc.Class({
             type: cc.Node,
         },//label外的node
 
-        jinbiPool:null,
-        hudunPool:null,
-        jisuPool:null,
-        dazhaoPool:null,
-        jinbiPoolSize:30,
-        hudunPoolSize:3,
-        jisuPoolSize:5,
-        dazhaoPoolSize:3,
+        jinbiPool: null,
+        hudunPool: null,
+        jisuPool: null,
+        dazhaoPool: null,
+        jinbiPoolSize: 30,
+        hudunPoolSize: 3,
+        jisuPoolSize: 5,
+        dazhaoPoolSize: 3,
 
-      
+
     },
 
 
@@ -234,7 +234,7 @@ cc.Class({
         // this.settingButton = this.node.getChildByName("soundSetting");
         // this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - sjbh - 10 - (this.settingButton.getContentSize().height / 2));
 
-        
+
 
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
@@ -253,17 +253,17 @@ cc.Class({
         D.globalHeroPlaneID = dddd;
 
         //模板精灵
-       // let  moBanSprite = null;
+        // let  moBanSprite = null;
 
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
 
-          //  moBanSprite = this.node.getChildByName("lifeSprite0");
+            //  moBanSprite = this.node.getChildByName("lifeSprite0");
         }
         else if (dddd == heroPlaneID.heroPlane1) {
             this.player = cc.instantiate(this.heroPlane1);
 
-          //  moBanSprite = this.node.getChildByName("lifeSprite1");
+            //  moBanSprite = this.node.getChildByName("lifeSprite1");
         }
         else if (dddd == heroPlaneID.heroPlane2) {
             this.player = cc.instantiate(this.heroPlane2);
@@ -287,13 +287,13 @@ cc.Class({
         // //适配生命条
         // moBanSprite.scale = 60/moBanSprite.getContentSize().height;
         // moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
-       
-this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
+
+        this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
         // let lifeLabel =  this.node.getChildByName("lifeLabel");
-     
+
         // lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
-        
+
 
         this.node.addChild(this.player);
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
@@ -307,14 +307,14 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
-        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width*this.bombSprite.scale*0.5, -hy + this.bombSprite.getContentSize().height*this.bombSprite.scale*0.5);
+        this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width * this.bombSprite.scale * 0.5, -hy + this.bombSprite.getContentSize().height * this.bombSprite.scale * 0.5);
 
 
         this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
 
         //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
-        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width*this.shieldSprite.scale*0.5, -hy + this.shieldSprite.getContentSize().height*this.shieldSprite.scale*0.5);
+        this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width * this.shieldSprite.scale * 0.5, -hy + this.shieldSprite.getContentSize().height * this.shieldSprite.scale * 0.5);
 
 
 
@@ -322,10 +322,10 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
 
-        
+
         this.goBaoZou();
 
-        
+
         // this.node.runAction(cc.rotateTo(10,90));
 
 
@@ -337,38 +337,38 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
 
         //奖品池
         this.jinbiPool = new cc.NodePool();
-        for(let i = 0;i<this.jinbiPoolSize;i++) {
+        for (let i = 0; i < this.jinbiPoolSize; i++) {
             let bl = cc.instantiate(this.prizeJinBi);
             this.jinbiPool.put(bl);
         }
 
         this.hudunPool = new cc.NodePool();
-        for(let i = 0;i<this.hudunPoolSize;i++) {
+        for (let i = 0; i < this.hudunPoolSize; i++) {
             let bl = cc.instantiate(this.prizeWuDiChongCi);
             this.hudunPool.put(bl);
         }
         this.jisuPool = new cc.NodePool();
-        for(let i = 0;i<this.jisuPoolSize;i++) {
+        for (let i = 0; i < this.jisuPoolSize; i++) {
             let bl = cc.instantiate(this.prizeJiSuSheSu);
             this.jisuPool.put(bl);
         }
         this.dazhaoPool = new cc.NodePool();
-        for(let i = 0;i<this.dazhaoPoolSize;i++) {
+        for (let i = 0; i < this.dazhaoPoolSize; i++) {
             let bl = cc.instantiate(this.prizeHuoJianPao);
             this.dazhaoPool.put(bl);
         }
-        
+
 
     },
 
-    goNewPlane:function(){
+    goNewPlane: function () {
         //从飞机生命数中扣除1辆
         //创建 飞入 然后可以操作
         let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
-        lifeCount = lifeCount -1;
-        cc.sys.localStorage.setItem('planeLifeCount',lifeCount);
+        lifeCount = lifeCount - 1;
+        cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
 
-       // let lifeLabel =  this.node.getChildByName("lifeLabel");
+        // let lifeLabel =  this.node.getChildByName("lifeLabel");
         this.lifeLabel.getComponent(cc.Label).string = lifeCount;
 
 
@@ -376,7 +376,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         if (dddd == null) {
             dddd = 0;
         }
-      
+
 
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
@@ -401,28 +401,28 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
             this.player = cc.instantiate(this.heroPlane5);
         }
         this.node.addChild(this.player);
-        this.player.setPosition(0,-500);
+        this.player.setPosition(0, -500);
         //this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
-       this.node.off('touchmove', this.dragMove, this);
-       this.node.off('touchstart', this.dragStart, this);
+        this.node.off('touchmove', this.dragMove, this);
+        this.node.off('touchstart', this.dragStart, this);
 
 
-       let seq = cc.sequence(cc.moveTo(0.8,cc.v2(0,50+this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)),cc.callFunc(this.newPlaneMoved,this));
-       this.player.runAction(seq);
-        
+        let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
+        this.player.runAction(seq);
+
     },
 
-    newPlaneMoved:function() {
+    newPlaneMoved: function () {
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
         this.goBaoZou();
     },
 
-    goBaoZou:function(){
+    goBaoZou: function () {
         this.schedule(this.baozouProcessing, this.baozouInterval);
     },
 
-    closeBaoZou:function() {
+    closeBaoZou: function () {
         this.unschedule(this.baozouProcessing);
     },
 
@@ -432,33 +432,33 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         this.hudunPartice.setPosition(cc.v2(0, 0));
     },
 
-    bazouWenZidOver:function() {
+    bazouWenZidOver: function () {
         this.baozouAni.destroy();
     },
 
 
     baozouProcessing: function () {
-       
+
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
         // 1
         // let anim = this.baozouWenZi.getComponent(cc.Animation);
         // anim.play();//可能还要加入别的特效，在暴走结束时关闭
-    
+
         this.baozouAni = cc.instantiate(this.baozouWenZi);
         let armatureDisplay = this.baozouAni.getComponent(dragonBones.ArmatureDisplay);
 
         armatureDisplay.playAnimation("baozou");
 
         this.node.addChild(this.baozouAni);
-       armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.bazouWenZidOver, this);
+        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.bazouWenZidOver, this);
 
-       this.baozouHuDunAni = cc.instantiate(this.baozouHuDun);
+        this.baozouHuDunAni = cc.instantiate(this.baozouHuDun);
         let armatureDisplay1 = this.baozouHuDunAni.getComponent(dragonBones.ArmatureDisplay);
 
         armatureDisplay1.playAnimation("chongci");
 
         this.player.addChild(this.baozouHuDunAni);
-       
+
 
         // 2
         //1 改射速 2 开管道 
@@ -548,7 +548,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         this.dazhaoPlanes[7].runAction(cc.moveTo(1.5, cc.v2(70, -250)).easing(cc.easeOut(3.0)));
         this.scheduleOnce(this.dazhaoPlaneOver, 5.0);
     },
-   
+
 
     hongzha1: function () {
         //必须让按钮先不能点，否则将引发bug！
@@ -559,7 +559,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
         this.dazhaoPlanes1 = new Array();
         for (let i = 0; i < 8; i++) {
             this.dazhaoPlanes1[i] = cc.instantiate(this.dazhaoPlane);
-          
+
             this.node.addChild(this.dazhaoPlanes1[i]);
             this.dazhaoPlanes1[i].setPosition(0, -600);
 
@@ -628,11 +628,11 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
 
             let dx = 800 - this.dazhaoPlanes1[i].x;
             let dy = 500 - this.dazhaoPlanes1[i].y;
-           
+
             this.dazhaoPlanes1[i].runAction(cc.rotateBy(0.5, cc.pToAngle(cc.v2(dx, dy)) * 180 / 3.1415926));
         }
         this.scheduleOnce(this.dazhaoButtonEnable1, 1.6);
-     
+
     },
 
     dazhaoButtonEnable: function () {
@@ -727,10 +727,10 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
             else if (enemyID === 4) {
                 enemy = cc.instantiate(this.enemyPlane4);
             }
-            if( enemy.getComponent("enemy")!=undefined) {
+            if (enemy.getComponent("enemy") != undefined) {
                 enemy.getComponent("enemy").enemyID = enemyID;
                 enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood;
-                
+
                 enemy.getComponent("enemy").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed;
                 enemy.getComponent("enemy").flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
                 enemy.getComponent("enemy").bulletType = globalEnemyPlaneData[enemyID].bulletType;
@@ -738,11 +738,11 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                 enemy.getComponent("enemy").dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
                 enemy.getComponent("enemy").fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
                 enemy.getComponent("enemy").enemyID = globalEnemyPlaneData[enemyID].enemyID;
-    
+
                 enemy.getComponent("enemy").bulletTrack = globalEnemyPlaneData[enemyID].bulletTrack;
                 enemy.getComponent("enemy").enemyTrack = globalEnemyPlaneData[enemyID].enemyTrack;
             }
-           
+
             this.node.addChild(enemy);
 
 
@@ -797,7 +797,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
     },
     generatePrize: function (enemyID, prizePosition) {
         var r = Math.random();
-      //  cc.log("random dropProbability  " + r);
+        //  cc.log("random dropProbability  " + r);
         if (r <= globalEnemyPlaneData[enemyID].dropProbability) {
             let pf = null;
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
@@ -806,7 +806,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     let jinBiCount = Math.floor(Math.random() * 20);
                     for (let i = 0; i < jinBiCount; i++) {
 
-                        if(this.jinbiPool.size()>0) {
+                        if (this.jinbiPool.size() > 0) {
                             pf = this.jinbiPool.get();
                         } else {
                             pf = cc.instantiate(this.prizeJinBi);
@@ -814,7 +814,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
 
                         pf.getComponent("prize").prizePool = this.jinbiPool;
 
-                       
+
                         this.node.addChild(pf);
                         pf.setPosition(prizePosition);
                         pf.getComponent("prize").prizeType = generateType.jinbi;
@@ -841,7 +841,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                 case generateType.wudichongci:
                     cc.log("wudichongci!");
 
-                    if(this.hudunPool.size()>0) {
+                    if (this.hudunPool.size() > 0) {
                         pf = this.hudunPool.get();
                     } else {
                         pf = cc.instantiate(this.prizeWuDiChongCi);
@@ -864,7 +864,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
 
-                    if(this.jisuPool.size()>0) {
+                    if (this.jisuPool.size() > 0) {
                         pf = this.jisuPool.get();
                     } else {
                         pf = cc.instantiate(this.prizeJiSuSheSu);
@@ -878,7 +878,7 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
-                    if(this.dazhaoPool.size()>0) {
+                    if (this.dazhaoPool.size() > 0) {
                         pf = this.dazhaoPool.get();
                     } else {
                         pf = cc.instantiate(this.prizeHuoJianPao);
@@ -923,7 +923,18 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
     },
 
     generateJinBi: function (pos) {
-        let pf = cc.instantiate(this.prizeJinBi);
+        //    let pf = cc.instantiate(this.prizeJinBi);
+        let pf = null;
+        if (this.jinbiPool.size() > 0) {
+            pf = this.jinbiPool.get();
+        } else {
+            pf = cc.instantiate(this.prizeJinBi);
+        }
+
+        pf.getComponent("prize").prizePool = this.jinbiPool;
+
+
+
         this.node.addChild(pf);
         pf.setPosition(pos);
         pf.getComponent("prize").prizeType = generateType.jinbi;
