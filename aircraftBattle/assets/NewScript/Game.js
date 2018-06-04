@@ -211,7 +211,10 @@ cc.Class({
 
     onLoad() {
 
-
+        this.jinbiPoolSize=30,
+        this.hudunPoolSize=3,
+        this.jisuPoolSize=5,
+        this.dazhaoPoolSize= 3,
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
@@ -803,7 +806,7 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
-                    let jinBiCount = Math.floor(Math.random() * 20);
+                    let jinBiCount = Math.floor(Math.random() * 13);
                     for (let i = 0; i < jinBiCount; i++) {
 
                         if (this.jinbiPool.size() > 0) {
