@@ -1539,7 +1539,9 @@
     "_N$hoverSprite": null,
     "hoverSprite": null,
     "_N$disabledSprite": null,
-    "_N$target": null
+    "_N$target": {
+      "__id__": 37
+    }
   },
   {
     "__type__": "cc.ClickEvent",
@@ -1822,7 +1824,7 @@
     },
     "baozouHuDunAni": null,
     "huDunTeXiao": {
-      "__uuid__": "32ffb470-36bd-4a70-8bbc-ad40f4207590"
+      "__uuid__": "6f1cc949-8a07-437e-9cdb-7d13d09c5e4a"
     },
     "hudunPartice": null,
     "baozouFlag": false,
@@ -1834,6 +1836,16 @@
     },
     "spriteLife": {
       "__id__": 41
-    }
+    },
+    "jinbiPool": null,
+    "hudunPool": null,
+    "jisuPool": null,
+    "dazhaoPool": null,
+    "jinbiPoolSize": 30,
+    "hudunPoolSize": 3,
+    "jisuPoolSize": 5,
+    "dazhaoPoolSize": 3,
+    "coinLabel": null,
+    "defenLabel": null
   }
 ]
