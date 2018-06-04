@@ -79,7 +79,7 @@
     },
     "_N$_defaultArmatureIndex": 1,
     "_N$_animationIndex": 1,
-    "_N$timeScale": 2,
+    "_N$timeScale": 1,
     "_N$debugBones": false
   },
   {
@@ -88,7 +88,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "085c9c75-c427-44dd-a21f-84cf339f3931"
+      "__uuid__": "6f1cc949-8a07-437e-9cdb-7d13d09c5e4a"
     },
     "fileId": "83NT/ShBhOHaID49irI1ej",
     "sync": false
