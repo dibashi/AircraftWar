@@ -140,7 +140,9 @@
     "enableGuanDao": true,
     "shootingSpeed": 1,
     "damage": 1,
-    "onceBulletCount": 1
+    "onceBulletCount": 1,
+    "bulletPool": null,
+    "bulletPoolSize": 20
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -191,7 +193,7 @@
     "damage": 1,
     "guandaoCount": 0,
     "guandaoArrays": null,
-    "onceBulletCount": 6
+    "onceBulletCount": 3
   },
   {
     "__type__": "cc.CircleCollider",

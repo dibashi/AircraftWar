@@ -33,7 +33,7 @@ cc.Class({
         guandaoCount: 0, //管道1~5决定了5个弹道，
         guandaoArrays: null,
 
-        onceBulletCount:6,
+        onceBulletCount:1,
 
 
     },
@@ -42,14 +42,14 @@ cc.Class({
 
     onLoad() {
 
+        this.onceBulletCount = 3;
+
         this.guandaoArrays = new Array();
 
         //初始化管道数据
         for (let i = 0; i < 5; i++) {
             //管道控制集合
 
-            cc.log("~~~~~---> " + ("guandao" + i));
-            cc.log(this.node.getChildByName("guandao" + i));
             if (this.node.getChildByName("guandao" + i) == null) {
                 break;
             }
