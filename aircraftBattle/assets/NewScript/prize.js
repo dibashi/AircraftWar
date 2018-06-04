@@ -101,7 +101,7 @@ cc.Class({
             //根据奖品类型来触发属性，game中的引用较多，直接传给game让其处理。
             switch (this.prizeType) {
                 case generateType.jinbi:
-                    cc.log("get jinbi!");
+                  //  cc.log("get jinbi!");
                     // var jinbiPrefab = cc.instantiate(this.prizeJinBi);
                     // this.node.addChild(jinbiPrefab);
                     // jinbiPrefab.setPosition(prizePosition);

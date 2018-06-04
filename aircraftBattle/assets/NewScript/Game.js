@@ -202,8 +202,9 @@ cc.Class({
         hudunPoolSize: 3,
         jisuPoolSize: 5,
         dazhaoPoolSize: 3,
-
+        //为了性能做成成员变量
         coinLabel:null,
+        defenLabel:null,
     },
 
 
@@ -328,7 +329,7 @@ cc.Class({
         this.node.on('touchstart', this.dragStart, this);
 
 
-       this.goBaoZou();
+      // this.goBaoZou();
 
 
         // this.node.runAction(cc.rotateTo(10,90));
@@ -365,6 +366,8 @@ cc.Class({
 
 
         this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+
+        this.defenLabel = this.node.getChildByName("score").getComponent(cc.Label);
 
     },
 
@@ -991,7 +994,7 @@ cc.Class({
 
 
     gameOver() {
-        var currentScore = parseInt(this.node.getChildByName("score").getComponent(cc.Label).string);
+        var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
         if (currentScore > bestScore) {
             cc.sys.localStorage.setItem('bestScore', currentScore);
@@ -1010,8 +1013,8 @@ cc.Class({
 
 
     addScore(fenshu) {
-        let fs = fenshu + parseInt(this.node.getChildByName("score").getComponent(cc.Label).string);
-        this.node.getChildByName("score").getComponent(cc.Label).string = fs;
+        let fs = fenshu + parseInt(this.defenLabel.string);
+        this.defenLabel.string = fs;
         if (fs > cc.sys.localStorage.getItem('bestScore')) {
             this.node.getChildByName("score").getChildByName("newRecord").active = true;
         }
