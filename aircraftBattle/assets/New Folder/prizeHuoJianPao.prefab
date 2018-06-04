@@ -105,10 +105,11 @@
     "jinbiRunFlag": true,
     "prizeAudio": {
       "__uuid__": "cc35f357-3c53-422e-914a-1b3330bb0681"
-    }
+    },
+    "prizePool": null
   },
   {
-    "__type__": "cc.PolygonCollider",
+    "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -121,38 +122,7 @@
       "x": 0,
       "y": 0
     },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": -10,
-        "y": 39
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -34,
-        "y": 11
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -26,
-        "y": -25
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 19,
-        "y": -38
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 34,
-        "y": -5
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 31,
-        "y": 29
-      }
-    ]
+    "_radius": 30
   },
   {
     "__type__": "cc.PrefabInfo",

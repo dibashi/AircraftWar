@@ -105,10 +105,11 @@
     "jinbiRunFlag": true,
     "prizeAudio": {
       "__uuid__": "cc35f357-3c53-422e-914a-1b3330bb0681"
-    }
+    },
+    "prizePool": null
   },
   {
-    "__type__": "cc.BoxCollider",
+    "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -121,11 +122,7 @@
       "x": 0,
       "y": 0
     },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 52,
-      "height": 47
-    }
+    "_radius": 30
   },
   {
     "__type__": "cc.PrefabInfo",

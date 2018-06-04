@@ -108,27 +108,8 @@
     "jinbiRunFlag": true,
     "prizeAudio": {
       "__uuid__": "cc8189aa-a971-4778-b3fe-cfb500613739"
-    }
-  },
-  {
-    "__type__": "cc.BoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
     },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 39,
-      "height": 42
-    }
+    "prizePool": null
   },
   {
     "__type__": "cc.Animation",
@@ -147,6 +128,22 @@
       }
     ],
     "playOnLoad": true
+  },
+  {
+    "__type__": "cc.CircleCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_radius": 20
   },
   {
     "__type__": "cc.PrefabInfo",
