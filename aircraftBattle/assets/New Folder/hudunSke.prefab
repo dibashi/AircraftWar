@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "baozouWenZi",
+    "_name": "baozouSke",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -68,18 +68,18 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_armatureName": "baozou",
-    "_animationName": "baozou",
-    "playTimes": 1,
+    "_armatureName": "hudun",
+    "_animationName": "hudun",
+    "playTimes": 0,
     "_N$dragonAsset": {
       "__uuid__": "881b1646-47f3-4983-bd3a-0da45c0a4e34"
     },
     "_N$dragonAtlasAsset": {
       "__uuid__": "2a70011e-b8df-41ab-b805-b2d7c0593309"
     },
-    "_N$_defaultArmatureIndex": 3,
+    "_N$_defaultArmatureIndex": 1,
     "_N$_animationIndex": 1,
-    "_N$timeScale": 1,
+    "_N$timeScale": 2,
     "_N$debugBones": false
   },
   {
@@ -88,7 +88,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "756eb14e-0bae-44b7-9c55-69079b03f036"
+      "__uuid__": "085c9c75-c427-44dd-a21f-84cf339f3931"
     },
     "fileId": "83NT/ShBhOHaID49irI1ej",
     "sync": false

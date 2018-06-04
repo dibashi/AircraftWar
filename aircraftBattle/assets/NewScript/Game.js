@@ -215,6 +215,8 @@ cc.Class({
         this.hudunPoolSize=3,
         this.jisuPoolSize=5,
         this.dazhaoPoolSize= 3,
+        
+        this.baozouInterval = 10,
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
@@ -326,7 +328,7 @@ cc.Class({
         this.node.on('touchstart', this.dragStart, this);
 
 
-      //  this.goBaoZou();
+       this.goBaoZou();
 
 
         // this.node.runAction(cc.rotateTo(10,90));
