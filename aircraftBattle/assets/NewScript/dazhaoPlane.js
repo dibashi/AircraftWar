@@ -73,16 +73,15 @@ cc.Class({
 
         //先要判断other是什么 比如 子弹，敌机，奖品。  other.node.group属性可以看到是什么组的，other那边设置一下group便于区分，
         //子弹eBullet, 敌机enemy，奖品 prize由于类型较多做在自己的脚本中，prefab,碰撞配置，分组，js脚本等
-        //cc.log("other node    ");
-        //cc.log(other.node);
-        if (other.node.group === "enemy") {
+      
+        // if (other.node.group === "enemy") {
 
-            cc.log("dazhao plane coll!!");
+        //     cc.log("dazhao plane coll!!");
 
-            this.node.destory();
+        //     this.node.destroy();
 
 
-        }
+        // }
 
 
     },
