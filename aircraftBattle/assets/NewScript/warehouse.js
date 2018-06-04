@@ -220,7 +220,7 @@ cc.Class({
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
 
-            ss.getComponent("Alert").onWho = this.node;
+            ss.getComponent("alert").onWho = this.node;
             this.node.addChild(ss);
         } else {
             let afterCoint = currentCoin - 200;
@@ -248,7 +248,7 @@ cc.Class({
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
 
-            ss.getComponent("Alert").onWho = this.node;
+            ss.getComponent("alert").onWho = this.node;
             this.node.addChild(ss);
     
         } else {

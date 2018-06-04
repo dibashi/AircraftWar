@@ -640,7 +640,7 @@
     "target": {
       "__id__": 1
     },
-    "component": "Alert",
+    "component": "alert",
     "handler": "onCancelClick",
     "customEventData": ""
   },
