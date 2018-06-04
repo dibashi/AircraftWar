@@ -1013,6 +1013,9 @@ cc.Class({
 
 
     addScore(fenshu) {
+        if(this.defenLabel == null) {
+            return;
+        }
         let fs = fenshu + parseInt(this.defenLabel.string);
         this.defenLabel.string = fs;
         if (fs > cc.sys.localStorage.getItem('bestScore')) {
