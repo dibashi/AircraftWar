@@ -193,6 +193,17 @@ cc.Class({
             default: null,
             type: cc.Node,
         },//label外的node
+
+        jinbiPool:null,
+        hudunPool:null,
+        jisuPool:null,
+        dazhaoPool:null,
+        jinbiPoolSize:30,
+        hudunPoolSize:3,
+        jisuPoolSize:5,
+        dazhaoPoolSize:3,
+
+      
     },
 
 
@@ -322,6 +333,31 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
             this.shieldTeXiao();
         }
 
+
+
+        //奖品池
+        this.jinbiPool = new cc.NodePool();
+        for(let i = 0;i<this.jinbiPoolSize;i++) {
+            let bl = cc.instantiate(this.prizeJinBi);
+            this.jinbiPool.put(bl);
+        }
+
+        this.hudunPool = new cc.NodePool();
+        for(let i = 0;i<this.hudunPoolSize;i++) {
+            let bl = cc.instantiate(this.prizeWuDiChongCi);
+            this.hudunPool.put(bl);
+        }
+        this.jisuPool = new cc.NodePool();
+        for(let i = 0;i<this.jisuPoolSize;i++) {
+            let bl = cc.instantiate(this.prizeJiSuSheSu);
+            this.jisuPool.put(bl);
+        }
+        this.dazhaoPool = new cc.NodePool();
+        for(let i = 0;i<this.dazhaoPoolSize;i++) {
+            let bl = cc.instantiate(this.prizeHuoJianPao);
+            this.dazhaoPool.put(bl);
+        }
+        
 
     },
 
@@ -769,7 +805,16 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     cc.log("jinbi!");
                     let jinBiCount = Math.floor(Math.random() * 20);
                     for (let i = 0; i < jinBiCount; i++) {
-                        pf = cc.instantiate(this.prizeJinBi);
+
+                        if(this.jinbiPool.size()>0) {
+                            pf = this.jinbiPool.get();
+                        } else {
+                            pf = cc.instantiate(this.prizeJinBi);
+                        }
+
+                        pf.getComponent("prize").prizePool = this.jinbiPool;
+
+                       
                         this.node.addChild(pf);
                         pf.setPosition(prizePosition);
                         pf.getComponent("prize").prizeType = generateType.jinbi;
@@ -795,7 +840,14 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     break;
                 case generateType.wudichongci:
                     cc.log("wudichongci!");
-                    pf = cc.instantiate(this.prizeWuDiChongCi);
+
+                    if(this.hudunPool.size()>0) {
+                        pf = this.hudunPool.get();
+                    } else {
+                        pf = cc.instantiate(this.prizeWuDiChongCi);
+                    }
+                    pf.getComponent("prize").prizePool = this.hudunPool;
+
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.wudichongci;
@@ -811,7 +863,14 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     break;
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
-                    pf = cc.instantiate(this.prizeJiSuSheSu);
+
+                    if(this.jisuPool.size()>0) {
+                        pf = this.jisuPool.get();
+                    } else {
+                        pf = cc.instantiate(this.prizeJiSuSheSu);
+                    }
+                    pf.getComponent("prize").prizePool = this.jisuPool;
+
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.jisushesu;
@@ -819,7 +878,13 @@ this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width/2,hy - 
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
-                    pf = cc.instantiate(this.prizeHuoJianPao);
+                    if(this.dazhaoPool.size()>0) {
+                        pf = this.dazhaoPool.get();
+                    } else {
+                        pf = cc.instantiate(this.prizeHuoJianPao);
+                    }
+                    pf.getComponent("prize").prizePool = this.dazhaoPool;
+
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.huojianpao;

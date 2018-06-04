@@ -24,6 +24,8 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
+
+        prizePool:null,
     },
 
     onLoad(){
@@ -135,7 +137,8 @@ cc.Class({
                     break;
             }
 
-            this.node.destroy();
+           // this.node.destroy();
+           this.prizePool.put(this.node);
         }
 
     },
