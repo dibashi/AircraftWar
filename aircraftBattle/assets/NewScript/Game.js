@@ -531,7 +531,8 @@ cc.Class({
         this.dazhaoPlanes = new Array();
         for (let i = 0; i < 8; i++) {
             this.dazhaoPlanes[i] = cc.instantiate(this.dazhaoPlane);
-         
+            //  cc.log(this.dazhaoPlanes[i]);
+            //this.dazhaoPlanes[i].setPosition(-140+70*i,-250);
             this.node.addChild(this.dazhaoPlanes[i]);
             this.dazhaoPlanes[i].setPosition(0, -600);
 
@@ -656,6 +657,8 @@ cc.Class({
 
     shieldOnclick: function () {
 
+        // cc.log("gggame! --> ");
+        // cc.log(this);
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
@@ -673,7 +676,10 @@ cc.Class({
                 }
             }
 
-        } 
+        } else {
+            console.log('没有护盾');
+
+        }
     },
 
 
