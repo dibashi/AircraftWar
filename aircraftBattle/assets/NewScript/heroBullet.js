@@ -48,20 +48,20 @@ cc.Class({
     start() {
        // this.p = this.node.parent.getContentSize().height / 2 + this.node.getContentSize().height / 2;
        
-       // cc.log("this.node.getContentSize().height  " + this.node.getBoundingBox().height  );
+     
 
        this.p = this.node.parent.getContentSize().height / 2 + this.node.getBoundingBox().height / 2;
-       // cc.log("~P--》 " + this.p);
+       
     },
 
     update(dt) {
 
 
         
-        // cc.log(p);
+        
         // this.node.x += this.flyingSpeed;
         if (this.trackOpen == true) {
-            // cc.log('~~~');
+           
             let gameNode = this.node.parent;
             let gameJS = gameNode.getComponent('Game');
             let cs = gameNode.children;

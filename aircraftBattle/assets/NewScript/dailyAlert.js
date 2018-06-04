@@ -51,7 +51,7 @@ cc.Class({
 
 
     onCertainClick: function () {
-        cc.log("onCancelClick");
+    
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
@@ -67,19 +67,19 @@ cc.Class({
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-        cc.log("!!plc " + plC);
+      
 
         let ajbC = parseInt(jbC) + 100;
         let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
         let aplC = parseInt(plC) + 1;
-        cc.log("!!aplc " + aplC);
+      
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
         cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
-        cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
+      
         //通知调取的页面 数据更新
         this.onWho.getComponent("begin").refreshPrize();
 

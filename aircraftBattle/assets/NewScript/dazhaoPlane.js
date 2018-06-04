@@ -76,7 +76,7 @@ cc.Class({
       
         // if (other.node.group === "enemy") {
 
-        //     cc.log("dazhao plane coll!!");
+      
 
         //     this.node.destroy();
 

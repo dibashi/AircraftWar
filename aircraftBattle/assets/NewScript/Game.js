@@ -280,9 +280,9 @@ cc.Class({
             this.player = cc.instantiate(this.heroPlane3);
         }
         else if (dddd == heroPlaneID.heroPlane4) {
-            //cc.log('zhixing111111');
+           
             this.player = cc.instantiate(this.heroPlane4);
-            //cc.log(player);
+          
         }
         else if (dddd == heroPlaneID.heroPlane5) {
             this.player = cc.instantiate(this.heroPlane5);

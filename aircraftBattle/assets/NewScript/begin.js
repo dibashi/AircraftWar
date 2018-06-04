@@ -140,7 +140,7 @@ cc.Class({
         // cc.sys.localStorage.setItem("isLoaded",0);
 
         let isloaded = cc.sys.localStorage.getItem("isLoaded");
-        cc.log("isloaded----> " + isloaded);
+      
 
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
@@ -150,7 +150,7 @@ cc.Class({
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
-            cc.log("运行到了");
+          
             //初始化一下玩家对各个飞机拥有的僚机数量
             cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 0);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount1', 0);
@@ -174,7 +174,7 @@ cc.Class({
 
             //每日登陆功能 记录今天的年月日
             cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
-            cc.log("第一次登陆时间： " +cc.sys.localStorage.getItem("lastLoadDate"));
+         
 
             //记录上一次领取时间 和 观看广告时间
 
@@ -195,7 +195,7 @@ cc.Class({
         D.globalHeroPlaneID = dddd;
         let playerImg = null;
         if (dddd == heroPlaneID.heroPlane0) {
-            cc.log("jinru plane0!")
+       
             playerImg = cc.instantiate(this.heroPlane0);
         }
         else if (dddd == heroPlaneID.heroPlane1) {
@@ -208,14 +208,14 @@ cc.Class({
             playerImg = cc.instantiate(this.heroPlane3);
         }
         else if (dddd == heroPlaneID.heroPlane4) {
-            //cc.log('zhixing111111');
+           
             playerImg = cc.instantiate(this.heroPlane4);
-            //cc.log(player);
+         
         }
         else if (dddd == heroPlaneID.heroPlane5) {
             playerImg = cc.instantiate(this.heroPlane5);
         }
-        cc.log("ID-->" + dddd + "  size----> " + playerImg.getContentSize().width + '   ' + playerImg.getContentSize().height);
+       
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
         this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame;
         this.node.getChildByName("selectedPlane").scale = 2;
@@ -242,7 +242,7 @@ cc.Class({
 
         let lastYMD = cc.sys.localStorage.getItem("lastLoadDate");
         let curYMD = this.currentYMD();
-        cc.log("进入判断时间： " + curYMD);
+       
 
         if (curYMD != lastYMD) {
             //与上次记录的时间不在同一天
@@ -258,12 +258,12 @@ cc.Class({
         //   cc.sys.localStorage.setItem('planeLifeCount', 2);
 
         // let zzz = Date.now();
-        // cc.log(zzz);
+    
         // cc.sys.localStorage.setItem('zzz', zzz);
 
         // let z = parseInt(cc.sys.localStorage.getItem('zzz'));
 
-        // cc.log("~~ " +z);
+      
 
     },
 
@@ -275,7 +275,7 @@ cc.Class({
         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
 
         cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
-        cc.log("记录领取时间：" + cc.sys.localStorage.getItem("lastLoadDate"));
+      
     },
     //当前年月日
     currentYMD: function () {
@@ -283,10 +283,7 @@ cc.Class({
         let y = dd.getFullYear();
         let m = dd.getMonth();
         let d = dd.getDate();
-        // cc.log(y);
-        // cc.log(m);
-        // cc.log(d);
-        // cc.log("rrr--> "+ (y+""+m+""+d));
+      
         return (y + "" + m + "" + d);
     },
 

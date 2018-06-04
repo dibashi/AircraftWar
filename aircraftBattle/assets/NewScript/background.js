@@ -65,7 +65,7 @@ cc.Class({
 
         let origin = cc.director.getVisibleOrigin();
         let rx = origin.x + cc.randomMinus1To1()*vx;
-        //cc.log("rx " + rx);
+     
         let vy = origin.y + cc.director.getVisibleSize().height*0.5 + 200;
 
         yun.setPosition(cc.v2(rx, vy));
@@ -74,7 +74,7 @@ cc.Class({
 
         let callback = cc.callFunc(this.createYun1,this, this.y1);
         let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);
-        // cc.log("pos1 xxx-->" + pos.x);
+       
         yun.runAction(seq);
     },
 

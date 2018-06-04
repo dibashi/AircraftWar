@@ -57,7 +57,7 @@ cc.Class({
 
     goMain:function() {
         cc.audioEngine.playEffect(this.buttonAudio,false);
-        cc.log("goMain");
+      
         cc.director.loadScene('start');
        
 

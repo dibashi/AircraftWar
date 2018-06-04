@@ -71,7 +71,7 @@ cc.Class({
        
         this.nodeBar = cc.instantiate(this.bloodBar);
         this.bBar = this.nodeBar.getComponent(cc.Label);
-        cc.log(this.bBar);
+      
         this.bBar.string = this.blood;
      
         this.node.addChild(this.nodeBar);
@@ -104,7 +104,7 @@ cc.Class({
 
     enterCallback: function () {
 
-        //cc.log("enemy enterCallback  enemyID"+ this.enemyID);
+       
         //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！  
         //这里的射击速度是 单次射击  将来 像三连发 然后停顿的 如何设计 ？
         //其实应该在这里根据子弹射击方式来定义
@@ -198,21 +198,14 @@ cc.Class({
     },
     //往右边倾斜
     xiexianRight: function (jiaodu) {
-        //cc.log("jiaodu---> " + jiaodu);
+      
         let bl = this.generateBullet();
         //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100 * Math.tan(jiaodu * 0.017453293));//2pi/360 = 0.017453293
 
-        //  cc.log("bl.position.x---> " + bl.position.x);
-        //  cc.log("bl.position.y---> " + bl.position.y);
-
-
-        //  cc.log("targetPositionX---> " + bl.getComponent("enemyBullet").targetPositionX);
-        //  cc.log("targetPositionY---> " + bl.getComponent("enemyBullet").targetPositionY);
-
-        //  cc.log("100*Math.tan(jiaodu)---> " + 100*Math.tan(jiaodu*0.017453293));
+       
         this.node.parent.addChild(bl);
     },
 
@@ -295,8 +288,7 @@ cc.Class({
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
 
-        //cc.log("bl positionX--> " + bl.getPosition().x + "  bl positionY---> " + bl.getPosition().y);
-        //cc.log("bl vecX--> " + bl.getComponent("enemyBullet").targetPositionX + "  bl vecY---> " + bl.getComponent("enemyBullet").targetPositionY);
+     
 
         this.node.parent.addChild(bl);
     },
@@ -377,7 +369,7 @@ cc.Class({
     // baozhaOver: function () {
     //     this.unscheduleAllCallbacks();
     //    this.partice.destroy();
-    //     cc.log("爆炸动画结束~~~~");
+   
     //     //这个有问题 要放动画回调 TODO!
     //     this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
 
@@ -387,7 +379,7 @@ cc.Class({
     // },
     //以前动画的
     baozhaOver:function() {
-        cc.log("爆炸动画结束~~~~");
+      
         //这个有问题 要放动画回调 TODO!
         
         this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + this.blood;
@@ -425,7 +417,7 @@ cc.Class({
         if (other.node.group === "hBullet") {
 
             var bDamage = other.node.getComponent("heroBullet").damage;
-            // cc.log("Damage!!  "+ bDamage);
+       
             if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
@@ -437,16 +429,14 @@ cc.Class({
 
                 // this.node.destroy();
             } else {
-                //cc.log
+              
                 this.blood -= bDamage;
                 this.bBar.string = this.blood;
                // this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
-                //cc.log(this.node.parent);
-                //cc.log(this.node.parent.getChildByName("score"));
-                //cc.log(this.node.parent.getChildByName("score").string);
+           
             }
         }
 

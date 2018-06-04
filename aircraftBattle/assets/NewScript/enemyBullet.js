@@ -47,8 +47,7 @@ cc.Class({
         let vecX = this.targetPositionX - positionX;
         let vecY = this.targetPositionY - positionY;
 
-        //cc.log("1rr--> " + cc.pToAngle(cc.v2(-20, -20)) / Math.PI * 180);//-135
-        //cc.log("2rr--> " + cc.pToAngle(cc.v2(0, 20)) / Math.PI * 180);//90
+       
 
         //R =(R-90)+(-A)//r-90归位 旋转是顺时针 与角度 相反 ===》R = R-90-A=R-(A+90);
         let A = cc.pToAngle(cc.v2(vecX, vecY));
@@ -73,7 +72,7 @@ cc.Class({
         this.node.x += this.ax;
         this.node.y += this.by;
 
-        // cc.log(p);
+       
         // this.node.x += this.flyingSpeed;
         //this.node.y -= this.flyingSpeed;
 
@@ -86,7 +85,7 @@ cc.Class({
 
         //         var e = D.enemys[i].name;
 
-        //         cc.log(e);
+       
         //         D.enemys[i].getComponent(e).bleed();
         //     }
         // }

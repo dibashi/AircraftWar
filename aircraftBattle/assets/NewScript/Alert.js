@@ -53,7 +53,7 @@ cc.Class({
     
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+     
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
