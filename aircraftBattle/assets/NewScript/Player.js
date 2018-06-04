@@ -391,9 +391,7 @@ cc.Class({
             let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
             if (hdCount > 0) {
                 let p = hdCount - 1;
-                cc.log("~~  " + p);
                 cc.sys.localStorage.setItem('hudunCount', p);
-                cc.log("hudunCount " + cc.sys.localStorage.getItem('hudunCount'));
                 this.node.parent.getComponent('Game').shieldOnclick();
                 return;
             }
