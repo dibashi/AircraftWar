@@ -2152,7 +2152,19 @@
     "partice": null
   },
   {
-    "__type__": "cc.PolygonCollider",
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_defaultClip": null,
+    "_clips": [],
+    "playOnLoad": false
+  },
+  {
+    "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -2165,40 +2177,7 @@
       "x": 0,
       "y": 0
     },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": -27,
-        "y": 40
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -27,
-        "y": 0
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 27,
-        "y": 0
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 27,
-        "y": 40
-      }
-    ]
-  },
-  {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": null,
-    "_clips": [],
-    "playOnLoad": false
+    "_radius": 20
   },
   {
     "__type__": "cc.PrefabInfo",
