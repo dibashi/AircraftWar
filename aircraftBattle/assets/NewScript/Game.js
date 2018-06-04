@@ -323,7 +323,7 @@ cc.Class({
         this.node.on('touchstart', this.dragStart, this);
 
 
-        this.goBaoZou();
+      //  this.goBaoZou();
 
 
         // this.node.runAction(cc.rotateTo(10,90));
@@ -944,11 +944,11 @@ cc.Class({
 
     getJinBi: function () {
 
-        var c = cc.sys.localStorage.getItem('jinBiCount');
+        // var c = cc.sys.localStorage.getItem('jinBiCount');
 
-        var newC = parseInt(c) + globalDropJinBiCount;
+        // var newC = parseInt(c) + globalDropJinBiCount;
 
-        cc.sys.localStorage.setItem('jinBiCount', newC);
+        // cc.sys.localStorage.setItem('jinBiCount', newC);
 
         let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
@@ -986,6 +986,13 @@ cc.Class({
         }
         cc.log("best score--> " + cc.sys.localStorage.getItem('bestScore'));
         cc.sys.localStorage.setItem("currentScore", currentScore);
+
+        var c = cc.sys.localStorage.getItem('jinBiCount');
+        var d = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label).string;
+
+        var newC = parseInt(c) + parseInt(d);
+        cc.sys.localStorage.setItem('jinBiCount', newC);
+
         cc.director.loadScene('end');
     },
 
