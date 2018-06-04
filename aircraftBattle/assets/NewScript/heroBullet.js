@@ -37,6 +37,8 @@ cc.Class({
         trackOpen: false, //是否为追踪弹
 
         p:0,//上边界 超出就销毁子弹
+
+        bulletPool:null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -94,7 +96,8 @@ cc.Class({
         }
 
         if (this.node.getPosition().y > this.p) {
-            this.node.destroy();
+           // this.node.destroy();
+           this.bulletPool.put(this.node);
         }
 
     },

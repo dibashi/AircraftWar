@@ -25,11 +25,19 @@ cc.Class({
 
         onceBulletCount:1,
         flyingSpeed:0,
+
+
+        bulletPool:null,
+        bulletPoolSize:20,
     },
 
     
     onLoad () {        
-        //this.startFire();
+        this.bulletPool = new cc.NodePool();
+        for(let i = 0;i<this.bulletPoolSize;i++) {
+            let bl = cc.instantiate(this.bullet0);
+            this.bulletPool.put(bl);
+        }
     },
 
     setEnableGuanDao( ena ){
@@ -67,11 +75,15 @@ cc.Class({
         //根据子弹类型来生成子弹，类型决定加载什么预制体。
         
         var bl = null;
-       // if (this.bulletType === globalHeroBulletType.ordinary) {
+      
+        if(this.bulletPool.size()>0) {
+            bl = this.bulletPool.get();
+        } else {
             bl = cc.instantiate(this.bullet0);
-        // } else if (this.bulletType === globalHeroBulletType.upgrade) {
-        //     bl = cc.instantiate(this.bullet1);
-        // } 
+        }
+        bl.getComponent("heroBullet").bulletPool = this.bulletPool;
+        
+
        
         bl.getComponent("heroBullet").trackOpen = true;
         
