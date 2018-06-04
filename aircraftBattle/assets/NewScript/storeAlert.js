@@ -152,7 +152,7 @@ cc.Class({
             cc.sys.localStorage.setItem('dazhaoCount', adzC);
         }else if (this._nodeTag == 5) {
             let ahdC = parseInt(hdC) + 10;
-            cc.sys.localStorage.setItem('planeLifeCount', aplC);
+            cc.sys.localStorage.setItem('hudunCount', ahdC);
         }
 
     },
