@@ -1013,6 +1013,7 @@ cc.Class({
 
 
     addScore(fenshu) {
+       // return;
         if(this.defenLabel == null) {
             return;
         }
