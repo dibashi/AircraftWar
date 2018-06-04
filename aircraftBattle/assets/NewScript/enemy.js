@@ -352,13 +352,13 @@ cc.Class({
 
         this.node.group = "NOOOOOOO";
 
-        this.partice = cc.instantiate(this.particleSys);
-        this.node.parent.addChild(this.partice);
-        this.partice.setPosition(this.node.getPosition());
-        //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
-        this.partice.getComponent(cc.ParticleSystem).resetSystem();
+        // this.partice = cc.instantiate(this.particleSys);
+        // this.node.parent.addChild(this.partice);
+        // this.partice.setPosition(this.node.getPosition());
+    
+        // this.partice.getComponent(cc.ParticleSystem).resetSystem();
 
-        //this.nodeBar.destroy();//删除血条
+       
         this.node.opacity = 0;
         this.unscheduleAllCallbacks();
         this.scheduleOnce(this.baozhaOver, 0.7);
@@ -374,7 +374,7 @@ cc.Class({
 
     baozhaOver: function () {
         this.unscheduleAllCallbacks();
-        this.partice.destroy();
+      //  this.partice.destroy();
         cc.log("爆炸动画结束~~~~");
         //这个有问题 要放动画回调 TODO!
         this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
