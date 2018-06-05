@@ -72,16 +72,16 @@ var _stage = [
     // ],
 
     [
-        {enemyID:2},
+        {enemyID:1},
     ],
     [
-        {enemyID:2},{enemyID:2}
+        {enemyID:1},{enemyID:1}
     ],
     [
-        {enemyID:3},{enemyID:4}
+        {enemyID:1},{enemyID:1}
     ],
     [
-        {enemyID:3},
+        {enemyID:0},
     ],
     [
         {enemyID:3},{enemyID:3},{enemyID:3}

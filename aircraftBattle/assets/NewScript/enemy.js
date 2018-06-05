@@ -339,8 +339,8 @@ cc.Class({
            this.node.group = "NOOOOOOO";
          
            var anim = this.node.getComponent(cc.Animation);
-           anim.play("baozhaAni");
-           
+          // anim.play("baozhaAni");
+           anim.play();
            this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
 
            anim.scale = 10;
@@ -436,7 +436,7 @@ cc.Class({
               
                 this.blood -= bDamage;
               //  this.bBar.string = this.blood;
-               // this.enemyDamagedAni();
+                this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 //this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
