@@ -109,7 +109,8 @@ cc.Class({
         bulletIntelval: 2000,
         //enemys : [],
 
-        stage: 0,
+        stage: 0, //数据表中第几层
+        realStage:0,//真实的层数，消灭一次加一层 用于增加敌机属性
         checkStageCount: 0,
 
         //beginY: 400,
@@ -234,8 +235,8 @@ cc.Class({
         this.jisuPoolSize=5,
         this.dazhaoPoolSize= 3,
         
-        this.baozouInterval = 10,
-        this.baozouPossession = 5,
+        this.baozouInterval = 35,
+        this.baozouPossession = 7,
 
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
@@ -328,6 +329,7 @@ cc.Class({
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
 
         this.stage = 0;
+        this.realStage = 0;
         this.runStage();
 
 
@@ -759,8 +761,8 @@ cc.Class({
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
             }
-            cc.log("stage  " + this.stage);
-
+            this.realStage++;//永远都加
+        
             this.unschedule(this.runStage);
             this.scheduleOnce(this.runStage,1);
            
@@ -768,19 +770,14 @@ cc.Class({
     },
 
     runStage() {
-        //从全局多维Stage详参中取出当前Stage的数据
-        //cc.log(globalStageData);
-        // globalStageData[stage],
-        //var zzz = [50, 100, 150, 200, 250, 300],
 
 
         this.enemyCount = globalStageData[this.stage].length;
 
         var enemy;
-        // cc.log(" globalStageData[this.stage].length  " +  globalStageData[this.stage].length);
+    
         for (var i = 0; i < globalStageData[this.stage].length; i++) {
             var enemyID = globalStageData[this.stage][i].enemyID;
-            //  cc.log(" enemyID  " + enemyID);
             if (enemyID === 0) {
                 enemy = cc.instantiate(this.enemyPlane0);
             } else if (enemyID === 1) {
@@ -797,9 +794,9 @@ cc.Class({
             }
             if (enemy.getComponent("enemy") != undefined) {
                 enemy.getComponent("enemy").enemyID = enemyID;
-                enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood;
+                enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood + this.realStage;
 
-                enemy.getComponent("enemy").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed;
+                enemy.getComponent("enemy").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02*this.realStage;
                 enemy.getComponent("enemy").flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
                 enemy.getComponent("enemy").bulletType = globalEnemyPlaneData[enemyID].bulletType;
                 enemy.getComponent("enemy").damage = globalEnemyPlaneData[enemyID].damage;

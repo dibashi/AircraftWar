@@ -128,7 +128,7 @@
         "__uuid__": "27ec36ab-e705-44e7-8937-6317f2417457"
       }
     ],
-    "playOnLoad": false
+    "playOnLoad": true
   },
   {
     "__type__": "cc.CircleCollider",
