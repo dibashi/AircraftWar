@@ -42,10 +42,10 @@ cc.Class({
             type:cc.Node,
         },
 
-        killedEnemyLabel: {
-            default:null,
-            type:cc.Node,
-        },
+        // killedEnemyLabel: {
+        //     default:null,
+        //     type:cc.Node,
+        // },
 
         spriteCoin: null,
         labelCoin: null,
@@ -72,12 +72,12 @@ cc.Class({
          var hs = cc.sys.localStorage.getItem('bestScore');
          var cs = cc.sys.localStorage.getItem("currentScore");
         
-         var kc = cc.sys.localStorage.getItem("killedEnemyCount");
+       //  var kc = cc.sys.localStorage.getItem("killedEnemyCount");
          //写入数据
         this.coinLabel.getComponent(cc.Label).string = jbc;
         this.historyLabel.getComponent(cc.Label).string = "历史最高分：" +hs;
         this.currentLabel.getComponent(cc.Label).string = "本局得分：" +cs;
-        this.killedEnemyLabel.getComponent(cc.Label).string = "击落目标：" +kc;
+      //  this.killedEnemyLabel.getComponent(cc.Label).string = "击落目标：" +kc;
 
         //适配
          //适配

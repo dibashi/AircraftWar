@@ -1045,7 +1045,7 @@ cc.Class({
         if (currentScore > bestScore) {
             cc.sys.localStorage.setItem('bestScore', currentScore);
         }
-        cc.log("best score--> " + cc.sys.localStorage.getItem('bestScore'));
+      
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
         var c = cc.sys.localStorage.getItem('jinBiCount');
