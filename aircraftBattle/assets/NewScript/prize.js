@@ -107,7 +107,7 @@ cc.Class({
                     // jinbiPrefab.setPosition(prizePosition);
                     // jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
                     this.node.parent.getComponent("Game").getJinBi();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                 //   cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.wudichongci:
                     //cc.log("get wudichongci!");
