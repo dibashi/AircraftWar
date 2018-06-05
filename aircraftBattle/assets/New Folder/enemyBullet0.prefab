@@ -113,63 +113,6 @@
     "by": 0
   },
   {
-    "__type__": "cc.PolygonCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": -2,
-        "y": 31
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -7,
-        "y": 19
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -7,
-        "y": -25
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -5,
-        "y": -31
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 5,
-        "y": -31
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 7,
-        "y": -25
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 7,
-        "y": 21
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 4,
-        "y": 29
-      }
-    ]
-  },
-  {
     "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
@@ -186,6 +129,26 @@
       }
     ],
     "playOnLoad": true
+  },
+  {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 14,
+      "height": 62
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
