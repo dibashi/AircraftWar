@@ -52,8 +52,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.4,
-    "_scaleY": 0.4,
+    "_scaleX": 1,
+    "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -101,7 +101,10 @@
     },
     "_enabled": true,
     "flyingSpeed": 0,
-    "damage": 0
+    "damage": 0,
+    "trackOpen": false,
+    "p": 0,
+    "bulletPool": null
   },
   {
     "__type__": "cc.PolygonCollider",

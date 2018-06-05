@@ -219,7 +219,7 @@ cc.Class({
 
     onLoad() {
 
-        this.jinbiPoolSize=30,
+        this.jinbiPoolSize=50,
         this.hudunPoolSize=3,
         this.jisuPoolSize=5,
         this.dazhaoPoolSize= 3,
@@ -499,7 +499,7 @@ cc.Class({
         this.player.getComponent("Player").closeAllBullet();
         //3提高背景速度
 
-        this.backGround.getComponent("background").speedFactor = 3;
+        this.backGround.getComponent("background").speedFactor = 6;
         
         // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
         this.baozouFlag = true;
@@ -849,7 +849,7 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     cc.log("jinbi!");
-                    let jinBiCount = Math.floor(Math.random() * 13);
+                    let jinBiCount = Math.floor(Math.random() * 8);
                     for (let i = 0; i < jinBiCount; i++) {
 
                         if (this.jinbiPool.size() > 0) {
