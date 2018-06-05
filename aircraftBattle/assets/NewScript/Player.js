@@ -466,19 +466,13 @@ cc.Class({
 
     dead: function () {
         //1 先判断是否还有飞机，
-
-        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
-        if (lifeCount > 0) {
-            //2 若有 则 销毁当前飞机，
-            this.boomAni();
-            //3 飞入新飞机 在爆炸完的回调中处理
-        } else {
-            this.node.parent.getComponent('Game').gameOver();
-        }
+        this.boomAni();
+       
 
 
     },
 
+   
     boomAni: function () {
 
         cc.audioEngine.playEffect(this.boomAudio, false);
@@ -492,6 +486,9 @@ cc.Class({
         // this.node.opacity = 0;
         this.unscheduleAllCallbacks();
         this.scheduleOnce(this.baozhaOver, 0.7);
+
+
+
        let ani =  this.node.getComponent(cc.Animation);
        ani.play();
         this.node.parent.getComponent("Game").closeBaoZou();
@@ -501,10 +498,21 @@ cc.Class({
 
     baozhaOver: function () {
         this.unscheduleAllCallbacks();
-      //  this.partice.destroy();
-        cc.log("爆炸动画结束~~~~");
-        this.node.parent.getComponent("Game").goNewPlane();
-        this.node.destroy();
+   
+ 
+        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        if (lifeCount > 0) {
+            this.node.parent.getComponent("Game").goNewPlane();
+            this.node.destroy();
+        } else {
+           
+            this.node.parent.getComponent('Game').gameOver();
+            
+        }
+
+
+
+        
     },
 
 

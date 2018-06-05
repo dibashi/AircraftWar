@@ -48,8 +48,8 @@ var _wuDiTime = 8;
 var _enemyPlaneData = [
     {enemyID:0, planeImage: "enemyPlane0", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.9,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.sanfazhixian,enemyTrack:_enemyTrack.zuoyoushangxia },
     {enemyID:1, planeImage: "enemyPlane1", blood: 5, shootingSpeed: 1, flyingSpeed: 3, bulletType: _bulletType.huopao, damage: 1,dropProbability:0.1,fallingObject:_generateType.wudichongci,bulletTrack:_bulletTrack.banquan,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:2, planeImage: "enemyPlane2", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.7,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
-    {enemyID:3, planeImage: "enemyPlane3", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.1,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:2, planeImage: "enemyPlane2", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.jipao, damage: 1,dropProbability:0.9,fallingObject:_generateType.jinbi,bulletTrack:_bulletTrack.dingwei,enemyTrack:_enemyTrack.zuoyoushangxia },
+    {enemyID:3, planeImage: "enemyPlane3", blood: 5, shootingSpeed: 1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.2,fallingObject:_generateType.jisushesu,bulletTrack:_bulletTrack.yiquan,enemyTrack:_enemyTrack.zuoyoushangxia },
     {enemyID:4, planeImage: "enemyPlane4", blood: 5, shootingSpeed:1, flyingSpeed: 4, bulletType: _bulletType.huopao, damage: 2,dropProbability:0.1,fallingObject:_generateType.huojianpao,bulletTrack:_bulletTrack.wufasanshe,enemyTrack:_enemyTrack.zuoyoushangxia },
 
 ];
@@ -72,19 +72,19 @@ var _stage = [
     // ],
 
     [
-        {enemyID:1},
-    ],
-    [
-        {enemyID:1},{enemyID:1}
-    ],
-    [
-        {enemyID:1},{enemyID:1}
-    ],
-    [
         {enemyID:0},
     ],
     [
-        {enemyID:3},{enemyID:3},{enemyID:3}
+        {enemyID:1},{enemyID:2}
+    ],
+    [
+        {enemyID:2},{enemyID:3}
+    ],
+    [
+        {enemyID:4},
+    ],
+    [
+        {enemyID:3},{enemyID:2},{enemyID:3}
     ],
     [
         {enemyID:1},{enemyID:0}
@@ -123,7 +123,7 @@ var _stage = [
         {enemyID:2},{enemyID:0},{enemyID:1}
     ],
     [
-        {enemyID:0},{enemyID:3},{enemyID:1}
+        {enemyID:0},{enemyID:1},{enemyID:2}
     ]
 ];
 
