@@ -212,6 +212,13 @@ cc.Class({
             default:null,
             type:cc.Node
         },
+
+        //摧毁敌机数，也就是现在的分数 
+        fenshu:0,
+        //为了性能做的 最优分数缓存，
+       
+        bestScore:0,
+        newRecord:null,
     },
 
 
@@ -379,6 +386,9 @@ cc.Class({
         this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
         this.defenLabel = this.node.getChildByName("score").getComponent(cc.Label);
+
+        this.bestScore =  parseInt( cc.sys.localStorage.getItem('bestScore'));
+        this.newRecord = this.node.getChildByName("score").getChildByName("newRecord");
 
     },
 
@@ -743,7 +753,10 @@ cc.Class({
                 this.stage++;
             }
             cc.log("stage  " + this.stage);
-            this.runStage();
+
+            this.unschedule(this.runStage);
+            this.scheduleOnce(this.runStage,1);
+           
         }
     },
 
@@ -1000,7 +1013,7 @@ cc.Class({
 
        //let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
-        this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
+      //  this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
 
     },
     // getWuDiChongCi:function() {
@@ -1045,17 +1058,26 @@ cc.Class({
     },
 
 
-    addScore(fenshu) {
-       // return;
-        if(this.defenLabel == null) {
-            return;
-        }
-        let fs = fenshu + parseInt(this.defenLabel.string);
-        this.defenLabel.string = fs;
-        if (fs > cc.sys.localStorage.getItem('bestScore')) {
-            this.node.getChildByName("score").getChildByName("newRecord").active = true;
-        }
-    },
+    // addScore(fenshu) {
+    //    // return;
+    //     if(this.defenLabel == null) {
+    //         return;
+    //     }
+    //     let fs = fenshu + parseInt(this.defenLabel.string);
+    //     this.defenLabel.string = fs;
+    //     if (fs > cc.sys.localStorage.getItem('bestScore')) {
+    //         this.node.getChildByName("score").getChildByName("newRecord").active = true;
+    //     }
+    // },
+
+    addScore(fshu) {
+       
+        this.fenshu = this.fenshu+fshu;
+         this.defenLabel.string = this.fenshu;
+         if (this.fenshu > this.bestScore) {
+             this.newRecord.active = true;
+         }
+     },
 
 
     onSoundButtonClick: function () {
