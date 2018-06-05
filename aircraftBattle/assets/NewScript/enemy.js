@@ -69,14 +69,14 @@ cc.Class({
     onLoad() {
 
        
-        this.nodeBar = cc.instantiate(this.bloodBar);
-        this.bBar = this.nodeBar.getComponent(cc.Label);
+        // this.nodeBar = cc.instantiate(this.bloodBar);
+        // this.bBar = this.nodeBar.getComponent(cc.Label);
       
-        this.bBar.string = this.blood;
+        // this.bBar.string = this.blood;
      
-        this.node.addChild(this.nodeBar);
-        this.nodeBar.setPosition(0, 0);
-        this.nodeBar.rotation = 180;
+        // this.node.addChild(this.nodeBar);
+        // this.nodeBar.setPosition(0, 0);
+        // this.nodeBar.rotation = 180;
       
     },
 
@@ -342,7 +342,7 @@ cc.Class({
            this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
 
            anim.scale = 10;
-           this.nodeBar.destroy();
+        //   this.nodeBar.destroy();
         this.unscheduleAllCallbacks();
         cc.audioEngine.playEffect(this.boomAudio,false);
 
@@ -433,7 +433,7 @@ cc.Class({
             } else {
               
                 this.blood -= bDamage;
-                this.bBar.string = this.blood;
+              //  this.bBar.string = this.blood;
                // this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 this.node.parent.getComponent('Game').addScore(bDamage);
