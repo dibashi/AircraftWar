@@ -219,6 +219,9 @@ cc.Class({
        
         bestScore:0,
         newRecord:null,
+        
+        //用这个变量来记录本局获得的金币数量。
+        _jinBiCount:0,
     },
 
 
@@ -1014,6 +1017,7 @@ cc.Class({
        //let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
       //  this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
+      this._jinBiCount +=globalDropJinBiCount;
 
     },
     // getWuDiChongCi:function() {
@@ -1049,11 +1053,11 @@ cc.Class({
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
         var c = cc.sys.localStorage.getItem('jinBiCount');
-        var d = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label).string;
-
+     //   var d = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label).string;
+        var d = this._jinBiCount;
         var newC = parseInt(c) + parseInt(d);
         cc.sys.localStorage.setItem('jinBiCount', newC);
-
+        cc.sys.localStorage.setItem("getJinBiCount",d);
         cc.director.loadScene('end');
     },
 
