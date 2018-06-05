@@ -332,7 +332,9 @@ cc.Class({
 
     enemyBoomAni: function () {
         //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
-        this.node.parent.getComponent('Game').addScore(this.blood);
+       // this.node.parent.getComponent('Game').addScore(this.blood);
+       //需求改为 一架飞机一分
+       this.node.parent.getComponent('Game').addScore(1);
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
            this.node.group = "NOOOOOOO";
          
@@ -361,8 +363,8 @@ cc.Class({
 
 
         //敌机销毁数据+1
-        let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
-        cc.sys.localStorage.setItem('killedEnemyCount',kc);
+        // let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
+        // cc.sys.localStorage.setItem('killedEnemyCount',kc);
 
         //声音
 
@@ -436,7 +438,7 @@ cc.Class({
               //  this.bBar.string = this.blood;
                // this.enemyDamagedAni();
                 //根据掉血量来加分吧
-                this.node.parent.getComponent('Game').addScore(bDamage);
+                //this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
            
             }
