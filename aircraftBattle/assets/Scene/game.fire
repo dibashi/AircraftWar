@@ -378,7 +378,8 @@
       "__id__": 6
     },
     "y": 550,
-    "bgSpeed": 2
+    "bgSpeed": 2,
+    "speedFactor": 1
   },
   {
     "__type__": "cc.Node",
@@ -1846,6 +1847,9 @@
     "jisuPoolSize": 5,
     "dazhaoPoolSize": 3,
     "coinLabel": null,
-    "defenLabel": null
+    "defenLabel": null,
+    "backGround": {
+      "__id__": 3
+    }
   }
 ]

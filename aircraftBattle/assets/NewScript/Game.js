@@ -205,6 +205,13 @@ cc.Class({
         //为了性能做成成员变量
         coinLabel:null,
         defenLabel:null,
+
+
+
+        backGround:{
+            default:null,
+            type:cc.Node
+        },
     },
 
 
@@ -218,6 +225,8 @@ cc.Class({
         this.dazhaoPoolSize= 3,
         
         this.baozouInterval = 10,
+        this.baozouPossession = 5,
+
 
         cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
@@ -330,6 +339,8 @@ cc.Class({
 
 
       // this.goBaoZou();
+        
+      this.goNewBaoZou();
 
 
         // this.node.runAction(cc.rotateTo(10,90));
@@ -425,12 +436,16 @@ cc.Class({
     newPlaneMoved: function () {
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
-        this.goBaoZou();
+      //  this.goBaoZou();
+        this.goNewBaoZou();
     },
 
-    goBaoZou: function () {
-        this.schedule(this.baozouProcessing, this.baozouInterval);
+    goNewBaoZou:function() {
+        this.unschedule(this.newBaozouProcessing);
+        this.schedule(this.newBaozouProcessing, this.baozouInterval);
     },
+
+  
 
     closeBaoZou: function () {
         this.unschedule(this.baozouProcessing);
@@ -452,7 +467,7 @@ cc.Class({
     },
 
 
-    baozouProcessing: function () {
+    newBaozouProcessing: function () {
 
         //开始暴走！ 1，暴走提示动画，2，玩家飞机属性更改，3，大招释放，4，定时器关闭暴走。
         // 1
@@ -475,17 +490,26 @@ cc.Class({
         this.player.addChild(this.baozouHuDunAni);
 
 
-        // 2
-        //1 改射速 2 开管道 
+      
         //1 调用player保存当前状态。
         this.player.getComponent("Player").savePlayerState();
-        this.player.getComponent("Player").baozouState();
-        // 3
+      //  this.player.getComponent("Player").baozouState();
+
+        //2关闭所有子弹
+        this.player.getComponent("Player").closeAllBullet();
+        //3提高背景速度
+
+        this.backGround.getComponent("background").speedFactor = 3;
+        
+        // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
         this.baozouFlag = true;
-        this.bombOnclick();
-        // 4
+       
+        // 5 设置暴走结束时刻 以及回调
         this.scheduleOnce(this.closeBaozou, this.baozouPossession);
     },
+
+
+    
 
     //关闭暴走
     closeBaozou: function () {
@@ -493,6 +517,9 @@ cc.Class({
         //2 恢复飞机属性
         this.player.getComponent("Player").repairPlayerState();
         this.baozouHuDunAni.destroy();
+
+        this.backGround.getComponent("background").speedFactor = 1;
+        this.baozouFlag = false;
         //3 应该没了
     },
 
@@ -593,13 +620,7 @@ cc.Class({
     },
 
     bombOnclick: function () {
-        //如果是暴走 则直接 释放
-        if (this.baozouFlag == true) {
-            this.hongzha1();
-            this.baozouFlag = false;
-            return;
-        }
-
+       
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= 1;
@@ -670,10 +691,26 @@ cc.Class({
         this.dazhaoPlanes1 = null;
     },
 
+
+    _bulletToCoinAndRun:function() {
+        let cs = this.node.children;
+        let cc = this.node.childrenCount;
+        for (let i = 0; i < cc; i++) {
+            if (this.node.children[i].group === 'eBullet') {
+                this.node.children[i].getComponent('enemyBullet').bulletToCoinAndRun();
+            }
+        }
+    },
+
     shieldOnclick: function () {
 
-        // cc.log("gggame! --> ");
-        // cc.log(this);
+        if(this.baozouFlag) {
+            this._bulletToCoinAndRun();
+            return;
+        }
+        
+
+
         if (this.shieldNo > 0) {
             this.shieldLabel.string = this.shieldNo - 1;
             this.shieldNo -= 1;
@@ -683,13 +720,7 @@ cc.Class({
             }
 
 
-            let cs = this.node.children;
-            let cc = this.node.childrenCount;
-            for (let i = 0; i < cc; i++) {
-                if (this.node.children[i].group === 'eBullet') {
-                    this.node.children[i].getComponent('enemyBullet').bulletToCoinAndRun();
-                }
-            }
+            this._bulletToCoinAndRun();
 
         } else {
             console.log('没有护盾');

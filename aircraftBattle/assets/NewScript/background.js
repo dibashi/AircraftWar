@@ -40,6 +40,8 @@ cc.Class({
         y:550,
 
         bgSpeed:2,
+
+        speedFactor:1,//速度系数，添加需求，可以改变背景速度以及云的速度
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -95,9 +97,9 @@ cc.Class({
         let bg2Y = this.bg2.getPosition().y;
 
         if(bg1Y<=-(cc.director.getVisibleSize().height)) {
-            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed);
+            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed*this.speedFactor);
         }else {
-            bg1Y -= this.bgSpeed;
+            bg1Y -= this.bgSpeed*this.speedFactor;
             this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
         }
 
@@ -106,7 +108,7 @@ cc.Class({
         if(bg2Y<=-(cc.director.getVisibleSize().height)) {
             this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+cc.director.getVisibleSize().height);
         }else {
-            bg2Y -= this.bgSpeed;
+            bg2Y -= this.bgSpeed*this.speedFactor;
             this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
         }
 

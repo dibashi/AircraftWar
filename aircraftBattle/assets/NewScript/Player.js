@@ -311,6 +311,23 @@ cc.Class({
         this.runWingman();
     },
 
+    closeAllBullet:function() {
+        for (let i = 0; i < 5; i++) {
+
+            this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
+        }
+
+        for (let i = 0; i < 4; i++) {
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+        }
+
+        for (let i = 0; i < 6; i++) {
+            this.wingmanArrays[i].active = false;
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
+        }
+
+    },
+
 
 
     wudichongci: function () {
@@ -387,6 +404,12 @@ cc.Class({
         //cc.log("other node    ");
         //cc.log(other.node);
         if (other.node.group === "eBullet") {
+            //暴走逻辑优先处理，可以防止护盾消耗。
+            if( this.node.parent.getComponent('Game').baozouFlag) {
+                this.node.parent.getComponent('Game').shieldOnclick();
+                return;
+            }
+
             //先判断是否有护盾
             let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
             if (hdCount > 0) {
@@ -414,6 +437,11 @@ cc.Class({
 
             }
         } else if (other.node.group === "enemy") {
+            //暴走逻辑优先处理，可以防止护盾消耗。
+            if( this.node.parent.getComponent('Game').baozouFlag) {
+                other.node.getComponent("enemy").enemyBoomAni();
+                return;
+            }
 
             let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
             if (hdCount > 0) {
