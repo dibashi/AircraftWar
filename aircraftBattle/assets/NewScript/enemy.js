@@ -61,23 +61,33 @@ cc.Class({
             url: cc.AudioClip
         },
 
+        shoujiAni: null,
 
+        shoujiAniPre: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
 
-       
+
         // this.nodeBar = cc.instantiate(this.bloodBar);
         // this.bBar = this.nodeBar.getComponent(cc.Label);
-      
+
         // this.bBar.string = this.blood;
-     
+
         // this.node.addChild(this.nodeBar);
         // this.nodeBar.setPosition(0, 0);
         // this.nodeBar.rotation = 180;
-      
+        this.shoujiAniPool = new cc.NodePool();
+        for (let i = 0; i < 8; i++) {
+            let sjA = cc.instantiate(this.shoujiAniPre);
+            this.shoujiAniPool.put(sjA);
+        }
+
     },
 
 
@@ -104,20 +114,20 @@ cc.Class({
 
     enterCallback: function () {
 
-       
+
         //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！  
         //这里的射击速度是 单次射击  将来 像三连发 然后停顿的 如何设计 ？
         //其实应该在这里根据子弹射击方式来定义
         //1 根据 敌机的 运动轨迹数据 来调用相关轨迹动画函数
         //2 根据 敌机的 子弹发射方式 来 调用相关的 发射动画函数
-        if(this != undefined) {
+        if (this != undefined) {
             if (this.enemyTrack == enemyTrack.guding) {
                 //固定不动就不需要实现什么了
             } else if (this.enemyTrack == enemyTrack.zuoyoushangxia) {
                 this.zuoyoushangxia();
             }
-    
-    
+
+
             if (this.bulletTrack == bulletTrack.zhixianxiangxia) {
                 this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
             } else if (this.bulletTrack == bulletTrack.dingwei) {
@@ -135,8 +145,8 @@ cc.Class({
                 this.schedule(this.wufasanshe, 1 / this.shootingSpeed);
             }
         }
-       
-        
+
+
 
 
 
@@ -168,7 +178,7 @@ cc.Class({
 
         for (let jiaodu = -180; jiaodu < 180; jiaodu += 30) {
             this.xiexianByjiaodu(jiaodu);
-      
+
         }
 
 
@@ -198,14 +208,14 @@ cc.Class({
     },
     //往右边倾斜
     xiexianRight: function (jiaodu) {
-      
+
         let bl = this.generateBullet();
         //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100 * Math.tan(jiaodu * 0.017453293));//2pi/360 = 0.017453293
 
-       
+
         this.node.parent.addChild(bl);
     },
 
@@ -220,9 +230,9 @@ cc.Class({
         this.node.parent.addChild(bl);
     },
 
-    
 
-    wufasanshe:function() {
+
+    wufasanshe: function () {
         // for(let i = 0; i<5;i++) {
         //     // this.scheduleOnce(this.susheCallback,0.2);
         //     this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.wufasansheCallback,this)));
@@ -234,15 +244,15 @@ cc.Class({
 
         this.xiexianByjiaodu(-75);
         this.xiexianByjiaodu(-105);
-        this.node.runAction(cc.sequence(cc.delayTime(0.1), cc.callFunc(this.wufasansheCallbackZhong,this)));
-        this.node.runAction(cc.sequence(cc.delayTime(0.2), cc.callFunc(this.wufasansheCallbackLiangBian,this)));
+        this.node.runAction(cc.sequence(cc.delayTime(0.1), cc.callFunc(this.wufasansheCallbackZhong, this)));
+        this.node.runAction(cc.sequence(cc.delayTime(0.2), cc.callFunc(this.wufasansheCallbackLiangBian, this)));
     },
 
-    wufasansheCallbackZhong:function() {
+    wufasansheCallbackZhong: function () {
         this.xiexianByjiaodu(-90);
     },
 
-    wufasansheCallbackLiangBian:function() {
+    wufasansheCallbackLiangBian: function () {
         this.xiexianByjiaodu(-75);
         this.xiexianByjiaodu(-105);
     },
@@ -288,7 +298,7 @@ cc.Class({
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
 
-     
+
 
         this.node.parent.addChild(bl);
     },
@@ -332,31 +342,31 @@ cc.Class({
 
     enemyBoomAni: function () {
         //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
-       // this.node.parent.getComponent('Game').addScore(this.blood);
-       //需求改为 一架飞机一分
-       this.node.parent.getComponent('Game').addScore(1);
+        // this.node.parent.getComponent('Game').addScore(this.blood);
+        //需求改为 一架飞机一分
+        this.node.parent.getComponent('Game').addScore(1);
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
-           this.node.group = "NOOOOOOO";
-         
-           var anim = this.node.getComponent(cc.Animation);
-          // anim.play("baozhaAni");
-           anim.play();
-           this.node.parent.getComponent('Game').generatePrize(this.enemyID,this.node.getPosition());
+        this.node.group = "NOOOOOOO";
 
-           anim.scale = 10;
+        var anim = this.node.getComponent(cc.Animation);
+        // anim.play("baozhaAni");
+        anim.play();
+        this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+
+        //  anim.scale = 10;
         //   this.nodeBar.destroy();
         this.unscheduleAllCallbacks();
-        cc.audioEngine.playEffect(this.boomAudio,false);
+        cc.audioEngine.playEffect(this.boomAudio, false);
 
         // this.node.group = "NOOOOOOO";
 
         // this.partice = cc.instantiate(this.particleSys);
         // this.node.parent.addChild(this.partice);
         // this.partice.setPosition(this.node.getPosition());
-    
+
         // this.partice.getComponent(cc.ParticleSystem).resetSystem();
 
-       
+
         // this.node.opacity = 0;
         // this.unscheduleAllCallbacks();
         // this.scheduleOnce(this.baozhaOver, 0.7);
@@ -373,7 +383,7 @@ cc.Class({
     // baozhaOver: function () {
     //     this.unscheduleAllCallbacks();
     //    this.partice.destroy();
-   
+
     //     //这个有问题 要放动画回调 TODO!
     //     this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
 
@@ -382,11 +392,11 @@ cc.Class({
     //     this.node.destroy();
     // },
     //以前动画的
-    baozhaOver:function() {
-      
+    baozhaOver: function () {
+
         //这个有问题 要放动画回调 TODO!
-        
-      
+
+
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
     },
@@ -395,15 +405,25 @@ cc.Class({
 
     enemyDamagedAni: function () {
 
-       
-        this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
 
-        armatureDisplay.playAnimation("baozha");
+        // this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+        // let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
 
-        this.node.addChild(this.damagedTeXiao);
-        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
+        // armatureDisplay.playAnimation("baozha");
 
+        // this.node.addChild(this.damagedTeXiao);
+        // armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
+        this.shoujiAni = null;
+        if (this.shoujiAniPool.size() > 0) {
+            this.shoujiAni = this.shoujiAniPool.get();
+        } else {
+            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
+        }
+
+        this.node.addChild(this.shoujiAni);
+        var anim = this.shoujiAni.getComponent(cc.Animation);
+
+        anim.play();
 
     },
 
@@ -412,7 +432,11 @@ cc.Class({
         //这个有问题 要放动画回调 TODO!
 
 
-        this.damagedTeXiao.destroy();
+        // this.damagedTeXiao.destroy();
+        cc.log("~!~~~!!!");
+        this.shoujiAni.removeFromParent();
+        this.shoujiAniPool.put(this.shoujiAni);
+
     },
 
 
@@ -421,7 +445,7 @@ cc.Class({
         if (other.node.group === "hBullet") {
 
             var bDamage = other.node.getComponent("heroBullet").damage;
-       
+
             if ((this.blood - bDamage) <= 0) {//销毁 掉落物品逻辑
 
                 //根据enemyID来生成掉落物品 //传入game 让game来生成预制体
@@ -429,18 +453,18 @@ cc.Class({
 
                 this.enemyBoomAni();
 
-                
+
 
                 // this.node.destroy();
             } else {
-              
+
                 this.blood -= bDamage;
-              //  this.bBar.string = this.blood;
+                //  this.bBar.string = this.blood;
                 this.enemyDamagedAni();
                 //根据掉血量来加分吧
                 //this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
-           
+
             }
         }
 

@@ -3,7 +3,7 @@
   "_name": "baozhaAni2",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5166666666666667,
+  "_duration": 0.43333333333333335,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -14,43 +14,37 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "f44b2a49-dcde-46af-a9e2-7812ab7aee12"
+              "__uuid__": "b48c258a-1cb1-4973-811b-fc8152b05239"
             }
           },
           {
             "frame": 0.08333333333333333,
             "value": {
-              "__uuid__": "1fbd94b1-3850-43a9-9c74-af7ffdad96fb"
+              "__uuid__": "b54fe9b4-3127-4230-b3fa-8ba38b1383e3"
             }
           },
           {
             "frame": 0.16666666666666666,
             "value": {
-              "__uuid__": "9237b663-7285-4b46-a1eb-1c31757db271"
+              "__uuid__": "81a3d35d-8013-4b9a-94fe-9a638fcd8743"
             }
           },
           {
             "frame": 0.25,
             "value": {
-              "__uuid__": "f316c734-5147-4480-96ac-ad662f27a037"
+              "__uuid__": "31207128-519e-4707-b2e3-91c0cc6fbadb"
             }
           },
           {
             "frame": 0.3333333333333333,
             "value": {
-              "__uuid__": "3782ba72-c07f-4342-ae5a-c393f8d82617"
+              "__uuid__": "0ccf371f-3500-4ba0-b33e-9ad7ea630ca9"
             }
           },
           {
             "frame": 0.4166666666666667,
             "value": {
-              "__uuid__": "5d36137d-35fd-4321-9fe6-38287de14fe8"
-            }
-          },
-          {
-            "frame": 0.5,
-            "value": {
-              "__uuid__": "370cc729-2db7-4cba-80a4-f164565d7ce1"
+              "__uuid__": "aeb76325-cf4d-4769-aceb-44e1f28cd5f4"
             }
           }
         ]
@@ -71,7 +65,7 @@
   },
   "events": [
     {
-      "frame": 0.5,
+      "frame": 0.4166666666666667,
       "func": "baozhaOver",
       "params": []
     }

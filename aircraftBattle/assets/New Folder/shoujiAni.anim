@@ -1,0 +1,67 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "shoujiAni",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.31666666666666665,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "f44b2a49-dcde-46af-a9e2-7812ab7aee12"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "1fbd94b1-3850-43a9-9c74-af7ffdad96fb"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "9237b663-7285-4b46-a1eb-1c31757db271"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "f316c734-5147-4480-96ac-ad662f27a037"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "3782ba72-c07f-4342-ae5a-c393f8d82617"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "5d36137d-35fd-4321-9fe6-38287de14fe8"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "370cc729-2db7-4cba-80a4-f164565d7ce1"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.3,
+      "func": "damagedOver",
+      "params": []
+    }
+  ]
+}
