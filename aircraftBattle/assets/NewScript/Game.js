@@ -492,14 +492,15 @@ cc.Class({
 
       
         //1 调用player保存当前状态。
-        this.player.getComponent("Player").savePlayerState();
+     //   this.player.getComponent("Player").savePlayerState();
       //  this.player.getComponent("Player").baozouState();
 
         //2关闭所有子弹
-        this.player.getComponent("Player").closeAllBullet();
+     //   this.player.getComponent("Player").closeAllBullet();
         //3提高背景速度
 
         this.backGround.getComponent("background").speedFactor = 6;
+        this.backGround.getComponent("background").speedYUNFactor = 9;
         
         // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
         this.baozouFlag = true;
@@ -515,10 +516,11 @@ cc.Class({
     closeBaozou: function () {
         //1 关闭 暴走的那些特效， 现在还不清楚
         //2 恢复飞机属性
-        this.player.getComponent("Player").repairPlayerState();
+     //   this.player.getComponent("Player").repairPlayerState();
         this.baozouHuDunAni.destroy();
 
         this.backGround.getComponent("background").speedFactor = 1;
+        this.backGround.getComponent("background").speedYUNFactor = 1;
         this.baozouFlag = false;
         //3 应该没了
     },

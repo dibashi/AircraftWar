@@ -14,20 +14,20 @@ cc.Class({
     properties: {
         yun1: {
             default: null,
-            type: cc.Prefab,
+            type: cc.Node,
         },
         yun2: {
             default: null,
-            type: cc.Prefab,
+            type: cc.Node,
         },
         yun3: {
             default: null,
-            type: cc.Prefab,
+            type: cc.Node,
         },
 
-        y1:null,
-        y2:null,
-        y3:null,
+        // y1:null,
+        // y2:null,
+        // y3:null,
 
         bg1: {
             default: null,
@@ -42,27 +42,25 @@ cc.Class({
         bgSpeed:2,
 
         speedFactor:1,//速度系数，添加需求，可以改变背景速度以及云的速度
+        speedYUNFactor:1,
+
+        yun1Speed:3.0,
+        yun2Speed:4.0,
+        yun3Speed:5.0,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.y1 = cc.instantiate(this.yun1);
-        this.y2 = cc.instantiate(this.yun2);
-        this.y3 = cc.instantiate(this.yun3);
-        this.node.addChild(this.y1);
-        this.node.addChild(this.y2);
-        this.node.addChild(this.y3);
-      
-        this.createYun1(this.y1);
-        this.createYun1(this.y2);
-        this.createYun1(this.y3);
-        
+       
+        this.createYun1();
+        this.createYun2();
+        this.createYun3();
 
-       // this.runBG();
+
     },
 
-    createYun1:function(yun){
+    createYun:function(yun){
         let vx = cc.director.getVisibleSize().width*0.5;
 
         let origin = cc.director.getVisibleOrigin();
@@ -72,17 +70,30 @@ cc.Class({
 
         yun.setPosition(cc.v2(rx, vy));
 
-        let rt = 5+ Math.random()*3;
+        // let rt = 5+ Math.random()*3;
 
-        let callback = cc.callFunc(this.createYun1,this, this.y1);
-        let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);
+        // let callback = cc.callFunc(this.createYun1,this, this.y1);
+        // let seq = cc.sequence(cc.moveTo(rt,cc.v2(rx, -vy)),callback);
        
-        yun.runAction(seq);
+        // yun.runAction(seq);
     },
 
-    // runBG:function() {
+    createYun1:function() {
+        this.yun1Speed = 3.0+Math.random()*3.0;
+        this.createYun(this.yun1);
+    },
 
-    // },
+    createYun2:function() {
+        this.yun2Speed = 3.0+Math.random()*3.0;
+        this.createYun(this.yun2);
+    },
+
+    createYun3:function() {
+        this.yun3Speed = 3.0+Math.random()*3.0;
+        this.createYun(this.yun3);
+    },
+
+    
 
  
 
@@ -110,6 +121,32 @@ cc.Class({
         }else {
             bg2Y -= this.bgSpeed*this.speedFactor;
             this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
+        }
+
+
+        let yun1Y = this.yun1.getPosition().y;
+        let yun2Y = this.yun2.getPosition().y;
+        let yun3Y = this.yun3.getPosition().y;
+
+        if(yun1Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
+            this.createYun1(this.yun1);
+        }else {
+            yun1Y -= this.yun1Speed*this.speedYUNFactor;
+            this.yun1.setPosition(this.yun1.getPosition().x,yun1Y);
+        }
+
+        if(yun2Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
+            this.createYun2(this.yun2);
+        }else {
+            yun2Y -= this.yun2Speed*this.speedYUNFactor;
+            this.yun2.setPosition(this.yun2.getPosition().x,yun2Y);
+        }
+
+        if(yun3Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
+            this.createYun3(this.yun3);
+        }else {
+            yun3Y -= this.yun1Speed*this.speedYUNFactor;
+            this.yun3.setPosition(this.yun3.getPosition().x,yun3Y);
         }
 
        
