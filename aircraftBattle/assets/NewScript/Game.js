@@ -252,6 +252,9 @@ cc.Class({
         let sjbh = this.node.getChildByName("kuangti_jinbi").getContentSize().height;
 
         this.node.getChildByName("kuangti_jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);
+        
+        //金币不显示 
+        this.node.getChildByName("kuangti_jinbi").active = false;
 
         this.node.getChildByName("score").setLocalZOrder(100);
 
@@ -313,7 +316,8 @@ cc.Class({
         // moBanSprite.scale = 60/moBanSprite.getContentSize().height;
         // moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
 
-        this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
+      //  this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
+      this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - 10 - (this.spriteLife.getContentSize().height / 2));
         // let lifeLabel =  this.node.getChildByName("lifeLabel");
 
         // lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
@@ -386,7 +390,7 @@ cc.Class({
         }
 
 
-        this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+      //  this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
 
         this.defenLabel = this.node.getChildByName("score").getComponent(cc.Label);
 
