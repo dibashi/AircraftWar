@@ -485,17 +485,15 @@ cc.Class({
 
         this.node.group = "NOOOOOOO";
 
-        this.partice = cc.instantiate(this.particleSys);
-        this.node.parent.addChild(this.partice);
-        this.partice.setPosition(this.node.getPosition());
-        //  this.node.getChildByName("particlesystem").getComponent(cc.ParticleSystem);
-        this.partice.getComponent(cc.ParticleSystem).resetSystem();
-
-        //this.nodeBar.destroy();//删除血条
-        this.node.opacity = 0;
+        // this.partice = cc.instantiate(this.particleSys);
+        // this.node.parent.addChild(this.partice);
+        // this.partice.setPosition(this.node.getPosition());
+        // this.partice.getComponent(cc.ParticleSystem).resetSystem();
+        // this.node.opacity = 0;
         this.unscheduleAllCallbacks();
         this.scheduleOnce(this.baozhaOver, 0.7);
-
+       let ani =  this.node.getComponent(cc.Animation);
+       ani.play();
         this.node.parent.getComponent("Game").closeBaoZou();
 
 
@@ -503,7 +501,7 @@ cc.Class({
 
     baozhaOver: function () {
         this.unscheduleAllCallbacks();
-        this.partice.destroy();
+      //  this.partice.destroy();
         cc.log("爆炸动画结束~~~~");
         this.node.parent.getComponent("Game").goNewPlane();
         this.node.destroy();

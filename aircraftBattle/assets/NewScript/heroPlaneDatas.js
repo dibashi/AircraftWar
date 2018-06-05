@@ -18,8 +18,8 @@ var _wingmanBulletType = cc.Enum({
 //shootingSpeed 最快为1吧 目前 由于一个间隔要发三发
 var _heroPlaneData = [
     { planeImage: "heroPlane0", blood: 1, shootingSpeed: 3, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:2 },//wingmanBulletType 决定加载哪个子弹预制体目前只实现了一个
-    { planeImage: "heroPlane1", blood: 1, shootingSpeed: 3, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:3 },//onceBulletCount 决定一次发射多少个子弹
-    { planeImage: "heroPlane2", blood: 1, shootingSpeed: 3, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:4 },
+    { planeImage: "heroPlane1", blood: 1, shootingSpeed: 3, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:2 },//onceBulletCount 决定一次发射多少个子弹
+    { planeImage: "heroPlane2", blood: 1, shootingSpeed: 3, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 2,wingmanBulletType:0,onceBulletCount:2 },
     { planeImage: "heroPlane3", blood: 4, shootingSpeed: 1, flyingSpeed: 6, bulletType: _heroBulletType.ordinary, damage: 2,wingmanBulletType:0,onceBulletCount:3 },
     { planeImage: "heroPlane4", blood: 7, shootingSpeed: 1, flyingSpeed: 4, bulletType: _heroBulletType.ordinary, damage: 2,wingmanBulletType:0,onceBulletCount:3},
     { planeImage: "heroPlane5", blood: 7, shootingSpeed: 1, flyingSpeed: 3, bulletType: _heroBulletType.ordinary, damage: 3,wingmanBulletType:0,onceBulletCount:3 },
