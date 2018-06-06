@@ -515,7 +515,7 @@ cc.Class({
         } else {
            
             this.node.parent.getComponent('Game').gameOver();
-            
+            this.node.destroy();
         }
 
 
