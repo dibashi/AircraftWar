@@ -1052,6 +1052,9 @@ cc.Class({
 
 
     gameOver() {
+        //防止在复活页面等待时 出现bug
+        this.unscheduleAllCallbacks();
+
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
         if (currentScore > bestScore) {
