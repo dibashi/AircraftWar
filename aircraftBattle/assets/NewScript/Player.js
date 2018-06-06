@@ -485,6 +485,14 @@ cc.Class({
         // this.partice.getComponent(cc.ParticleSystem).resetSystem();
         // this.node.opacity = 0;
         this.unscheduleAllCallbacks();
+
+        //僚机要删除 不然有显示上的bug
+       
+
+        for(let i = 0; i<6;i++) {
+            this.node.getChildByName("wingman" + i).active = false;
+        }
+
         this.scheduleOnce(this.baozhaOver, 0.7);
 
 
