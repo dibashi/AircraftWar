@@ -113,6 +113,11 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        revivePackageAlert: {
+            default: null,
+            type: cc.Prefab,
+        },
+
 
     },
 
@@ -334,6 +339,17 @@ cc.Class({
         ss.setPosition(0, 0);
 
         ss.getComponent("giftPackageAlert").onWho = this.node;
+        this.node.addChild(ss);
+    },
+
+    onRevivePackageClick:function() {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.revivePackageAlert);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("revivePackageAlert").onWho = this.node;
         this.node.addChild(ss);
     },
     // update (dt) {},
