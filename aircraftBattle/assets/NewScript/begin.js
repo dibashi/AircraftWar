@@ -123,10 +123,10 @@ cc.Class({
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
       
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-20);
-        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2+this.spriteDaZhao.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
-        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2+this.spriteHuDun.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
-        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2+this.spriteLife.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-10);
+        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2*this.spriteCoin.scale+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+5, this.spriteCoin.getPosition().y);
+        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+5, this.spriteCoin.getPosition().y);
+        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+this.spriteLife.getContentSize().width / 2*this.spriteLife.scale+5, this.spriteCoin.getPosition().y);
 
       
 
