@@ -108,7 +108,7 @@ cc.Class({
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
         this.spriteCoin = this.node.getChildByName("spriteCoin");
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-20);
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-10);
         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
      //   this.settingButton = this.node.getChildByName("soundSetting");
