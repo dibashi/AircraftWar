@@ -130,14 +130,14 @@ cc.Class({
         cc.log("ispossess--> " + isPossess);
         if (isPossess == 1) {
 
-            this.addLevel.setPosition(0, -246);
-            this.gouMai.setPosition(734, -85);
+            this.addLevel.setPosition(0, -386);
+            this.gouMai.setPosition(768, -255);
 
             this.goBattle.getComponent(cc.Button).enabled = true;
 
         } else {
-            this.addLevel.setPosition(734, -85);
-            this.gouMai.setPosition(0, -246);
+            this.addLevel.setPosition(768, -255);
+            this.gouMai.setPosition(0, -386);
             this.goBattle.getComponent(cc.Button).enabled = false;
         }
     },
