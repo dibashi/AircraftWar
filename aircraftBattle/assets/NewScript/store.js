@@ -107,18 +107,19 @@ cc.Class({
 
    
     onLoad () {
+       
 
          //适配
          let wx = cc.director.getVisibleSize().width*0.5;
          let hy = cc.director.getVisibleSize().height*0.5;
          this.spriteCoin = this.node.getChildByName("spriteCoin");
-         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width/2-wx,hy-(this.spriteCoin.getContentSize().height/2)-20);
+         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-10);
          this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
          this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
 
-         this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2+this.spriteDaZhao.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
-         this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2+this.spriteHuDun.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
-         this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2+this.spriteLife.getContentSize().width / 2+5, this.spriteCoin.getPosition().y);
+         this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2*this.spriteCoin.scale+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+5, this.spriteCoin.getPosition().y);
+        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+5, this.spriteCoin.getPosition().y);
+        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+this.spriteLife.getContentSize().width / 2*this.spriteLife.scale+5, this.spriteCoin.getPosition().y);
 
         //  this.settingButton = this.node.getChildByName("soundSetting");
         //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
