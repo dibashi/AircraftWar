@@ -223,6 +223,13 @@ cc.Class({
         
         //用这个变量来记录本局获得的金币数量。
         _jinBiCount:0,
+
+
+        //复活弹窗
+        reviveAlert:{
+            default: null,
+            type: cc.Prefab,
+        }
     },
 
 
@@ -1059,7 +1066,18 @@ cc.Class({
         var newC = parseInt(c) + parseInt(d);
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount",d);
-        cc.director.loadScene('end');
+
+        //cc.director.loadScene('end');
+
+        //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.reviveAlert);
+        ss.setPosition(0, 0);
+
+        ss.setLocalZOrder(100);
+
+        ss.getComponent("reviveAlert").onWho = this.node;
+        this.node.addChild(ss);
     },
 
 

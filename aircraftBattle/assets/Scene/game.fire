@@ -662,7 +662,8 @@
     "speedYUNFactor": 1,
     "yun1Speed": 3,
     "yun2Speed": 4,
-    "yun3Speed": 5
+    "yun3Speed": 5,
+    "h": 0
   },
   {
     "__type__": "cc.Node",
@@ -2138,6 +2139,9 @@
     "fenshu": 0,
     "bestScore": 0,
     "newRecord": null,
-    "_jinBiCount": 0
+    "_jinBiCount": 0,
+    "reviveAlert": {
+      "__uuid__": "5a1447b5-b83a-41ca-ac59-6729a6e8101f"
+    }
   }
 ]
