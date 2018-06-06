@@ -55,7 +55,9 @@ cc.Class({
         //另外一个免费按钮将来再说，需要对接之后
         //将来还需获得 下个超越的好友的 头像， 相差的分数 。  目前之做1
 
+        //cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",1);
         let reviveCount = cc.sys.localStorage.getItem('reviveCount');
+       
 
         this.scoreLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem("currentScore");
         this.reviveCountLabel.getComponent(cc.Label).string = "X" + reviveCount;
@@ -64,6 +66,13 @@ cc.Class({
             this.reviveBtn.getComponent(cc.Button).enabled = true;
         } else {
             this.reviveBtn.getComponent(cc.Button).enabled = false;
+        }
+
+        let  GuangGaoFuhuoFlag = parseInt( cc.sys.localStorage.getItem("GuangGaoFuhuoFlag"));
+        if(GuangGaoFuhuoFlag == 1) {
+            this.ggBtn.getComponent(cc.Button).enabled = true;
+        }else {
+            this.ggBtn.getComponent(cc.Button).enabled = false;
         }
 
     },
@@ -109,6 +118,7 @@ cc.Class({
 
     onGuangGaoClick: function () {
         cc.log("onGuangGaoClick");
+        cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

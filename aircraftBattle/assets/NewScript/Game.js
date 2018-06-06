@@ -236,6 +236,8 @@ cc.Class({
 
 
     onLoad() {
+        //广告复活标记
+        cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",1);//可以广告复活
 
         this.jinbiPoolSize=50,
         this.hudunPoolSize=3,
