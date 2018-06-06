@@ -218,7 +218,7 @@ cc.Class({
        
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
         this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame;
-        this.node.getChildByName("selectedPlane").scale = 2;
+        this.node.getChildByName("selectedPlane").scale = 3;
 
 
         let effectSound = cc.sys.localStorage.getItem('effectSound');
