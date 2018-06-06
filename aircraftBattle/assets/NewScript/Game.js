@@ -460,6 +460,8 @@ cc.Class({
 
         let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
         this.player.runAction(seq);
+        
+        this.getShield();
 
     },
 
