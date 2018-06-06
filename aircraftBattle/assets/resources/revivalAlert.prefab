@@ -244,8 +244,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 680,
-      "height": 420
+      "width": 600,
+      "height": 120
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -565,10 +565,10 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 45,
-    "_left": 7,
-    "_right": 33,
-    "_top": 831,
-    "_bottom": 29,
+    "_left": 47,
+    "_right": 73,
+    "_top": 981,
+    "_bottom": 179,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
