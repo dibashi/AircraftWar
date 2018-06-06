@@ -145,12 +145,12 @@ cc.Class({
 
     startFadeIn: function () {
         cc.eventManager.pauseTarget(this.node, true);
-        this.node.position = cc.p(0, 0);
+        this.node.position = cc.p(0,0);
         this.node.setScale(2);
         this.node.opacity = 0;
 
         let cbFadeIn = cc.callFunc(this.onFadeInFinish, this);
-        let actionFadeIn = cc.sequence(cc.spawn(cc.fadeTo(0.3, 255), cc.scaleTo(0.3, 1.0)), cbFadeIn);
+        let actionFadeIn = cc.sequence(cc.spawn(cc.fadeTo(0.3, 255), cc.scaleTo(0.3, 1.3)), cbFadeIn);
         this.node.runAction(actionFadeIn);
     },
     onFadeInFinish: function () {
@@ -249,7 +249,7 @@ cc.Class({
         cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-        
+
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);

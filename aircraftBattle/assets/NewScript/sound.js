@@ -85,7 +85,7 @@ cc.Class({
         this.node.opacity = 0;
 
         let cbFadeIn = cc.callFunc(this.onFadeInFinish, this);
-        let actionFadeIn = cc.sequence(cc.spawn(cc.fadeTo(0.3, 255), cc.scaleTo(0.3, 1.0)), cbFadeIn);
+        let actionFadeIn = cc.sequence(cc.spawn(cc.fadeTo(0.3, 255), cc.scaleTo(0.3, 1.3)), cbFadeIn);
         this.node.runAction(actionFadeIn);
     },
     onFadeInFinish: function () {
