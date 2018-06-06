@@ -47,6 +47,8 @@ cc.Class({
         yun1Speed:3.0,
         yun2Speed:4.0,
         yun3Speed:5.0,
+
+        h:0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -57,7 +59,7 @@ cc.Class({
         this.createYun2();
         this.createYun3();
 
-
+        this.h = this.node.getChildByName("bg1").getContentSize().height;
     },
 
     createYun:function(yun){
@@ -107,8 +109,11 @@ cc.Class({
         let bg1Y = this.bg1.getPosition().y;
         let bg2Y = this.bg2.getPosition().y;
 
-        if(bg1Y<=-(cc.director.getVisibleSize().height)) {
-            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed*this.speedFactor);
+       
+
+        if(bg1Y<=-this.h) {
+          //  this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed*this.speedFactor);
+            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+this.h-this.bgSpeed*this.speedFactor);
         }else {
             bg1Y -= this.bgSpeed*this.speedFactor;
             this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
@@ -116,8 +121,8 @@ cc.Class({
 
         
 
-        if(bg2Y<=-(cc.director.getVisibleSize().height)) {
-            this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+cc.director.getVisibleSize().height);
+        if(bg2Y<=-this.h) {
+            this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+this.h);
         }else {
             bg2Y -= this.bgSpeed*this.speedFactor;
             this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
