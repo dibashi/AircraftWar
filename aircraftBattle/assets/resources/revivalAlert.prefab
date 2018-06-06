@@ -2059,7 +2059,7 @@
     "target": {
       "__id__": 1
     },
-    "component": "giftPackageAlert",
+    "component": "reviveAlert",
     "handler": "onGuangGaoClick",
     "customEventData": ""
   },

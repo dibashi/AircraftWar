@@ -55,7 +55,7 @@ cc.Class({
         //另外一个免费按钮将来再说，需要对接之后
         //将来还需获得 下个超越的好友的 头像， 相差的分数 。  目前之做1
 
-        let reviveCount = cc.sys.localStorage.setItem('reviveCount', 0);
+        let reviveCount = cc.sys.localStorage.getItem('reviveCount');
 
         this.scoreLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem("currentScore");
         this.reviveCountLabel.getComponent(cc.Label).string = "X" + reviveCount;
@@ -68,51 +68,6 @@ cc.Class({
 
     },
 
-    countdownFUN: function () {
-
-        this.dxLQ = this.dxLQ - 1;
-
-        this.setTimeToLabel(this.dxLQ, this.countdownLQ);
-        if (this.dxLQ <= 0) {
-            this.lqBtn.getComponent(cc.Button).enabled = true;
-            this.countdownLQ.active = false;
-            this.unschedule(this.countdownFUN);
-        }
-    },
-
-    countdownFUNGG: function () {
-
-        this.dxGG = this.dxGG - 1;
-
-        this.setTimeToLabel(this.dxGG, this.countdownGG);
-        if (this.dxGG <= 0) {
-            this.ggBtn.getComponent(cc.Button).enabled = true;
-            this.countdownGG.active = false;
-            this.unschedule(this.countdownFUNGG);
-        }
-    },
-
-    setTimeToLabel: function (dx, labelNode) {
-        let label = labelNode.getComponent(cc.Label);
-        //dx-->3:50:49 
-        //小时
-        let h = parseInt(dx / 3600);
-        let m = parseInt((dx - (3600 * h)) / 60);
-        let s = parseInt(dx - h * 3600 - m * 60);
-        //转为两位数
-        //小时必然是，m<10,
-        let sh = "0" + h;
-        let sm = m;
-        if (m < 10) {
-            sm = "0" + m;
-        }
-        let ss = s;
-        if (s < 10) {
-            ss = "0" + s;
-        }
-
-        label.string = sh + ":" + sm + ":" + ss;
-    },
 
 
     startFadeIn: function () {
@@ -158,7 +113,7 @@ cc.Class({
         cc.eventManager.pauseTarget(this.node, true);
 
 
-        this.onWho.getComponent("Game").revive();
+        this.onWho.getComponent("Game").goNewPlane();
 
 
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
