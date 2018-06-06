@@ -1083,7 +1083,7 @@ cc.Class({
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.reviveAlert);
-        ss.setPosition(0, 0);
+        ss.setPosition(0, 100);
 
         ss.setLocalZOrder(100);
 

@@ -81,7 +81,7 @@ cc.Class({
 
     startFadeIn: function () {
         cc.eventManager.pauseTarget(this.node, true);
-        this.node.position = cc.p(0, 0);
+       
         this.node.setScale(2);
         this.node.opacity = 0;
 
@@ -90,6 +90,7 @@ cc.Class({
         this.node.runAction(actionFadeIn);
     },
     onFadeInFinish: function () {
+        cc.log(this.node);
         cc.eventManager.resumeTarget(this.node, true);
     },
 
