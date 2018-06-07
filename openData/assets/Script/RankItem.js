@@ -59,7 +59,8 @@ cc.Class({
     },
 
     initView: function (dataList, rank) {
-        this.rankLabel.getComponent(cc.Label).string = rank;
+        //这里的rank是从0开始的 
+        this.rankLabel.getComponent(cc.Label).string = parseInt(rank) + 1;
         this.nameLabel.getComponent(cc.Label).string = dataList.nickname;
 
         let kvl = dataList.KVDataList;
@@ -71,6 +72,21 @@ cc.Class({
         }
         this.scoreLabel.getComponent(cc.Label).string = s;
         //头像如何读取 并显示到精灵上呢？
+
+        //this.createImage(avatarSprite.getComponent(cc.Sprite),dataList.avatarUrl);
+    },
+
+    createImage(sprite, url) {
+        let image = wx.createImage();
+        image.onload = function () {
+            let texture = new cc.Texture2D();
+            texture.initWithElement(image);
+            texture.handleLoadedTexture();
+            sprite.spriteFrame = new cc.SpriteFrame(texture);
+            sprite.node.width = 50;
+            sprite.node.height = 50;
+        };
+        image.src = url;
     },
 
     // update (dt) {},
