@@ -1057,6 +1057,11 @@ cc.Class({
     },
 
 
+    setBestScore: function(s){ //上报到微信服务器：历史最高分
+        var kvDataList = new Array();
+        kvDataList.push({key:"driver_MaxScore", value: "" + s});
+        wx.setUserCloudStorage({ KVDataList: kvDataList })
+    },
 
 
     gameOver() {
@@ -1065,8 +1070,10 @@ cc.Class({
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
-        if (currentScore > bestScore) {
+        if (currentScore > bestScore) {//把最高分上传到服务器吧
             cc.sys.localStorage.setItem('bestScore', currentScore);
+
+            this.setBestScore(currentScore);
         }
       
         cc.sys.localStorage.setItem("currentScore", currentScore);

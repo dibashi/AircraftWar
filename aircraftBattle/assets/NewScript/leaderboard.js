@@ -12,10 +12,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-     
 
-        spriteCoin:null,
-        labelCoin:null,
+
+        spriteCoin: null,
+        labelCoin: null,
 
         buttonAudio: {
             default: null,
@@ -27,13 +27,13 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        settingButton:null,
+        settingButton: null,
 
         display: cc.Sprite,
     },
 
-    start () {
-       // this._isShow = true;
+    start() {
+        // this._isShow = true;
         this.tex = new cc.Texture2D();
     },
 
@@ -45,7 +45,7 @@ cc.Class({
     //     })
     // },
 
-    _updaetSubDomainCanvas () {
+    _updaetSubDomainCanvas() {
         if (!this.tex) {
             return;
         }
@@ -56,16 +56,16 @@ cc.Class({
         this.display.spriteFrame = new cc.SpriteFrame(this.tex);
     },
 
-    update () {
+    update() {
         this._updaetSubDomainCanvas();
     },
 
-  
 
-   
-    onLoad () {
 
-         //适配
+
+    onLoad() {
+
+        //适配
         //  let wx = cc.director.getVisibleSize().width*0.5;
         //  let hy = cc.director.getVisibleSize().height*0.5;
         //  this.spriteCoin = this.node.getChildByName("spriteCoin");
@@ -75,28 +75,35 @@ cc.Class({
 
         //  this.settingButton = this.node.getChildByName("soundSetting");
         //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
-       
+
+        console.log("lllllload!");
         wx.postMessage({
-                    message: "friendRank",
-                });
-     },
+            message: "userInfo",
+        });
+    },
+
+    start: function () {
+        wx.postMessage({
+            message: "friendRank",
+        });
+    },
 
 
 
-    goMain:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
-      
+    goMain: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
         cc.director.loadScene('start');
-       
+
 
     },
 
-    onSoundButtonClick:function() {
-        cc.audioEngine.playEffect(this.buttonAudio,false);
+    onSoundButtonClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
 
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.soundSetting);
-        ss.setPosition(0,0);
+        ss.setPosition(0, 0);
 
         ss.getComponent("sound").onWho = this.node;
         this.node.addChild(ss);

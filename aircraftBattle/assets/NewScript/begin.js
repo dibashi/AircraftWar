@@ -121,6 +121,14 @@ cc.Class({
 
     },
 
+  
+    setBestScore: function(s){ //上报到微信服务器：历史最高分
+            var kvDataList = new Array();
+            kvDataList.push({key:"driver_MaxScore", value: "" + s});
+            wx.setUserCloudStorage({ KVDataList: kvDataList })
+        },
+    
+
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
@@ -146,12 +154,13 @@ cc.Class({
 
         let isloaded = cc.sys.localStorage.getItem("isLoaded");
       
-
+       
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', 100);
             //分数一般是从服务器读取，这里先用本地存储。
             cc.sys.localStorage.setItem('bestScore', 0);
+            this.setBestScore(0);
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
