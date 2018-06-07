@@ -73,7 +73,7 @@ cc.Class({
         this.scoreLabel.getComponent(cc.Label).string = s;
         //头像如何读取 并显示到精灵上呢？
 
-        //this.createImage(avatarSprite.getComponent(cc.Sprite),dataList.avatarUrl);
+        this.createImage(this.avatarSprite.getComponent(cc.Sprite),dataList.avatarUrl);
     },
 
     createImage(sprite, url) {
