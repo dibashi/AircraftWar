@@ -76,6 +76,9 @@ cc.Class({
         //  this.settingButton = this.node.getChildByName("soundSetting");
         //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
        
+        wx.postMessage({
+                    message: "friendRank",
+                });
      },
 
 
