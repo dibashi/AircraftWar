@@ -26,16 +26,16 @@
     "orientation": "portrait"
   },
   "renderMode": "0",
-  "startScene": "9f209bb6-c05c-42b9-ad66-f5822f725f72",
-  "title": "ltxfd",
-  "webOrientation": "auto",
+  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+  "title": "openData",
+  "webOrientation": "portrait",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
-    "appid": "wxd0195d90f49b3a3f",
-    "isSubdomain": false,
+    "appid": "wx6ac3f5090a6b99c5",
+    "isSubdomain": true,
     "orientation": "portrait",
-    "subContext": "openData"
+    "subContext": ""
   },
-  "xxteaKey": "59551313-a3f1-46",
+  "xxteaKey": "65962c50-e87e-46",
   "zipCompressJs": true
 }
