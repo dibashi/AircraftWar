@@ -117,10 +117,14 @@ cc.Class({
                     self.sortList(res.data, false);   //排好序的好友数据表
                     for (var i = 0; i < res.data.length; i++) { //这里有一个关键问题在于 数据的长度是多少呢？ 如果超过想要的长度。。
                         //       var item = cc.instantiate(self.RankItem, i); //生成node节点  用RankItem来储存用户的个人数据 这个API不清楚 换一个
+                        if(i>5) {
+                            break;//目前只让显示6条吧 以后再改
+                        }
                         var item = cc.instantiate(self.RankItem);
                         // item.parent = self.content; //content 与item 都要再制作！！！
 
                         self.content.addChild(item);
+                        item.setPosition(cc.v2(0,340-i*100));
                         item.getComponent("RankItem").initView(res.data[i], i);  //item new出来 接下来要填写数据  应该是把数据直接塞给相应的脚本 让其处理。i的话 是排名
                     }
                     self.content.height = self.RankItem.data.height * res.data.length; //塞完item 要设置content的容量 过大 过小 都不好

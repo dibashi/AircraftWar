@@ -41,12 +41,12 @@
       "__id__": 16
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 200,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 230,
+      "g": 113,
+      "b": 113,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -62,8 +62,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.9,
-    "_scaleY": 0.9,
+    "_scaleX": 0.8,
+    "_scaleY": 0.8,
     "_position": {
       "__type__": "cc.Vec2",
       "x": -44,

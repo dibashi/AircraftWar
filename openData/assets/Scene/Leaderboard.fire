@@ -325,12 +325,12 @@
       "__id__": 22
     },
     "_id": "99xRFU0D1MdoxQUPOfxCDD",
-    "_opacity": 255,
+    "_opacity": 200,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 230,
+      "g": 113,
+      "b": 113,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
