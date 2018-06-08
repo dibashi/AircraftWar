@@ -21,7 +21,30 @@ cc.Class({
 
         selfName: null,
         selfHead: null,
-        // selfScore:0,
+        selfScore: 0,
+
+        //    selfRank:-1,
+
+
+        selfRankLabel: {
+            default: null,
+            type: cc.Label
+        },
+
+        selfScoreLabel: {
+            default: null,
+            type: cc.Label
+        },
+
+        selfNameLabel: {
+            default: null,
+            type: cc.Label
+        },
+        selfAvatarSprite: {
+            default: null,
+            type: cc.Node
+        },
+
     },
 
     // use this for initialization
@@ -57,9 +80,7 @@ cc.Class({
         console.log("ggggggg");
 
         let self = this;
-        console.log(self.selfName);
-        console.log(self.selfHead);
-        console.log(self.selfScore);
+
         wx.getUserInfo({
             openIdList: ['selfOpenId'],
             lang: 'zh_CN',
@@ -140,8 +161,20 @@ cc.Class({
                         }
                     }
                     console.log("Rank:selfDataIndex=" + selfDataIndex);
+
+                    let kvl = res.data[selfDataIndex].KVDataList;
+                    let s = -1;
+                    for (var i = 0; i < kvl.length; i++) {
+                        if (kvl[i].key == "driver_MaxScore") {
+                            s = kvl[i].value;
+                        }
+                    }
+                    this.selfScore = s;
+
+
+                    //     this.selfRank = selfDataIndex;
                     //设置自己的信息
-                    //   self.setSelfInfo(selfDataIndex);  //自己的信息肯定要跟别人的不一样
+                    self.setSelfInfo(selfDataIndex);  //自己的信息肯定要跟别人的不一样
                 } else {
                     // self.tips.active = true;
                 }
@@ -152,6 +185,31 @@ cc.Class({
                 //  self.tips.active = true;
             }
         })
+    },
+
+    setSelfInfo: function (sRank) {
+        this.selfRankLabel.getComponent(cc.Label).string = parseInt(sRank) + 1;
+        this.selfNameLabel.getComponent(cc.Label).string = this.selfName;
+        //分数本地其实有一份。 怕以后要改 还是用网络的吧
+        this.selfScoreLabel.getComponent(cc.Label).string = this.selfScore;
+
+
+
+
+        this.createImage(this.selfAvatarSprite.getComponent(cc.Sprite), this.selfHead);
+    },
+
+    createImage(sprite, url) {
+        let image = wx.createImage();
+        image.onload = function () {
+            let texture = new cc.Texture2D();
+            texture.initWithElement(image);
+            texture.handleLoadedTexture();
+            sprite.spriteFrame = new cc.SpriteFrame(texture);
+            sprite.node.width = 50;
+            sprite.node.height = 50;
+        };
+        image.src = url;
     },
 
     sortList: function (ListData, order) { //排序(ListData：res.data;order:false降序，true升序)
