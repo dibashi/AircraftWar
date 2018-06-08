@@ -75,12 +75,13 @@ cc.Class({
         cc.eventManager.resumeTarget(this.onWho, true);
         this.node.destroy();
 
-        wx.shareAppMessage({ "title": "杨文",
-        "imageUrl": "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/cc_lj01.b8e46.png","query":"begin_share"});
+        
+
+        wx.shareAppMessage({ title: "超好玩的飞机游戏",
+        imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"begin_share"});
     },
 
-  
-
+    
    
 
     onFadeOutFinish: function () {

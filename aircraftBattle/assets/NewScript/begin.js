@@ -48,7 +48,7 @@ cc.Class({
             url: cc.AudioClip
         },
 
-       
+
         spriteCoin: {
             default: null,
             type: cc.Node,
@@ -121,32 +121,33 @@ cc.Class({
 
     },
 
-  
-    setBestScore: function(s){ //上报到微信服务器：历史最高分
-            var kvDataList = new Array();
-            kvDataList.push({key:"driver_MaxScore", value: "" + s});
-            wx.setUserCloudStorage({ KVDataList: kvDataList })
-        },
-    
+
+    setBestScore: function (s) { //上报到微信服务器：历史最高分
+        var kvDataList = new Array();
+        kvDataList.push({ key: "driver_MaxScore", value: "" + s });
+        wx.setUserCloudStorage({ KVDataList: kvDataList })
+    },
+
+   
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
 
-        //wx.onShow(this.wxOnShow);
-       // wx.showShareMenu();//微信 转发
+        
+        // wx.showShareMenu();//微信 转发
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
-      
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-10);
-        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x+this.spriteCoin.getContentSize().width / 2*this.spriteCoin.scale+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+5, this.spriteCoin.getPosition().y);
-        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x+this.spriteDaZhao.getContentSize().width / 2*this.spriteDaZhao.scale+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+5, this.spriteCoin.getPosition().y);
-        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x+this.spriteHuDun.getContentSize().width / 2*this.spriteHuDun.scale+this.spriteLife.getContentSize().width / 2*this.spriteLife.scale+5, this.spriteCoin.getPosition().y);
 
-      
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2) - 10);
+        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x + this.spriteCoin.getContentSize().width / 2 * this.spriteCoin.scale + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + 5, this.spriteCoin.getPosition().y);
+        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + 5, this.spriteCoin.getPosition().y);
+        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + this.spriteLife.getContentSize().width / 2 * this.spriteLife.scale + 5, this.spriteCoin.getPosition().y);
 
-        
+
+
+
         this.personalBestScore = this.node.getChildByName("personalHistory").getChildByName("personalBestScore").getComponent(cc.Label);
 
         this.settingButton = this.node.getChildByName("soundSetting");
@@ -156,8 +157,8 @@ cc.Class({
         // cc.sys.localStorage.setItem("isLoaded",0);
 
         let isloaded = cc.sys.localStorage.getItem("isLoaded");
-      
-       
+
+
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', 100);
@@ -167,7 +168,7 @@ cc.Class({
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
-          
+
             //初始化一下玩家对各个飞机拥有的僚机数量
             cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 0);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount1', 0);
@@ -191,7 +192,7 @@ cc.Class({
 
             //每日登陆功能 记录今天的年月日
             cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
-         
+
 
             //记录上一次领取时间 和 观看广告时间
 
@@ -206,9 +207,9 @@ cc.Class({
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
         }
         this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
-         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
-         this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
-         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+        this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
+        this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
+        this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分：" + cc.sys.localStorage.getItem("bestScore");
 
@@ -216,7 +217,7 @@ cc.Class({
         D.globalHeroPlaneID = dddd;
         let playerImg = null;
         if (dddd == heroPlaneID.heroPlane0) {
-       
+
             playerImg = cc.instantiate(this.heroPlane0);
         }
         else if (dddd == heroPlaneID.heroPlane1) {
@@ -229,14 +230,14 @@ cc.Class({
             playerImg = cc.instantiate(this.heroPlane3);
         }
         else if (dddd == heroPlaneID.heroPlane4) {
-           
+
             playerImg = cc.instantiate(this.heroPlane4);
-         
+
         }
         else if (dddd == heroPlaneID.heroPlane5) {
             playerImg = cc.instantiate(this.heroPlane5);
         }
-       
+
         this.node.getChildByName("selectedPlane").setContentSize(playerImg.getContentSize());
         this.node.getChildByName("selectedPlane").getComponent(cc.Sprite).spriteFrame = playerImg.getComponent(cc.Sprite).spriteFrame;
         this.node.getChildByName("selectedPlane").scale = 3;
@@ -263,7 +264,7 @@ cc.Class({
 
         let lastYMD = cc.sys.localStorage.getItem("lastLoadDate");
         let curYMD = this.currentYMD();
-       
+
 
         if (curYMD != lastYMD) {
             //与上次记录的时间不在同一天
@@ -279,16 +280,37 @@ cc.Class({
         //   cc.sys.localStorage.setItem('planeLifeCount', 2);
 
         // let zzz = Date.now();
-    
+
         // cc.sys.localStorage.setItem('zzz', zzz);
 
         // let z = parseInt(cc.sys.localStorage.getItem('zzz'));
 
-      
+
 
     },
 
-    refreshPrize:function() {
+    // wxOnShow:function(scene,query,shareTicket) {
+    //     console.log("scene  " + scene);
+    //     console.log("query  " + query);
+    //     console.log("shareTicket  " + shareTicket);
+    // },
+    start() {
+      //  wx.onShow(this.wxOnShow);
+    
+      wx.showShareMenu();
+
+
+      wx.onShareAppMessage(function () {
+        // 用户点击了“转发”按钮
+        return {
+          title: '这飞机游戏太好玩了！',
+          imageUrl : "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
+
+        }
+      });
+    },
+
+    refreshPrize: function () {
         //刷新 金币 必杀 护盾 飞机命数的值，以及保存当前的日期
         this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
@@ -296,7 +318,7 @@ cc.Class({
         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
 
         cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
-      
+
     },
     //当前年月日
     currentYMD: function () {
@@ -304,7 +326,7 @@ cc.Class({
         let y = dd.getFullYear();
         let m = dd.getMonth();
         let d = dd.getDate();
-      
+
         return (y + "" + m + "" + d);
     },
 
@@ -343,7 +365,7 @@ cc.Class({
 
     },
 
-    onGiftPackageClick:function() {
+    onGiftPackageClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
 
         cc.eventManager.pauseTarget(this.node, true);
@@ -354,7 +376,7 @@ cc.Class({
         this.node.addChild(ss);
     },
 
-    onRevivePackageClick:function() {
+    onRevivePackageClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
 
         cc.eventManager.pauseTarget(this.node, true);
