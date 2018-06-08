@@ -68,9 +68,10 @@ cc.Class({
             this.node.destroy();
         }
 
+     //   cc.log("dt--->  " +dt);
         //
-        this.node.x += this.ax;
-        this.node.y += this.by;
+        this.node.x += this.ax*60*dt;
+        this.node.y += this.by*60*dt;
 
        
         // this.node.x += this.flyingSpeed;
