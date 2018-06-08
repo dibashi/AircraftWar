@@ -74,30 +74,34 @@ cc.Class({
         wx.onMessage(data => {
             if (data.message == "friendRank") {
                 //获得自己信息，显示到panel上？ 再测
-                self.list1.active = true;
+             
                 self.list1.setPosition(0, 81.5);
                 self.list2.setPosition(0, -10000);
-                self.list2.active = false;
+                // self.list1.active = true;
+                // self.list2.active = false;
 
                 // self.friendInfo(); //为了在获取排行榜数据时 自己的数据已经获得 这里我在 getMyInfo中调用！
             } else if (data.message == "userInfo") {
                 console.log("leaderboard userInfo ~!");
-                self.list1.active = true;
+                
 
                 self.list1.setPosition(0, 81.5);
                 self.list2.setPosition(0, -10000);
-
-                self.list2.active = false;
+                // self.list1.active = true;
+                // self.list2.active = false;
 
                 self.getMyInfo();
             } else if (data.message == "nextInfo") {
-                self.list1.active = false;
+              
 
                 self.list1.setPosition(0, -10000);
-                self.list2.setPosition(0, -400);
+                self.list2.setPosition(0, 0);
 
-                self.list2.active = true;
-                self.getNext();
+                // self.list1.active = false;
+                // self.list2.active = true;
+
+                self.getMyInfoAndNext();
+               
             }
         });
 
@@ -212,8 +216,8 @@ cc.Class({
             texture.initWithElement(image);
             texture.handleLoadedTexture();
             sprite.spriteFrame = new cc.SpriteFrame(texture);
-            sprite.node.width = 50;
-            sprite.node.height = 50;
+            sprite.node.width = 70;
+            sprite.node.height = 70;
         };
         image.src = url;
     },
@@ -293,6 +297,41 @@ cc.Class({
     },
 
 
+    getMyInfoAndNext: function () {
+        console.log("ggggggg");
+
+        let self = this;
+
+        wx.getUserInfo({
+            openIdList: ['selfOpenId'],
+            lang: 'zh_CN',
+            success(res) {
+                if (res.data) {
+                    console.log(res.data);
+                    if (res.data[0].nickName != undefined && res.data[0].avatarUrl != undefined) {
+
+                        self.selfName = res.data[0].nickName;
+                        self.selfHead = res.data[0].avatarUrl;
+
+                        console.log(self.selfName);
+                        console.log(self.selfHead);
+
+
+                        self.getNext();
+
+                    } else {
+                        console.log("自己的信息1:undefined");
+                    }
+                }
+            },
+            fail() {
+                //console.log(res)
+                console.log("获取自己的信息失败");
+            }
+        })
+    },
+
+
     getNext: function () {
         let self = this;
         wx.getFriendCloudStorage({
@@ -342,16 +381,16 @@ cc.Class({
                         self.list2.active = false;
                     } else {
                         let kvl = res.data[selfDataIndex - 1].KVDataList;
-
+                        console.log("kvl-> " + kvl);
                         let s = -1;
                         for (var i = 0; i < kvl.length; i++) {
                             if (kvl[i].key == "driver_MaxScore") {
                                 s = kvl[i].value;
                             }
                         }
-
+                        console.log("s-> " + s);
                         self.nextScore.getComponent(cc.Label).string = s;
-                   //     self.nextHead.createImage(self.nextHead.getComponent(cc.Sprite),res.data[selfDataIndexi-1].avatarUrl);
+                        self.createImage(self.nextHead.getComponent(cc.Sprite),res.data[selfDataIndex-1].avatarUrl);
 
                         // self. = s;
                     }

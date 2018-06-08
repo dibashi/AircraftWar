@@ -1170,6 +1170,8 @@
     "nextScore": {
       "__id__": 29
     },
-    "nextHead": null
+    "nextHead": {
+      "__id__": 27
+    }
   }
 ]
