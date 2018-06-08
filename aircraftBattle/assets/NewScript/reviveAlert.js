@@ -42,6 +42,8 @@ cc.Class({
 
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
+
+        display: cc.Sprite,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -75,9 +77,32 @@ cc.Class({
             this.ggBtn.getComponent(cc.Button).enabled = false;
         }
 
+
+        wx.postMessage({
+            message: "nextInfo",
+        });
+
     },
 
+    start() {
+        // this._isShow = true;
+        this.tex = new cc.Texture2D();
+    },
 
+    _updaetSubDomainCanvas() {
+        if (!this.tex) {
+            return;
+        }
+        var openDataContext = wx.getOpenDataContext();
+        var sharedCanvas = openDataContext.canvas;
+        this.tex.initWithElement(sharedCanvas);
+        this.tex.handleLoadedTexture();
+        this.display.spriteFrame = new cc.SpriteFrame(this.tex);
+    },
+
+    update() {
+        this._updaetSubDomainCanvas();
+    },
 
     startFadeIn: function () {
         cc.eventManager.pauseTarget(this.node, true);
@@ -102,9 +127,6 @@ cc.Class({
         cc.log("onReviveClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-
-
-
 
         let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
         cc.sys.localStorage.setItem('reviveCount', rc);

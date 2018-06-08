@@ -45,6 +45,26 @@ cc.Class({
             type: cc.Node
         },
 
+        list1: {
+            default: null,
+            type: cc.Node
+        },
+
+        list2: {
+            default: null,
+            type: cc.Node
+        },
+
+        nextScore: {
+            default: null,
+            type: cc.Node
+        },
+
+        nextHead: {
+            default: null,
+            type: cc.Node
+        },
+
     },
 
     // use this for initialization
@@ -54,12 +74,30 @@ cc.Class({
         wx.onMessage(data => {
             if (data.message == "friendRank") {
                 //获得自己信息，显示到panel上？ 再测
-
+                self.list1.active = true;
+                self.list1.setPosition(0, 81.5);
+                self.list2.setPosition(0, -10000);
+                self.list2.active = false;
 
                 // self.friendInfo(); //为了在获取排行榜数据时 自己的数据已经获得 这里我在 getMyInfo中调用！
             } else if (data.message == "userInfo") {
                 console.log("leaderboard userInfo ~!");
+                self.list1.active = true;
+
+                self.list1.setPosition(0, 81.5);
+                self.list2.setPosition(0, -10000);
+
+                self.list2.active = false;
+
                 self.getMyInfo();
+            } else if (data.message == "nextInfo") {
+                self.list1.active = false;
+
+                self.list1.setPosition(0, -10000);
+                self.list2.setPosition(0, -400);
+
+                self.list2.active = true;
+                self.getNext();
             }
         });
 
@@ -70,40 +108,6 @@ cc.Class({
     },
 
 
-
-    getMyInfo: function () {
-        console.log("ggggggg");
-
-        let self = this;
-
-        wx.getUserInfo({
-            openIdList: ['selfOpenId'],
-            lang: 'zh_CN',
-            success(res) {
-                if (res.data) {
-                    console.log(res.data);
-                    if (res.data[0].nickName != undefined && res.data[0].avatarUrl != undefined) {
-
-                        self.selfName = res.data[0].nickName;
-                        self.selfHead = res.data[0].avatarUrl;
-
-                        console.log(self.selfName);
-                        console.log(self.selfHead);
-
-
-                        self.friendInfo();
-
-                    } else {
-                        console.log("自己的信息1:undefined");
-                    }
-                }
-            },
-            fail() {
-                //console.log(res)
-                console.log("获取自己的信息失败");
-            }
-        })
-    },
 
     friendInfo: function () {
         let self = this;
@@ -117,14 +121,14 @@ cc.Class({
                     self.sortList(res.data, false);   //排好序的好友数据表
                     for (var i = 0; i < res.data.length; i++) { //这里有一个关键问题在于 数据的长度是多少呢？ 如果超过想要的长度。。
                         //       var item = cc.instantiate(self.RankItem, i); //生成node节点  用RankItem来储存用户的个人数据 这个API不清楚 换一个
-                        if(i>5) {
+                        if (i > 5) {
                             break;//目前只让显示6条吧 以后再改
                         }
                         var item = cc.instantiate(self.RankItem);
                         // item.parent = self.content; //content 与item 都要再制作！！！
 
                         self.content.addChild(item);
-                        item.setPosition(cc.v2(0,340-i*100));
+                        item.setPosition(cc.v2(0, 340 - i * 100));
                         item.getComponent("RankItem").initView(res.data[i], i);  //item new出来 接下来要填写数据  应该是把数据直接塞给相应的脚本 让其处理。i的话 是排名
                     }
                     self.content.height = self.RankItem.data.height * res.data.length; //塞完item 要设置content的容量 过大 过小 都不好
@@ -192,7 +196,7 @@ cc.Class({
         this.selfRankLabel.getComponent(cc.Label).string = parseInt(sRank) + 1;
         this.selfNameLabel.getComponent(cc.Label).string = this.selfName;
         //分数本地其实有一份。 怕以后要改 还是用网络的吧
-        console.log("selfscore--> " +this.selfScore);
+        console.log("selfscore--> " + this.selfScore);
         this.selfScoreLabel.getComponent(cc.Label).string = this.selfScore;
 
 
@@ -248,4 +252,124 @@ cc.Class({
     update: function (dt) {
 
     },
+
+
+
+
+
+
+    getMyInfo: function () {
+        console.log("ggggggg");
+
+        let self = this;
+
+        wx.getUserInfo({
+            openIdList: ['selfOpenId'],
+            lang: 'zh_CN',
+            success(res) {
+                if (res.data) {
+                    console.log(res.data);
+                    if (res.data[0].nickName != undefined && res.data[0].avatarUrl != undefined) {
+
+                        self.selfName = res.data[0].nickName;
+                        self.selfHead = res.data[0].avatarUrl;
+
+                        console.log(self.selfName);
+                        console.log(self.selfHead);
+
+
+                        self.friendInfo();
+
+                    } else {
+                        console.log("自己的信息1:undefined");
+                    }
+                }
+            },
+            fail() {
+                //console.log(res)
+                console.log("获取自己的信息失败");
+            }
+        })
+    },
+
+
+    getNext: function () {
+        let self = this;
+        wx.getFriendCloudStorage({
+            keyList: ["driver_MaxScore"],
+            success(res) {
+                console.log(res)
+                if (res.data) {
+                    // self.tips.active = false;
+                    //按maxScore从大到小排列
+                    self.sortList(res.data, false);   //排好序的好友数据表
+
+
+                    //获得自己对应的data索引
+                    var selfDataIndex = null;  //自己是哪一个呢？
+                    //先比较昵称
+                    var sameNameList = [];
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].nickname == self.selfName) { //看来处理这一步 之前要获得自己的数据 用名字会产生bug 但是！ID 微信也不开放！
+                            sameNameList.push(i);
+                        }
+                    }
+                    if (sameNameList.length < 1) { //煞费苦心！
+                        console.log("Rank:好友的信息1：未找到同名自己"); //连自己都没有在数据表中？
+                    } else if (sameNameList.length == 1) {
+                        console.log("Rank:好友的信息2：找到1个同名自己"); //这里获得的数据是所有好友的数据当然包括自己的，如果只有一个和自己重名，那么必然是自己
+                        selfDataIndex = sameNameList[0];
+                    }
+
+                    else { //ok 有好友和自己是重名 的。 如果不仅重名 连头像都重呢？ 用url地址 不会重 这里写的效率上不好
+                        //再比较头像
+                        var sameHeadList = [];
+                        for (var i = 0; i < sameNameList.length; i++) {
+                            if (res.data[sameNameList[i]].avatarUrl == self.selfHead) { //成员变量也要存储自己头像的url用来比较
+                                sameHeadList.push(sameNameList[i]); //i 真正的在data中的索引是 sameNameList[i]
+                            }
+                        }
+                        if (sameHeadList.length < 1) {
+                            console.log("Rank:好友的信息3：未找到同头像自己");
+                        }
+                        else {
+                            selfDataIndex = sameHeadList[0];
+                        }
+                    }
+                    console.log("Rank:selfDataIndex=" + selfDataIndex);
+
+                    if (selfDataIndex <= 0) {
+                        self.list2.active = false;
+                    } else {
+                        let kvl = res.data[selfDataIndex - 1].KVDataList;
+
+                        let s = -1;
+                        for (var i = 0; i < kvl.length; i++) {
+                            if (kvl[i].key == "driver_MaxScore") {
+                                s = kvl[i].value;
+                            }
+                        }
+
+                        self.nextScore.getComponent(cc.Label).string = s;
+                   //     self.nextHead.createImage(self.nextHead.getComponent(cc.Sprite),res.data[selfDataIndexi-1].avatarUrl);
+
+                        // self. = s;
+                    }
+
+                } else {
+                    self.list2.active = false;
+                    // self.tips.active = true;
+                }
+            },
+            fail() {
+                //console.log(res)
+                console.log("Rank:获取好友的信息失败");
+                //  self.tips.active = true;
+
+                self.list2.active = false;
+            }
+        })
+    },
+
+
 });
