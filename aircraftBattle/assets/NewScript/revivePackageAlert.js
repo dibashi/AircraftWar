@@ -8,6 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
+//开始界面中点击 互助礼 弹出的界面 的 控制脚本
 cc.Class({
     extends: cc.Component,
 
@@ -73,6 +74,9 @@ cc.Class({
 
         cc.eventManager.resumeTarget(this.onWho, true);
         this.node.destroy();
+
+        wx.shareAppMessage({ "title": "杨文",
+        "imageUrl": "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/cc_lj01.b8e46.png","query":"begin_share"});
     },
 
   

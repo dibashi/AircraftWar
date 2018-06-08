@@ -132,7 +132,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-      //  wx.showShareMenu();//微信 转发
+
+        //wx.onShow(this.wxOnShow);
+       // wx.showShareMenu();//微信 转发
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
