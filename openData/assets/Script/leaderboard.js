@@ -21,7 +21,7 @@ cc.Class({
 
         selfName: null,
         selfHead: null,
-        selfScore: 0,
+        selfScore: -1,
 
         //    selfRank:-1,
 
@@ -163,13 +163,15 @@ cc.Class({
                     console.log("Rank:selfDataIndex=" + selfDataIndex);
 
                     let kvl = res.data[selfDataIndex].KVDataList;
+                    console.log(kvl);
                     let s = -1;
                     for (var i = 0; i < kvl.length; i++) {
                         if (kvl[i].key == "driver_MaxScore") {
                             s = kvl[i].value;
                         }
                     }
-                    this.selfScore = s;
+                    console.log("ss-> " + s);
+                    self.selfScore = s;
 
 
                     //     this.selfRank = selfDataIndex;
@@ -191,6 +193,7 @@ cc.Class({
         this.selfRankLabel.getComponent(cc.Label).string = parseInt(sRank) + 1;
         this.selfNameLabel.getComponent(cc.Label).string = this.selfName;
         //分数本地其实有一份。 怕以后要改 还是用网络的吧
+        console.log("selfscore--> " +this.selfScore);
         this.selfScoreLabel.getComponent(cc.Label).string = this.selfScore;
 
 
