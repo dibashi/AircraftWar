@@ -63,11 +63,6 @@ cc.Class({
             }
         });
 
-
-
-
-
-
     },
 
     start: function () {
