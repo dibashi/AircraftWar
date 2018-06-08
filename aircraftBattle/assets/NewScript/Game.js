@@ -770,7 +770,7 @@ cc.Class({
     checkNextStage: function () {
 
         this.enemyCount--;
-        cc.log("enemyCount  " + this.enemyCount);
+     //   cc.log("enemyCount  " + this.enemyCount);
 
         if (this.enemyCount === 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
@@ -882,7 +882,7 @@ cc.Class({
             let pf = null;
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
-                    cc.log("jinbi!");
+                  //  cc.log("jinbi!");
                     let jinBiCount = Math.floor(Math.random() * 8);
                     for (let i = 0; i < jinBiCount; i++) {
 
