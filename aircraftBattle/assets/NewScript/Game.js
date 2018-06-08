@@ -1060,7 +1060,7 @@ cc.Class({
     setBestScore: function(s){ //上报到微信服务器：历史最高分
         var kvDataList = new Array();
         kvDataList.push({key:"driver_MaxScore", value: "" + s});
-        wx.setUserCloudStorage({ KVDataList: kvDataList })
+        wx.setUserCloudStorage({ KVDataList: kvDataList });
     },
 
 
