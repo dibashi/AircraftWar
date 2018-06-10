@@ -389,7 +389,7 @@ cc.Class({
                             }
                         }
                         console.log("s-> " + s);
-                        self.nextScore.getComponent(cc.Label).string = s;
+                        self.nextScore.getComponent(cc.Label).string = s + "分";
                         self.createImage(self.nextHead.getComponent(cc.Sprite),res.data[selfDataIndex-1].avatarUrl);
 
                         // self. = s;
