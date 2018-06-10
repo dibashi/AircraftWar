@@ -65,16 +65,16 @@ cc.Class({
         this.reviveCountLabel.getComponent(cc.Label).string = "X" + reviveCount;
 
         if (reviveCount > 0) {
-            this.reviveBtn.getComponent(cc.Button).enabled = true;
+            this.reviveBtn.getComponent(cc.Button).interactable = true;
         } else {
-            this.reviveBtn.getComponent(cc.Button).enabled = false;
+            this.reviveBtn.getComponent(cc.Button).interactable = false;
         }
 
         let  GuangGaoFuhuoFlag = parseInt( cc.sys.localStorage.getItem("GuangGaoFuhuoFlag"));
         if(GuangGaoFuhuoFlag == 1) {
-            this.ggBtn.getComponent(cc.Button).enabled = true;
+            this.ggBtn.getComponent(cc.Button).interactable = true;
         }else {
-            this.ggBtn.getComponent(cc.Button).enabled = false;
+            this.ggBtn.getComponent(cc.Button).interactable = false;
         }
 
 

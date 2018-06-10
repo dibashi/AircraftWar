@@ -64,12 +64,12 @@ cc.Class({
         this.dxLQ =parseInt((d2-d1)*0.001);
       //  cc.log("aaaa  " +this.dxLQ);
         if( this.dxLQ > (4*60*60)) {//超过4个小时
-            this.lqBtn.getComponent(cc.Button).enabled = true;
+            this.lqBtn.getComponent(cc.Button).interactable = true;
             this.countdownLQ.active = false;
         } else {
             //剩余时间是4个小时 减去 这个两个的时间差
             this.dxLQ = 4*60*60-this.dxLQ;
-            this.lqBtn.getComponent(cc.Button).enabled = false;
+            this.lqBtn.getComponent(cc.Button).interactable = false;
             this.countdownLQ.active = true;
             this.setTimeToLabel(this.dxLQ,this.countdownLQ);
          //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
@@ -83,11 +83,11 @@ cc.Class({
         this.dxGG =parseInt((d4-d3)*0.001);
        // cc.log("aaaa  " +this.dxLQ);
         if( this.dxGG > (1*60*60)) {//超过1个小时
-            this.ggBtn.getComponent(cc.Button).enabled = true;
+            this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
         } else {
             this.dxGG = 1*60*60-this.dxGG;
-            this.ggBtn.getComponent(cc.Button).enabled = false;
+            this.ggBtn.getComponent(cc.Button).interactable = false;
             this.countdownGG.active = true;
             this.setTimeToLabel(this.dxGG,this.countdownGG);
          //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
@@ -102,7 +102,7 @@ cc.Class({
         
         this.setTimeToLabel(this.dxLQ,this.countdownLQ);
         if(this.dxLQ<=0) {
-            this.lqBtn.getComponent(cc.Button).enabled = true;
+            this.lqBtn.getComponent(cc.Button).interactable = true;
             this.countdownLQ.active = false;
             this.unschedule(this.countdownFUN);
         }
@@ -114,7 +114,7 @@ cc.Class({
         
         this.setTimeToLabel(this.dxGG,this.countdownGG);
         if(this.dxGG<=0) {
-            this.ggBtn.getComponent(cc.Button).enabled = true;
+            this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
             this.unschedule(this.countdownFUNGG);
         }

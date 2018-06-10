@@ -133,12 +133,12 @@ cc.Class({
             this.addLevel.setPosition(0, -386);
             this.gouMai.setPosition(768, -255);
 
-            this.goBattle.getComponent(cc.Button).enabled = true;
+            this.goBattle.getComponent(cc.Button).interactable = true;
 
         } else {
             this.addLevel.setPosition(768, -255);
             this.gouMai.setPosition(0, -386);
-            this.goBattle.getComponent(cc.Button).enabled = false;
+            this.goBattle.getComponent(cc.Button).interactable = false;
         }
     },
 
@@ -148,11 +148,11 @@ cc.Class({
 
             this.isWingmanGouMai = false;
             this.maxLevel.opacity = 255;
-            this.addLevel.getComponent(cc.Button).enabled = false;
+            this.addLevel.getComponent(cc.Button).interactable = false;
         } else {
             this.isWingmanGouMai = true;
             this.maxLevel.opacity = 0;
-            this.addLevel.getComponent(cc.Button).enabled = true;
+            this.addLevel.getComponent(cc.Button).interactable = true;
         }
     },
 
