@@ -82,6 +82,8 @@ cc.Class({
             message: "nextInfo",
         });
 
+        this.display.scale = 1.2;
+
     },
 
     start() {
