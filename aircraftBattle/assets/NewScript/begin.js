@@ -133,8 +133,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
-        
+    
         // wx.showShareMenu();//微信 转发
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
@@ -162,9 +161,9 @@ cc.Class({
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', 100);
-            //分数一般是从服务器读取，这里先用本地存储。
-            cc.sys.localStorage.setItem('bestScore', 0);
-            this.setBestScore(0);
+            //分数一般是从服务器读取，这里先用本地存储。 从start函数开始把， 防止未初始化完成引发的bug
+            // cc.sys.localStorage.setItem('bestScore', 0);
+            // this.setBestScore(0);
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
@@ -195,9 +194,9 @@ cc.Class({
 
 
             //记录上一次领取时间 和 观看广告时间
-
-            cc.sys.localStorage.setItem('lqTime', Date.now());
-            cc.sys.localStorage.setItem('ggTime', Date.now());
+            //第一次登陆 记为10小时前用户领取过 可以保证 玩家可以领取奖励
+            cc.sys.localStorage.setItem('lqTime', Date.now() - 1000*60*60*10);
+            cc.sys.localStorage.setItem('ggTime', Date.now() - 1000*60*60*10);
 
             //新的需求 加入复活卡 复活卡的数量  初始化为0 之后每邀请一个好友对其值增1
             //不能超过2，每使用一次复活将其值减小1
@@ -276,17 +275,7 @@ cc.Class({
             ss.getComponent("dailyAlert").onWho = this.node;
             this.node.addChild(ss);
         }
-        //测试用
-        //   cc.sys.localStorage.setItem('planeLifeCount', 2);
-
-        // let zzz = Date.now();
-
-        // cc.sys.localStorage.setItem('zzz', zzz);
-
-        // let z = parseInt(cc.sys.localStorage.getItem('zzz'));
-
-
-
+      
     },
 
     // wxOnShow:function(scene,query,shareTicket) {
@@ -295,7 +284,15 @@ cc.Class({
     //     console.log("shareTicket  " + shareTicket);
     // },
     start() {
-      //  wx.onShow(this.wxOnShow);
+        let isloaded = parseInt( cc.sys.localStorage.getItem("isLoaded") );
+        if (isloaded == 1) {
+            
+
+            cc.sys.localStorage.setItem('bestScore', 0);
+            this.setBestScore(0);
+        }
+
+         
     
       wx.showShareMenu();
 
