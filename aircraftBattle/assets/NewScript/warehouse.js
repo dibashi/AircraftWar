@@ -85,7 +85,11 @@ cc.Class({
         currentLevelLabel:{
             default:null,
             type:cc.Node,
-        }
+        },
+
+
+        planeMoney:10000,
+        wingmanMoney:5000,
 
 
     },
@@ -215,7 +219,7 @@ cc.Class({
         cc.log("addWingman");
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
-        if (currentCoin < 200) {
+        if (currentCoin < this.wingmanMoney) {
             cc.log("金币不足，请购买！");
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
@@ -223,7 +227,7 @@ cc.Class({
             ss.getComponent("alert").onWho = this.node;
             this.node.addChild(ss);
         } else {
-            let afterCoint = currentCoin - 200;
+            let afterCoint = currentCoin - this.wingManCount;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
             this.labelCoin.string = afterCoint;
 
@@ -243,7 +247,7 @@ cc.Class({
         //这里先将每架飞机的价钱置为200;TODO!!!
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
-        if (currentCoin < 200) {
+        if (currentCoin < this.planeMoney) {
             cc.log("金币不够，请购买！");
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
@@ -252,7 +256,7 @@ cc.Class({
             this.node.addChild(ss);
     
         } else {
-            let afterCoint = currentCoin - 200;
+            let afterCoint = currentCoin - this.planeMoney;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
             this.labelCoin.string = afterCoint;
 
