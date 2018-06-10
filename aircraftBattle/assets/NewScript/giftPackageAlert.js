@@ -172,13 +172,12 @@ cc.Class({
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-     //   cc.log("!!plc " + plC);
-
+     
         let ajbC = parseInt(jbC) + 100;
-        let adzC = parseInt(dzC) + 1;
+     //   let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
-        let aplC = parseInt(plC) + 1;
-     //   cc.log("!!aplc " + aplC);
+      //  let aplC = parseInt(plC) + 1;
+    
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
         cc.sys.localStorage.setItem('dazhaoCount', adzC);
@@ -211,13 +210,12 @@ cc.Class({
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-     //   cc.log("!!plc " + plC);
-
+    
         let ajbC = parseInt(jbC) + 100;
-        let adzC = parseInt(dzC) + 1;
+     //   let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
-        let aplC = parseInt(plC) + 1;
-     //   cc.log("!!aplc " + aplC);
+     //   let aplC = parseInt(plC) + 1;
+    
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
         cc.sys.localStorage.setItem('dazhaoCount', adzC);
