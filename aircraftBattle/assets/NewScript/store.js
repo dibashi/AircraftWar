@@ -188,35 +188,35 @@ cc.Class({
         let ss = this.alertPop();
 
         ss.getComponent("storeAlert").setTitle("超值礼包");
-         ss.getComponent("storeAlert").setPriceText("¥8购买");
+         ss.getComponent("storeAlert").setPriceText("¥15购买");
          ss.getComponent("storeAlert").setNodeTag(1);
     },
     button2Click:function() {
         let ss = this.alertPop();
 
         ss.getComponent("storeAlert").setTitle("土豪金礼包");
-         ss.getComponent("storeAlert").setPriceText("¥15购买");
+         ss.getComponent("storeAlert").setPriceText("¥136购买");
          ss.getComponent("storeAlert").setNodeTag(2);
     },
     button3Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("2000金币");
-         ss.getComponent("storeAlert").setPriceText("¥10购买");
+        ss.getComponent("storeAlert").setTitle("金币礼包");
+         ss.getComponent("storeAlert").setPriceText("¥20购买");
          ss.getComponent("storeAlert").setNodeTag(3);
     },
     button4Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("必杀X10");
-         ss.getComponent("storeAlert").setPriceText("¥10购买");
+        ss.getComponent("storeAlert").setTitle("进攻礼包");
+         ss.getComponent("storeAlert").setPriceText("¥16购买");
          ss.getComponent("storeAlert").setNodeTag(4);
     },
     button5Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("护盾X10");
-         ss.getComponent("storeAlert").setPriceText("¥10购买");
+        ss.getComponent("storeAlert").setTitle("防御礼包");
+         ss.getComponent("storeAlert").setPriceText("¥20购买");
          ss.getComponent("storeAlert").setNodeTag(5);
     },
 

@@ -37,13 +37,16 @@
       },
       {
         "__id__": 23
+      },
+      {
+        "__id__": 26
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 26
+      "__id__": 29
     },
     "_id": "",
     "_opacity": 255,
@@ -126,7 +129,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -60,
-      "y": -28.3
+      "y": -10.3
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -207,7 +210,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 116,
+      "width": 109,
       "height": 40
     },
     "_rotationX": 0,
@@ -217,7 +220,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -15,
-      "y": -28.3
+      "y": -10.3
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -242,7 +245,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "X2000",
+    "_N$string": "X10W",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -385,7 +388,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 49,
+      "width": 71,
       "height": 40
     },
     "_rotationX": 0,
@@ -394,7 +397,7 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 72,
+      "x": 74,
       "y": 38
     },
     "_skewX": 0,
@@ -420,7 +423,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "X2",
+    "_N$string": "X10",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -563,7 +566,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 49,
+      "width": 71,
       "height": 40
     },
     "_rotationX": 0,
@@ -572,7 +575,7 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -30.2,
+      "x": -27.2,
       "y": 38.8
     },
     "_skewX": 0,
@@ -598,7 +601,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "X4",
+    "_N$string": "X10",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -660,7 +663,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 33,
-      "y": -28.3
+      "y": -10.3
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -741,7 +744,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 49,
+      "width": 71,
       "height": 40
     },
     "_rotationX": 0,
@@ -750,8 +753,8 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 63.7,
-      "y": -27.1
+      "x": 65.7,
+      "y": -9.100000000000001
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -776,7 +779,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "X4",
+    "_N$string": "X10",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -791,6 +794,93 @@
       "__uuid__": "772d146d-ddbb-476d-bd7b-21756faa1b2c"
     },
     "fileId": "29gG9apBVIPLnNVKACeDsT",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "info",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 27
+      }
+    ],
+    "_prefab": {
+      "__id__": 28
+    },
+    "_id": "",
+    "_opacity": 204,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 103,
+      "height": 22
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": -38.9
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 26
+    },
+    "_enabled": true,
+    "_useOriginalSize": false,
+    "_actualFontSize": 22,
+    "_fontSize": 22,
+    "_lineHeight": 22,
+    "_enableWrapText": true,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_N$string": "价值340元",
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1,
+    "_N$fontFamily": "Arial",
+    "_N$overflow": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "772d146d-ddbb-476d-bd7b-21756faa1b2c"
+    },
+    "fileId": "f4+/Np+VdAh7ytAtnFg9Nm",
     "sync": false
   },
   {

@@ -109,7 +109,7 @@ cc.Class({
 
         if (this._nodeTag == 0) {
             cc.log("!!!!!!!nodeTag0");
-            let ajbC = parseInt(jbC) + 100;
+            let ajbC = parseInt(jbC) + 50;
             let adzC = parseInt(dzC) + 1;
             let ahdC = parseInt(hdC) + 1;
             let aplC = parseInt(plC) + 1;
@@ -120,7 +120,7 @@ cc.Class({
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
 
         }else if (this._nodeTag == 1) {
-            let ajbC = parseInt(jbC) + 1000;
+            let ajbC = parseInt(jbC) + 200;
             let adzC = parseInt(dzC) + 3;
             let ahdC = parseInt(hdC) + 3;
             let aplC = parseInt(plC) + 1;
@@ -131,10 +131,10 @@ cc.Class({
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
             
         }else if (this._nodeTag == 2) {
-            let ajbC = parseInt(jbC) + 2000;
-            let adzC = parseInt(dzC) + 4;
-            let ahdC = parseInt(hdC) + 4;
-            let aplC = parseInt(plC) + 2;
+            let ajbC = parseInt(jbC) + 100000;
+            let adzC = parseInt(dzC) + 10;
+            let ahdC = parseInt(hdC) + 10;
+            let aplC = parseInt(plC) + 10;
 
             cc.sys.localStorage.setItem('jinBiCount', ajbC);
         cc.sys.localStorage.setItem('dazhaoCount', adzC);
@@ -142,16 +142,16 @@ cc.Class({
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
         }
         else if (this._nodeTag == 3) {
-            let ajbC = parseInt(jbC) + 2000;
+            let ajbC = parseInt(jbC) + 10000;
 
             cc.sys.localStorage.setItem('jinBiCount', ajbC);
         }
         else if (this._nodeTag == 4) {
-            let adzC = parseInt(dzC) + 10;
+            let adzC = parseInt(dzC) + 4;
 
             cc.sys.localStorage.setItem('dazhaoCount', adzC);
         }else if (this._nodeTag == 5) {
-            let ahdC = parseInt(hdC) + 10;
+            let ahdC = parseInt(hdC) + 4;
             cc.sys.localStorage.setItem('hudunCount', ahdC);
         }
 
