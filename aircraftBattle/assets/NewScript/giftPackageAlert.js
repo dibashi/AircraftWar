@@ -180,9 +180,9 @@ cc.Class({
     
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
-        cc.sys.localStorage.setItem('dazhaoCount', adzC);
+     //   cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
-        cc.sys.localStorage.setItem('planeLifeCount', aplC);
+    //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
         cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
         //通知调取的页面 数据更新
         if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
@@ -218,9 +218,9 @@ cc.Class({
     
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
-        cc.sys.localStorage.setItem('dazhaoCount', adzC);
+    //    cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
-        cc.sys.localStorage.setItem('planeLifeCount', aplC);
+    //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
         cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
         //通知调取的页面 数据更新
         if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
