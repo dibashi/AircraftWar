@@ -227,7 +227,7 @@ cc.Class({
             ss.getComponent("alert").onWho = this.node;
             this.node.addChild(ss);
         } else {
-            let afterCoint = currentCoin - this.wingManCount;
+            let afterCoint = currentCoin - this.wingmanMoney;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
             this.labelCoin.string = afterCoint;
 
