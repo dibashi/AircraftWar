@@ -166,6 +166,15 @@ cc.Class({
 
     onInviteFriendClick:function(){
         cc.log("onInviteFriendClick");
+
+
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+       
+
+        
+
+        wx.shareAppMessage({ title: "超好玩的飞机游戏！",
+        imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"end_share"});
     },
     // update (dt) {},
 });
