@@ -655,6 +655,7 @@ cc.Class({
         this.scheduleOnce(this.dazhaoPlaneOver1, 5.0);
     },
 
+    //大招启动
     bombOnclick: function () {
        
         if (this.bombNo > 0) {
@@ -1066,7 +1067,8 @@ cc.Class({
 
     gameOver() {
         //防止在复活页面等待时 出现bug
-        this.unscheduleAllCallbacks();
+     //   this.unscheduleAllCallbacks();
+     this.unschedule(this.newBaozouProcessing);
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
