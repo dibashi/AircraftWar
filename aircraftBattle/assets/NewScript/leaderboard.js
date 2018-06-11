@@ -33,17 +33,11 @@ cc.Class({
     },
 
     start() {
-        // this._isShow = true;
+       
         this.tex = new cc.Texture2D();
     },
 
-    // onClick () {
-    //     this._isShow = !this._isShow;
-    //     // 发消息给子域
-    //     wx.postMessage({
-    //         message: this._isShow ? 'Show' : 'Hide'
-    //     })
-    // },
+   
 
     _updaetSubDomainCanvas() {
         if (!this.tex) {
