@@ -890,7 +890,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
+      "width": 240,
       "height": 40
     },
     "_rotationX": 0,
@@ -925,7 +925,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "下个即将超过的好友：",
+    "_N$string": "即将超过的好友：",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
