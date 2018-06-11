@@ -2680,7 +2680,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 111,
+      "width": 133,
       "height": 40
     },
     "_rotationX": 0,
@@ -2689,7 +2689,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 80,
+      "x": 100,
       "y": 0
     },
     "_skewX": 0,
@@ -2715,7 +2715,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "22222",
+    "_N$string": "222222",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",

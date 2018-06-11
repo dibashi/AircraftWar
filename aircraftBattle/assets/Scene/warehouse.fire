@@ -704,12 +704,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 62,
+      "width": 111,
       "height": 40
     },
     "_rotationX": 0,
@@ -718,7 +718,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 50,
+      "x": 100,
       "y": 0
     },
     "_skewX": 0,
@@ -744,7 +744,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "null",
+    "_N$string": "99999",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -8271,6 +8271,8 @@
     },
     "currentLevelLabel": {
       "__id__": 21
-    }
+    },
+    "planeMoney": 10000,
+    "wingmanMoney": 5000
   }
 ]
