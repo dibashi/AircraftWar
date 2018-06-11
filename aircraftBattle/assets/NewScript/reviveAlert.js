@@ -87,7 +87,7 @@ cc.Class({
     },
 
     start() {
-        // this._isShow = true;
+      
         this.tex = new cc.Texture2D();
     },
 
