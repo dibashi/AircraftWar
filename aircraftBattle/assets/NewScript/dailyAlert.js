@@ -54,7 +54,7 @@ cc.Class({
     
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+        let cbFadeOut = cc.callFunc(this.onGGSuccess, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
 
@@ -80,10 +80,19 @@ cc.Class({
         cc.sys.localStorage.setItem('hudunCount', ahdC);
         cc.sys.localStorage.setItem('planeLifeCount', aplC);
       
-        //通知调取的页面 数据更新
-        this.onWho.getComponent("begin").refreshPrize();
+       
 
     },
+
+    onGGSuccess: function () {
+        //通知调取的页面 数据更新
+        if (this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined) {
+            this.onWho.getComponent("begin").refreshPrize("daily_gift");
+        }
+
+        this.onFadeOutFinish();
+    },
+
 
     onFadeOutFinish: function () {
         cc.eventManager.resumeTarget(this.onWho, true);
