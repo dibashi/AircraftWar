@@ -90,6 +90,8 @@ cc.Class({
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
 
+        //以后这里要跳转到付款界面，然后在付款回调中来添加奖品。
+
         this.getPrizeByTag();
 
         if(this.onWho.getComponent("store") != null && this.onWho.getComponent("store") != undefined)  {
