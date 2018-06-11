@@ -66,8 +66,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 360,
-      "y": 640
+      "x": 180,
+      "y": 320
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -640,7 +640,7 @@
     "target": {
       "__id__": 1
     },
-    "component": "alert",
+    "component": "Alert",
     "handler": "onCancelClick",
     "customEventData": ""
   },
