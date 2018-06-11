@@ -119,6 +119,10 @@ cc.Class({
         },
 
 
+        giftGetAlert: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
 
@@ -134,7 +138,7 @@ cc.Class({
 
     onLoad() {
     
-        // wx.showShareMenu();//微信 转发
+       
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
@@ -161,9 +165,7 @@ cc.Class({
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', 100);
-            //分数一般是从服务器读取，这里先用本地存储。 从start函数开始把， 防止未初始化完成引发的bug
-            // cc.sys.localStorage.setItem('bestScore', 0);
-            // this.setBestScore(0);
+         
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
@@ -278,11 +280,7 @@ cc.Class({
       
     },
 
-    // wxOnShow:function(scene,query,shareTicket) {
-    //     console.log("scene  " + scene);
-    //     console.log("query  " + query);
-    //     console.log("shareTicket  " + shareTicket);
-    // },
+  
     start() {
         let isloaded = parseInt( cc.sys.localStorage.getItem("isLoaded") );
         if (isloaded == 1) {
@@ -307,7 +305,7 @@ cc.Class({
       });
     },
 
-    refreshPrize: function () {
+    refreshPrize: function (tag) {
         //刷新 金币 必杀 护盾 飞机命数的值，以及保存当前的日期
         this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
@@ -316,6 +314,8 @@ cc.Class({
 
         cc.sys.localStorage.setItem("lastLoadDate", this.currentYMD());
 
+
+        this.giftGetSuccess(tag);
     },
     //当前年月日
     currentYMD: function () {
@@ -381,6 +381,18 @@ cc.Class({
         ss.setPosition(0, 0);
 
         ss.getComponent("revivePackageAlert").onWho = this.node;
+        this.node.addChild(ss);
+    },
+
+    //物品获得成功的回调函数，将来还要实现失败的回调
+    giftGetSuccess:function(tag) {
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.giftGetAlert);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("getGiftAlert").setGiftTag(tag);
+
+        ss.getComponent("getGiftAlert").onWho = this.node;
         this.node.addChild(ss);
     },
     // update (dt) {},
