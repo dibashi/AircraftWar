@@ -1069,11 +1069,12 @@ cc.Class({
         //防止在复活页面等待时 出现bug
         this.unscheduleAllCallbacks();
     // this.unschedule(this.newBaozouProcessing);
-  
-    for(let i = 0; i<this.dazhaoPlanes.length;i++) {
-        this.dazhaoPlanes[i].destroy();
-    }
-
+        if(this.dazhaoPlanes != null) {
+            for(let i = 0; i<this.dazhaoPlanes.length;i++) {
+                this.dazhaoPlanes[i].destroy();
+            }        
+        }
+    
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
