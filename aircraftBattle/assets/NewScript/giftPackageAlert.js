@@ -39,8 +39,8 @@ cc.Class({
             type: cc.Node
         },
 
-        dxLQ:0,
-        dxGG:0,
+        dxLQ: 0,
+        dxGG: 0,
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
     },
@@ -61,91 +61,91 @@ cc.Class({
         //根据时间差来设置btn是否可点击
         let d1 = parseInt(cc.sys.localStorage.getItem('lqTime'));
         let d2 = parseInt(Date.now());
-        this.dxLQ =parseInt((d2-d1)*0.001);
-      //  cc.log("aaaa  " +this.dxLQ);
-        if( this.dxLQ > (4*60*60)) {//超过4个小时
+        this.dxLQ = parseInt((d2 - d1) * 0.001);
+        //  cc.log("aaaa  " +this.dxLQ);
+        if (this.dxLQ > (4 * 60 * 60)) {//超过4个小时
             this.lqBtn.getComponent(cc.Button).interactable = true;
             this.countdownLQ.active = false;
         } else {
             //剩余时间是4个小时 减去 这个两个的时间差
-            this.dxLQ = 4*60*60-this.dxLQ;
+            this.dxLQ = 4 * 60 * 60 - this.dxLQ;
             this.lqBtn.getComponent(cc.Button).interactable = false;
             this.countdownLQ.active = true;
-            this.setTimeToLabel(this.dxLQ,this.countdownLQ);
-         //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
+            this.setTimeToLabel(this.dxLQ, this.countdownLQ);
+            //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
 
-            this.schedule(this.countdownFUN,1);
+            this.schedule(this.countdownFUN, 1);
         }
 
         let d3 = parseInt(cc.sys.localStorage.getItem('ggTime'));
         let d4 = parseInt(Date.now());
 
-        this.dxGG =parseInt((d4-d3)*0.001);
-       // cc.log("aaaa  " +this.dxLQ);
-        if( this.dxGG > (1*60*60)) {//超过1个小时
+        this.dxGG = parseInt((d4 - d3) * 0.001);
+        // cc.log("aaaa  " +this.dxLQ);
+        if (this.dxGG > (1 * 60 * 60)) {//超过1个小时
             this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
         } else {
-            this.dxGG = 1*60*60-this.dxGG;
+            this.dxGG = 1 * 60 * 60 - this.dxGG;
             this.ggBtn.getComponent(cc.Button).interactable = false;
             this.countdownGG.active = true;
-            this.setTimeToLabel(this.dxGG,this.countdownGG);
-         //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
+            this.setTimeToLabel(this.dxGG, this.countdownGG);
+            //   this.schedule(this.countdownFUN,this,1,this.dxLQ);
 
-            this.schedule(this.countdownFUNGG,1);
+            this.schedule(this.countdownFUNGG, 1);
         }
     },
 
-    countdownFUN:function() {
-        
+    countdownFUN: function () {
+
         this.dxLQ = this.dxLQ - 1;
-        
-        this.setTimeToLabel(this.dxLQ,this.countdownLQ);
-        if(this.dxLQ<=0) {
+
+        this.setTimeToLabel(this.dxLQ, this.countdownLQ);
+        if (this.dxLQ <= 0) {
             this.lqBtn.getComponent(cc.Button).interactable = true;
             this.countdownLQ.active = false;
             this.unschedule(this.countdownFUN);
         }
     },
 
-    countdownFUNGG:function() {
-        
+    countdownFUNGG: function () {
+
         this.dxGG = this.dxGG - 1;
-        
-        this.setTimeToLabel(this.dxGG,this.countdownGG);
-        if(this.dxGG<=0) {
+
+        this.setTimeToLabel(this.dxGG, this.countdownGG);
+        if (this.dxGG <= 0) {
             this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
             this.unschedule(this.countdownFUNGG);
         }
     },
 
-    setTimeToLabel:function(dx,labelNode) {
+    setTimeToLabel: function (dx, labelNode) {
         let label = labelNode.getComponent(cc.Label);
         //dx-->3:50:49 
         //小时
-        let h = parseInt(dx/3600);
-        let m = parseInt((dx - (3600*h))/60);
-        let s = parseInt(dx - h*3600 - m*60);
+        let h = parseInt(dx / 3600);
+        let m = parseInt((dx - (3600 * h)) / 60);
+        let s = parseInt(dx - h * 3600 - m * 60);
         //转为两位数
         //小时必然是，m<10,
         let sh = "0" + h;
         let sm = m;
-        if(m<10) {
+        if (m < 10) {
             sm = "0" + m;
         }
         let ss = s;
-        if(s<10) {
+        if (s < 10) {
             ss = "0" + s;
         }
 
-        label.string = sh+ ":" +sm +":" +ss;
+        label.string = sh + ":" + sm + ":" + ss;
     },
 
 
     startFadeIn: function () {
         cc.eventManager.pauseTarget(this.node, true);
-        this.node.position = cc.p(0,0);
+        this.node.position = cc.p(0, 0);
         this.node.setScale(2);
         this.node.opacity = 0;
 
@@ -165,76 +165,88 @@ cc.Class({
         cc.log("onLingQuClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-       
+
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
         let jbC = cc.sys.localStorage.getItem('jinBiCount');
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-     
+
         let ajbC = parseInt(jbC) + 100;
-     //   let adzC = parseInt(dzC) + 1;
+        //   let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
-      //  let aplC = parseInt(plC) + 1;
-    
+        //  let aplC = parseInt(plC) + 1;
+
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
-     //   cc.sys.localStorage.setItem('dazhaoCount', adzC);
+        //   cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
-    //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
+        //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
         cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
-        //通知调取的页面 数据更新
-        if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
-            this.onWho.getComponent("begin").refreshPrize();
-        }
+
         //使用时间记录下
         cc.sys.localStorage.setItem('lqTime', Date.now());
-      // cc.sys.localStorage.setItem('ggTime', Date.now());
+        // cc.sys.localStorage.setItem('ggTime', Date.now());
 
-        
 
-        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+
+        let cbFadeOut = cc.callFunc(this.onLingQuSuccess, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
+    },
+
+    onLingQuSuccess: function () {
+        //通知调取的页面 数据更新
+        if (this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined) {
+            this.onWho.getComponent("begin").refreshPrize("begin_gift");
+        }
+
+        this.onFadeOutFinish();
     },
 
     onGuangGaoClick: function () {
         cc.log("onGuangGaoClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
-       
+
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
         let jbC = cc.sys.localStorage.getItem('jinBiCount');
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
-    
+
         let ajbC = parseInt(jbC) + 100;
-     //   let adzC = parseInt(dzC) + 1;
+        //   let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
-     //   let aplC = parseInt(plC) + 1;
-    
+        //   let aplC = parseInt(plC) + 1;
+
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
-    //    cc.sys.localStorage.setItem('dazhaoCount', adzC);
+        //    cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
-    //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
+        //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
         cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
-        //通知调取的页面 数据更新
-        if(this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined)  {
-            this.onWho.getComponent("begin").refreshPrize();
-        }
+
         //使用时间记录下
-      //  cc.sys.localStorage.setItem('lqTime', Date.now());
-       cc.sys.localStorage.setItem('ggTime', Date.now());
+        //  cc.sys.localStorage.setItem('lqTime', Date.now());
+        cc.sys.localStorage.setItem('ggTime', Date.now());
 
-        
 
-        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+
+        let cbFadeOut = cc.callFunc(this.onGGSuccess, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
+    },
+
+    onGGSuccess: function () {
+        //通知调取的页面 数据更新
+        if (this.onWho.getComponent("begin") != null && this.onWho.getComponent("begin") != undefined) {
+            this.onWho.getComponent("begin").refreshPrize("begin_gift");
+        }
+
+        this.onFadeOutFinish();
     },
 
     onFadeOutFinish: function () {

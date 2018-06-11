@@ -3291,6 +3291,9 @@
     },
     "revivePackageAlert": {
       "__uuid__": "7d26ef15-e1fe-4c5e-9666-cdfda124ecc9"
+    },
+    "giftGetAlert": {
+      "__uuid__": "a2e3f2f6-f843-40a3-9a02-3ab50dc1f687"
     }
   }
 ]
