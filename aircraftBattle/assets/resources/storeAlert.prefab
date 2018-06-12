@@ -139,7 +139,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "7d7d039e-6679-4e63-a32c-5dbc1ad8e07d"
+      "__uuid__": "ca3665b8-7a99-40fc-8804-5f0ad04507c1"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -154,7 +154,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
+    }
   },
   {
     "__type__": "cc.Widget",
@@ -445,7 +447,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "bc9af417-8767-4408-8f43-3375d37b2e7f"
+      "__uuid__": "8fefdc18-eb48-44ef-b2f2-c39cc7640a69"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -460,7 +462,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
+    }
   },
   {
     "__type__": "cc.Button",
@@ -650,9 +654,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 117,
-      "g": 255,
-      "b": 56,
+      "r": 255,
+      "g": 245,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -724,7 +728,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "d7a8b501-b714-4a48-a513-7db74199a692"
+      "__uuid__": "00f869e0-dbb7-4a88-a31d-e25ea9503555"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -739,7 +743,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
+    }
   },
   {
     "__type__": "cc.Button",
@@ -852,7 +858,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "5baa92ab-d46f-47cf-b3a8-5a407d31aeb3"
+      "__uuid__": "250cf1e5-751b-4c08-878a-dd4e301364b4"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -867,7 +873,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
+    }
   },
   {
     "__type__": "cc.Widget",
