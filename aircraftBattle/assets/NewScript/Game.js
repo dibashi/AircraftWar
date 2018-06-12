@@ -773,7 +773,7 @@ cc.Class({
         this.enemyCount--;
      //   cc.log("enemyCount  " + this.enemyCount);
 
-        if (this.enemyCount === 0) {//没有敌机，进入下一stage
+        if (this.enemyCount <= 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
             }
@@ -1053,6 +1053,7 @@ cc.Class({
     gameOver() {
         //防止在复活页面等待时 出现bug
         this.unscheduleAllCallbacks();
+        this.checkNextStage();
     // this.unschedule(this.newBaozouProcessing);
         if(this.dazhaoPlanes != null) {
             for(let i = 0; i<this.dazhaoPlanes.length;i++) {
