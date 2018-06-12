@@ -840,35 +840,20 @@ cc.Class({
             yzzz[0] = (h / 5) * 2;
             yzzz[1] = (h / 5) * 3;
             yzzz[2] = (h / 5) * 4;
-            // let beginRandomX = -w +(2*w)*Math.random(); //-width----width
-            // let beginRandomY = cc.director.getVisibleSize().height / 2 +30+100*Math.random(); //h/2+30-----h/2+130
+        
             let beginRandomX = -w / 2 + enemy.getContentSize().width / 2 + (w - enemy.getContentSize().width) * Math.random();
             let beginRandomY = cc.director.getVisibleSize().height / 2 + 80;
-            //  enemy.setPosition(0, cc.director.getVisibleSize().height * 0.5 + 100);
+           
             enemy.setPosition(beginRandomX, beginRandomY);
 
             var pos = enemy.getPosition();
             pos.x = beginRandomX;
             pos.y = 60 + (cc.director.getVisibleSize().height / 2 - 60) * Math.random();
-            // pos.x = zzz[Math.floor(Math.random() * 3)];
-            // pos.y = yzzz[Math.floor(Math.random() * 3)];
+           
             var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
-            // var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
+            
             var seq = cc.sequence(cc.moveTo(1, pos), callback);
             enemy.runAction(seq);
-
-            // let pos = enemy.getPosition();
-            // let kkk = 50 + Math.random() * (w - 100);//(50~w-50)
-            // pos.x = kkk - (w / 2);//(-w/2+50,w/2-50)
-            // let kkk1 = 50 + Math.random() * (h / 2 - 100);//(50~h/2-50)
-
-            // pos.y = kkk1;
-            // var callback = cc.callFunc(enemy.getComponent("enemy").enterCallback, enemy.getComponent("enemy"));
-            // var seq = cc.sequence(cc.moveTo(1, pos).easing(cc.easeIn(3.0)), callback);
-
-            // enemy.runAction(seq);
-
-
         }
 
     },
