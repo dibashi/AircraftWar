@@ -533,8 +533,8 @@ cc.Class({
      //   this.player.getComponent("Player").closeAllBullet();
         //3提高背景速度
 
-        this.backGround.getComponent("background").speedFactor = 6;
-        this.backGround.getComponent("background").speedYUNFactor = 9;
+        this.backGround.getComponent("background").speedFactor = 9;
+        this.backGround.getComponent("background").speedYUNFactor = 13;
         
         // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
         this.baozouFlag = true;
