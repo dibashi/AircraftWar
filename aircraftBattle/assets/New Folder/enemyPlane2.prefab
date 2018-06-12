@@ -81,7 +81,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "3ad88769-8054-43c9-aadd-df92c7996138"
+      "__uuid__": "2ceceb60-03a5-49bc-aaaf-7f5b5f6fe970"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -96,7 +96,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "c0d77c51-6f91-40d5-8a00-4b976f16efcb"
+    }
   },
   {
     "__type__": "0ee1fuaQS5BqqiNu7pjSEAG",
@@ -129,9 +131,7 @@
     "damagedTeXiao": null,
     "bulletTrack": 0,
     "enemyTrack": 0,
-    "particleSys": {
-      "__uuid__": "c15cc840-24ac-48ba-b48d-e470dc4e3f75"
-    },
+    "particleSys": null,
     "partice": null,
     "boomAudio": {
       "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"

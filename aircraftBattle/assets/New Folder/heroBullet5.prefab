@@ -25,13 +25,10 @@
       },
       {
         "__id__": 4
-      },
-      {
-        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 5
     },
     "_id": "",
     "_opacity": 255,
@@ -78,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "21e3c29f-9def-4a12-b8e5-d5e04bb3bec0"
+      "__uuid__": "be824166-d20e-43f5-9aa3-501bfdcee104"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -93,44 +90,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
-  },
-  {
-    "__type__": "cc.PolygonCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": 0,
-        "y": 93
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -24.5,
-        "y": 10.556756756756755
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 0,
-        "y": -93
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 20.416666666666664,
-        "y": -41.72432432432433
-      }
-    ]
+    "_atlas": {
+      "__uuid__": "c0d77c51-6f91-40d5-8a00-4b976f16efcb"
+    }
   },
   {
     "__type__": "293f6n44ilGV7HhQPppjCLb",
