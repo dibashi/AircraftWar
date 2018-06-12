@@ -30,7 +30,7 @@
   "title": "ltxfd",
   "webOrientation": "auto",
   "wechatgame": {
-    "REMOTE_SERVER_ROOT": "http://www.youngwingtec.com/VRContent/bowuguan",
+    "REMOTE_SERVER_ROOT": "https://h5-html.oss-cn-hangzhou.aliyuncs.com/cpr/yangwen/ltxfd",
     "appid": "wxd0195d90f49b3a3f",
     "isSubdomain": false,
     "orientation": "portrait",
