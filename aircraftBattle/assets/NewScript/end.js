@@ -173,7 +173,7 @@ cc.Class({
 
         
 
-        wx.shareAppMessage({ title: "超好玩的飞机游戏！",
+        wx.shareAppMessage({ title: "我邀请了8个好友一起PK，就差你了，赶紧来",
         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"end_share"});
     },
     // update (dt) {},

@@ -320,7 +320,7 @@ cc.Class({
       wx.onShareAppMessage(function () {
         // 用户点击了“转发”按钮
         return {
-          title: '这飞机游戏太好玩了！',
+          title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
           imageUrl : "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
 
         }
