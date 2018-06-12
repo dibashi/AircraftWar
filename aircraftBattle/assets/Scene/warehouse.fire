@@ -4322,7 +4322,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "2be224d9-d731-460c-a565-51079ae9c9a3"
+      "__uuid__": "65a78c4d-e090-499d-9630-233465f45913"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -7201,9 +7201,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "beb7c69d-8c48-4d2b-84ec-c5f2fbdc6536"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": null,
     "pressedSprite": null,
     "_N$hoverSprite": null,
@@ -7351,9 +7349,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "40440282-7873-4233-a6ee-119021ef1276"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": null,
     "pressedSprite": null,
     "_N$hoverSprite": null,
@@ -7492,7 +7488,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "3c5791d2-0c73-4b8c-ad0d-09887a9aa285"
+      "__uuid__": "aaf250d4-cf3a-4974-8120-ba2e5079c07b"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -7507,7 +7503,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
+    }
   },
   {
     "__type__": "cc.Button",
@@ -7555,9 +7553,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "3c5791d2-0c73-4b8c-ad0d-09887a9aa285"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": null,
     "pressedSprite": null,
     "_N$hoverSprite": null,
@@ -7733,9 +7729,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "407fa82f-cdb8-4570-95da-83d800701707"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": {
       "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
     },
@@ -8054,9 +8048,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "407fa82f-cdb8-4570-95da-83d800701707"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": {
       "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
     },
@@ -8292,9 +8284,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "407fa82f-cdb8-4570-95da-83d800701707"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": {
       "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
     },
