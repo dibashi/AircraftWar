@@ -123,6 +123,25 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+
+        jindutiao2: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        jindutiaoMask: {
+            default: null,
+            type: cc.Node,
+
+        },
+
+        beginGame:{
+            default: null,
+            type: cc.Node,
+
+        },
     },
 
 
@@ -277,6 +296,9 @@ cc.Class({
             ss.getComponent("dailyAlert").onWho = this.node;
             this.node.addChild(ss);
         }
+
+
+        this.jindutiao2.active = false;
       
     },
 
@@ -329,7 +351,18 @@ cc.Class({
 
     beginClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
+
+
+
+        this.beginGame.active =false;
+        this.jindutiao2.active = true;
+
+       
+
+        let anim = this.jindutiaoMask.getComponent(cc.Animation);
+        anim.play('jindutiaoAni');
         cc.director.loadScene('game');
+
     },
 
     planesClick: function () {
