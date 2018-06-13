@@ -346,6 +346,7 @@ cc.Class({
 
         this.bombNo = parseInt(cc.sys.localStorage.getItem('dazhaoCount'));
         this.bombSprite.on('touchstart', this.bombOnclick, this);
+        this.bombSprite.on('touchmove', this.bombOnclickMove, this);
         this.bombLabel.string = this.bombNo;
         //this.bombSprite.setPosition(wx - this.bombSprite.getContentSize().width/2, -hy + this.bombSprite.getContentSize().height/2);
 
@@ -569,7 +570,7 @@ cc.Class({
     },
 
     dragMove: function (event) {
-        //cc.log("game dragMove");
+        cc.log("game dragMove");
         this.touchMovePoint = event.getLocation();
         let dx = this.touchMovePoint.x - this.touchBeginPoint.x;
         let dy = this.touchMovePoint.y - this.touchBeginPoint.y;
@@ -661,6 +662,7 @@ cc.Class({
 
     //大招启动
     bombOnclick: function (e) {
+        cc.log("bomb touch");
         e.stopPropagation();
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
@@ -672,6 +674,10 @@ cc.Class({
             console.log('没有子弹');
 
         }
+    },
+
+    bombOnclickMove:function(e) {
+        e.stopPropagation();
     },
 
     dazhaoPlaneOver: function () {
