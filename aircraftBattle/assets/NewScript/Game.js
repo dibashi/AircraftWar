@@ -229,7 +229,9 @@ cc.Class({
         reviveAlert:{
             default: null,
             type: cc.Prefab,
-        }
+        },
+
+        UIZorder:50,//UI层的Z序
     },
 
 
@@ -328,9 +330,9 @@ cc.Class({
 
       //  this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
       this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - 10 - (this.spriteLife.getContentSize().height / 2));
-        // let lifeLabel =  this.node.getChildByName("lifeLabel");
+      
+      this.spriteLife.setLocalZOrder(this.UIZorder);
 
-        // lifeLabel.setPosition(cc.v2(0,moBanSprite.getPosition().y));
         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
 
 
@@ -350,13 +352,15 @@ cc.Class({
         this.bombSprite.setPosition(-wx + this.bombSprite.getContentSize().width * this.bombSprite.scale * 0.5, -hy + this.bombSprite.getContentSize().height * this.bombSprite.scale * 0.5);
 
 
+        this.bombSprite.setLocalZOrder(this.UIZorder);
+
         this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
 
         //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width * this.shieldSprite.scale * 0.5, -hy + this.shieldSprite.getContentSize().height * this.shieldSprite.scale * 0.5);
 
-
+        this.shieldSprite.setLocalZOrder(this.UIZorder);
 
 
         this.node.on('touchmove', this.dragMove, this);
@@ -656,8 +660,8 @@ cc.Class({
     },
 
     //大招启动
-    bombOnclick: function () {
-       
+    bombOnclick: function (e) {
+        e.stopPropagation();
         if (this.bombNo > 0) {
             this.bombLabel.string = this.bombNo - 1;
             this.bombNo -= 1;
