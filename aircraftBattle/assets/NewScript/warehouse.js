@@ -298,5 +298,4 @@ cc.Class({
 
     },
 
-    // update (dt) {},
 });

@@ -141,5 +141,5 @@ cc.Class({
 
     },
 
-    // update (dt) {},
+
 });

@@ -552,19 +552,7 @@ cc.Class({
         return dist;
     }
 
-    // update(dt) {
-
-
-
-    //     for(var i = 0; i<D.enemys.length;i++) {
-
-    //         if(this.getEnemyDistance(D.enemys[i]) < this.Radius) {
-    //             cc.log("游戏结束");
-
-    //             this.node.parent.getComponent('Game').gameOver();
-    //         }
-    //     }
-    // },
+    
 
     // getEnemyDistance: function (enemy) {
 

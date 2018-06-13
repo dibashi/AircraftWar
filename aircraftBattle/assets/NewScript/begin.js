@@ -428,5 +428,4 @@ cc.Class({
         ss.getComponent("getGiftAlert").onWho = this.node;
         this.node.addChild(ss);
     },
-    // update (dt) {},
 });
