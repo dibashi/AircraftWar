@@ -439,6 +439,30 @@ cc.Class({
 
     },
 
+    resumeAction: function () {
+        console.log("enemy resume!");
+        this.isPause = true;
+
+        this.node.resumeAllActions();
+
+        cc.director.getScheduler().resumeTarget(this);
+    },
+
+    pauseAction: function () {
+        console.log("enemy pause!");
+        this.isPause =false;
+
+        this.node.pauseAllActions();
+
+        cc.director.getScheduler().pauseTarget(this);
+    },
+
+    update(dt) {
+        if (this.isPause) {
+            return;
+        }
+
+    },
 
     onCollisionEnter: function (other, self) {
 

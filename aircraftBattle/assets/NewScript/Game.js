@@ -1148,10 +1148,10 @@ cc.Class({
     gamePause: function () {
         console.log("pauseAction");
         if (this.isPause == true) {
-            this.gameZanTing();
+            this.gameJiXu();
             this.isPause = false;
         } else if (this.isPause == false) {
-            this.gameJiXu();
+            this.gameZanTing();
             this.isPause = true;
         }
 
@@ -1160,18 +1160,22 @@ cc.Class({
 
     //游戏继续
     gameZanTing: function () {
-        console.log("resumeAction");
-        if (this.player != null) {
-            this.player.getComponent("Player").resumeAction(); //让自己的飞机管理自己的子弹暂停？
-        }
-         this.backGround.getComponent("background").resumeAction(); //暂停云和背景
+      
 
-        // let cc = this.node.childrenCount;
-        // for (let i = 0; i < cc; i++) {
-        //     if (this.node.children[i].group === 'enemy') {
-        //         this.node.children[i].resumeAction(); //让敌机人机 自己暂停自己的子弹。
-        //     }
-        // }
+        
+        if (this.player != null) {
+            this.player.getComponent("Player").pauseAction(); //让自己的飞机管理自己的子弹暂停？
+        }
+
+         this.backGround.getComponent("background").pauseAction(); //暂停云和背景
+
+        let cc = this.node.childrenCount;
+        for(let i = 0; i< cc;i++) {
+            if(this.node.children[i].group === 'enemy') {
+                this.node.children[i].getComponent("enemy").pauseAction(); //让敌机人机 自己暂停自己的子弹。
+            }
+        }
+
         // this.hero.onDrag();
         // this.gameMusic.resume();
 
@@ -1179,18 +1183,18 @@ cc.Class({
     //游戏暂停
     gameJiXu: function () {
 
+        console.log("resumeAction");
         if (this.player != null) {
-            this.player.getComponent("Player").pauseAction(); //让自己的飞机管理自己的子弹暂停？
+            this.player.getComponent("Player").resumeAction(); //让自己的飞机管理自己的子弹暂停？
         }
+         this.backGround.getComponent("background").resumeAction(); //暂停云和背景
 
-         this.backGround.getComponent("background").pauseAction(); //暂停云和背景
-
-        // let cc = this.node.childrenCount;
-        // for(let i = 0; i< cc;i++) {
-        //     if(this.node.children[i].group === 'enemy') {
-        //         this.node.children[i].pauseAction(); //让敌机人机 自己暂停自己的子弹。
-        //     }
-        // }
+        let cc = this.node.childrenCount;
+        for (let i = 0; i < cc; i++) {
+            if (this.node.children[i].group === 'enemy') {
+                this.node.children[i].getComponent("enemy").resumeAction(); //让敌机人机 自己暂停自己的子弹。
+            }
+        }
 
 
 
