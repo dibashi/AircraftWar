@@ -81,18 +81,18 @@ cc.Class({
                 let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
 
 
-                let rdx = ndx * this.flyingSpeed;
-                let rdy = ndy * this.flyingSpeed;
+                let rdx = ndx * this.flyingSpeed*dt*60;
+                let rdy = ndy * this.flyingSpeed*dt*60;
                 this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
             } else {
-                this.node.y += this.flyingSpeed;
+                this.node.y += this.flyingSpeed*dt*60;
             }
            
             //获得敌机，然后追踪
 
 
         } else {
-            this.node.y += this.flyingSpeed;
+            this.node.y += this.flyingSpeed*dt*60;
         }
 
         if (this.node.getPosition().y > this.p) {

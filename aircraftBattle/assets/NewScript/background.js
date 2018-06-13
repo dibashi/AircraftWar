@@ -115,7 +115,7 @@ cc.Class({
           //  this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed*this.speedFactor);
             this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+this.h-this.bgSpeed*this.speedFactor);
         }else {
-            bg1Y -= this.bgSpeed*this.speedFactor;
+            bg1Y -= this.bgSpeed*this.speedFactor*dt*60;
             this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
         }
 
@@ -124,7 +124,7 @@ cc.Class({
         if(bg2Y<=-this.h) {
             this.bg2.setPosition(this.bg2.getPosition().x,bg1Y+this.h);
         }else {
-            bg2Y -= this.bgSpeed*this.speedFactor;
+            bg2Y -= this.bgSpeed*this.speedFactor*dt*60;
             this.bg2.setPosition(this.bg2.getPosition().x,bg2Y);
         }
 
@@ -136,21 +136,21 @@ cc.Class({
         if(yun1Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
             this.createYun1(this.yun1);
         }else {
-            yun1Y -= this.yun1Speed*this.speedYUNFactor;
+            yun1Y -= this.yun1Speed*this.speedYUNFactor*dt*60;
             this.yun1.setPosition(this.yun1.getPosition().x,yun1Y);
         }
 
         if(yun2Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
             this.createYun2(this.yun2);
         }else {
-            yun2Y -= this.yun2Speed*this.speedYUNFactor;
+            yun2Y -= this.yun2Speed*this.speedYUNFactor*dt*60;
             this.yun2.setPosition(this.yun2.getPosition().x,yun2Y);
         }
 
         if(yun3Y<=-(cc.director.getVisibleSize().height*0.5 + 100)) {
             this.createYun3(this.yun3);
         }else {
-            yun3Y -= this.yun1Speed*this.speedYUNFactor;
+            yun3Y -= this.yun1Speed*this.speedYUNFactor*dt*60;
             this.yun3.setPosition(this.yun3.getPosition().x,yun3Y);
         }
 

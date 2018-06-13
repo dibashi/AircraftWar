@@ -71,8 +71,8 @@ cc.Class({
 
             let speed = 8;
 
-            let rdx = ndx * speed;
-            let rdy = ndy * speed;
+            let rdx = ndx * speed*dt*60;
+            let rdy = ndy * speed*dt*60;
             this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
            
         } else if (this.prizeType == generateType.jinbi) {
@@ -80,8 +80,8 @@ cc.Class({
            
             let speed = 15;
 
-            let rdx = ndx * speed;
-            let rdy = ndy * speed;
+            let rdx = ndx * speed*dt*60;
+            let rdy = ndy * speed*dt*60;
             this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
         }
