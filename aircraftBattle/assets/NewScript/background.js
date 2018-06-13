@@ -113,7 +113,7 @@ cc.Class({
 
         if(bg1Y<=-this.h) {
           //  this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+cc.director.getVisibleSize().height-this.bgSpeed*this.speedFactor);
-            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+this.h-this.bgSpeed*this.speedFactor);
+            this.bg1.setPosition(this.bg1.getPosition().x,bg2Y+this.h-this.bgSpeed*this.speedFactor*dt*60);
         }else {
             bg1Y -= this.bgSpeed*this.speedFactor*dt*60;
             this.bg1.setPosition(this.bg1.getPosition().x,bg1Y);
