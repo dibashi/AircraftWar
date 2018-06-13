@@ -49,6 +49,8 @@ cc.Class({
         yun3Speed:5.0,
 
         h:0,
+
+        isPause:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -103,8 +105,25 @@ cc.Class({
 
     },
 
+
+
+    pauseAction: function () {
+        this.isPause = true;
+      
+      
+    },
+
+    resumeAction:function() {
+        this.isPause = false;
+    },
+
+
      update (dt) {
         
+        if(this.isPause) {
+            return;
+        }
+
 
         let bg1Y = this.bg1.getPosition().y;
         let bg2Y = this.bg2.getPosition().y;
