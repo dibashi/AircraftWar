@@ -1058,7 +1058,6 @@ cc.Class({
         //防止在复活页面等待时 出现bug
         this.unscheduleAllCallbacks();
         this.checkNextStage();
-    // this.unschedule(this.newBaozouProcessing);
         if(this.dazhaoPlanes != null) {
             for(let i = 0; i<this.dazhaoPlanes.length;i++) {
                 this.dazhaoPlanes[i].destroy();
@@ -1077,13 +1076,11 @@ cc.Class({
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
         var c = cc.sys.localStorage.getItem('jinBiCount');
-     //   var d = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label).string;
         var d = this._jinBiCount;
         var newC = parseInt(c) + parseInt(d);
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount",d);
 
-        //cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
         cc.eventManager.pauseTarget(this.node, true);
