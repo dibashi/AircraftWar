@@ -70,6 +70,8 @@ cc.Class({
             type: cc.Prefab,
         },
         partice: null,
+
+        isPause: false,// 
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -311,7 +313,7 @@ cc.Class({
         this.runWingman();
     },
 
-    closeAllBullet:function() {
+    closeAllBullet: function () {
         for (let i = 0; i < 5; i++) {
 
             this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
@@ -405,7 +407,7 @@ cc.Class({
         //cc.log(other.node);
         if (other.node.group === "eBullet") {
             //暴走逻辑优先处理，可以防止护盾消耗。
-            if( this.node.parent.getComponent('Game').baozouFlag) {
+            if (this.node.parent.getComponent('Game').baozouFlag) {
                 this.node.parent.getComponent('Game').shieldOnclick();
                 return;
             }
@@ -438,7 +440,7 @@ cc.Class({
             }
         } else if (other.node.group === "enemy") {
             //暴走逻辑优先处理，可以防止护盾消耗。
-            if( this.node.parent.getComponent('Game').baozouFlag) {
+            if (this.node.parent.getComponent('Game').baozouFlag) {
                 other.node.getComponent("enemy").enemyBoomAni();
                 return;
             }
@@ -467,12 +469,12 @@ cc.Class({
     dead: function () {
         //1 先判断是否还有飞机，
         this.boomAni();
-       
+
 
 
     },
 
-   
+
     boomAni: function () {
 
         cc.audioEngine.playEffect(this.boomAudio, false);
@@ -487,9 +489,9 @@ cc.Class({
         this.unscheduleAllCallbacks();
 
         //僚机要删除 不然有显示上的bug
-       
 
-        for(let i = 0; i<6;i++) {
+
+        for (let i = 0; i < 6; i++) {
             this.node.getChildByName("wingman" + i).active = false;
         }
 
@@ -497,8 +499,8 @@ cc.Class({
 
 
 
-       let ani =  this.node.getComponent(cc.Animation);
-       ani.play();
+        let ani = this.node.getComponent(cc.Animation);
+        ani.play();
         this.node.parent.getComponent("Game").closeBaoZou();
 
 
@@ -506,26 +508,30 @@ cc.Class({
 
     baozhaOver: function () {
         this.unscheduleAllCallbacks();
-   
- 
+
+
         let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
         if (lifeCount > 0) {
             this.node.parent.getComponent("Game").goNewPlane();
             this.node.destroy();
         } else {
-           
+
             this.node.parent.getComponent('Game').gameOver();
             this.node.destroy();
         }
 
 
 
-        
+
     },
 
 
 
     update(dt) {
+        if (this.isPause) {
+            return;
+        }
+
 
         if (this.wudi && this._wudiTime <= 0) {
             this.wudi = false;
@@ -550,9 +556,126 @@ cc.Class({
 
         var dist = cc.pDistance(this.node.position, enemy);
         return dist;
-    }
+    },
 
-    
+    pauseAction: function () {
+        this.isPause = true;
+        //暂停僚机
+        //暂停自己的管道
+        //暂停自瞄管道
+
+        this.guanDaoPause();
+        this.wingmanPause();
+        this.trackPause();
+    },
+
+    resumeAction:function() {
+        this.isPause = false;
+
+        this.guandaoResume();
+        this.wingmanResume();
+        this.trackResume();
+    },
+
+    wingmanPause:function() {
+      
+        for (let i = 0; i < 6; i++) {
+        
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(false);
+        }
+
+    },
+
+    wingmanResume:function() {
+        let wmCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
+        for (let i = 0; i < wmCount; i++) {
+         
+            this.wingmanArrays[i].getComponent("wingman").setEnableGuanDao(true);
+        }
+    },
+
+    trackPause:function() {
+        for (let i = 0; i < 4; i++) {
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(false);
+        }
+    },
+
+    trackResume:function() {
+        for (let i = 0; i < this.trackGuandaoCount; i++) {
+            this.trackGuandaoArrays[i].getComponent("guandaoTrack").setEnableGuanDao(true);
+        }
+    },
+
+    guanDaoPause: function () {
+        //暂停发射子弹
+
+        switch (this.guandaoCount) {
+            case 1:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
+                break;
+            case 2:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(false);
+                break;
+
+            case 3:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(false);
+                break;
+
+            case 4:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(false);
+                break;
+
+            case 5:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(false);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(false);
+                break;
+        }
+    },
+
+    guandaoResume:function() {
+        switch (this.guandaoCount) {
+            case 1:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                break;
+            case 2:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+            case 3:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+            case 4:
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                break;
+
+            case 5:
+                this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[1].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[2].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[3].getComponent("guandao").setEnableGuanDao(true);
+                this.guandaoArrays[4].getComponent("guandao").setEnableGuanDao(true);
+                break;
+        }
+    },
+
+
+
 
     // getEnemyDistance: function (enemy) {
 

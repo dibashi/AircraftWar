@@ -1838,9 +1838,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "3c5791d2-0c73-4b8c-ad0d-09887a9aa285"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": null,
     "pressedSprite": null,
     "_N$hoverSprite": null,
@@ -1856,7 +1854,7 @@
       "__id__": 2
     },
     "component": "Game",
-    "handler": "gameOver",
+    "handler": "gamePause",
     "customEventData": ""
   },
   {
@@ -2166,6 +2164,8 @@
     "_jinBiCount": 0,
     "reviveAlert": {
       "__uuid__": "5a1447b5-b83a-41ca-ac59-6729a6e8101f"
-    }
+    },
+    "UIZorder": 50,
+    "isPause": false
   }
 ]
