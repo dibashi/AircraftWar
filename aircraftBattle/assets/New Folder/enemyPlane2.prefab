@@ -132,14 +132,16 @@
     "_radius": 45
   },
   {
-    "__type__": "b707f7nGu1GZL0ovUyhJBgP",
+    "__type__": "3092bNZJ7tFNZG0YK5yN9su",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "bullet0": null,
+    "bullet0": {
+      "__uuid__": "b1ec9ac7-b050-4833-a8a1-a53539980b92"
+    },
     "prizeTeXiao": null,
     "enemyID": -1,
     "blood": -1111,
@@ -158,8 +160,13 @@
     "enemyTrack": 0,
     "particleSys": null,
     "partice": null,
+    "boomAudio": {
+      "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"
+    },
     "shoujiAni": null,
-    "shoujiAniPre": null
+    "shoujiAniPre": {
+      "__uuid__": "d6936238-a0b9-4466-a9f3-9793808223a0"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
