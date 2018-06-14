@@ -234,6 +234,21 @@ cc.Class({
         UIZorder: 50,//UI层的Z序
 
         isPause: false,//这个变量很重要，标记游戏是否暂停，它在很多页面都有引用，只在Game.js中可以修改它的值
+
+        singleColor: {
+            default: null,
+            type: cc.Node,
+        },
+
+        pauseBtn:{
+            default: null,
+            type: cc.Node,
+        },
+
+        resumeBtn:{
+            default: null,
+            type: cc.Node,
+        },
     },
 
 
@@ -242,6 +257,15 @@ cc.Class({
     onLoad() {
         //广告复活标记
         cc.sys.localStorage.setItem("GuangGaoFuhuoFlag", 1);//可以广告复活
+
+        //暂停的黑底纹  先扔一边  
+           this.singleColor.setPosition(10000,10000);
+         this.pauseBtn.setPosition(314,521);
+         this.resumeBtn.setPosition(10000,10000);
+
+         this.singleColor.setLocalZOrder(101);
+         this.pauseBtn.setLocalZOrder(102);
+         this.resumeBtn.setLocalZOrder(102);
 
         this.jinbiPoolSize = 50,
             this.hudunPoolSize = 3,
@@ -1147,10 +1171,17 @@ cc.Class({
 
     gamePause: function () {
         if (this.isPause == true) {
+            this.singleColor.setPosition(10000,10000);
+            this.pauseBtn.setPosition(314,521);
+            this.resumeBtn.setPosition(10000,10000);
             cc.director.getScheduler().resumeTarget(this);
             this.gameJiXu();
             this.isPause = false;
         } else if (this.isPause == false) {
+            this.singleColor.setPosition(0,0);
+            this.pauseBtn.setPosition(10000,10000);
+            this.resumeBtn.setPosition(0,0);
+           
             cc.director.getScheduler().pauseTarget(this);
             this.gameZanTing();
             this.isPause = true;
@@ -1181,6 +1212,8 @@ cc.Class({
                 this.node.children[i].getComponent("enemyBullet").pauseAction();
             }else if(this.node.children[i].group === 'prize') {
                 this.node.children[i].getComponent("prize").pauseAction();
+            } else if(this.node.children[i].group == 'dazhaoPlane') {
+                this.node.children[i].getComponent("dazhaoPlane").pauseAction();
             }
         }
 
@@ -1216,6 +1249,8 @@ cc.Class({
                 this.node.children[i].getComponent("enemyBullet").resumeAction();
             }else if(this.node.children[i].group === 'prize') {
                 this.node.children[i].getComponent("prize").resumeAction();
+            }else if(this.node.children[i].group == 'dazhaoPlane') {
+                this.node.children[i].getComponent("dazhaoPlane").resumeAction();
             }
         }
 

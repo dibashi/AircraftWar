@@ -35,6 +35,7 @@ cc.Class({
 
         onceBulletCount:1,
 
+        isPause:false,
 
     },
 
@@ -91,6 +92,28 @@ cc.Class({
        
             this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
         
+    },
+
+    resumeAction: function () {
+       
+        this.isPause = true;
+
+        this.node.resumeAllActions();
+
+        cc.director.getScheduler().resumeTarget(this);
+
+        this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(true);
+    },
+
+    pauseAction: function () {
+      
+        this.isPause =false;
+
+        this.node.pauseAllActions();
+
+        cc.director.getScheduler().pauseTarget(this);
+
+        this.guandaoArrays[0].getComponent("guandao").setEnableGuanDao(false);
     },
 
 
