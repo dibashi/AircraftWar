@@ -63,7 +63,32 @@ cc.Class({
 
     },
 
+    pauseAction: function () {
+        this.isPause = true;
+      cc.log("子弹暂停");
+        this.node.pauseAllActions();
+
+        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+            this.node.getComponent(cc.Animation).pause();
+        }
+    },
+
+    resumeAction:function() {
+        this.isPause = false;
+        this.node.resumeAllActions();
+
+        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+            this.node.getComponent(cc.Animation).resume();
+        }
+    },
+
+
     update(dt) {
+
+        if(this.isPause) {
+            return;
+        }
+
         if (this.node.getPosition().y > this.bjY || this.node.getPosition().y < -this.bjY || this.node.getPosition().x > this.bjX || this.node.getPosition().x < -this.bjX) {
             this.node.destroy();
         }

@@ -39,6 +39,8 @@ cc.Class({
         p:0,//上边界 超出就销毁子弹
 
         bulletPool:null,
+
+        isPause:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -54,10 +56,22 @@ cc.Class({
        
     },
 
+    pauseAction: function () {
+        this.isPause = true;
+      
+      
+    },
+
+    resumeAction:function() {
+        this.isPause = false;
+    },
+
     update(dt) {
 
 
-        
+        if(this.isPause) {
+            return;
+        }
         
         // this.node.x += this.flyingSpeed;
         if (this.trackOpen == true) {

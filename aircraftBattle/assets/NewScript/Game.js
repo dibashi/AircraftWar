@@ -1173,6 +1173,10 @@ cc.Class({
         for(let i = 0; i< cc;i++) {
             if(this.node.children[i].group === 'enemy') {
                 this.node.children[i].getComponent("enemy").pauseAction(); //让敌机人机 自己暂停自己的子弹。
+            } else if(this.node.children[i].group === 'hBullet' ) {
+                this.node.children[i].getComponent("heroBullet").pauseAction();
+            } else if(this.node.children[i].group === 'eBullet') {
+                this.node.children[i].getComponent("enemyBullet").pauseAction();
             }
         }
 
@@ -1193,6 +1197,10 @@ cc.Class({
         for (let i = 0; i < cc; i++) {
             if (this.node.children[i].group === 'enemy') {
                 this.node.children[i].getComponent("enemy").resumeAction(); //让敌机人机 自己暂停自己的子弹。
+            }else if(this.node.children[i].group === 'hBullet' ) {
+                this.node.children[i].getComponent("heroBullet").resumeAction();
+            } else if(this.node.children[i].group === 'eBullet') {
+                this.node.children[i].getComponent("enemyBullet").resumeAction();
             }
         }
 
