@@ -1179,6 +1179,8 @@ cc.Class({
                 this.node.children[i].getComponent("heroBullet").pauseAction();
             } else if(this.node.children[i].group === 'eBullet') {
                 this.node.children[i].getComponent("enemyBullet").pauseAction();
+            }else if(this.node.children[i].group === 'prize') {
+                this.node.children[i].getComponent("prize").pauseAction();
             }
         }
 
@@ -1212,6 +1214,8 @@ cc.Class({
                 this.node.children[i].getComponent("heroBullet").resumeAction();
             } else if(this.node.children[i].group === 'eBullet') {
                 this.node.children[i].getComponent("enemyBullet").resumeAction();
+            }else if(this.node.children[i].group === 'prize') {
+                this.node.children[i].getComponent("prize").resumeAction();
             }
         }
 

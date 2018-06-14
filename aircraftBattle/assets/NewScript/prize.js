@@ -26,6 +26,8 @@ cc.Class({
         },
 
         prizePool:null,
+
+        isPause:false,
     },
 
     onLoad(){
@@ -39,6 +41,10 @@ cc.Class({
         // if (this.node.getPosition().y < -this.node.parent.height / 2) {
         //     this.node.destroy();
         // }
+
+        if(this.isPause) {
+            return;
+        }
 
         if(this.prizeType == generateType.jinbi&&this.jinbiRunFlag == false) {
             return;
@@ -91,6 +97,25 @@ cc.Class({
 
     normalizeVector: function (x, y) {
 
+    },
+
+    pauseAction: function () {
+        this.isPause = true;
+      cc.log("子弹暂停");
+        this.node.pauseAllActions();
+
+        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+            this.node.getComponent(cc.Animation).pause();
+        }
+    },
+
+    resumeAction:function() {
+        this.isPause = false;
+        this.node.resumeAllActions();
+
+        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+            this.node.getComponent(cc.Animation).resume();
+        }
     },
 
 

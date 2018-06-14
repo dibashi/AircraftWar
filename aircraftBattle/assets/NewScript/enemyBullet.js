@@ -27,6 +27,7 @@ cc.Class({
 
         ax: 0,
         by: 0,
+        isPause:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
