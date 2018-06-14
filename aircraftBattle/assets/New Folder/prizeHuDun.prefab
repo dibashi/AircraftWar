@@ -75,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "48ffe733-ea18-47cb-9fbd-d0350eba81e9"
+      "__uuid__": "1ca8fb1c-2c5f-4dec-8698-ccf222cb52f3"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -90,9 +90,7 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": {
-      "__uuid__": "3b39f150-196e-41c3-9adf-d21cc8e27607"
-    }
+    "_atlas": null
   },
   {
     "__type__": "ca3578Cj0tL7ZRK+IR5dk+H",
@@ -108,7 +106,8 @@
     "prizeAudio": {
       "__uuid__": "cc35f357-3c53-422e-914a-1b3330bb0681"
     },
-    "prizePool": null
+    "prizePool": null,
+    "isPause": false
   },
   {
     "__type__": "cc.CircleCollider",
