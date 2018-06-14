@@ -59,11 +59,24 @@ var _enemyPlaneData = [
 var _stage = [
 
     [
-        {enemyID:2,beginX:0,beginY:800,endX:0,endY:450},
+        {enemyID:2,beginX:0,beginY:800,endX:0,endY:420},
     ],
-    // [
-    //     {enemyID:0,beginX:300,beginY:300,endX:200,endY:200},
-    // ],
+
+  
+    [
+        {enemyID:0,beginX:120,beginY:800,endX:120,endY:420},
+        {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:420},
+        {enemyID:0,beginX:240,beginY:800,endX:240,endY:300},
+        {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:300}
+    ],
+
+    [
+        {enemyID:0,beginX:120,beginY:800,endX:120,endY:300},
+        {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:300},
+        {enemyID:0,beginX:240,beginY:800,endX:240,endY:420},
+        {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:420},
+        {enemyID:1,beginX:0,beginY:800,endX:0,endY:360}//这个是中间
+    ],
     // [
     //     {enemyID:0,beginX:400,beginY:400,endX:300,endY:300},
     // ],

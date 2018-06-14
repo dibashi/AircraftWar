@@ -67,6 +67,15 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        guandaoNode0: {
+            default: null,
+            type: cc.Node,
+        },
+        guandaoNode1: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -111,31 +120,11 @@ cc.Class({
     },
 
     enterCallback: function () {
-
-
-
         this.zuoyoushangxia();
-
-
         this.schedule(this.dingwei, 1 / this.shootingSpeed);
-
-},
-
-  
-    susheCallback: function () {
-
-        //TODO：！！这里应该以后应该加入子弹池来优化
-
-
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-
-        this.zhixianxiangxia();
-
-
-
     },
 
-    
+
     generateBullet: function () {
         let bl = null;
 
@@ -151,24 +140,42 @@ cc.Class({
 
 
 
-   
+
     //定位前的生成处理 之后调用定位
     dingwei: function () {
 
-        for (let i = 0; i < 2; i++) {
-            // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback, this)));
+        for (let i = 0; i < 3; i++) {
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback0, this)));
+
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback1, this)));
         }
 
     },
 
-    dingweiCallback: function () {
+    dingweiCallback0: function () {
         let bl = this.generateBullet();
 
         bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
 
         this.node.parent.addChild(bl);
+
+       let pos =  this.node.convertToWorldSpaceAR(this.guandaoNode0.getPosition());
+       let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+        bl.setPosition(p);
+    },
+
+    dingweiCallback1: function () {
+        let bl = this.generateBullet();
+
+        bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
+        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
+
+        this.node.parent.addChild(bl);
+       
+        let pos =  this.node.convertToWorldSpaceAR(this.guandaoNode1.getPosition());
+       let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+        bl.setPosition(p);
     },
 
     enemyBoomAni: function () {
@@ -243,7 +250,7 @@ cc.Class({
     },
 
     update(dt) {
-        if(this.isPause) {
+        if (this.isPause) {
             return;
         }
 
