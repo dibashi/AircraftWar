@@ -139,17 +139,23 @@
       "__id__": 1
     },
     "_enabled": true,
-    "bullet0": null,
-    "prizeTeXiao": null,
-    "enemyID": -1,
-    "blood": -1111,
+    "bullet0": {
+      "__uuid__": "17132862-a092-49ea-9057-7d3135078dad"
+    },
+    "prizeTeXiao": {
+      "__uuid__": "e6684075-a6d9-4028-a9db-2c3b81fb07a4"
+    },
+    "enemyID": 0,
+    "blood": 1,
     "shootingSpeed": 1,
     "flyingSpeed": 0,
     "bulletType": 0,
     "damage": 1,
     "dropProbability": 65,
     "fallingObject": 0,
-    "bloodBar": null,
+    "bloodBar": {
+      "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
+    },
     "nodeBar": null,
     "bBar": null,
     "baoZhaTeXiao": null,
@@ -158,8 +164,13 @@
     "enemyTrack": 0,
     "particleSys": null,
     "partice": null,
+    "boomAudio": {
+      "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"
+    },
     "shoujiAni": null,
-    "shoujiAniPre": null
+    "shoujiAniPre": {
+      "__uuid__": "d6936238-a0b9-4466-a9f3-9793808223a0"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",

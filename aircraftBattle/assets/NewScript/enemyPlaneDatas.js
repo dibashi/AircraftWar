@@ -104,13 +104,13 @@ var _enemyPlaneData = [
 var _stage = [
 
     [
-        {enemyID:2},
+        {enemyID:0,beginX:200,beginY:200,endX:100,endY:100},
     ],
     [
-        {enemyID:2},
+        {enemyID:0,beginX:300,beginY:300,endX:200,endY:200},
     ],
     [
-        {enemyID:2},
+        {enemyID:0,beginX:400,beginY:400,endX:300,endY:300},
     ],
     
 ];

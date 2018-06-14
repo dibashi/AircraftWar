@@ -25,10 +25,13 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 6
     },
     "_id": "",
     "_opacity": 255,
@@ -127,6 +130,36 @@
       "y": 0
     },
     "_radius": 40
+  },
+  {
+    "__type__": "3933aCRwQlGKaqa9EMF5LUt",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "bullet0": null,
+    "prizeTeXiao": null,
+    "enemyID": -1,
+    "blood": -1111,
+    "shootingSpeed": 1,
+    "flyingSpeed": 0,
+    "bulletType": 0,
+    "damage": 1,
+    "dropProbability": 65,
+    "fallingObject": 0,
+    "bloodBar": null,
+    "nodeBar": null,
+    "bBar": null,
+    "baoZhaTeXiao": null,
+    "damagedTeXiao": null,
+    "bulletTrack": 0,
+    "enemyTrack": 0,
+    "particleSys": null,
+    "partice": null,
+    "shoujiAni": null,
+    "shoujiAniPre": null
   },
   {
     "__type__": "cc.PrefabInfo",

@@ -67,27 +67,26 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+      
+        endX:null,//在场景中的位置
+        endY:null,//在场景中的位置
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
-
-        // this.nodeBar = cc.instantiate(this.bloodBar);
-        // this.bBar = this.nodeBar.getComponent(cc.Label);
-
-        // this.bBar.string = this.blood;
-
-        // this.node.addChild(this.nodeBar);
-        // this.nodeBar.setPosition(0, 0);
-        // this.nodeBar.rotation = 180;
         this.shoujiAniPool = new cc.NodePool();
         for (let i = 0; i < 8; i++) {
             let sjA = cc.instantiate(this.shoujiAniPre);
             this.shoujiAniPool.put(sjA);
         }
 
+    },
+
+    enterScene:function() {
+        var callback = cc.callFunc(this.enterCallback,this);
+        var seq = cc.sequence(cc.moveTo(1, cc.v2(this.endX,this.endY)), callback);
     },
 
 
@@ -114,158 +113,13 @@ cc.Class({
 
     enterCallback: function () {
 
+        this.zuoyoushangxia();
+        this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
 
-        //TODO!!!这里是敌机飞行轨迹！！！ 以后可以改为动态的！  
-        //这里的射击速度是 单次射击  将来 像三连发 然后停顿的 如何设计 ？
-        //其实应该在这里根据子弹射击方式来定义
-        //1 根据 敌机的 运动轨迹数据 来调用相关轨迹动画函数
-        //2 根据 敌机的 子弹发射方式 来 调用相关的 发射动画函数
-        if (this != undefined) {
-            if (this.enemyTrack == enemyTrack.guding) {
-                //固定不动就不需要实现什么了
-            } else if (this.enemyTrack == enemyTrack.zuoyoushangxia) {
-                this.zuoyoushangxia();
-            }
-
-
-            if (this.bulletTrack == bulletTrack.zhixianxiangxia) {
-                this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
-            } else if (this.bulletTrack == bulletTrack.dingwei) {
-                this.schedule(this.dingwei, 1 / this.shootingSpeed);
-            } else if (this.bulletTrack == bulletTrack.banquan) {
-                // this.schedule(this.xiexian, 1 / this.shootingSpeed);
-                this.schedule(this.banquan, 1 / this.shootingSpeed);
-            } else if (this.bulletTrack == bulletTrack.yiquan) {
-                // this.schedule(this.xiexian, 1 / this.shootingSpeed);
-                this.schedule(this.yiquan, 1 / this.shootingSpeed);
-            } else if (this.bulletTrack == bulletTrack.sanfazhixian) {
-                this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
-            }
-            else if (this.bulletTrack == bulletTrack.wufasanshe) {
-                this.schedule(this.wufasanshe, 1 / this.shootingSpeed);
-            }
-        }
-
-
-
-
-
-    },
-
-    sanfazhixian: function () {
-
-        for (let i = 0; i < 3; i++) {
-            // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.susheCallback, this)));
-        }
-
-    },
-
-    susheCallback: function () {
-
-        //TODO：！！这里应该以后应该加入子弹池来优化
-
-
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-
-        this.zhixianxiangxia();
-
-
-
-    },
-
-    yiquan: function () {
-
-        for (let jiaodu = -180; jiaodu < 180; jiaodu += 30) {
-            this.xiexianByjiaodu(jiaodu);
-
-        }
-
-
-    },
-
-
-    banquan: function () {
-
-        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
-            this.xiexianByjiaodu(jiaodu);
-            //this.xiexian(jiaodu);
-        }
-
-
-    },
-
-    xiexianByjiaodu: function (jiaodu) {
-        if (-90 < jiaodu && jiaodu < 90) {
-            this.xiexianRight(jiaodu);
-        } else if (jiaodu > 90 || jiaodu < -90) {
-            this.xiexianLeft(jiaodu);
-        } else if (jiaodu == -90) {
-            this.zhixianxiangxia();
-        } else if (jiaodu == 90) {
-            this.zhixianxiangshang();
-        }
-    },
-    //往右边倾斜
-    xiexianRight: function (jiaodu) {
-
-        let bl = this.generateBullet();
-        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-        bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
-        bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100 * Math.tan(jiaodu * 0.017453293));//2pi/360 = 0.017453293
-
-
-        this.node.parent.addChild(bl);
-    },
-
-    xiexianLeft: function (jiaodu) {
-
-        let bl = this.generateBullet();
-
-
-        bl.getComponent("enemyBullet").targetPositionX = bl.position.x - 100;
-        bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100 * Math.tan(jiaodu * 0.017453293));
-
-        this.node.parent.addChild(bl);
-    },
-
-
-
-    wufasanshe: function () {
-        // for(let i = 0; i<5;i++) {
-        //     // this.scheduleOnce(this.susheCallback,0.2);
-        //     this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.wufasansheCallback,this)));
-        // }
-        // for (let jiaodu = -75; jiaodu > -106; jiaodu -= 15) {
-        //     this.xiexianByjiaodu(jiaodu);
-        //     //this.xiexian(jiaodu);
-        // }
-
-        this.xiexianByjiaodu(-75);
-        this.xiexianByjiaodu(-105);
-        this.node.runAction(cc.sequence(cc.delayTime(0.1), cc.callFunc(this.wufasansheCallbackZhong, this)));
-        this.node.runAction(cc.sequence(cc.delayTime(0.2), cc.callFunc(this.wufasansheCallbackLiangBian, this)));
-    },
-
-    wufasansheCallbackZhong: function () {
-        this.xiexianByjiaodu(-90);
-    },
-
-    wufasansheCallbackLiangBian: function () {
-        this.xiexianByjiaodu(-75);
-        this.xiexianByjiaodu(-105);
     },
 
     generateBullet: function () {
         let bl = null;
-        // if (this.bulletType === bulletType.jipao) {
-        //     bl = cc.instantiate(this.bullet0); //预制体未做 未加入
-        // } else if (this.bulletType === bulletType.huopao) {
-        //     bl = cc.instantiate(this.bullet1);//预制体未做 未加入
-        // }
-        //为了方便。这里的敌机的子弹一律先按照cocos creator中bullet0的预制体来设置
-        //这样维护也较为方便
 
         bl = cc.instantiate(this.bullet0);
 
@@ -279,66 +133,14 @@ cc.Class({
     },
 
 
-
-
-
-    //直线与斜线其实是一个概念，给敌机子弹传递一个目标位置,让其运行到那个位置即可
     zhixianxiangxia: function () {
 
-        //TODO：！！这里应该以后应该加入子弹池来优化
-
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-
-        // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
         let bl = this.generateBullet();
-        //分离出来是为了以后 如果有轨迹是发射很多子弹,可以遍历,然后每个子弹的位置单独设置,或者设置在飞机中心
-        // bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-        //极其重要的分类化,简单的代码保证了 不同的运动轨迹显示.
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
-
-
-
         this.node.parent.addChild(bl);
     },
 
-
-    zhixianxiangshang: function () {
-
-
-        let bl = this.generateBullet();
-
-        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-
-        bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height / 2 + 50;
-
-
-
-        this.node.parent.addChild(bl);
-    },
-
-    //定位前的生成处理 之后调用定位
-    dingwei: function () {
-
-        for (let i = 0; i < 2; i++) {
-            // this.scheduleOnce(this.susheCallback,0.2);
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback, this)));
-        }
-
-    },
-
-    dingweiCallback: function () {
-        let bl = this.generateBullet();
-        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-        bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
-
-        this.node.parent.addChild(bl);
-    },
 
     enemyBoomAni: function () {
         //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
@@ -358,40 +160,10 @@ cc.Class({
         this.unscheduleAllCallbacks();
         cc.audioEngine.playEffect(this.boomAudio, false);
 
-        // this.node.group = "NOOOOOOO";
-
-        // this.partice = cc.instantiate(this.particleSys);
-        // this.node.parent.addChild(this.partice);
-        // this.partice.setPosition(this.node.getPosition());
-
-        // this.partice.getComponent(cc.ParticleSystem).resetSystem();
-
-
-        // this.node.opacity = 0;
-        // this.unscheduleAllCallbacks();
-        // this.scheduleOnce(this.baozhaOver, 0.7);
-
-
-        //敌机销毁数据+1
-        // let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
-        // cc.sys.localStorage.setItem('killedEnemyCount',kc);
-
-        //声音
 
     },
 
-    // baozhaOver: function () {
-    //     this.unscheduleAllCallbacks();
-    //    this.partice.destroy();
-
-    //     //这个有问题 要放动画回调 TODO!
-    //     this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-    //     this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string) + this.blood;
-    //     this.node.parent.getComponent('Game').checkNextStage();
-    //     this.node.destroy();
-    // },
-    //以前动画的
+  
     baozhaOver: function () {
 
         //这个有问题 要放动画回调 TODO!
@@ -405,14 +177,6 @@ cc.Class({
 
     enemyDamagedAni: function () {
 
-
-        // this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        // let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
-
-        // armatureDisplay.playAnimation("baozha");
-
-        // this.node.addChild(this.damagedTeXiao);
-        // armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
         this.shoujiAni = null;
         if (this.shoujiAniPool.size() > 0) {
             this.shoujiAni = this.shoujiAniPool.get();
@@ -429,11 +193,6 @@ cc.Class({
 
     damagedOver: function (event) {
 
-        //这个有问题 要放动画回调 TODO!
-
-
-        // this.damagedTeXiao.destroy();
-        cc.log("~!~~~!!!");
         this.shoujiAni.removeFromParent();
         this.shoujiAniPool.put(this.shoujiAni);
 
