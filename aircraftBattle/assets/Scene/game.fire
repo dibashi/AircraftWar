@@ -1378,9 +1378,7 @@
       "__id__": 33
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "0a3f43fd-744b-4314-a85f-41d39e762063"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1564,7 +1562,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "0a3f43fd-744b-4314-a85f-41d39e762063"
+      "__uuid__": "d8172f49-83dd-449e-b2f6-d754c3444609"
     },
     "_type": 0,
     "_sizeMode": 1,
