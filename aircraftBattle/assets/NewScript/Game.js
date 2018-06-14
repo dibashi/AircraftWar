@@ -1180,8 +1180,13 @@ cc.Class({
             }
         }
 
-        // this.hero.onDrag();
-        // this.gameMusic.resume();
+        this.node.off('touchmove', this.dragMove, this);
+        this.node.off('touchstart', this.dragStart, this);
+
+        this.bombSprite.off('touchstart', this.bombOnclick, this);
+        this.bombSprite.off('touchmove', this.bombOnclickMove, this);
+      
+    //背景音乐如何暂停？
 
     },
     //游戏暂停
@@ -1205,12 +1210,15 @@ cc.Class({
         }
 
 
+        this.node.on('touchmove', this.dragMove, this);
+        this.node.on('touchstart', this.dragStart, this);
+
+        this.bombSprite.on('touchstart', this.bombOnclick, this);
+        this.bombSprite.on('touchmove', this.bombOnclickMove, this);
 
         //背景音乐如何暂停？
 
 
-        // this.hero.offDrag();
-        // this.gameMusic.pause();
 
 
 
