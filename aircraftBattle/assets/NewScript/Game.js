@@ -856,25 +856,27 @@ cc.Class({
                 enemy = cc.instantiate(this.enemyPlane4);
             }
             //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
-            if (enemy.getComponent("enemy"+enemyID) != undefined) {
-                enemy.getComponent("enemy"+enemyID).enemyID = enemyID;
-                enemy.getComponent("enemy"+enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
+            if (enemy.getComponent("enemyPlane"+enemyID) != undefined) {
+                enemy.getComponent("enemyPlane"+enemyID).enemyID = enemyID;
+                enemy.getComponent("enemyPlane"+enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
 
-                enemy.getComponent("enemy"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
-                enemy.getComponent("enemy"+enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
+                enemy.getComponent("enemyPlane"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
+                enemy.getComponent("enemyPlane"+enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
 
-                enemy.getComponent("enemy"+enemyID).damage = globalEnemyPlaneData[enemyID].damage;
-                enemy.getComponent("enemy"+enemyID).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
-                enemy.getComponent("enemy"+enemyID).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
+                enemy.getComponent("enemyPlane"+enemyID).damage = globalEnemyPlaneData[enemyID].damage;
+                enemy.getComponent("enemyPlane"+enemyID).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
+                enemy.getComponent("enemyPlane"+enemyID).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
 
-                enemy.getComponent("enemy"+enemyID).endX = globalStageData[this.stage][i].endX;
-                enemy.getComponent("enemy"+enemyID).endY = globalStageData[this.stage][i].endY;
+                enemy.getComponent("enemyPlane"+enemyID).endX = globalStageData[this.stage][i].endX;
+                enemy.getComponent("enemyPlane"+enemyID).endY = globalStageData[this.stage][i].endY;
             }
 
             enemy.setPosition(globalStageData[this.stage][i].beginX,globalStageData[this.stage][i].beginY);//初始位置初始化
             this.node.addChild(enemy);
 
-            enemy.getComponent("enemy"+enemyID).enterScene();//让敌机自己来执行自己的进入场景
+            enemy.getComponent("enemyPlane"+enemyID).enterScene();//让敌机自己来执行自己的进入场景
+
+            cc.log(enemy);
         }
 
     },
@@ -1190,7 +1192,7 @@ cc.Class({
         let cc = this.node.childrenCount;
         for(let i = 0; i< cc;i++) {
             if(this.node.children[i].group === 'enemy') {
-                this.node.children[i].getComponent("enemy").pauseAction(); //让敌机人机 自己暂停自己的子弹。
+                this.node.children[i].getComponent(this.node.children[i]._name).pauseAction(); //让敌机人机 自己暂停自己的子弹。
             } else if(this.node.children[i].group === 'hBullet' ) {
                 this.node.children[i].getComponent("heroBullet").pauseAction();
             } else if(this.node.children[i].group === 'eBullet') {
@@ -1227,7 +1229,7 @@ cc.Class({
         let cc = this.node.childrenCount;
         for (let i = 0; i < cc; i++) {
             if (this.node.children[i].group === 'enemy') {
-                this.node.children[i].getComponent("enemy").resumeAction(); //让敌机人机 自己暂停自己的子弹。
+                this.node.children[i].getComponent(this.node.children[i]._name).resumeAction(); //让敌机人机 自己暂停自己的子弹。
             }else if(this.node.children[i].group === 'hBullet' ) {
                 this.node.children[i].getComponent("heroBullet").resumeAction();
             } else if(this.node.children[i].group === 'eBullet') {

@@ -441,7 +441,7 @@ cc.Class({
         } else if (other.node.group === "enemy") {
             //暴走逻辑优先处理，可以防止护盾消耗。
             if (this.node.parent.getComponent('Game').baozouFlag) {
-                other.node.getComponent("enemy").enemyBoomAni();
+                other.node.getComponent(other.node._name).enemyBoomAni();
                 return;
             }
 
@@ -453,7 +453,7 @@ cc.Class({
                 this.node.parent.getComponent('Game').shieldOnclick();
                 //  other.enemyDamagedAni();
                 //cc.log(other.node);
-                other.node.getComponent("enemy").enemyBoomAni();
+                other.node.getComponent(other.node._name).enemyBoomAni();
                 return;
             }
 

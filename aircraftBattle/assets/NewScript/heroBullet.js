@@ -82,7 +82,7 @@ cc.Class({
             let cc = gameNode.childrenCount;
             let i = 0;
             for (i = 0; i < cc; i++) {
-                if (cs[i].group === 'enemy' && cs[i].getComponent("enemy").blood>0) {
+                if (cs[i].group === 'enemy' && cs[i].getComponent(cs[i]._name).blood>0) {
                     break;
                 }
             }

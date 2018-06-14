@@ -54,57 +54,12 @@ var _enemyPlaneData = [
 
 ];
 
-// var _stage = [
-
-//     [
-//         {enemyID:0},
-//     ],
-//     [
-//         {enemyID:1},{enemyID:2}
-//     ],
-//     [
-//         {enemyID:2},{enemyID:3}
-//     ],
-//     [
-//         {enemyID:3},{enemyID:2},{enemyID:3}
-//     ],
-//     [
-//         {enemyID:0},{enemyID:4},{enemyID:1}
-//     ],
-//     [
-//         {enemyID:2},{enemyID:0},{enemyID:1}
-//     ],
-//     [
-//         {enemyID:4},{enemyID:4},{enemyID:1}
-//     ],
-//     [
-//         {enemyID:0},{enemyID:2},{enemyID:1}
-//     ],
-//     [
-//         {enemyID:2},{enemyID:0},{enemyID:3},{enemyID:1},{enemyID:3}
-//     ],
-//     [
-//         {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3}
-//     ],
-//     [
-//         {enemyID:0},{enemyID:2},{enemyID:1},{enemyID:3},{enemyID:4}
-//     ],
-//     [
-//         {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:3},{enemyID:4}
-//     ],
-//     [
-//         {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:2},{enemyID:4}
-//     ],
-//     [
-//         {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3},{enemyID:4}
-//     ]
-// ];
 
 
 var _stage = [
 
     [
-        {enemyID:1,beginX:0,beginY:400,endX:0,endY:0},
+        {enemyID:0,beginX:0,beginY:400,endX:0,endY:0},
     ],
     // [
     //     {enemyID:0,beginX:300,beginY:300,endX:200,endY:200},
