@@ -54,65 +54,65 @@ var _enemyPlaneData = [
 
 ];
 
+// var _stage = [
+
+//     [
+//         {enemyID:0},
+//     ],
+//     [
+//         {enemyID:1},{enemyID:2}
+//     ],
+//     [
+//         {enemyID:2},{enemyID:3}
+//     ],
+//     [
+//         {enemyID:3},{enemyID:2},{enemyID:3}
+//     ],
+//     [
+//         {enemyID:0},{enemyID:4},{enemyID:1}
+//     ],
+//     [
+//         {enemyID:2},{enemyID:0},{enemyID:1}
+//     ],
+//     [
+//         {enemyID:4},{enemyID:4},{enemyID:1}
+//     ],
+//     [
+//         {enemyID:0},{enemyID:2},{enemyID:1}
+//     ],
+//     [
+//         {enemyID:2},{enemyID:0},{enemyID:3},{enemyID:1},{enemyID:3}
+//     ],
+//     [
+//         {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3}
+//     ],
+//     [
+//         {enemyID:0},{enemyID:2},{enemyID:1},{enemyID:3},{enemyID:4}
+//     ],
+//     [
+//         {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:3},{enemyID:4}
+//     ],
+//     [
+//         {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:2},{enemyID:4}
+//     ],
+//     [
+//         {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3},{enemyID:4}
+//     ]
+// ];
+
+
 var _stage = [
-    // [
-    //     {enemyID:4},
-    // ],
-    // [
-    //     {enemyID:4},{enemyID:4},{enemyID:4}
-    // ],
-    // [
-    //     {enemyID:4},{enemyID:4}
-    // ],
-    // [
-    //     {enemyID:4},
-    // ],
-    // [
-    //     {enemyID:4},{enemyID:4},{enemyID:4}
-    // ],
 
     [
-        {enemyID:0},
+        {enemyID:2},
     ],
     [
-        {enemyID:1},{enemyID:2}
+        {enemyID:2},
     ],
     [
-        {enemyID:2},{enemyID:3}
+        {enemyID:2},
     ],
-    [
-        {enemyID:3},{enemyID:2},{enemyID:3}
-    ],
-    [
-        {enemyID:0},{enemyID:4},{enemyID:1}
-    ],
-    [
-        {enemyID:2},{enemyID:0},{enemyID:1}
-    ],
-    [
-        {enemyID:4},{enemyID:4},{enemyID:1}
-    ],
-    [
-        {enemyID:0},{enemyID:2},{enemyID:1}
-    ],
-    [
-        {enemyID:2},{enemyID:0},{enemyID:3},{enemyID:1},{enemyID:3}
-    ],
-    [
-        {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3}
-    ],
-    [
-        {enemyID:0},{enemyID:2},{enemyID:1},{enemyID:3},{enemyID:4}
-    ],
-    [
-        {enemyID:2},{enemyID:0},{enemyID:1},{enemyID:3},{enemyID:4}
-    ],
-    [
-        {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:2},{enemyID:4}
-    ],
-    [
-        {enemyID:0},{enemyID:1},{enemyID:2},{enemyID:3},{enemyID:4}
-    ]
+    
 ];
 
 export const generateType = _generateType;

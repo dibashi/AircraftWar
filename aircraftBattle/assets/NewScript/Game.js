@@ -110,7 +110,7 @@ cc.Class({
         //enemys : [],
 
         stage: 0, //数据表中第几层
-        realStage: 0,//真实的层数，消灭一次加一层 用于增加敌机属性
+        realStage: 0,//真实的层数，消灭一次加一层 用于增加敌机属性  6.14需求变了 真实轮数
         checkStageCount: 0,
 
         //beginY: 400,
@@ -818,7 +818,13 @@ cc.Class({
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
             }
-            this.realStage++;//永远都加
+            //需求变了，一轮一轮的+属性 不再是以前每轮都加 
+            else {
+                this.stage = 0;//从新开始，
+
+                this.realStage++;//表示着 现在是第几轮 从0计数
+            }
+           
 
             this.unschedule(this.runStage);
             this.scheduleOnce(this.runStage, 1);
@@ -851,7 +857,7 @@ cc.Class({
             }
             if (enemy.getComponent("enemy") != undefined) {
                 enemy.getComponent("enemy").enemyID = enemyID;
-                enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood + this.realStage;
+                enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
 
                 enemy.getComponent("enemy").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
                 enemy.getComponent("enemy").flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
