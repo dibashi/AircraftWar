@@ -87,6 +87,7 @@ cc.Class({
     enterScene:function() {
         var callback = cc.callFunc(this.enterCallback,this);
         var seq = cc.sequence(cc.moveTo(1, cc.v2(this.endX,this.endY)), callback);
+        this.node.runAction(seq);
     },
 
 
@@ -95,8 +96,6 @@ cc.Class({
         let jumpDuration = 3;
         let jumpHeight = Math.random() * 200;
         let moveDis = Math.random() * 200;
-        // let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight)).easing(cc.easeCubicActionOut());
-        // let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight)).easing(cc.easeCubicActionIn());
         let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight));
         let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight));
         let seq1 = cc.sequence(jumpUp, jumpDown);
@@ -114,9 +113,15 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-        this.schedule(this.zhixianxiangxia, 1 / this.shootingSpeed);
+        this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
 
     },
+
+    sanfazhixian: function () {
+        for (let i = 0; i < 3; i++) {
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia, this)));
+        }
+    },  
 
     generateBullet: function () {
         let bl = null;
@@ -127,14 +132,12 @@ cc.Class({
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
 
-        //bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
         bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2);
         return bl;
     },
 
 
     zhixianxiangxia: function () {
-
         let bl = this.generateBullet();
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
@@ -165,14 +168,9 @@ cc.Class({
 
   
     baozhaOver: function () {
-
-        //这个有问题 要放动画回调 TODO!
-
-
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
     },
-
 
 
     enemyDamagedAni: function () {
@@ -220,7 +218,6 @@ cc.Class({
         if (this.isPause) {
             return;
         }
-
     },
 
     onCollisionEnter: function (other, self) {
