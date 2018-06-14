@@ -38,9 +38,9 @@ cc.Class({
 
     update(dt) {
 
-        // if (this.node.getPosition().y < -this.node.parent.height / 2) {
-        //     this.node.destroy();
-        // }
+        if (this.node.getPosition().y < -this.node.parent.height / 2-50) {
+            this.node.destroy();
+        }
 
         if(this.isPause) {
             return;
@@ -75,11 +75,14 @@ cc.Class({
             // }
             //现在吸 速度比金币慢点
 
-            let speed = 8;
+            // let speed = 8;
 
-            let rdx = ndx * speed*dt*60;
-            let rdy = ndy * speed*dt*60;
-            this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+            // let rdx = ndx * speed*dt*60;
+            // let rdy = ndy * speed*dt*60;
+            // this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
+
+            let speed = 5;
+            this.node.setPosition(bPos.x, bPos.y - speed);
            
         } else if (this.prizeType == generateType.jinbi) {
             
