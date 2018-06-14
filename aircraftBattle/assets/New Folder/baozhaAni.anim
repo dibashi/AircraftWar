@@ -3,7 +3,7 @@
   "_name": "baozhaAni",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5166666666666667,
+  "_duration": 0.43333333333333335,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -14,43 +14,37 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "bf3e9c2e-563a-46fa-9879-9609d9c1a608"
+              "__uuid__": "5ba7aef5-4829-4d78-990b-09641cc2737d"
             }
           },
           {
             "frame": 0.08333333333333333,
             "value": {
-              "__uuid__": "f1b0605f-2aca-412c-a566-9053cac312eb"
+              "__uuid__": "549ef14b-fa31-4deb-aa7a-96ef410382d7"
             }
           },
           {
             "frame": 0.16666666666666666,
             "value": {
-              "__uuid__": "c2024369-366a-457e-8380-26b1d2b07906"
+              "__uuid__": "81570aac-faa5-4092-b7d2-007afd9b8d22"
             }
           },
           {
             "frame": 0.25,
             "value": {
-              "__uuid__": "3f3a8040-c458-41f9-89a5-d4f0a9cc87bd"
+              "__uuid__": "c2e4e801-248d-4177-89ac-eed544cccc2f"
             }
           },
           {
             "frame": 0.3333333333333333,
             "value": {
-              "__uuid__": "e695d970-404e-48ce-ac1d-9107dee0280e"
+              "__uuid__": "3643a847-c120-4b92-aa08-1b560fc3358a"
             }
           },
           {
             "frame": 0.4166666666666667,
             "value": {
-              "__uuid__": "38cb7a3b-436f-47dd-9640-e4acb445f864"
-            }
-          },
-          {
-            "frame": 0.5,
-            "value": {
-              "__uuid__": "38cb7a3b-436f-47dd-9640-e4acb445f864"
+              "__uuid__": "1c014e0a-145e-4a7a-893e-898137703774"
             }
           }
         ]
@@ -62,8 +56,8 @@
           "frame": 0,
           "value": {
             "__type__": "cc.Vec2",
-            "x": 3,
-            "y": 3
+            "x": 1,
+            "y": 1
           }
         }
       ]
@@ -71,7 +65,7 @@
   },
   "events": [
     {
-      "frame": 0.5,
+      "frame": 0.4166666666666667,
       "func": "baozhaOver",
       "params": []
     }
