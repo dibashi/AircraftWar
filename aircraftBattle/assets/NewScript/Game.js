@@ -596,6 +596,11 @@ cc.Class({
     },
 
     dragMove: function (event) {
+
+        if(this.player == null||this.player._position == null) {
+            return;
+        }
+
         cc.log("game dragMove");
         this.touchMovePoint = event.getLocation();
         let dx = this.touchMovePoint.x - this.touchBeginPoint.x;
