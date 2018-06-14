@@ -1147,9 +1147,11 @@ cc.Class({
 
     gamePause: function () {
         if (this.isPause == true) {
+            cc.director.getScheduler().resumeTarget(this);
             this.gameJiXu();
             this.isPause = false;
         } else if (this.isPause == false) {
+            cc.director.getScheduler().pauseTarget(this);
             this.gameZanTing();
             this.isPause = true;
         }
@@ -1161,8 +1163,7 @@ cc.Class({
     gameZanTing: function () {
       
       
-       let pp = cc.director;
-       cc.log(pp);
+      
 
         if (this.player != null) {
             this.player.getComponent("Player").pauseAction(); //让自己的飞机管理自己的子弹暂停？
