@@ -1146,7 +1146,6 @@ cc.Class({
 
 
     gamePause: function () {
-        console.log("pauseAction");
         if (this.isPause == true) {
             this.gameJiXu();
             this.isPause = false;
@@ -1161,8 +1160,10 @@ cc.Class({
     //游戏继续
     gameZanTing: function () {
       
+      
+       let pp = cc.director;
+       cc.log(pp);
 
-        
         if (this.player != null) {
             this.player.getComponent("Player").pauseAction(); //让自己的飞机管理自己的子弹暂停？
         }
@@ -1185,12 +1186,16 @@ cc.Class({
 
         this.bombSprite.off('touchstart', this.bombOnclick, this);
         this.bombSprite.off('touchmove', this.bombOnclickMove, this);
+
+
+        
       
     //背景音乐如何暂停？
 
     },
     //游戏暂停
     gameJiXu: function () {
+       
 
         console.log("resumeAction");
         if (this.player != null) {
@@ -1215,6 +1220,8 @@ cc.Class({
 
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombSprite.on('touchmove', this.bombOnclickMove, this);
+
+      // 
 
         //背景音乐如何暂停？
 
