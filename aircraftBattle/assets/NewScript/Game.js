@@ -855,20 +855,20 @@ cc.Class({
             else if (enemyID === 4) {
                 enemy = cc.instantiate(this.enemyPlane4);
             }
-            if (enemy.getComponent("enemy") != undefined) {
-                enemy.getComponent("enemy").enemyID = enemyID;
-                enemy.getComponent("enemy").blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
+            if (enemy.getComponent("enemy"+enemyID) != undefined) {
+                enemy.getComponent("enemy"+enemyID).enemyID = enemyID;
+                enemy.getComponent("enemy"+enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
 
-                enemy.getComponent("enemy").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
-                enemy.getComponent("enemy").flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
-                enemy.getComponent("enemy").bulletType = globalEnemyPlaneData[enemyID].bulletType;
-                enemy.getComponent("enemy").damage = globalEnemyPlaneData[enemyID].damage;
-                enemy.getComponent("enemy").dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
-                enemy.getComponent("enemy").fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
-                enemy.getComponent("enemy").enemyID = globalEnemyPlaneData[enemyID].enemyID;
+                enemy.getComponent("enemy"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
+                enemy.getComponent("enemy"+enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
+                enemy.getComponent("enemy"+enemyID).bulletType = globalEnemyPlaneData[enemyID].bulletType;
+                enemy.getComponent("enemy"+enemyID).damage = globalEnemyPlaneData[enemyID].damage;
+                enemy.getComponent("enemy"+enemyID).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
+                enemy.getComponent("enemy"+enemyID).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
+                enemy.getComponent("enemy"+enemyID).enemyID = globalEnemyPlaneData[enemyID].enemyID;
 
-                enemy.getComponent("enemy").bulletTrack = globalEnemyPlaneData[enemyID].bulletTrack;
-                enemy.getComponent("enemy").enemyTrack = globalEnemyPlaneData[enemyID].enemyTrack;
+                enemy.getComponent("enemy"+enemyID).bulletTrack = globalEnemyPlaneData[enemyID].bulletTrack;
+                enemy.getComponent("enemy"+enemyID).enemyTrack = globalEnemyPlaneData[enemyID].enemyTrack;
             }
 
             this.node.addChild(enemy);

@@ -98,49 +98,6 @@
     }
   },
   {
-    "__type__": "0ee1fuaQS5BqqiNu7pjSEAG",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "bullet0": {
-      "__uuid__": "17132862-a092-49ea-9057-7d3135078dad"
-    },
-    "prizeTeXiao": {
-      "__uuid__": "e6684075-a6d9-4028-a9db-2c3b81fb07a4"
-    },
-    "enemyID": 0,
-    "blood": 1,
-    "shootingSpeed": 1,
-    "flyingSpeed": 0,
-    "bulletType": 0,
-    "damage": 1,
-    "dropProbability": 65,
-    "fallingObject": 0,
-    "bloodBar": {
-      "__uuid__": "f241e479-f2d1-4cb6-8d4e-4ba52c689e64"
-    },
-    "nodeBar": null,
-    "bBar": null,
-    "baoZhaTeXiao": {
-      "__uuid__": "c4bc3fd3-2823-466b-bcfc-ecc174b83cc7"
-    },
-    "damagedTeXiao": null,
-    "bulletTrack": 0,
-    "enemyTrack": 0,
-    "particleSys": null,
-    "partice": null,
-    "boomAudio": {
-      "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"
-    },
-    "shoujiAni": null,
-    "shoujiAniPre": {
-      "__uuid__": "d6936238-a0b9-4466-a9f3-9793808223a0"
-    }
-  },
-  {
     "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
@@ -173,6 +130,36 @@
       "y": 0
     },
     "_radius": 40
+  },
+  {
+    "__type__": "233728WEv9KVILKCrnJaAZy",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "bullet0": null,
+    "prizeTeXiao": null,
+    "enemyID": -1,
+    "blood": -1111,
+    "shootingSpeed": 1,
+    "flyingSpeed": 0,
+    "bulletType": 0,
+    "damage": 1,
+    "dropProbability": 65,
+    "fallingObject": 0,
+    "bloodBar": null,
+    "nodeBar": null,
+    "bBar": null,
+    "baoZhaTeXiao": null,
+    "damagedTeXiao": null,
+    "bulletTrack": 0,
+    "enemyTrack": 0,
+    "particleSys": null,
+    "partice": null,
+    "shoujiAni": null,
+    "shoujiAniPre": null
   },
   {
     "__type__": "cc.PrefabInfo",
