@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "shoujiAniPre",
+    "_name": "shoujiAniPreNew",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -111,7 +111,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d6936238-a0b9-4466-a9f3-9793808223a0"
+      "__uuid__": "822bc45b-1d34-4afe-af8b-41508127d9ba"
     },
     "fileId": "82bfltHVRNLYEE0mXnUyE1",
     "sync": false

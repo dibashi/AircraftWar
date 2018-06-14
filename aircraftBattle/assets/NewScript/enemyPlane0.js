@@ -173,7 +173,7 @@ cc.Class({
     },
 
 
-    enemyDamagedAni: function () {
+    enemyDamagedAni: function (pos,size) {
 
         this.shoujiAni = null;
         if (this.shoujiAniPool.size() > 0) {
@@ -182,19 +182,21 @@ cc.Class({
             this.shoujiAni = cc.instantiate(this.shoujiAniPre);
         }
 
-        this.node.addChild(this.shoujiAni);
+        this.node.parent.addChild(this.shoujiAni);
+    //    this.shoujiAni.setPosition(pos.x,pos.y+size.height/2+10);
+    this.shoujiAni.setPosition(this.node.position.x,this.node.position.y-10);
         var anim = this.shoujiAni.getComponent(cc.Animation);
 
         anim.play();
 
     },
 
-    damagedOver: function (event) {
+//     damagedOver: function (event) {
+// cc.log("shouji over!");
+//         this.shoujiAni.removeFromParent();
+//         this.shoujiAniPool.put(this.shoujiAni);
 
-        this.shoujiAni.removeFromParent();
-        this.shoujiAniPool.put(this.shoujiAni);
-
-    },
+//     },
 
     resumeAction: function () {
         console.log("enemy resume!");
@@ -240,7 +242,9 @@ cc.Class({
 
                 this.blood -= bDamage;
                 //  this.bBar.string = this.blood;
-                this.enemyDamagedAni();
+                // cc.log("sss");
+                // cc.log(other.node.getContentSize());
+                this.enemyDamagedAni(other.node.position,other.node.getContentSize());
                 //根据掉血量来加分吧
                 //this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
