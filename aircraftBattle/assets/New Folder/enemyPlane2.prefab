@@ -55,8 +55,8 @@
     },
     "_rotationX": 180,
     "_rotationY": 180,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 1.8,
+    "_scaleY": 1.8,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 6,
@@ -170,7 +170,7 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 40
+    "_radius": 45
   },
   {
     "__type__": "cc.PrefabInfo",

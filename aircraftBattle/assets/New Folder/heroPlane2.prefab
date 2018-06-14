@@ -101,8 +101,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 1.5,
+    "_scaleY": 1.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -2161,7 +2161,8 @@
       "__uuid__": "f1ea7543-e19a-4858-a17a-6e846ef5f9f6"
     },
     "particleSys": null,
-    "partice": null
+    "partice": null,
+    "isPause": false
   },
   {
     "__type__": "cc.CircleCollider",
@@ -2175,9 +2176,9 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -10
     },
-    "_radius": 20
+    "_radius": 30
   },
   {
     "__type__": "cc.Animation",
