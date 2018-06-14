@@ -2310,6 +2310,9 @@
     "enemyPlane4": {
       "__uuid__": "3a09bf74-b20c-45db-8178-8abe14c4b36d"
     },
+    "enemyPlane5": {
+      "__uuid__": "41da8f52-a481-45ee-9e87-ed4889fe470a"
+    },
     "heroPlane0": {
       "__uuid__": "bfce2d2d-052f-49c4-b376-6bc13ce29903"
     },

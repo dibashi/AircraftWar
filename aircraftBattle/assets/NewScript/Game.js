@@ -53,6 +53,12 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        enemyPlane5: {
+            default: null,
+            type: cc.Prefab,
+        },
+
+
 
         heroPlane0: {
             default: null,
@@ -853,13 +859,15 @@ cc.Class({
             }
             else if (enemyID === 4) {
                 enemy = cc.instantiate(this.enemyPlane4);
+            }else if (enemyID === 5) {
+                enemy = cc.instantiate(this.enemyPlane5);
             }
             //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
             if (enemy.getComponent("enemyPlane"+enemyID) != undefined) {
                 enemy.getComponent("enemyPlane"+enemyID).enemyID = enemyID;
                 enemy.getComponent("enemyPlane"+enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
 
-                enemy.getComponent("enemyPlane"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.02 * this.realStage;
+                enemy.getComponent("enemyPlane"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.3 * this.realStage;
                 enemy.getComponent("enemyPlane"+enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
 
                 enemy.getComponent("enemyPlane"+enemyID).damage = globalEnemyPlaneData[enemyID].damage;

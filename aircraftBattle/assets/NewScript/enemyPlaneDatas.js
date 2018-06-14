@@ -52,49 +52,51 @@ var _enemyPlaneData = [
     {enemyID:3,  blood: 5, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1,dropProbability:0.3,fallingObject:_generateType.jisushesu },
     {enemyID:4, blood: 5, shootingSpeed:0.5, flyingSpeed: 7,  damage: 1,dropProbability:0.1,fallingObject:_generateType.huojianpao},
 
+    {enemyID:5, blood: 20, shootingSpeed:1, flyingSpeed: 9,  damage: 1,dropProbability:1,fallingObject:_generateType.jinbi},
+
 ];
 
 
 
 var _stage = [
-
-    // [
-    //     {enemyID:3,beginX:180,beginY:800,endX:180,endY:360},
-    //     {enemyID:3,beginX:-180,beginY:800,endX:-180,endY:420}
+    [
+        {enemyID:5,beginX:0,beginY:800,endX:0,endY:360},
+      
        
-    // ],
+    ],
 
-    // [
-    //     {enemyID:2,beginX:0,beginY:800,endX:0,endY:420},
-    // ],
+    [
+        {enemyID:3,beginX:180,beginY:800,endX:180,endY:360},
+        {enemyID:3,beginX:-180,beginY:800,endX:-180,endY:420}
+       
+    ],
+
+    [
+        {enemyID:2,beginX:0,beginY:800,endX:0,endY:420},
+    ],
 
   
-    // [
-    //     {enemyID:0,beginX:120,beginY:800,endX:120,endY:420},
-    //     {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:420},
-    //     {enemyID:0,beginX:240,beginY:800,endX:240,endY:300},
-    //     {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:300}
-    // ],
-
-    // [
-    //     {enemyID:0,beginX:120,beginY:800,endX:120,endY:300},
-    //     {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:300},
-    //     {enemyID:0,beginX:240,beginY:800,endX:240,endY:420},
-    //     {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:420},
-    //     {enemyID:1,beginX:0,beginY:800,endX:0,endY:360}//这个是中间
-    // ],
-    // [
-    //     {enemyID:3,beginX:180,beginY:800,endX:180,endY:360},
-    //     {enemyID:3,beginX:-180,beginY:800,endX:-180,endY:420}
-       
-    // ],
-
     [
         {enemyID:0,beginX:120,beginY:800,endX:120,endY:420},
         {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:420},
         {enemyID:0,beginX:240,beginY:800,endX:240,endY:300},
         {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:300}
     ],
+
+    [
+        {enemyID:0,beginX:120,beginY:800,endX:120,endY:300},
+        {enemyID:0,beginX:-120,beginY:800,endX:-120,endY:300},
+        {enemyID:0,beginX:240,beginY:800,endX:240,endY:420},
+        {enemyID:0,beginX:-240,beginY:800,endX:-240,endY:420},
+        {enemyID:1,beginX:0,beginY:800,endX:0,endY:360}//这个是中间
+    ],
+    [
+        {enemyID:3,beginX:180,beginY:800,endX:180,endY:360},
+        {enemyID:3,beginX:-180,beginY:800,endX:-180,endY:420}
+       
+    ],
+
+   
 
 
     
