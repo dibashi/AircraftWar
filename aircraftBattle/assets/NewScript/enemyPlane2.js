@@ -225,7 +225,7 @@ cc.Class({
 
     damagedOver: function (event) {
 
-        cc.log("~!~~~!!!");
+       
         this.shoujiAni.removeFromParent();
         this.shoujiAniPool.put(this.shoujiAni);
 

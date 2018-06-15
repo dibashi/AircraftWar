@@ -180,8 +180,7 @@ cc.Class({
     
 
         bl = cc.instantiate(bulletPre);
-cc.log("~~");
-        cc.log(bl);
+
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
 
@@ -331,7 +330,7 @@ cc.log("~~");
 
 
         // this.damagedTeXiao.destroy();
-        cc.log("~!~~~!!!");
+
         this.shoujiAni.removeFromParent();
         this.shoujiAniPool.put(this.shoujiAni);
 

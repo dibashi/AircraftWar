@@ -284,7 +284,7 @@ cc.Class({
 
 
         // this.damagedTeXiao.destroy();
-        cc.log("~!~~~!!!");
+       
         this.shoujiAni.removeFromParent();
         this.shoujiAniPool.put(this.shoujiAni);
 
