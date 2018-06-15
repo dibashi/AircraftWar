@@ -115,7 +115,7 @@ cc.Class({
             return;
         }
         for(let i = 0; i<6;i++) {
-            this.node.runAction(cc.sequence(cc.delayTime(0.3*(i)), cc.callFunc(this.susheCallback,this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.2*(i)), cc.callFunc(this.susheCallback,this)));
         }
 
         //this.susheCallback();

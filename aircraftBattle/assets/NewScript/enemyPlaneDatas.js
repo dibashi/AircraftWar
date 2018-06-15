@@ -48,7 +48,7 @@ var _wuDiTime = 8;
 var _enemyPlaneData = [
     { enemyID: 0, blood: 25, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
     { enemyID: 1, blood: 250, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.wudichongci },
-    { enemyID: 2, blood: 100, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
+    { enemyID: 2, blood: 50, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
     { enemyID: 3, blood: 125, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.3, fallingObject: _generateType.jisushesu },
     { enemyID: 4, blood: 5, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
 
