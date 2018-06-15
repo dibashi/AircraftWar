@@ -890,7 +890,6 @@ cc.Class({
 
             enemy.getComponent("enemyPlane"+enemyID).enterScene();//让敌机自己来执行自己的进入场景
 
-            cc.log(enemy);
         }
 
     },

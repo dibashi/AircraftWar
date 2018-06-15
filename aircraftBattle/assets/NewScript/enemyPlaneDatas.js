@@ -71,6 +71,11 @@ var _stage = [
        
     ],
     [
+        {enemyID:6,beginX:0,beginY:800,endX:0,endY:360},
+      
+       
+    ],
+    [
         {enemyID:5,beginX:0,beginY:800,endX:0,endY:360},
       
        

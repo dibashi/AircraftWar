@@ -345,6 +345,7 @@ cc.Class({
     },
 
     baozhaOver: function () {
+       this.damagedTeXiao.removeFromParent();
        this.damagedTeXiao.destroy();
        this.damagedTeXiao = null;
 
