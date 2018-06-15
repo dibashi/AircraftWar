@@ -122,6 +122,7 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
+        this.scheduleOnce(this.newBanquan);
          this.schedule(this.newBanquan, 1 / this.shootingSpeed);
 
     },

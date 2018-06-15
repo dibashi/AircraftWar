@@ -113,6 +113,7 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
+        this.scheduleOnce(this.sanfazhixian);
         this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
 
     },

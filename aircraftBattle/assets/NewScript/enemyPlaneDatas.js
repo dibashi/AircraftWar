@@ -46,14 +46,14 @@ var _wuDiTime = 8;
 //gid从1开始
 //bulletType 已失效！！！这个数据暂时先不做，无论如何设置都是根据当前敌机bullet0预制体来设置的！
 var _enemyPlaneData = [
-    { enemyID: 0, blood: 25, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
-    { enemyID: 1, blood: 250, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.wudichongci },
-    { enemyID: 2, blood: 50, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
-    { enemyID: 3, blood: 125, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.3, fallingObject: _generateType.jisushesu },
+    { enemyID: 0, blood: 18, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
+    { enemyID: 1, blood: 180, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.wudichongci },
+    { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
+    { enemyID: 3, blood: 90, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.3, fallingObject: _generateType.jisushesu },
     { enemyID: 4, blood: 5, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
 
-    { enemyID: 5, blood: 150, shootingSpeed: 1, flyingSpeed: 9, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
-    { enemyID: 6, blood: 120, shootingSpeed: 0.5, flyingSpeed: 9, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
+    { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 9, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
+    { enemyID: 6, blood: 270, shootingSpeed: 0.5, flyingSpeed: 9, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
 
 ];
 

@@ -128,6 +128,7 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
+        this.scheduleOnce(this.boss1Track);
         this.schedule(this.boss1Track, 1 / this.shootingSpeed);
 
 
