@@ -67,6 +67,15 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        node0: {
+            default: null,
+            type: cc.Node,
+        },
+        node1: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -113,44 +122,62 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-         this.schedule(this.banquan, 1 / this.shootingSpeed);
+         this.schedule(this.newBanquan, 1 / this.shootingSpeed);
 
     },
 
+    newBanquan:function() {
+        for (let i = 0; i < 2; i++) {
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.banquan0, this)));
 
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.banquan1, this)));
 
-
-    banquan: function () {
-        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
-            this.xiexianByjiaodu(jiaodu);
+           
         }
     },
 
-    xiexianByjiaodu: function (jiaodu) {
+
+    banquan0: function () {
+        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
+            this.xiexianByjiaodu(jiaodu,this.node0);
+        }
+    },
+
+    banquan1: function () {
+        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
+            this.xiexianByjiaodu(jiaodu,this.node1);
+        }
+    },
+
+    xiexianByjiaodu: function (jiaodu,node) {
         if (-90 < jiaodu && jiaodu < 90) {
-            this.xiexianRight(jiaodu);
+            this.xiexianRight(jiaodu,node);
         } else if (jiaodu > 90 || jiaodu < -90) {
-            this.xiexianLeft(jiaodu);
+            this.xiexianLeft(jiaodu,node);
         } else if (jiaodu == -90) {
-            this.zhixianxiangxia();
+            this.zhixianxiangxia(node);
         } else if (jiaodu == 90) {
-            this.zhixianxiangshang();
+            this.zhixianxiangshang(node);
         }
     },
     //往右边倾斜
-    xiexianRight: function (jiaodu) {
+    xiexianRight: function (jiaodu,node) {
 
         let bl = this.generateBullet();
-        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
+
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y + (100 * Math.tan(jiaodu * 0.017453293));//2pi/360 = 0.017453293
 
 
         this.node.parent.addChild(bl);
+
+        let pos =  this.node.convertToWorldSpaceAR(node.getPosition());
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+         bl.setPosition(p);
     },
 
-    xiexianLeft: function (jiaodu) {
+    xiexianLeft: function (jiaodu,node) {
 
         let bl = this.generateBullet();
 
@@ -159,6 +186,10 @@ cc.Class({
         bl.getComponent("enemyBullet").targetPositionY = bl.position.y - (100 * Math.tan(jiaodu * 0.017453293));
 
         this.node.parent.addChild(bl);
+
+        let pos =  this.node.convertToWorldSpaceAR(node.getPosition());
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+         bl.setPosition(p);
     },
 
 
@@ -176,20 +207,28 @@ cc.Class({
         return bl;
     },
 
-    zhixianxiangxia: function () {
+    zhixianxiangxia: function (node) {
         let bl = this.generateBullet();
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
         this.node.parent.addChild(bl);
+
+        let pos =  this.node.convertToWorldSpaceAR(node.getPosition());
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+         bl.setPosition(p);
     },
 
 
-    zhixianxiangshang: function () {
+    zhixianxiangshang: function (node) {
         let bl = this.generateBullet();
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height / 2 + 50;
 
         this.node.parent.addChild(bl);
+
+        let pos =  this.node.convertToWorldSpaceAR(node.getPosition());
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+         bl.setPosition(p);
     },
 
     enemyBoomAni: function () {
