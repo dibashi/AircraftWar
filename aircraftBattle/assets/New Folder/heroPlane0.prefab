@@ -942,7 +942,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -64,
+      "x": -54,
       "y": 27
     },
     "_skewX": 0,
@@ -1143,7 +1143,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 64,
+      "x": 54,
       "y": 27
     },
     "_skewX": 0,
@@ -1344,7 +1344,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -83,
+      "x": -73,
       "y": 0
     },
     "_skewX": 0,
@@ -1545,7 +1545,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 83,
+      "x": 73,
       "y": 0
     },
     "_skewX": 0,
@@ -1746,7 +1746,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -51,
+      "x": -41,
       "y": -37
     },
     "_skewX": 0,
@@ -1947,7 +1947,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 51,
+      "x": 41,
       "y": -37
     },
     "_skewX": 0,
@@ -2196,7 +2196,7 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 30
+    "_radius": 35
   },
   {
     "__type__": "cc.PrefabInfo",
