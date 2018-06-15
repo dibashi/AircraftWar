@@ -256,7 +256,9 @@
     "bullet0": {
       "__uuid__": "113e61f3-a1fb-484e-99ab-3b70c7692c45"
     },
-    "prizeTeXiao": null,
+    "prizeTeXiao": {
+      "__uuid__": "6f45cc7f-f843-439d-850e-d0c01d162822"
+    },
     "enemyID": -1,
     "blood": -1111,
     "shootingSpeed": 1,

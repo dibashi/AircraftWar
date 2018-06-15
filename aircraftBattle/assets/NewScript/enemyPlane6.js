@@ -348,7 +348,7 @@ cc.Class({
         this.unscheduleAllCallbacks();
         this.node.addChild(this.damagedTeXiao);
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
-
+        cc.audioEngine.playEffect(this.boomAudio, false);
 
     },
 

@@ -246,44 +246,45 @@ cc.Class({
    
 
     enemyBoomAni: function () {
-        //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
-        // this.node.parent.getComponent('Game').addScore(this.blood);
-        //需求改为 一架飞机一分
+       
+        // this.node.parent.getComponent('Game').addScore(1);
+        // this.node.group = "NOOOOOOO";
+        // var anim = this.node.getComponent(cc.Animation);
+        // anim.play();
+        // this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+        // this.unscheduleAllCallbacks();
+        // cc.audioEngine.playEffect(this.boomAudio, false);
+
+      
+
+
         this.node.parent.getComponent('Game').addScore(1);
-        //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
         this.node.group = "NOOOOOOO";
-
-        var anim = this.node.getComponent(cc.Animation);
-        // anim.play("baozhaAni");
-        anim.play();
+          this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+          this.damagedTeXiao.rotation = 180;
+          this.damagedTeXiao.y =this.damagedTeXiao.y+90;
+        let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
+        armatureDisplay.playAnimation("bossBZ");
         this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-        //  anim.scale = 10;
-        //   this.nodeBar.destroy();
         this.unscheduleAllCallbacks();
+        this.node.addChild(this.damagedTeXiao);
+        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
         cc.audioEngine.playEffect(this.boomAudio, false);
 
-        // this.node.group = "NOOOOOOO";
-
-        // this.partice = cc.instantiate(this.particleSys);
-        // this.node.parent.addChild(this.partice);
-        // this.partice.setPosition(this.node.getPosition());
-
-        // this.partice.getComponent(cc.ParticleSystem).resetSystem();
-
-
-        // this.node.opacity = 0;
-        // this.unscheduleAllCallbacks();
-        // this.scheduleOnce(this.baozhaOver, 0.7);
-
-
-        //敌机销毁数据+1
-        // let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
-        // cc.sys.localStorage.setItem('killedEnemyCount',kc);
-
-        //声音
-
     },
+
+    baozhaOver: function () {
+        this.damagedTeXiao.removeFromParent();
+        this.damagedTeXiao.destroy();
+        this.damagedTeXiao = null;
+ 
+         //这个有问题 要放动画回调 TODO!
+         //this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+ 
+        
+         this.node.parent.getComponent('Game').checkNextStage();
+         this.node.destroy();
+     },
 
     // baozhaOver: function () {
     //     this.unscheduleAllCallbacks();
@@ -297,14 +298,14 @@ cc.Class({
     //     this.node.destroy();
     // },
     //以前动画的
-    baozhaOver: function () {
+    // baozhaOver: function () {
 
-        //这个有问题 要放动画回调 TODO!
+    //     //这个有问题 要放动画回调 TODO!
 
 
-        this.node.parent.getComponent('Game').checkNextStage();
-        this.node.destroy();
-    },
+    //     this.node.parent.getComponent('Game').checkNextStage();
+    //     this.node.destroy();
+    // },
 
 
 
