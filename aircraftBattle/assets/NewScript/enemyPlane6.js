@@ -147,15 +147,15 @@ cc.Class({
 
             this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback1, this)));
 
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia, this,this.node0)));
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia, this,this.node1)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia0, this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia1, this)));
 
             this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.banquan0, this)));
         }
     },
 
     dingweiCallback0: function () {
-        let bl = this.generateBullet(this.bullet1);
+        let bl = this.generateBullet(this.bullet2);
 
         bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
@@ -168,7 +168,7 @@ cc.Class({
     },
 
     dingweiCallback1: function () {
-        let bl = this.generateBullet(this.bullet1);
+        let bl = this.generateBullet(this.bullet2);
 
         bl.getComponent("enemyBullet").targetPositionX = this.node.parent.getComponent("Game").player.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getComponent("Game").player.getPosition().y;
@@ -182,7 +182,7 @@ cc.Class({
 
 
     banquan0: function () {
-        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 30) {
+        for (let jiaodu = -45; jiaodu > -136; jiaodu -= 20) {
             this.xiexianByjiaodu(jiaodu,this.node4);
         }
     },
@@ -201,7 +201,7 @@ cc.Class({
     //往右边倾斜
     xiexianRight: function (jiaodu,node) {
 
-        let bl = this.generateBullet();
+        let bl = this.generateBullet(this.bullet1);
 
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x + 100;
@@ -217,7 +217,7 @@ cc.Class({
 
     xiexianLeft: function (jiaodu,node) {
 
-        let bl = this.generateBullet();
+        let bl = this.generateBullet(this.bullet1);
 
 
         bl.getComponent("enemyBullet").targetPositionX = bl.position.x - 100;
@@ -232,7 +232,7 @@ cc.Class({
 
 
     zhixianxiangxia: function (node) {
-        let bl = this.generateBullet();
+        let bl = this.generateBullet(this.bullet1);
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
         this.node.parent.addChild(bl);
@@ -244,7 +244,7 @@ cc.Class({
 
 
     zhixianxiangshang: function (node) {
-        let bl = this.generateBullet();
+        let bl = this.generateBullet(this.bullet1);
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height / 2 + 50;
 
@@ -254,6 +254,8 @@ cc.Class({
         let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
          bl.setPosition(p);
     },
+
+
 
 
 
@@ -280,20 +282,11 @@ cc.log("~~");
 
 
 
+    zhixianxiangxia0: function () {
 
-    //直线与斜线其实是一个概念，给敌机子弹传递一个目标位置,让其运行到那个位置即可
-    zhixianxiangxia: function () {
-
-        //TODO：！！这里应该以后应该加入子弹池来优化
-
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-
-        // bl.getComponent('heroBullet').enemys = this.node.parent.enemys;//脚本未做 未加入
+      
         let bl = this.generateBullet(this.bullet0);
-        //分离出来是为了以后 如果有轨迹是发射很多子弹,可以遍历,然后每个子弹的位置单独设置,或者设置在飞机中心
-        // bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-        //极其重要的分类化,简单的代码保证了 不同的运动轨迹显示.
+     
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
         bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
 
@@ -301,27 +294,28 @@ cc.log("~~");
 
         this.node.parent.addChild(bl);
 
-        let pos =  this.node.convertToWorldSpaceAR(this.node2.getPosition());
+        let pos =  this.node.convertToWorldSpaceAR(this.node0.getPosition());
         let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
          bl.setPosition(p);
     },
+    //直线与斜线其实是一个概念，给敌机子弹传递一个目标位置,让其运行到那个位置即可
+    zhixianxiangxia1: function () {
 
-
-    zhixianxiangshang: function () {
-
-
-        let bl = this.generateBullet();
-
-        //  bl.setPosition(this.node.position.x, this.node.position.y - this.node.height / 2 - bl.height / 2);//向下 减法
-
-
+      
+        let bl = this.generateBullet(this.bullet0);
+     
         bl.getComponent("enemyBullet").targetPositionX = this.node.getPosition().x;
-        bl.getComponent("enemyBullet").targetPositionY = this.node.parent.getContentSize().height / 2 + 50;
+        bl.getComponent("enemyBullet").targetPositionY = -this.node.parent.getContentSize().height / 2 - 50;
 
 
 
         this.node.parent.addChild(bl);
+
+        let pos =  this.node.convertToWorldSpaceAR(this.node1.getPosition());
+        let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
+         bl.setPosition(p);
     },
+
 
    
 
