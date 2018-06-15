@@ -53,6 +53,7 @@ var _enemyPlaneData = [
     {enemyID:4, blood: 5, shootingSpeed:0.5, flyingSpeed: 7,  damage: 1,dropProbability:0.1,fallingObject:_generateType.huojianpao},
 
     {enemyID:5, blood: 50, shootingSpeed:1, flyingSpeed: 9,  damage: 1,dropProbability:1,fallingObject:_generateType.jinbi},
+    {enemyID:6, blood: 120, shootingSpeed:0.5, flyingSpeed: 9,  damage: 1,dropProbability:1,fallingObject:_generateType.jinbi},
 
 ];
 
@@ -60,12 +61,12 @@ var _enemyPlaneData = [
 
 var _stage = [
     [
-        {enemyID:1,beginX:0,beginY:800,endX:0,endY:360},
+        {enemyID:6,beginX:0,beginY:800,endX:0,endY:360},
       
        
     ],
     [
-        {enemyID:1,beginX:0,beginY:800,endX:0,endY:360},
+        {enemyID:6,beginX:0,beginY:800,endX:0,endY:360},
       
        
     ],
