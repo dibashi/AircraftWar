@@ -122,11 +122,18 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-        this.scheduleOnce(this.newBanquan);
-         this.schedule(this.newBanquan, 1 / this.shootingSpeed);
-
-    },
-
+     
+         
+         let cal1 = cc.callFunc(this.newBanquan,this);
+         let cal2= cc.callFunc(this.wunai,this);
+         let seq = cc.sequence(cal1,cal2);
+         this.node.runAction(seq)
+        
+     },
+ 
+     wunai:function() {
+        this.schedule(this.newBanquan, 1 / this.shootingSpeed);
+     },
     newBanquan:function() {
         for (let i = 0; i < 2; i++) {
             this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.banquan0, this)));

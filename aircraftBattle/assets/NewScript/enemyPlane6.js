@@ -136,10 +136,17 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-        this.scheduleOnce(this.boss2Track);
+    
+     
+        let cal1 = cc.callFunc(this.boss2Track,this);
+        let cal2= cc.callFunc(this.wunai,this);
+        let seq = cc.sequence(cal1,cal2);
+        this.node.runAction(seq)
+       
+    },
+
+    wunai:function() {
         this.schedule(this.boss2Track, 1 / this.shootingSpeed);
-
-
     },
 
     boss2Track:function() {

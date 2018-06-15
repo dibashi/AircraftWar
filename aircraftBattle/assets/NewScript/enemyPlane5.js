@@ -128,12 +128,19 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-        this.scheduleOnce(this.boss1Track);
-        this.schedule(this.boss1Track, 1 / this.shootingSpeed);
+     
+       
 
-
+        let cal1 = cc.callFunc(this.boss1Track,this);
+        let cal2= cc.callFunc(this.wunai,this);
+        let seq = cc.sequence(cal1,cal2);
+        this.node.runAction(seq)
+       
     },
 
+    wunai:function() {
+        this.schedule(this.boss1Track, 1 / this.shootingSpeed);
+    },
     boss1Track:function() {
         for (let i = 0; i < 3; i++) {
             this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.dingweiCallback0, this)));

@@ -113,9 +113,19 @@ cc.Class({
     enterCallback: function () {
 
         this.zuoyoushangxia();
-        this.scheduleOnce(this.sanfazhixian);
-        this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
+       
+        
 
+
+        let cal1 = cc.callFunc(this.sanfazhixian,this);
+        let cal2= cc.callFunc(this.wunai,this);
+        let seq = cc.sequence(cal1,cal2);
+        this.node.runAction(seq)
+       
+    },
+
+    wunai:function() {
+        this.schedule(this.sanfazhixian, 1 / this.shootingSpeed);
     },
 
     sanfazhixian: function () {

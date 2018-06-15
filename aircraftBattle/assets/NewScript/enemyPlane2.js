@@ -121,7 +121,17 @@ cc.Class({
 
     enterCallback: function () {
         this.zuoyoushangxia();
-        this.scheduleOnce(this.dingwei);
+     
+        
+
+        let cal1 = cc.callFunc(this.dingwei,this);
+        let cal2= cc.callFunc(this.wunai,this);
+        let seq = cc.sequence(cal1,cal2);
+        this.node.runAction(seq)
+       
+    },
+
+    wunai:function() {
         this.schedule(this.dingwei, 1 / this.shootingSpeed);
     },
 
