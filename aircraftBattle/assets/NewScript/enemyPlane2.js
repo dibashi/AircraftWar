@@ -216,7 +216,18 @@ cc.Class({
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
 
         cc.audioEngine.playEffect(this.boomAudio, false);
+
+        this.damagedTeXiao.scale = 0.5;
+
+        this.scheduleOnce(this.jianyin,0.3);
     },
+
+    jianyin:function() {
+        cc.log("bowo bowo");
+        var anim = this.node.getComponent(cc.Animation);
+         anim.play();
+    },
+
 
     baozhaOver: function () {
         this.damagedTeXiao.removeFromParent();

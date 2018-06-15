@@ -264,13 +264,26 @@ cc.Class({
         this.node.addChild(this.damagedTeXiao);
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
         cc.audioEngine.playEffect(this.boomAudio, false);
+        this.damagedTeXiao.scale = 0.5;
+
+
+        this.scheduleOnce(this.jianyin,0.1);
 
     },
 
+    jianyin:function() {
+        cc.log("bowo bowo");
+        var anim = this.node.getComponent(cc.Animation);
+         anim.play();
+    },
+
     baozhaOver: function () {
-        this.damagedTeXiao.removeFromParent();
-        this.damagedTeXiao.destroy();
-        this.damagedTeXiao = null;
+        if(this.damagedOver!=null) {
+            this.damagedTeXiao.removeFromParent();
+            this.damagedTeXiao.destroy();
+            this.damagedTeXiao = null;
+        }
+       
  
          //这个有问题 要放动画回调 TODO!
          //this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());

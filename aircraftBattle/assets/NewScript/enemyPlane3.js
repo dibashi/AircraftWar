@@ -266,6 +266,7 @@ cc.Class({
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
 
         cc.audioEngine.playEffect(this.boomAudio, false);
+        this.damagedTeXiao.scale = 0.5;
     },
 
     baozhaOver: function () {

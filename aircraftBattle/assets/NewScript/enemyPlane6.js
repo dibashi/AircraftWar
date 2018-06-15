@@ -344,13 +344,17 @@ cc.Class({
           this.damagedTeXiao.y =this.damagedTeXiao.y+90;
         let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
         armatureDisplay.playAnimation("bossBZ");
+     
         this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
         this.unscheduleAllCallbacks();
         this.node.addChild(this.damagedTeXiao);
         armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
         cc.audioEngine.playEffect(this.boomAudio, false);
 
+        
     },
+
+   
 
     baozhaOver: function () {
        this.damagedTeXiao.removeFromParent();
