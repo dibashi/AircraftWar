@@ -62,8 +62,8 @@
     },
     "_rotationX": 180,
     "_rotationY": 180,
-    "_scaleX": 1.8,
-    "_scaleY": 1.8,
+    "_scaleX": 2.5,
+    "_scaleY": 2.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
