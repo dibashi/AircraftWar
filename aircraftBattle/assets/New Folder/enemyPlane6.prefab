@@ -44,13 +44,10 @@
       },
       {
         "__id__": 15
-      },
-      {
-        "__id__": 16
       }
     ],
     "_prefab": {
-      "__id__": 17
+      "__id__": 16
     },
     "_id": "",
     "_opacity": 255,
@@ -420,27 +417,6 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "abe8eb83-0980-493a-bb61-fb43756dd668"
-    },
-    "_clips": [
-      {
-        "__uuid__": "abe8eb83-0980-493a-bb61-fb43756dd668"
-      },
-      {
-        "__uuid__": "fd820e3b-4baa-4abc-9fa2-a89fa9237090"
-      }
-    ],
-    "playOnLoad": false
-  },
-  {
     "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
@@ -625,7 +601,9 @@
     "bullet2": {
       "__uuid__": "b1ec9ac7-b050-4833-a8a1-a53539980b92"
     },
-    "prizeTeXiao": null,
+    "prizeTeXiao": {
+      "__uuid__": "6f45cc7f-f843-439d-850e-d0c01d162822"
+    },
     "enemyID": -1,
     "blood": -1111,
     "shootingSpeed": 1,

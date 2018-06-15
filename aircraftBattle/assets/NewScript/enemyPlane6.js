@@ -320,65 +320,51 @@ cc.log("~~");
    
 
     enemyBoomAni: function () {
-        //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
-        // this.node.parent.getComponent('Game').addScore(this.blood);
-        //需求改为 一架飞机一分
-        this.node.parent.getComponent('Game').addScore(1);
-        //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
-        this.node.group = "NOOOOOOO";
-
-        var anim = this.node.getComponent(cc.Animation);
-        // anim.play("baozhaAni");
-        anim.play();
-        this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-        //  anim.scale = 10;
-        //   this.nodeBar.destroy();
-        this.unscheduleAllCallbacks();
-        cc.audioEngine.playEffect(this.boomAudio, false);
-
+        // this.node.parent.getComponent('Game').addScore(1);
         // this.node.group = "NOOOOOOO";
-
-        // this.partice = cc.instantiate(this.particleSys);
-        // this.node.parent.addChild(this.partice);
-        // this.partice.setPosition(this.node.getPosition());
-
-        // this.partice.getComponent(cc.ParticleSystem).resetSystem();
-
-
-        // this.node.opacity = 0;
+        // var anim = this.node.getComponent(cc.Animation);
+        // anim.play();
+        // this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
         // this.unscheduleAllCallbacks();
-        // this.scheduleOnce(this.baozhaOver, 0.7);
+        // cc.audioEngine.playEffect(this.boomAudio, false);
 
 
-        //敌机销毁数据+1
-        // let kc = parseInt(cc.sys.localStorage.getItem("killedEnemyCount")) +1;
-        // cc.sys.localStorage.setItem('killedEnemyCount',kc);
 
-        //声音
+        this.node.parent.getComponent('Game').addScore(1);
+        this.node.group = "NOOOOOOO";
+          this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+          this.damagedTeXiao.rotation = 180;
+          this.damagedTeXiao.y =this.damagedTeXiao.y+90;
+        let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
+        armatureDisplay.playAnimation("bossBZ");
+        this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+        this.unscheduleAllCallbacks();
+        this.node.addChild(this.damagedTeXiao);
+        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
+
 
     },
 
-    // baozhaOver: function () {
-    //     this.unscheduleAllCallbacks();
-    //    this.partice.destroy();
-
-    //     //这个有问题 要放动画回调 TODO!
-    //     this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-    //     this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string) + this.blood;
-    //     this.node.parent.getComponent('Game').checkNextStage();
-    //     this.node.destroy();
-    // },
-    //以前动画的
     baozhaOver: function () {
+       this.prizeTeXiao.destroy();
+       this.prizeTeXiao = null;
 
         //这个有问题 要放动画回调 TODO!
+        //this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
 
-
+       
         this.node.parent.getComponent('Game').checkNextStage();
         this.node.destroy();
     },
+    // //以前动画的
+    // baozhaOver: function () {
+
+    //     //这个有问题 要放动画回调 TODO!
+
+
+    //     this.node.parent.getComponent('Game').checkNextStage();
+    //     this.node.destroy();
+    // },
 
 
 
