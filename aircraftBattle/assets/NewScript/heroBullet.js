@@ -36,11 +36,18 @@ cc.Class({
         damage: 0,
         trackOpen: false, //是否为追踪弹
 
-        p:0,//上边界 超出就销毁子弹
+        p: 0,//上边界 超出就销毁子弹
 
-        bulletPool:null,
+        bulletPool: null,
 
-        isPause:false,
+        isPause: false,
+
+        shoujiAni: null,
+
+        shoujiAniPre: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -48,45 +55,45 @@ cc.Class({
     // onLoad () {},
 
     start() {
-       // this.p = this.node.parent.getContentSize().height / 2 + this.node.getContentSize().height / 2;
-       
-     
+        // this.p = this.node.parent.getContentSize().height / 2 + this.node.getContentSize().height / 2;
 
-       this.p = this.node.parent.getContentSize().height / 2 + this.node.getBoundingBox().height / 2;
-       
+
+
+        this.p = this.node.parent.getContentSize().height / 2 + this.node.getBoundingBox().height / 2;
+
     },
 
     pauseAction: function () {
         this.isPause = true;
-      
-      
+
+
     },
 
-    resumeAction:function() {
+    resumeAction: function () {
         this.isPause = false;
     },
 
     update(dt) {
 
 
-        if(this.isPause) {
+        if (this.isPause) {
             return;
         }
-        
+
         // this.node.x += this.flyingSpeed;
         if (this.trackOpen == true) {
-           
+
             let gameNode = this.node.parent;
             let gameJS = gameNode.getComponent('Game');
             let cs = gameNode.children;
             let cc = gameNode.childrenCount;
             let i = 0;
             for (i = 0; i < cc; i++) {
-                if (cs[i].group === 'enemy' && cs[i].getComponent(cs[i]._name).blood>0) {
+                if (cs[i].group === 'enemy' && cs[i].getComponent(cs[i]._name).blood > 0) {
                     break;
                 }
             }
-            if(i!=cc) {
+            if (i != cc) {
                 let ePos = cs[i].getPosition();
                 let bPos = this.node.getPosition();
                 let dx = ePos.x - bPos.x;
@@ -95,23 +102,23 @@ cc.Class({
                 let ndy = dy / (Math.sqrt(dx * dx + dy * dy));
 
 
-                let rdx = ndx * this.flyingSpeed*dt*60;
-                let rdy = ndy * this.flyingSpeed*dt*60;
+                let rdx = ndx * this.flyingSpeed * dt * 60;
+                let rdy = ndy * this.flyingSpeed * dt * 60;
                 this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
             } else {
-                this.node.y += this.flyingSpeed*dt*60;
+                this.node.y += this.flyingSpeed * dt * 60;
             }
-           
+
             //获得敌机，然后追踪
 
 
         } else {
-            this.node.y += this.flyingSpeed*dt*60;
+            this.node.y += this.flyingSpeed * dt * 60;
         }
 
         if (this.node.getPosition().y > this.p) {
-           // this.node.destroy();
-           this.bulletPool.put(this.node);
+            // this.node.destroy();
+            this.bulletPool.put(this.node);
         }
 
     },
@@ -125,6 +132,13 @@ cc.Class({
     },
 
     onCollisionEnter: function (other, self) {
+
+        this.shoujiAni = cc.instantiate(this.shoujiAniPre);
+        this.node.parent.addChild(this.shoujiAni);
+        var anim = this.shoujiAni.getComponent(cc.Animation);
+      //  this.shoujiAni.position.x = this.node.position.x;
+        this.shoujiAni.setPosition(this.node.getPosition().x,this.node.getPosition().y+this.node.getContentSize().height/2);
+        anim.play();
 
         this.node.destroy();
     },
