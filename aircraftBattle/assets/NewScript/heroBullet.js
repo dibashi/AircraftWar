@@ -134,11 +134,13 @@ cc.Class({
     onCollisionEnter: function (other, self) {
 
         this.shoujiAni = cc.instantiate(this.shoujiAniPre);
-        this.node.parent.addChild(this.shoujiAni);
-        var anim = this.shoujiAni.getComponent(cc.Animation);
-      //  this.shoujiAni.position.x = this.node.position.x;
-        this.shoujiAni.setPosition(this.node.getPosition().x,this.node.getPosition().y+this.node.getContentSize().height/2);
-        anim.play();
+        if(this.shoujiAni!=null) {
+            this.node.parent.addChild(this.shoujiAni);
+            var anim = this.shoujiAni.getComponent(cc.Animation);
+            this.shoujiAni.setPosition(this.node.getPosition().x,this.node.getPosition().y+this.node.getContentSize().height/2);
+            anim.play();
+        }
+     
 
         this.node.destroy();
     },

@@ -106,7 +106,12 @@
     "damage": 0,
     "trackOpen": false,
     "p": 0,
-    "bulletPool": null
+    "bulletPool": null,
+    "isPause": false,
+    "shoujiAni": null,
+    "shoujiAniPre": {
+      "__uuid__": "d6936238-a0b9-4466-a9f3-9793808223a0"
+    }
   },
   {
     "__type__": "cc.PolygonCollider",

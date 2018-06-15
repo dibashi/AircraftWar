@@ -112,7 +112,12 @@
     "damage": 0,
     "trackOpen": false,
     "p": 0,
-    "bulletPool": null
+    "bulletPool": null,
+    "isPause": false,
+    "shoujiAni": null,
+    "shoujiAniPre": {
+      "__uuid__": "822bc45b-1d34-4afe-af8b-41508127d9ba"
+    }
   },
   {
     "__type__": "cc.Animation",
