@@ -157,6 +157,11 @@ cc.Class({
             type: cc.Node,
         },
 
+        roundX: {
+            default: null,
+            type: cc.Node,
+        },
+
         settingButton: null,
 
         // soundSetting: {
@@ -257,6 +262,11 @@ cc.Class({
         },
 
         resumeBtn:{
+            default: null,
+            type: cc.Node,
+        },
+
+        coinDropBox:{
             default: null,
             type: cc.Node,
         },
@@ -829,19 +839,55 @@ cc.Class({
         if (this.enemyCount <= 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
+
+                this.unschedule(this.runStage);
+                this.scheduleOnce(this.runStage, 1);
             }
             //需求变了，一轮一轮的+属性 不再是以前每轮都加 
             else {
-                this.stage = 0;//从新开始，
+                // this.stage = 0;//从新开始，
 
-                this.realStage++;//表示着 现在是第几轮 从0计数
+                // this.realStage++;//表示着 现在是第几轮 从0计数
+                //1,掉落金币
+                //2,播放动画 round X
+                //3,下一波
+                
+                this.dropCoin();//掉落金币
             }
-           
-
-            this.unschedule(this.runStage);
-            this.scheduleOnce(this.runStage, 1);
-
         }
+    },
+
+    dropCoin:function(coinCount) {
+        
+        let coinGuanDaos = this.coinDropBox.children;
+        let coinGDCounts = this.coinDropBox.childrenCount;
+        for(let i = 0; i<coinGDCounts;i++) {
+            coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(true);
+        }
+
+        this.scheduleOnce(this.closeDropCoin,5);
+    },
+
+    closeDropCoin:function() {
+        let coinGuanDaos = this.coinDropBox.children;
+        let coinGDCounts = this.coinDropBox.childrenCount;
+        for(let i = 0; i<coinGDCounts;i++) {
+            coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(false);
+        }
+
+        //还有其他 TODO!! 播放 round X 动画
+        let anim = this.roundX.getComponent(cc.Animation);
+        anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
+
+        this.scheduleOnce(this.nextRound,1);
+    },
+
+    nextRound:function() {
+        this.stage = 0;
+        this.realStage++;
+
+        this.unschedule(this.runStage);
+        this.scheduleOnce(this.runStage, 1);
     },
 
     runStage() {

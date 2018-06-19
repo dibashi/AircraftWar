@@ -15,11 +15,10 @@ cc.Class({
     properties: {
 
         //子弹预制体
-        bullet0: cc.Prefab,
-        bullet1: cc.Prefab,
-        // bullet2: cc.Prefab,
-        bulletType: 0,
-        enableGuanDao: true,
+        coin0: cc.Prefab,
+      
+       
+        enableGuanDao: false,
         shootingSpeed: 2,
         damage: 0,
 
@@ -38,18 +37,21 @@ cc.Class({
 
 
     onLoad() {
-       this.bulletPool = new cc.NodePool();
-       for(let i = 0;i<this.bulletPoolSize;i++) {
-           let bl = cc.instantiate(this.bullet0);
-           this.bulletPool.put(bl);
-           bl.getComponent("heroBullet").isPoolBullet = true;
-       }
+    //    this.bulletPool = new cc.NodePool();
+    //    for(let i = 0;i<this.bulletPoolSize;i++) {
+    //        let bl = cc.instantiate(this.bullet0);
+    //        this.bulletPool.put(bl);
+    //        bl.getComponent("heroBullet").isPoolBullet = true;
+    //    }
     },
 
     setEnableGuanDao(ena) {
+        
+        
         if (this.enableGuanDao == ena) {
             return;
         }
+        cc.log("1~~~开始发射金币");
         this.enableGuanDao = ena;
         if (ena) {
             this.startFire();
@@ -67,72 +69,21 @@ cc.Class({
      
     },
 
-    addSpeed: function (sp) {
-        if(this!=undefined) {
-        this.shootingSpeed += sp;
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
-        }
-    },
 
-    setSpeed: function (sp) {
-        if(this!=undefined) {
-        this.shootingSpeed = sp;
-        this.schedule(this.bICallback, 1 / this.shootingSpeed);
-        }
-    },
-
-    cuzidan:function(){
-        this.isCu = true;
-    },
-
-    xizidan:function() {
-        this.isCu =false;
-    },
+ 
 
     susheCallback: function () {
-
-        //TODO：！！这里应该以后应该加入子弹池来优化
-
-
-        //根据子弹类型来生成子弹，类型决定加载什么预制体。
-
+        cc.log("~! gogo dropcoin");
         var bl = null;
-        // if (this.bulletType === globalHeroBulletType.ordinary) {
-        //     bl = cc.instantiate(this.bullet0);
-        // } 
-        
-        // else if (this.bulletType === globalHeroBulletType.upgrade) {
-        //     bl = cc.instantiate(this.bullet1);
-        // }
-        if(this.bulletPool.size()>0 && (this.isCu == false)) {
-            bl = this.bulletPool.get();
-        } else if(this.isCu == false){
-            bl = cc.instantiate(this.bullet0);
-            bl.getComponent("heroBullet").isPoolBullet = true;
-        } else {
-            bl = cc.instantiate(this.bullet1);
-            bl.getComponent("heroBullet").isPoolBullet = false;
-        }
-        bl.getComponent("heroBullet").bulletPool = this.bulletPool;
+        bl = cc.instantiate(this.coin0);
 
-
+        bl.getComponent("prize").prizeType = 10;//掉落金币阶段！
 
         let canvas = cc.director.getScene().getChildByName("Canvas");
         canvas.addChild(bl);
-
-        bl.getComponent("heroBullet").flyingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].flyingSpeed;
-        //bl.getComponent("heroBullet").damage = this.damage;
-        bl.getComponent("heroBullet").damage = this.damage;
         let pos = this.node.parent.convertToWorldSpaceAR(this.node.getPosition());
         let p = cc.v2(pos.x - cc.director.getVisibleSize().width * 0.5, pos.y - cc.director.getVisibleSize().height * 0.5);
         bl.setPosition(p);
-
-
-        //发射声音
-        if (this.bullet2Audio != null) {
-            cc.audioEngine.playEffect(this.bullet2Audio, false);
-        }
-
     },
 
 
@@ -142,17 +93,8 @@ cc.Class({
             return;
         }
         for (let i = 0; i < this.onceBulletCount; i++) {
-            // this.scheduleOnce(this.susheCallback,0.2);
             this.node.runAction(cc.sequence(cc.delayTime(0.1 * (i)), cc.callFunc(this.susheCallback, this)));
         }
-
-    },
-
-
-
-    // LIFE-CYCLE CALLBACKS:
-
-    start() {
 
     },
 

@@ -17,7 +17,7 @@ cc.Class({
         prizeType: -1,//决定其是什么类型的奖品
         t: 1.0,
 
-        jinbiRunFlag:true,//由于有些敌机会掉落金币，需要先将金币炸开，
+        jinbiRunFlag: true,//由于有些敌机会掉落金币，需要先将金币炸开，
         //然后飞向本方飞机，做 一个标记 ,正常飞机都可以飞，这种飞机需要先炸开之后飞
 
         prizeAudio: {
@@ -25,28 +25,28 @@ cc.Class({
             url: cc.AudioClip
         },
 
-        prizePool:null,
+        prizePool: null,
 
-        isPause:false,
+        isPause: false,
     },
 
-    onLoad(){
-        this.jinbiRunFlag =true;
+    onLoad() {
+        this.jinbiRunFlag = true;
     },
 
 
 
     update(dt) {
 
-        if (this.node.getPosition().y < -this.node.parent.height / 2-50) {
+        if (this.node.getPosition().y < -this.node.parent.height / 2 - 50) {
             this.node.destroy();
         }
 
-        if(this.isPause) {
+        if (this.isPause) {
             return;
         }
 
-        if(this.prizeType == generateType.jinbi&&this.jinbiRunFlag == false) {
+        if (this.prizeType == generateType.jinbi && this.jinbiRunFlag == false) {
             return;
         }
 
@@ -59,10 +59,10 @@ cc.Class({
         let ndx = dx / dis;
         let ndy = dy / dis;
 
-        if (this.prizeType != generateType.jinbi) {
+        if (this.prizeType != generateType.jinbi && this.prizeType!=10) {
 
             //以前不吸
-         
+
             // if ( dis< 80) {
             //     let speed = 10
             //     let rdx = ndx * speed;
@@ -80,22 +80,25 @@ cc.Class({
             // let rdx = ndx * speed*dt*60;
             // let rdy = ndy * speed*dt*60;
             // this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-
+            cc.log("特殊道具阶段！");
             let speed = 5;
             this.node.setPosition(bPos.x, bPos.y - speed);
-           
+
         } else if (this.prizeType == generateType.jinbi) {
-            
-           
+
+            cc.log("自然金币阶段！");
             let speed = 15;
 
-            let rdx = ndx * speed*dt*60;
-            let rdy = ndy * speed*dt*60;
+            let rdx = ndx * speed * dt * 60;
+            let rdy = ndy * speed * dt * 60;
             this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
+        } else if(this.prizeType == 10) {//掉落金币阶段
+            let speed = 15;
+            this.node.setPosition(bPos.x, bPos.y - speed);
         }
 
-       
+
     },
 
     normalizeVector: function (x, y) {
@@ -104,19 +107,19 @@ cc.Class({
 
     pauseAction: function () {
         this.isPause = true;
-      cc.log("子弹暂停");
+        cc.log("子弹暂停");
         this.node.pauseAllActions();
 
-        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+        if (this.node.getComponent(cc.Animation) != null && this.node.getComponent(cc.Animation) != undefined) {
             this.node.getComponent(cc.Animation).pause();
         }
     },
 
-    resumeAction:function() {
+    resumeAction: function () {
         this.isPause = false;
         this.node.resumeAllActions();
 
-        if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {
+        if (this.node.getComponent(cc.Animation) != null && this.node.getComponent(cc.Animation) != undefined) {
             this.node.getComponent(cc.Animation).resume();
         }
     },
@@ -129,13 +132,13 @@ cc.Class({
             //根据奖品类型来触发属性，game中的引用较多，直接传给game让其处理。
             switch (this.prizeType) {
                 case generateType.jinbi:
-                  //  cc.log("get jinbi!");
+                    //  cc.log("get jinbi!");
                     // var jinbiPrefab = cc.instantiate(this.prizeJinBi);
                     // this.node.addChild(jinbiPrefab);
                     // jinbiPrefab.setPosition(prizePosition);
                     // jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
                     this.node.parent.getComponent("Game").getJinBi();
-                 //   cc.audioEngine.playEffect(this.prizeAudio,false);
+                    //   cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.wudichongci:
                     //cc.log("get wudichongci!");
@@ -143,12 +146,12 @@ cc.Class({
                     //todo
                     //other.node.getComponent("Player").wudichongci();
                     this.node.parent.getComponent("Game").getShield();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                    cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.xinjiaxue:
                     cc.log("get xinjiaxue!");
                     other.node.getComponent("Player").addBlood();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                    cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.jisushesu:
                     cc.log("get jisushesu!");
@@ -156,17 +159,22 @@ cc.Class({
                     //播放火力提升动画
                     this.node.parent.getComponent("Game").fireBoostAni();
                     other.node.getComponent("Player").upgradePlane();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                    cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.huojianpao:
                     cc.log("get huojianpao!");
                     this.node.parent.getComponent("Game").getHuoJianPao();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                    cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
             }
 
-           // this.node.destroy();
-           this.prizePool.put(this.node);
+            // this.node.destroy();
+            if (this.prizePool!=undefined && this.prizePool!=null) { //掉落金币那一块 没有使用对象池，所以这里添加了代码
+                this.prizePool.put(this.node);
+            } else  {
+                this.node.destroy();
+            }
+                
         }
 
     },
