@@ -298,8 +298,8 @@ cc.Class({
             this.jisuPoolSize = 5,
             this.dazhaoPoolSize = 3,
 
-            this.baozouInterval = 5.5,
-            this.baozouPossession = 5,
+            this.baozouInterval = 35,
+            this.baozouPossession = 7,
 
 
             cc.sys.localStorage.setItem('killedEnemyCount', 0);
@@ -1238,16 +1238,16 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-        cc.director.loadScene('end');
+      // cc.director.loadScene('end');
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        // cc.eventManager.pauseTarget(this.node, true);
-        // let ss = cc.instantiate(this.reviveAlert);
-        // ss.setPosition(0, 100);
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.reviveAlert);
+        ss.setPosition(0, 100);
 
-        // ss.setLocalZOrder(100);
+        ss.setLocalZOrder(100);
 
-        // ss.getComponent("reviveAlert").onWho = this.node;
-        // this.node.addChild(ss);
+        ss.getComponent("reviveAlert").onWho = this.node;
+        this.node.addChild(ss);
     },
 
 
