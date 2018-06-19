@@ -479,10 +479,13 @@ cc.Class({
     },
 
     dead: function () {
+        //现在正在暴走 飞机全阵亡了
+        if(this.node.parent.getComponent("Game").baozouFlag== true) {
+            this.node.parent.getComponent("Game").closeBaozou();
+        }
+
         //1 先判断是否还有飞机，
         this.boomAni();
-
-
 
     },
 
