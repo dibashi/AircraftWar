@@ -283,8 +283,8 @@ cc.Class({
             this.jisuPoolSize = 5,
             this.dazhaoPoolSize = 3,
 
-            this.baozouInterval = 35,
-            this.baozouPossession = 7,
+            this.baozouInterval = 10,
+            this.baozouPossession = 5,
 
 
             cc.sys.localStorage.setItem('killedEnemyCount', 0);
@@ -1104,7 +1104,7 @@ cc.Class({
         if (currentScore > bestScore) {//把最高分上传到服务器吧
             cc.sys.localStorage.setItem('bestScore', currentScore);
 
-            this.setBestScore(currentScore);
+           // this.setBestScore(currentScore);
         }
 
         cc.sys.localStorage.setItem("currentScore", currentScore);

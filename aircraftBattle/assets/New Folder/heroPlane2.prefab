@@ -189,7 +189,8 @@
     "damage": 0,
     "onceBulletCount": 1,
     "bulletPool": null,
-    "bulletPoolSize": 20
+    "bulletPoolSize": 20,
+    "isCu": false
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -276,7 +277,8 @@
     "damage": 0,
     "onceBulletCount": 1,
     "bulletPool": null,
-    "bulletPoolSize": 20
+    "bulletPoolSize": 20,
+    "isCu": false
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -363,7 +365,8 @@
     "damage": 0,
     "onceBulletCount": 1,
     "bulletPool": null,
-    "bulletPoolSize": 20
+    "bulletPoolSize": 20,
+    "isCu": false
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -450,7 +453,8 @@
     "damage": 0,
     "onceBulletCount": 1,
     "bulletPool": null,
-    "bulletPoolSize": 20
+    "bulletPoolSize": 20,
+    "isCu": false
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -537,7 +541,8 @@
     "damage": 0,
     "onceBulletCount": 1,
     "bulletPool": null,
-    "bulletPoolSize": 20
+    "bulletPoolSize": 20,
+    "isCu": false
   },
   {
     "__type__": "cc.PrefabInfo",
