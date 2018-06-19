@@ -949,8 +949,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 147,
-      "height": 32
+      "width": 36,
+      "height": 40
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1054,34 +1054,6 @@
     "sync": false
   },
   {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 25
-    },
-    "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "9cecc4fe-6029-4395-bfbb-7ced30e31e1c"
-    },
-    "_type": 0,
-    "_sizeMode": 0,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_atlas": {
-      "__uuid__": "c0d77c51-6f91-40d5-8a00-4b976f16efcb"
-    }
-  },
-  {
     "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
@@ -1098,6 +1070,28 @@
       }
     ],
     "playOnLoad": false
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 25
+    },
+    "_enabled": true,
+    "_useOriginalSize": false,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
+    "_lineHeight": 40,
+    "_enableWrapText": true,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_N$string": "-1",
+    "_N$horizontalAlign": 0,
+    "_N$verticalAlign": 0,
+    "_N$fontFamily": "Arial",
+    "_N$overflow": 0
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2617,7 +2611,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -2688,7 +2683,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -2759,7 +2755,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -2830,7 +2827,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -2901,7 +2899,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -2972,7 +2971,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Node",
@@ -3043,7 +3043,8 @@
     "onceBulletCount": 1,
     "bulletPool": null,
     "bulletPoolSize": 20,
-    "isCu": false
+    "isCu": false,
+    "resumeFlag": false
   },
   {
     "__type__": "cc.Canvas",

@@ -956,6 +956,7 @@ cc.Class({
 
          //还有其他 TODO!! 播放 round X 动画
          let anim = this.roundX.getComponent(cc.Animation);
+         this.roundX.getComponent(cc.Label).string = this.realStage +1;
          anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
 
         
