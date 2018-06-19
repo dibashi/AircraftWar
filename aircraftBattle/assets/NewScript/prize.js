@@ -80,13 +80,11 @@ cc.Class({
             // let rdx = ndx * speed*dt*60;
             // let rdy = ndy * speed*dt*60;
             // this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-            cc.log("特殊道具阶段！");
             let speed = 5;
             this.node.setPosition(bPos.x, bPos.y - speed);
 
         } else if (this.prizeType == generateType.jinbi) {
 
-            cc.log("自然金币阶段！");
             let speed = 15;
 
             let rdx = ndx * speed * dt * 60;
@@ -94,7 +92,7 @@ cc.Class({
             this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
         } else if(this.prizeType == 10) {//掉落金币阶段
-            let speed = 15;
+            let speed = 25;
             this.node.setPosition(bPos.x, bPos.y - speed);
         }
 
