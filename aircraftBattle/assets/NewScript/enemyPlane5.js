@@ -258,7 +258,7 @@ cc.Class({
       
 
 
-        this.node.parent.getComponent('Game').addScore(1);
+        this.node.parent.getComponent('Game').addScore(6);
         this.node.group = "NOOOOOOO";
           this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
           this.damagedTeXiao.rotation = 180;

@@ -253,7 +253,7 @@ cc.Class({
         // cc.audioEngine.playEffect(this.boomAudio, false);
 
       
-        this.node.parent.getComponent('Game').addScore(1);
+        this.node.parent.getComponent('Game').addScore(5);
         this.node.group = "NOOOOOOO";
           this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
           this.damagedTeXiao.rotation = 180;

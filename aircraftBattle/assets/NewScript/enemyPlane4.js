@@ -344,7 +344,7 @@ cc.Class({
         //在这里加分，因为在Player碰撞检测中调用了这个函数，所以在这里加分 防止bug
         // this.node.parent.getComponent('Game').addScore(this.blood);
         //需求改为 一架飞机一分
-        this.node.parent.getComponent('Game').addScore(1);
+        this.node.parent.getComponent('Game').addScore(null); //目前没有这个敌机
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
         this.node.group = "NOOOOOOO";
 

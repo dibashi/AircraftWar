@@ -49,7 +49,7 @@ var _enemyPlaneData = [
     { enemyID: 0, blood: 18, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
     { enemyID: 1, blood: 180, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.wudichongci },
     { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi },
-    { enemyID: 3, blood: 90, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.3, fallingObject: _generateType.jisushesu },
+    { enemyID: 3, blood: 90, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jisushesu },
     { enemyID: 4, blood: 5, shootingSpeed: 0.5, flyingSpeed: 7, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
 
     { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 9, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
