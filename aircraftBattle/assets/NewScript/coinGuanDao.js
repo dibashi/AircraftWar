@@ -33,6 +33,8 @@ cc.Class({
         bulletPoolSize:20,
 
         isCu:false,//子弹是否加粗
+
+        resumeFlag:false,
     },
 
 
@@ -71,7 +73,14 @@ cc.Class({
      
     },
 
+    pauseAction:function() {
+        this.resumeFlag = this.enableGuanDao;
+        this.setEnableGuanDao(false);
+    },
 
+    resumeAction:function() {
+        this.setEnableGuanDao(this.resumeFlag);
+    },
  
 
     susheCallback: function () {

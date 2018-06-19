@@ -1340,6 +1340,12 @@ cc.Class({
             }
         }
 
+        let coinGuanDaos = this.coinDropBox.children;
+        let coinGDCounts = this.coinDropBox.childrenCount;
+        for(let i = 0; i<coinGDCounts;i++) {
+            coinGuanDaos[i].getComponent("coinGuanDao").pauseAction();
+        }
+
         this.node.off('touchmove', this.dragMove, this);
         this.node.off('touchstart', this.dragStart, this);
 
@@ -1375,6 +1381,12 @@ cc.Class({
             }else if(this.node.children[i].group == 'dazhaoPlane') {
                 this.node.children[i].getComponent("dazhaoPlane").resumeAction();
             }
+        }
+
+        let coinGuanDaos = this.coinDropBox.children;
+        let coinGDCounts = this.coinDropBox.childrenCount;
+        for(let i = 0; i<coinGDCounts;i++) {
+            coinGuanDaos[i].getComponent("coinGuanDao").resumeAction();
         }
 
 
