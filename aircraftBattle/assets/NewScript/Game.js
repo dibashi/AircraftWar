@@ -270,6 +270,8 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+
+        preColliderRadius:20,
     },
 
 
@@ -287,6 +289,9 @@ cc.Class({
          this.singleColor.setLocalZOrder(101);
          this.pauseBtn.setLocalZOrder(102);
          this.resumeBtn.setLocalZOrder(102);
+
+       
+      
 
         this.jinbiPoolSize = 50,
             this.hudunPoolSize = 3,
@@ -325,8 +330,8 @@ cc.Class({
 
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        //debug绘制
-        // manager.enabledDebugDraw = true;
+    //    debug绘制
+        manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
 
@@ -459,6 +464,13 @@ cc.Class({
 
         this.bestScore = parseInt(cc.sys.localStorage.getItem('bestScore'));
         this.newRecord = this.node.getChildByName("score").getChildByName("newRecord");
+
+
+
+
+          //之前碰撞体积
+          this.preColliderRadius = 20;
+          this.player.getComponent(cc.CircleCollider).radius = this.preColliderRadius;
 
     },
 
@@ -865,6 +877,10 @@ cc.Class({
             coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(true);
         }
 
+        //这里把我方飞机的碰撞面积加大，优化拾取金币的体验
+        let playerColliderArea = this.player.getComponent(cc.CircleCollider);
+       
+        playerColliderArea.radius = this.player.getContentSize().width/2;
         this.scheduleOnce(this.closeDropCoin,5);
     },
 
@@ -883,6 +899,9 @@ cc.Class({
     },
 
     nextRound:function() {
+         //这里把我方飞机的碰撞面积减小，优化游戏过程中的体验
+         let playerColliderArea = this.player.getComponent(cc.CircleCollider);
+         playerColliderArea.radius = this.preColliderRadius;
         this.stage = 0;
         this.realStage++;
 

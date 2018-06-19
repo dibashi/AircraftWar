@@ -43,6 +43,8 @@ cc.Class({
     //        this.bulletPool.put(bl);
     //        bl.getComponent("heroBullet").isPoolBullet = true;
     //    }
+
+        this.shootingSpeed = 6;
     },
 
     setEnableGuanDao(ena) {
