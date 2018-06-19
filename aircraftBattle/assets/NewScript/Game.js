@@ -568,9 +568,10 @@ cc.Class({
 
 
         //1 调用player保存当前状态。
+        
         //   this.player.getComponent("Player").savePlayerState();
         //  this.player.getComponent("Player").baozouState();
-
+        this.player.getComponent("Player").cuzidan();
         //2关闭所有子弹
         //   this.player.getComponent("Player").closeAllBullet();
         //3提高背景速度
@@ -593,6 +594,7 @@ cc.Class({
         //1 关闭 暴走的那些特效， 现在还不清楚
         //2 恢复飞机属性
         //   this.player.getComponent("Player").repairPlayerState();
+        this.player.getComponent("Player").xizidan();
         this.baozouHuDunAni.destroy();
 
         this.backGround.getComponent("background").speedFactor = 1;

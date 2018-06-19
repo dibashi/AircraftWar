@@ -32,6 +32,8 @@ cc.Class({
 
         bulletPool:null,
         bulletPoolSize:20,
+
+        isCu:false,//子弹是否加粗
     },
 
 
@@ -78,6 +80,14 @@ cc.Class({
         }
     },
 
+    cuzidan:function(){
+        this.isCu = true;
+    },
+
+    xizidan:function() {
+        this.isCu =false;
+    },
+
     susheCallback: function () {
 
         //TODO：！！这里应该以后应该加入子弹池来优化
@@ -93,10 +103,12 @@ cc.Class({
         // else if (this.bulletType === globalHeroBulletType.upgrade) {
         //     bl = cc.instantiate(this.bullet1);
         // }
-        if(this.bulletPool.size()>0) {
+        if(this.bulletPool.size()>0 && (this.isCu == false)) {
             bl = this.bulletPool.get();
-        } else {
+        } else if(this.isCu == false){
             bl = cc.instantiate(this.bullet0);
+        } else {
+            bl = cc.instantiate(this.bullet1);
         }
         bl.getComponent("heroBullet").bulletPool = this.bulletPool;
 

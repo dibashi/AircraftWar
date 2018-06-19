@@ -270,6 +270,18 @@ cc.Class({
         }
     },
 
+    cuzidan:function() {
+        for (let i = 0; i < 5; i++) {
+            this.guandaoArrays[i].getComponent("guandao").cuzidan();
+        }
+    },
+
+    xizidan:function() {
+        for (let i = 0; i < 5; i++) {
+            this.guandaoArrays[i].getComponent("guandao").xizidan();
+        }
+    },
+
     savePlayerState: function () {
         this.tempGuandaoCount = this.guandaoCount;
         if (this.guandaoArrays[0].getComponent("guandao") != undefined) {
@@ -439,11 +451,11 @@ cc.Class({
 
             }
         } else if (other.node.group === "enemy") {
-            //暴走逻辑优先处理，可以防止护盾消耗。
-            if (this.node.parent.getComponent('Game').baozouFlag) {
-                other.node.getComponent(other.node._name).enemyBoomAni();
-                return;
-            }
+            //暴走逻辑优先处理，可以防止护盾消耗。 废物暴走时刻，碰到敌方飞机 敌方飞机炸毁的功能
+            // if (this.node.parent.getComponent('Game').baozouFlag) {
+            //     other.node.getComponent(other.node._name).enemyBoomAni();
+            //     return;
+            // }
 
             let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
             if (hdCount > 0) {
