@@ -112,7 +112,8 @@
     "bjX": 0,
     "bjY": 0,
     "ax": 0,
-    "by": 0
+    "by": 0,
+    "isPause": false
   },
   {
     "__type__": "cc.Animation",
@@ -130,7 +131,7 @@
         "__uuid__": "484e9256-a28a-430b-b301-b788c93e9fd3"
       }
     ],
-    "playOnLoad": true
+    "playOnLoad": false
   },
   {
     "__type__": "cc.CircleCollider",
