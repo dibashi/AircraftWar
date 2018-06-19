@@ -608,6 +608,41 @@ cc.Class({
         this.scheduleOnce(this.closeBaozou, this.baozouPossession);
     },
 
+    newCoinBaozouProcessing:function() {
+        this.baozouHuDunAni = cc.instantiate(this.baozouHuDun);
+        let armatureDisplay1 = this.baozouHuDunAni.getComponent(dragonBones.ArmatureDisplay);
+        armatureDisplay1.playAnimation("chongci");
+        this.player.addChild(this.baozouHuDunAni);
+
+        //1 调用player保存当前状态。
+        this.player.getComponent("Player").savePlayerState();
+      
+        //2关闭所有子弹
+       this.player.getComponent("Player").closeAllBullet();
+
+        //3提高背景速度
+        this.backGround.getComponent("background").speedFactor = 9;
+        this.backGround.getComponent("background").speedYUNFactor = 13;
+
+         // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
+         this.baozouFlag = true;
+
+    },
+
+
+    closeCoinBaozou:function() {
+        cc.log("closeCoinBaozou");
+        this.baozouHuDunAni.destroy();
+        this.backGround.getComponent("background").speedFactor = 1;
+        this.backGround.getComponent("background").speedYUNFactor = 1;
+
+        this.player.getComponent("Player").repairPlayerState();
+        
+
+        this.baozouFlag = false;
+
+    },
+
 
 
 
@@ -864,6 +899,17 @@ cc.Class({
                 //2,播放动画 round X
                 //3,下一波
                 
+
+                //把之前的暴走停掉
+                //开始现在的暴走
+                if(this.baozouFlag) {
+                    this.closeBaozou();
+                    this.unschedule(this.closeBaozou);
+                }
+                this.unschedule(this.newBaozouProcessing);
+              
+                this.newCoinBaozouProcessing();
+
                 this.dropCoin();//掉落金币
             }
         }
@@ -881,7 +927,7 @@ cc.Class({
         let playerColliderArea = this.player.getComponent(cc.CircleCollider);
        
         playerColliderArea.radius = this.player.getContentSize().width/2;
-        this.scheduleOnce(this.closeDropCoin,5);
+        this.scheduleOnce(this.closeDropCoin,7);
     },
 
     closeDropCoin:function() {
@@ -891,19 +937,29 @@ cc.Class({
             coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(false);
         }
 
-        //还有其他 TODO!! 播放 round X 动画
-        let anim = this.roundX.getComponent(cc.Animation);
-        anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
+       
 
-        this.scheduleOnce(this.nextRound,1);
+        this.scheduleOnce(this.nextRound,2);
     },
 
     nextRound:function() {
+        //1 降低我方飞机碰撞面积，2，关闭之前的金币暴走动画，3 开启暴走定时器 4进入下一回合
          //这里把我方飞机的碰撞面积减小，优化游戏过程中的体验
          let playerColliderArea = this.player.getComponent(cc.CircleCollider);
          playerColliderArea.radius = this.preColliderRadius;
+
+         this.closeCoinBaozou();
+        this.goNewBaoZou();
+
         this.stage = 0;
         this.realStage++;
+
+         //还有其他 TODO!! 播放 round X 动画
+         let anim = this.roundX.getComponent(cc.Animation);
+         anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
+
+        
+      
 
         this.unschedule(this.runStage);
         this.scheduleOnce(this.runStage, 1);
