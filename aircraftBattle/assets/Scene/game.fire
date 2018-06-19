@@ -2546,7 +2546,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "cc.Node",
@@ -2598,7 +2598,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -2669,7 +2669,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -2740,7 +2740,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -2811,7 +2811,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -2882,7 +2882,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -2953,7 +2953,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -3024,7 +3024,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 0
+    "groupIndex": 5
   },
   {
     "__type__": "28528Do3PVNiZkQrdFO+2pj",
@@ -3217,6 +3217,7 @@
     },
     "coinDropBox": {
       "__id__": 68
-    }
+    },
+    "preColliderRadius": 20
   }
 ]
