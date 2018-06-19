@@ -241,33 +241,33 @@ cc.Class({
 
     enemyBoomAni: function () {
        
-        // this.node.parent.getComponent('Game').addScore(1);
-  
-        // this.node.group = "NOOOOOOO";
-
-        // var anim = this.node.getComponent(cc.Animation);
-        // anim.play();
-        // this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-
-        // this.unscheduleAllCallbacks();
-        // cc.audioEngine.playEffect(this.boomAudio, false);
-
         this.node.parent.getComponent('Game').addScore(10);
+  
         this.node.group = "NOOOOOOO";
-          this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-          this.damagedTeXiao.rotation = 180;
-          this.damagedTeXiao.y =this.damagedTeXiao.y+90;
-        let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
-        armatureDisplay.playAnimation("bossBZ");
+
+        var anim = this.node.getComponent(cc.Animation);
+        anim.play();
         this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+
         this.unscheduleAllCallbacks();
-        this.node.addChild(this.damagedTeXiao);
-        armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
         cc.audioEngine.playEffect(this.boomAudio, false);
-        this.damagedTeXiao.scale = 0.5;
+
+        // this.node.parent.getComponent('Game').addScore(10);
+        // this.node.group = "NOOOOOOO";
+        //   this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
+        //   this.damagedTeXiao.rotation = 180;
+        //   this.damagedTeXiao.y =this.damagedTeXiao.y+90;
+        // let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
+        // armatureDisplay.playAnimation("bossBZ");
+        // this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
+        // this.unscheduleAllCallbacks();
+        // this.node.addChild(this.damagedTeXiao);
+        // armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
+        // cc.audioEngine.playEffect(this.boomAudio, false);
+        // this.damagedTeXiao.scale = 0.5;
 
 
-        this.scheduleOnce(this.jianyin,0.1);
+        // this.scheduleOnce(this.jianyin,0.1);
 
     },
 
@@ -278,7 +278,7 @@ cc.Class({
     },
 
     baozhaOver: function () {
-        if(this.damagedOver!=null) {
+        if(this.damagedTeXiao!=null) {
             this.damagedTeXiao.removeFromParent();
             this.damagedTeXiao.destroy();
             this.damagedTeXiao = null;
