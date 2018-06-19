@@ -331,7 +331,7 @@ cc.Class({
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
     //    debug绘制
-        manager.enabledDebugDraw = true;
+    //    manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
 

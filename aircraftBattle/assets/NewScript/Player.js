@@ -72,11 +72,16 @@ cc.Class({
         partice: null,
 
         isPause: false,// 
+
+        xizidanDamage:0,
+        cuzidanDamage:0,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+
+       
 
 
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
@@ -89,7 +94,8 @@ cc.Class({
             this.onceBulletCount = globalHeroPlaneData[D.globalHeroPlaneID].onceBulletCount;
         }
 
-
+        this.xizidanDamage = this.damage;
+        this.cuzidanDamage = this.damage+1;
 
         this.guandaoArrays = new Array();
         // let childcount = this.nodechildrenCount;
@@ -113,7 +119,7 @@ cc.Class({
             }
             this.guandaoArrays[i] = this.node.getChildByName("guandao" + i);
             if (this.guandaoArrays[i].getComponent("guandao") != undefined) {
-                this.guandaoArrays[i].getComponent("guandao").damage = this.damage;
+                this.guandaoArrays[i].getComponent("guandao").damage = this.xizidanDamage;
                 this.guandaoArrays[i].getComponent("guandao").shootingSpeed = this.shootingSpeed;
                 this.guandaoArrays[i].getComponent("guandao").setEnableGuanDao(false);
                 this.guandaoArrays[i].getComponent("guandao").bulletType = this.bulletType;
@@ -273,12 +279,14 @@ cc.Class({
     cuzidan:function() {
         for (let i = 0; i < 5; i++) {
             this.guandaoArrays[i].getComponent("guandao").cuzidan();
+            this.guandaoArrays[i].getComponent("guandao").damage = this.cuzidanDamage;
         }
     },
 
     xizidan:function() {
         for (let i = 0; i < 5; i++) {
             this.guandaoArrays[i].getComponent("guandao").xizidan();
+            this.guandaoArrays[i].getComponent("guandao").damage = this.xizidanDamage;
         }
     },
 
