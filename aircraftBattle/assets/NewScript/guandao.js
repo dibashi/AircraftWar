@@ -42,6 +42,7 @@ cc.Class({
        for(let i = 0;i<this.bulletPoolSize;i++) {
            let bl = cc.instantiate(this.bullet0);
            this.bulletPool.put(bl);
+           bl.getComponent("heroBullet").isPoolBullet = true;
        }
     },
 
@@ -85,6 +86,7 @@ cc.Class({
     },
 
     xizidan:function() {
+        cc.log("xizidan~~");
         this.isCu =false;
     },
 
@@ -107,8 +109,10 @@ cc.Class({
             bl = this.bulletPool.get();
         } else if(this.isCu == false){
             bl = cc.instantiate(this.bullet0);
+            bl.getComponent("heroBullet").isPoolBullet = true;
         } else {
             bl = cc.instantiate(this.bullet1);
+            bl.getComponent("heroBullet").isPoolBullet = false;
         }
         bl.getComponent("heroBullet").bulletPool = this.bulletPool;
 

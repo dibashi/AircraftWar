@@ -48,6 +48,8 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        isPoolBullet:false,//子弹是否是子弹池的 
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -116,7 +118,7 @@ cc.Class({
             this.node.y += this.flyingSpeed * dt * 60;
         }
 
-        if (this.node.getPosition().y > this.p) {
+        if (this.node.getPosition().y > this.p && this.isPoolBullet) {
             // this.node.destroy();
             this.bulletPool.put(this.node);
         }

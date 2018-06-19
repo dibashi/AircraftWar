@@ -523,7 +523,7 @@ cc.Class({
 
 
 
-    closeBaoZou: function () {
+    renewBaoZou: function () {
         this.unschedule(this.baozouProcessing);
     },
 

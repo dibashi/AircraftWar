@@ -516,7 +516,7 @@ cc.Class({
 
         let ani = this.node.getComponent(cc.Animation);
         ani.play();
-        this.node.parent.getComponent("Game").closeBaoZou();
+        this.node.parent.getComponent("Game").renewBaoZou();
 
 
     },
