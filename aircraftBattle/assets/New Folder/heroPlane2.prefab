@@ -2178,7 +2178,7 @@
       "x": 0,
       "y": -10
     },
-    "_radius": 35
+    "_radius": 20
   },
   {
     "__type__": "cc.Animation",
