@@ -37,6 +37,7 @@ cc.Class({
         for(let i = 0;i<this.bulletPoolSize;i++) {
             let bl = cc.instantiate(this.bullet0);
             this.bulletPool.put(bl);
+            bl.getComponent("heroBullet").bulletPoolType = 3;
         }
     },
 
@@ -80,8 +81,9 @@ cc.Class({
             bl = this.bulletPool.get();
         } else {
             bl = cc.instantiate(this.bullet0);
+            bl.getComponent("heroBullet").bulletPoolType = 3;
         }
-        bl.getComponent("heroBullet").bulletPool = this.bulletPool;
+        bl.getComponent("heroBullet").bulletPool3 = this.bulletPool;
         
 
        

@@ -38,7 +38,11 @@ cc.Class({
 
         p: 0,//上边界 超出就销毁子弹
 
-        bulletPool: null,
+        bulletPool1: null, //主机子弹
+        bulletPool2:null,//僚机子弹
+        bulletPool3:null,//跟踪子弹
+
+        bulletPoolType:-1, //1 主机 2 僚机 3跟踪
 
         isPause: false,
 
@@ -118,9 +122,21 @@ cc.Class({
             this.node.y += this.flyingSpeed * dt * 60;
         }
 
-        if (this.node.getPosition().y > this.p && this.isPoolBullet) {
-            // this.node.destroy();
-            this.bulletPool.put(this.node);
+        if (this.node.getPosition().y > this.p) {
+           
+            if(this.bulletPoolType == 1) {
+                if(this.isPoolBullet) {
+                    this.bulletPool1.put(this.node);
+                } else {
+                    this.node.destroy();
+                }
+            } else if (this.bulletPoolType == 2) {
+                this.bulletPool2.put(this.node);
+            } else if (this.bulletPoolType == 3) {
+                this.bulletPool3.put(this.node);
+            }
+
+           
         }
 
     },

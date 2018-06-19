@@ -43,6 +43,7 @@ cc.Class({
            let bl = cc.instantiate(this.bullet0);
            this.bulletPool.put(bl);
            bl.getComponent("heroBullet").isPoolBullet = true;
+           bl.getComponent("heroBullet").bulletPoolType = 1;
        }
     },
 
@@ -105,15 +106,19 @@ cc.Class({
         //     bl = cc.instantiate(this.bullet1);
         // }
         if(this.bulletPool.size()>0 && (this.isCu == false)) {
+            
             bl = this.bulletPool.get();
+            cc.log("取出" + this.bulletPool.size());
         } else if(this.isCu == false){
             bl = cc.instantiate(this.bullet0);
             bl.getComponent("heroBullet").isPoolBullet = true;
+            bl.getComponent("heroBullet").bulletPoolType = 1;
         } else {
             bl = cc.instantiate(this.bullet1);
             bl.getComponent("heroBullet").isPoolBullet = false;
+            bl.getComponent("heroBullet").bulletPoolType = 1;
         }
-        bl.getComponent("heroBullet").bulletPool = this.bulletPool;
+        bl.getComponent("heroBullet").bulletPool1 = this.bulletPool;
 
 
 

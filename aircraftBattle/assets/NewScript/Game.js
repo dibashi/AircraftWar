@@ -298,7 +298,7 @@ cc.Class({
             this.jisuPoolSize = 5,
             this.dazhaoPoolSize = 3,
 
-            this.baozouInterval = 10,
+            this.baozouInterval = 5.5,
             this.baozouPossession = 5,
 
 
