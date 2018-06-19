@@ -274,9 +274,11 @@ cc.Class({
     },
 
     baozhaOver: function () {
-        this.damagedTeXiao.removeFromParent();
-        this.damagedTeXiao.destroy();
-        this.damagedTeXiao = null;
+        if(this.damagedTeXiao!=null) {
+            this.damagedTeXiao.removeFromParent();
+            this.damagedTeXiao.destroy();
+            this.damagedTeXiao = null;
+        }
  
          //这个有问题 要放动画回调 TODO!
          //this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
