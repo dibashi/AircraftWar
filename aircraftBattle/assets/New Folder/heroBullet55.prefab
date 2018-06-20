@@ -48,12 +48,12 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 44,
-      "height": 169
+      "height": 168
     },
     "_rotationX": 0,
     "_rotationY": 0,
     "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -129,7 +129,7 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 20
+    "_radius": 30
   },
   {
     "__type__": "cc.PrefabInfo",
