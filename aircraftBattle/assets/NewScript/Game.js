@@ -219,6 +219,9 @@ cc.Class({
         hudunPoolSize: 3,
         jisuPoolSize: 5,
         dazhaoPoolSize: 3,
+
+        shoujiPool:null,
+        shoujiPoolSize:15,
         //为了性能做成成员变量
         coinLabel: null,
         defenLabel: null,
@@ -272,6 +275,11 @@ cc.Class({
         },
 
         preColliderRadius:20,
+
+        shoujiAniPre:{
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
 
@@ -293,13 +301,15 @@ cc.Class({
        
       
 
-        this.jinbiPoolSize = 50,
-            this.hudunPoolSize = 3,
-            this.jisuPoolSize = 5,
-            this.dazhaoPoolSize = 3,
+        this.jinbiPoolSize = 50;
+            this.hudunPoolSize = 3;
+            this.jisuPoolSize = 5;
+            this.dazhaoPoolSize = 3;
 
-            this.baozouInterval = 35,
-            this.baozouPossession = 7,
+            this.shoujiPoolSize =15;
+
+            this.baozouInterval = 35;
+            this.baozouPossession = 7;
 
 
             cc.sys.localStorage.setItem('killedEnemyCount', 0);
@@ -455,6 +465,12 @@ cc.Class({
         for (let i = 0; i < this.dazhaoPoolSize; i++) {
             let bl = cc.instantiate(this.prizeHuoJianPao);
             this.dazhaoPool.put(bl);
+        }
+
+        this.shoujiPool = new cc.NodePool();
+        for (let i = 0; i < this.shoujiPoolSize; i++) {
+            let bl = cc.instantiate(this.shoujiAniPre);
+            this.shoujiPool.put(bl);
         }
 
 
@@ -1223,11 +1239,11 @@ cc.Class({
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
-        if (currentScore > bestScore) {//把最高分上传到服务器吧
-            cc.sys.localStorage.setItem('bestScore', currentScore);
+        // if (currentScore > bestScore) {//把最高分上传到服务器吧
+        //     cc.sys.localStorage.setItem('bestScore', currentScore);
 
-            this.setBestScore(currentScore);
-        }
+        //     this.setBestScore(currentScore);
+        // }
 
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
@@ -1238,16 +1254,16 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-      // cc.director.loadScene('end');
+       cc.director.loadScene('end');
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        cc.eventManager.pauseTarget(this.node, true);
-        let ss = cc.instantiate(this.reviveAlert);
-        ss.setPosition(0, 100);
+        // cc.eventManager.pauseTarget(this.node, true);
+        // let ss = cc.instantiate(this.reviveAlert);
+        // ss.setPosition(0, 100);
 
-        ss.setLocalZOrder(100);
+        // ss.setLocalZOrder(100);
 
-        ss.getComponent("reviveAlert").onWho = this.node;
-        this.node.addChild(ss);
+        // ss.getComponent("reviveAlert").onWho = this.node;
+        // this.node.addChild(ss);
     },
 
 
@@ -1406,6 +1422,8 @@ cc.Class({
 
 
     },
+
+    
 
 
 

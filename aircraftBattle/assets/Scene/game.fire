@@ -3104,6 +3104,8 @@
     "hudunPoolSize": 3,
     "jisuPoolSize": 5,
     "dazhaoPoolSize": 3,
+    "shoujiPool": null,
+    "shoujiPoolSize": 15,
     "coinLabel": null,
     "defenLabel": null,
     "backGround": {
@@ -3130,6 +3132,9 @@
     "coinDropBox": {
       "__id__": 65
     },
-    "preColliderRadius": 20
+    "preColliderRadius": 20,
+    "shoujiAniPre": {
+      "__uuid__": "822bc45b-1d34-4afe-af8b-41508127d9ba"
+    }
   }
 ]

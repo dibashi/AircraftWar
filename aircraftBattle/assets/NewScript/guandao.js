@@ -108,7 +108,7 @@ cc.Class({
         if(this.bulletPool.size()>0 && (this.isCu == false)) {
             
             bl = this.bulletPool.get();
-            cc.log("取出" + this.bulletPool.size());
+            
         } else if(this.isCu == false){
             bl = cc.instantiate(this.bullet0);
             bl.getComponent("heroBullet").isPoolBullet = true;

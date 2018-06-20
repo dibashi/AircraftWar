@@ -151,11 +151,25 @@ cc.Class({
 
     onCollisionEnter: function (other, self) {
 
-        this.shoujiAni = cc.instantiate(this.shoujiAniPre);
+        //如果在这里做一个受击动画池，会不会提高性能？ 
+        //由子弹类维护显然不合适，因为这些子弹消亡的很快
+        //算了 我怕引入bug，以后再说
+        let sjPool = cc.find("Canvas").getComponent("Game").shoujiPool;
+        this.shoujiAni = null;
+        if (sjPool.size() > 0) {
+            this.shoujiAni = sjPool.get();
+            cc.log("sj还剩下：" +sjPool.size());
+        } else {
+            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
+        }
+
         if(this.shoujiAni!=null) {
             this.node.parent.addChild(this.shoujiAni);
             var anim = this.shoujiAni.getComponent(cc.Animation);
             this.shoujiAni.setPosition(this.node.getPosition().x,this.node.getPosition().y+this.node.getContentSize().height/2);
+           
+          // anim.on("stop", cc.find("Canvas").getComponent("Game").shoujiDamageOver, cc.find("Canvas").getComponent("Game"));
+           
             anim.play();
         }
      
