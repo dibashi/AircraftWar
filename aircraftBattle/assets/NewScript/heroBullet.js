@@ -174,6 +174,6 @@ cc.Class({
         }
      
 
-        this.node.destroy();
+     //   this.node.destroy();
     },
 });
