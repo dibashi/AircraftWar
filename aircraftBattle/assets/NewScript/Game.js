@@ -470,6 +470,8 @@ cc.Class({
         this.shoujiPool = new cc.NodePool();
         for (let i = 0; i < this.shoujiPoolSize; i++) {
             let bl = cc.instantiate(this.shoujiAniPre);
+            bl.getComponent("shoujiAniJS")._shoujiPool = this.shoujiPool;
+            bl.getComponent("shoujiAniJS")._shoujiPoolSize = this.shoujiPoolSize;
             this.shoujiPool.put(bl);
         }
 
