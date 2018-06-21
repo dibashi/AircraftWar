@@ -39,10 +39,10 @@ cc.Class({
         p: 0,//上边界 超出就销毁子弹
 
         bulletPool1: null, //主机子弹
-        bulletPool2:null,//僚机子弹
-        bulletPool3:null,//跟踪子弹
+        bulletPool2: null,//僚机子弹
+        bulletPool3: null,//跟踪子弹
 
-        bulletPoolType:-1, //1 主机 2 僚机 3跟踪
+        bulletPoolType: -1, //1 主机 2 僚机 3跟踪
 
         isPause: false,
 
@@ -53,7 +53,7 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        isPoolBullet:false,//子弹是否是子弹池的 
+        isPoolBullet: false,//子弹是否是子弹池的 
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -123,9 +123,9 @@ cc.Class({
         }
 
         if (this.node.getPosition().y > this.p) {
-           
-            if(this.bulletPoolType == 1) {
-                if(this.isPoolBullet) {
+
+            if (this.bulletPoolType == 1) {
+                if (this.isPoolBullet) {
                     this.bulletPool1.put(this.node);
                 } else {
                     this.node.destroy();
@@ -136,7 +136,7 @@ cc.Class({
                 this.bulletPool3.put(this.node);
             }
 
-           
+
         }
 
     },
@@ -158,22 +158,37 @@ cc.Class({
         this.shoujiAni = null;
         if (sjPool.size() > 0) {
             this.shoujiAni = sjPool.get();
-            
+
         } else {
             this.shoujiAni = cc.instantiate(this.shoujiAniPre);
         }
 
-        if(this.shoujiAni!=null) {
+        if (this.shoujiAni != null) {
             this.node.parent.addChild(this.shoujiAni);
             var anim = this.shoujiAni.getComponent(cc.Animation);
-            this.shoujiAni.setPosition(this.node.getPosition().x,this.node.getPosition().y+this.node.getContentSize().height/2);
-           
-          // anim.on("stop", cc.find("Canvas").getComponent("Game").shoujiDamageOver, cc.find("Canvas").getComponent("Game"));
-           
+            this.shoujiAni.setPosition(this.node.getPosition().x, this.node.getPosition().y + this.node.getContentSize().height / 2);
+
+            // anim.on("stop", cc.find("Canvas").getComponent("Game").shoujiDamageOver, cc.find("Canvas").getComponent("Game"));
+
             anim.play();
         }
-     
 
-        this.node.destroy();
+
+        //this.node.destroy();
+
+
+        if (this.bulletPoolType == 1) {
+            if (this.isPoolBullet) {
+                this.bulletPool1.put(this.node);
+            } else {
+                this.node.destroy();
+            }
+        } else if (this.bulletPoolType == 2) {
+            this.bulletPool2.put(this.node);
+        } else if (this.bulletPoolType == 3) {
+            this.bulletPool3.put(this.node);
+        }
+
+
     },
 });
