@@ -2116,17 +2116,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 130,
-      "height": 62
+      "width": 83,
+      "height": 40
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.8,
-    "_scaleY": 0.8,
+    "_scaleX": 1,
+    "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -133.1,
-      "y": 605.6
+      "x": -187.9,
+      "y": 563.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3135,6 +3135,7 @@
     "preColliderRadius": 20,
     "shoujiAniPre": {
       "__uuid__": "822bc45b-1d34-4afe-af8b-41508127d9ba"
-    }
+    },
+    "singleTouchID": -1
   }
 ]

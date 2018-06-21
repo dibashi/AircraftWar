@@ -280,7 +280,7 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        singleTouchID:-1,//这个变量来觉得那些touch事件处理，用来关闭多点触摸
+        singleTouchID: -1,//这个变量来觉得那些touch事件处理，用来关闭多点触摸
     },
 
 
@@ -322,14 +322,15 @@ cc.Class({
         newRecordLabel.active = false;
         this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
 
+        let jinbiKuangTi = null;
+        jinbiKuangTi = this.node.getChildByName("kuangti_jinbi");
+        let sjbw = jinbiKuangTi.getContentSize().width;
+        let sjbh = jinbiKuangTi.getContentSize().height;
 
-        let sjbw = this.node.getChildByName("kuangti_jinbi").getContentSize().width;
-        let sjbh = this.node.getChildByName("kuangti_jinbi").getContentSize().height;
-
-        this.node.getChildByName("kuangti_jinbi").setPosition(-wx + sjbw / 2, hy - sjbh / 2);
+        jinbiKuangTi.setPosition(-wx + jinbiKuangTi.getContentSize().width / 2, hy - 10 - (jinbiKuangTi.getContentSize().height / 2));
 
         //金币不显示 
-        this.node.getChildByName("kuangti_jinbi").active = false;
+        // this.node.getChildByName("kuangti_jinbi").active = false;
 
         this.node.getChildByName("score").setLocalZOrder(100);
 
@@ -392,7 +393,7 @@ cc.Class({
         // moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
 
         //  this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
-        this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - 10 - (this.spriteLife.getContentSize().height / 2));
+        this.spriteLife.setPosition(jinbiKuangTi.getPosition().x + jinbiKuangTi.getContentSize().width / 2 + this.spriteLife.getContentSize().width / 2 + 10, jinbiKuangTi.getPosition().y);
 
         this.spriteLife.setLocalZOrder(this.UIZorder);
 
@@ -429,7 +430,7 @@ cc.Class({
 
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
-        this.node.on('touchend',this.drageEnd,this);
+        this.node.on('touchend', this.drageEnd, this);
 
         // this.goBaoZou();
 
@@ -477,7 +478,8 @@ cc.Class({
         }
 
 
-        //  this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+        this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+        this.coinLabel.string = "0";
 
         this.defenLabel = this.node.getChildByName("score").getComponent(cc.Label);
 
@@ -546,7 +548,7 @@ cc.Class({
     },
 
     newPlaneMoved: function () {
-      
+
         this.goNewBaoZou();
     },
 
@@ -672,14 +674,14 @@ cc.Class({
         //3 应该没了
     },
 
-    drageEnd:function(event) {
-        if(event.getID() == this.singleTouchID) {
+    drageEnd: function (event) {
+        if (event.getID() == this.singleTouchID) {
             this.singleTouchID = -1;//-1标记可以再触摸
         }
     },
 
     dragStart: function (event) {
-        if(this.singleTouchID == -1) {
+        if (this.singleTouchID == -1) {
             this.singleTouchID = event.getID();
         } else {
             //已经被触摸设置了，那就不处理
@@ -694,7 +696,7 @@ cc.Class({
             return;
         }
 
-        if(event.getID() != this.singleTouchID) {
+        if (event.getID() != this.singleTouchID) {
             return;
         }
 
@@ -909,10 +911,10 @@ cc.Class({
 
         this.enemyCount--;
         this.checkcheck();
-       
+
     },
 
-    checkcheck:function() {
+    checkcheck: function () {
         if (this.enemyCount <= 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
@@ -1059,7 +1061,7 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     //  cc.log("jinbi!");
-                    let jinBiCount = Math.floor(Math.random() * 8);
+                    let jinBiCount = Math.floor(Math.random() * 13);
                     for (let i = 0; i < jinBiCount; i++) {
 
                         if (this.jinbiPool.size() > 0) {
@@ -1076,8 +1078,8 @@ cc.Class({
                         pf.getComponent("prize").prizeType = generateType.jinbi;
                         //!!先不调用自己的update函数，先自己做一个动作，在动作结束后，再置为true
                         pf.getComponent("prize").jinbiRunFlag = false;
-                        let ramPosX = Math.random() * 60;
-                        let ramPosY = Math.random() * 60
+                        let ramPosX = Math.random() * 80;
+                        let ramPosY = Math.random() * 80
                         if (Math.random() > 0.5) {
                             ramPosX = -ramPosX;
                         }
@@ -1200,17 +1202,14 @@ cc.Class({
 
     getJinBi: function () {
 
-        // var c = cc.sys.localStorage.getItem('jinBiCount');
+        //为了性能下面三行屏蔽了，只在游戏结束才给玩家金币结算
+        //  var c = cc.sys.localStorage.getItem('jinBiCount');
+        //  var newC = parseInt(c) + globalDropJinBiCount;
+        //  cc.sys.localStorage.setItem('jinBiCount', newC);
 
-        // var newC = parseInt(c) + globalDropJinBiCount;
 
-        // cc.sys.localStorage.setItem('jinBiCount', newC);
-
-        //let jinbilabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
-
-        //  this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
+        this.coinLabel.string = parseInt(this.coinLabel.string) + globalDropJinBiCount;
         this._jinBiCount += globalDropJinBiCount;
-
     },
     // getWuDiChongCi:function() {
     //     cc.log("getWuDiChongCi");
@@ -1271,7 +1270,7 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-//       cc.director.loadScene('end');
+        //       cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
         cc.eventManager.pauseTarget(this.node, true);
