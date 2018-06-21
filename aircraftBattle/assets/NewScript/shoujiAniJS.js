@@ -43,10 +43,10 @@ cc.Class({
    
     shoujiAniDamageOver:function() {
        
-        cc.log("shouji over!");
+      
         if(this.shoujiPool.size()<this.shoujiPoolSize) {
             this.shoujiPool.put(this.node);
-            cc.log("put 后sj还剩下：" +this.shoujiPool.size());
+           
         } else {
             this.node.destroy();
         }

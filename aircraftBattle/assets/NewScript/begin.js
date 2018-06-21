@@ -13,7 +13,6 @@ var heroPlaneID = require("heroPlaneID").heroPlaneID;
 
 var globalJinBiCount = require("enemyPlaneDatas").jinBiCount;
 
-var isLiuLanQiDebug = require("enemyPlaneDatas").isLiuLanQiDebug;
 cc.Class({
     extends: cc.Component,
 
@@ -139,7 +138,7 @@ cc.Class({
 
         },
 
-        beginGame:{
+        beginGame: {
             default: null,
             type: cc.Node,
 
@@ -153,13 +152,13 @@ cc.Class({
         wx.setUserCloudStorage({ KVDataList: kvDataList })
     },
 
-   
+
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-    
-       
+
+
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
@@ -186,7 +185,7 @@ cc.Class({
         if (isloaded == 0 || isloaded == null) {
             cc.sys.localStorage.setItem('isLoaded', 1);
             cc.sys.localStorage.setItem('jinBiCount', 100);
-         
+
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
@@ -218,8 +217,8 @@ cc.Class({
 
             //记录上一次领取时间 和 观看广告时间
             //第一次登陆 记为10小时前用户领取过 可以保证 玩家可以领取奖励
-            cc.sys.localStorage.setItem('lqTime', Date.now() - 1000*60*60*10);
-            cc.sys.localStorage.setItem('ggTime', Date.now() - 1000*60*60*10);
+            cc.sys.localStorage.setItem('lqTime', Date.now() - 1000 * 60 * 60 * 10);
+            cc.sys.localStorage.setItem('ggTime', Date.now() - 1000 * 60 * 60 * 10);
 
             //新的需求 加入复活卡 复活卡的数量  初始化为0 之后每邀请一个好友对其值增1
             //不能超过2，每使用一次复活将其值减小1
@@ -301,37 +300,35 @@ cc.Class({
 
 
         this.jindutiao2.active = false;
-      
+
     },
 
-  
-    start() {
-        if(isLiuLanQiDebug == 1) {
 
-        } else if(isLiuLanQiDebug == 0){
-            let isloaded = parseInt( cc.sys.localStorage.getItem("isLoaded") );
-            if (isloaded == 1) {
-                
-    
-                cc.sys.localStorage.setItem('bestScore', 0);
-                this.setBestScore(0);
-            }
-    
-             
-        
-          wx.showShareMenu();
-    
-    
-          wx.onShareAppMessage(function () {
-            // 用户点击了“转发”按钮
-            return {
-              title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
-              imageUrl : "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
-    
-            }
-          });
-        }
-        
+    start() {
+
+        // let isloaded = parseInt(cc.sys.localStorage.getItem("isLoaded"));
+        // if (isloaded == 1) {
+
+
+        //     cc.sys.localStorage.setItem('bestScore', 0);
+        //     this.setBestScore(0);
+        // }
+
+
+
+        // wx.showShareMenu();
+
+
+        // wx.onShareAppMessage(function () {
+        //     // 用户点击了“转发”按钮
+        //     return {
+        //         title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
+        //         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
+
+        //     }
+        // });
+
+
     },
 
     refreshPrize: function (tag) {
@@ -361,10 +358,10 @@ cc.Class({
 
 
 
-        this.beginGame.active =false;
+        this.beginGame.active = false;
         this.jindutiao2.active = true;
 
-       
+
 
         let anim = this.jindutiaoMask.getComponent(cc.Animation);
         anim.play('jindutiaoAni');
@@ -425,7 +422,7 @@ cc.Class({
     },
 
     //物品获得成功的回调函数，将来还要实现失败的回调
-    giftGetSuccess:function(tag) {
+    giftGetSuccess: function (tag) {
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.giftGetAlert);
         ss.setPosition(0, 0);

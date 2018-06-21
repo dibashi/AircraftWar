@@ -23,7 +23,6 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
-var isLiuLanQiDebug = require("enemyPlaneDatas").isLiuLanQiDebug;
 
 
 
@@ -220,8 +219,8 @@ cc.Class({
         jisuPoolSize: 5,
         dazhaoPoolSize: 3,
 
-        shoujiPool:null,
-        shoujiPoolSize:15,
+        shoujiPool: null,
+        shoujiPoolSize: 15,
         //为了性能做成成员变量
         coinLabel: null,
         defenLabel: null,
@@ -259,24 +258,24 @@ cc.Class({
             type: cc.Node,
         },
 
-        pauseBtn:{
+        pauseBtn: {
             default: null,
             type: cc.Node,
         },
 
-        resumeBtn:{
+        resumeBtn: {
             default: null,
             type: cc.Node,
         },
 
-        coinDropBox:{
+        coinDropBox: {
             default: null,
             type: cc.Node,
         },
 
-        preColliderRadius:20,
+        preColliderRadius: 20,
 
-        shoujiAniPre:{
+        shoujiAniPre: {
             default: null,
             type: cc.Prefab,
         },
@@ -290,29 +289,29 @@ cc.Class({
         cc.sys.localStorage.setItem("GuangGaoFuhuoFlag", 1);//可以广告复活
 
         //暂停的黑底纹  先扔一边  
-           this.singleColor.setPosition(10000,10000);
-         this.pauseBtn.setPosition(314,521);
-         this.resumeBtn.setPosition(10000,10000);
+        this.singleColor.setPosition(10000, 10000);
+        this.pauseBtn.setPosition(314, 521);
+        this.resumeBtn.setPosition(10000, 10000);
 
-         this.singleColor.setLocalZOrder(101);
-         this.pauseBtn.setLocalZOrder(102);
-         this.resumeBtn.setLocalZOrder(102);
+        this.singleColor.setLocalZOrder(101);
+        this.pauseBtn.setLocalZOrder(102);
+        this.resumeBtn.setLocalZOrder(102);
 
-       
-      
+
+
 
         this.jinbiPoolSize = 50;
-            this.hudunPoolSize = 3;
-            this.jisuPoolSize = 5;
-            this.dazhaoPoolSize = 3;
+        this.hudunPoolSize = 3;
+        this.jisuPoolSize = 5;
+        this.dazhaoPoolSize = 3;
 
-            this.shoujiPoolSize =15;
+        this.shoujiPoolSize = 15;
 
-            this.baozouInterval = 35;
-            this.baozouPossession = 7;
+        this.baozouInterval = 35;
+        this.baozouPossession = 7;
 
 
-            cc.sys.localStorage.setItem('killedEnemyCount', 0);
+        cc.sys.localStorage.setItem('killedEnemyCount', 0);
 
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
@@ -340,8 +339,8 @@ cc.Class({
 
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-    //    debug绘制
-    //    manager.enabledDebugDraw = true;
+        //    debug绘制
+        //    manager.enabledDebugDraw = true;
 
         cc._initDebugSetting(cc.DebugMode.INFO);
 
@@ -486,9 +485,9 @@ cc.Class({
 
 
 
-          //之前碰撞体积
-          this.preColliderRadius = 20;
-          this.player.getComponent(cc.CircleCollider).radius = this.preColliderRadius;
+        //之前碰撞体积
+        this.preColliderRadius = 20;
+        this.player.getComponent(cc.CircleCollider).radius = this.preColliderRadius;
 
     },
 
@@ -608,7 +607,7 @@ cc.Class({
 
 
         //1 调用player保存当前状态。
-        
+
         //   this.player.getComponent("Player").savePlayerState();
         //  this.player.getComponent("Player").baozouState();
         this.player.getComponent("Player").cuzidan();
@@ -626,7 +625,7 @@ cc.Class({
         this.scheduleOnce(this.closeBaozou, this.baozouPossession);
     },
 
-    newCoinBaozouProcessing:function() {
+    newCoinBaozouProcessing: function () {
         this.baozouHuDunAni = cc.instantiate(this.baozouHuDun);
         let armatureDisplay1 = this.baozouHuDunAni.getComponent(dragonBones.ArmatureDisplay);
         armatureDisplay1.playAnimation("chongci");
@@ -634,28 +633,28 @@ cc.Class({
 
         //1 调用player保存当前状态。
         this.player.getComponent("Player").savePlayerState();
-      
+
         //2关闭所有子弹
-       this.player.getComponent("Player").closeAllBullet();
+        this.player.getComponent("Player").closeAllBullet();
 
         //3提高背景速度
         this.backGround.getComponent("background").speedFactor = 9;
         this.backGround.getComponent("background").speedYUNFactor = 13;
 
-         // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
-         this.baozouFlag = true;
+        // 4 标记暴走状态 飞机若和敌机相撞 则逻辑改变标记
+        this.baozouFlag = true;
 
     },
 
 
-    closeCoinBaozou:function() {
+    closeCoinBaozou: function () {
         cc.log("closeCoinBaozou");
         this.baozouHuDunAni.destroy();
         this.backGround.getComponent("background").speedFactor = 1;
         this.backGround.getComponent("background").speedYUNFactor = 1;
 
         this.player.getComponent("Player").repairPlayerState();
-        
+
 
         this.baozouFlag = false;
 
@@ -685,7 +684,7 @@ cc.Class({
 
     dragMove: function (event) {
 
-        if(this.player == null||this.player._position == null) {
+        if (this.player == null || this.player._position == null) {
             return;
         }
 
@@ -916,16 +915,16 @@ cc.Class({
                 //1,掉落金币
                 //2,播放动画 round X
                 //3,下一波
-                
+
 
                 //把之前的暴走停掉
                 //开始现在的暴走
-                if(this.baozouFlag) {
+                if (this.baozouFlag) {
                     this.closeBaozou();
                     this.unschedule(this.closeBaozou);
                 }
                 this.unschedule(this.newBaozouProcessing);
-              
+
                 this.newCoinBaozouProcessing();
 
                 this.dropCoin();//掉落金币
@@ -933,52 +932,52 @@ cc.Class({
         }
     },
 
-    dropCoin:function(coinCount) {
-        
+    dropCoin: function (coinCount) {
+
         let coinGuanDaos = this.coinDropBox.children;
         let coinGDCounts = this.coinDropBox.childrenCount;
-        for(let i = 0; i<coinGDCounts;i++) {
+        for (let i = 0; i < coinGDCounts; i++) {
             coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(true);
         }
 
         //这里把我方飞机的碰撞面积加大，优化拾取金币的体验
         let playerColliderArea = this.player.getComponent(cc.CircleCollider);
-       
-        playerColliderArea.radius = this.player.getContentSize().width/2;
-        this.scheduleOnce(this.closeDropCoin,7);
+
+        playerColliderArea.radius = this.player.getContentSize().width / 2;
+        this.scheduleOnce(this.closeDropCoin, 7);
     },
 
-    closeDropCoin:function() {
+    closeDropCoin: function () {
         let coinGuanDaos = this.coinDropBox.children;
         let coinGDCounts = this.coinDropBox.childrenCount;
-        for(let i = 0; i<coinGDCounts;i++) {
+        for (let i = 0; i < coinGDCounts; i++) {
             coinGuanDaos[i].getComponent("coinGuanDao").setEnableGuanDao(false);
         }
 
-       
 
-        this.scheduleOnce(this.nextRound,2);
+
+        this.scheduleOnce(this.nextRound, 2);
     },
 
-    nextRound:function() {
+    nextRound: function () {
         //1 降低我方飞机碰撞面积，2，关闭之前的金币暴走动画，3 开启暴走定时器 4进入下一回合
-         //这里把我方飞机的碰撞面积减小，优化游戏过程中的体验
-         let playerColliderArea = this.player.getComponent(cc.CircleCollider);
-         playerColliderArea.radius = this.preColliderRadius;
+        //这里把我方飞机的碰撞面积减小，优化游戏过程中的体验
+        let playerColliderArea = this.player.getComponent(cc.CircleCollider);
+        playerColliderArea.radius = this.preColliderRadius;
 
-         this.closeCoinBaozou();
+        this.closeCoinBaozou();
         this.goNewBaoZou();
 
         this.stage = 0;
         this.realStage++;
 
-         //还有其他 TODO!! 播放 round X 动画
-         let anim = this.roundX.getComponent(cc.Animation);
-         this.roundX.getComponent(cc.Label).string = "空间阶段" + (this.realStage +1);
-         anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
+        //还有其他 TODO!! 播放 round X 动画
+        let anim = this.roundX.getComponent(cc.Animation);
+        this.roundX.getComponent(cc.Label).string = "空间阶段" + (this.realStage + 1);
+        anim.play(); //在preba里面添加回调 roundOver ,算了 太麻烦  这里加个定时器 规定时间后 调用下一阶段
 
-        
-      
+
+
 
         this.unschedule(this.runStage);
         this.scheduleOnce(this.runStage, 1);
@@ -1006,31 +1005,31 @@ cc.Class({
             }
             else if (enemyID === 4) {
                 enemy = cc.instantiate(this.enemyPlane4);
-            }else if (enemyID === 5) {
+            } else if (enemyID === 5) {
                 enemy = cc.instantiate(this.enemyPlane5);
-            }else if (enemyID === 6) {
+            } else if (enemyID === 6) {
                 enemy = cc.instantiate(this.enemyPlane6);
             }
             //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
-            if (enemy.getComponent("enemyPlane"+enemyID) != undefined) {
-                enemy.getComponent("enemyPlane"+enemyID).enemyID = enemyID;
-                enemy.getComponent("enemyPlane"+enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage*10;
+            if (enemy.getComponent("enemyPlane" + enemyID) != undefined) {
+                enemy.getComponent("enemyPlane" + enemyID).enemyID = enemyID;
+                enemy.getComponent("enemyPlane" + enemyID).blood = globalEnemyPlaneData[enemyID].blood + this.realStage * 10;
 
-                enemy.getComponent("enemyPlane"+enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.3 * this.realStage;
-                enemy.getComponent("enemyPlane"+enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
+                enemy.getComponent("enemyPlane" + enemyID).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed + 0.3 * this.realStage;
+                enemy.getComponent("enemyPlane" + enemyID).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
 
-                enemy.getComponent("enemyPlane"+enemyID).damage = globalEnemyPlaneData[enemyID].damage;
-                enemy.getComponent("enemyPlane"+enemyID).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
-                enemy.getComponent("enemyPlane"+enemyID).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
+                enemy.getComponent("enemyPlane" + enemyID).damage = globalEnemyPlaneData[enemyID].damage;
+                enemy.getComponent("enemyPlane" + enemyID).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
+                enemy.getComponent("enemyPlane" + enemyID).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
 
-                enemy.getComponent("enemyPlane"+enemyID).endX = globalStageData[this.stage][i].endX;
-                enemy.getComponent("enemyPlane"+enemyID).endY = globalStageData[this.stage][i].endY;
+                enemy.getComponent("enemyPlane" + enemyID).endX = globalStageData[this.stage][i].endX;
+                enemy.getComponent("enemyPlane" + enemyID).endY = globalStageData[this.stage][i].endY;
             }
 
-            enemy.setPosition(globalStageData[this.stage][i].beginX,globalStageData[this.stage][i].beginY);//初始位置初始化
+            enemy.setPosition(globalStageData[this.stage][i].beginX, globalStageData[this.stage][i].beginY);//初始位置初始化
             this.node.addChild(enemy);
 
-            enemy.getComponent("enemyPlane"+enemyID).enterScene();//让敌机自己来执行自己的进入场景
+            enemy.getComponent("enemyPlane" + enemyID).enterScene();//让敌机自己来执行自己的进入场景
 
         }
 
@@ -1241,17 +1240,14 @@ cc.Class({
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
-        
-        if(isLiuLanQiDebug == 1) {
-           
-        } else if(isLiuLanQiDebug == 0){
-            if (currentScore > bestScore) {//把最高分上传到服务器吧
-                cc.sys.localStorage.setItem('bestScore', currentScore);
-    
-                this.setBestScore(currentScore);
-            }
-        }
-       
+
+
+        // if (currentScore > bestScore) {//把最高分上传到服务器吧
+        //     cc.sys.localStorage.setItem('bestScore', currentScore);
+
+        //     this.setBestScore(currentScore);
+        // }
+
 
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
@@ -1261,21 +1257,21 @@ cc.Class({
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
-        if(isLiuLanQiDebug == 1) {
-            cc.director.loadScene('end');
-        } else if(isLiuLanQiDebug == 0) {
- //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        cc.eventManager.pauseTarget(this.node, true);
-        let ss = cc.instantiate(this.reviveAlert);
-        ss.setPosition(0, 100);
 
-        ss.setLocalZOrder(100);
+        cc.director.loadScene('end');
 
-        ss.getComponent("reviveAlert").onWho = this.node;
-        this.node.addChild(ss);
-        }
-       
-       
+        //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
+        // cc.eventManager.pauseTarget(this.node, true);
+        // let ss = cc.instantiate(this.reviveAlert);
+        // ss.setPosition(0, 100);
+
+        // ss.setLocalZOrder(100);
+
+        // ss.getComponent("reviveAlert").onWho = this.node;
+        // this.node.addChild(ss);
+
+
+
     },
 
 
@@ -1323,17 +1319,17 @@ cc.Class({
 
     gamePause: function () {
         if (this.isPause == true) {
-            this.singleColor.setPosition(10000,10000);
-            this.pauseBtn.setPosition(314,521);
-            this.resumeBtn.setPosition(10000,10000);
+            this.singleColor.setPosition(10000, 10000);
+            this.pauseBtn.setPosition(314, 521);
+            this.resumeBtn.setPosition(10000, 10000);
             cc.director.getScheduler().resumeTarget(this);
             this.gameJiXu();
             this.isPause = false;
         } else if (this.isPause == false) {
-            this.singleColor.setPosition(0,0);
-            this.pauseBtn.setPosition(10000,10000);
-            this.resumeBtn.setPosition(0,0);
-           
+            this.singleColor.setPosition(0, 0);
+            this.pauseBtn.setPosition(10000, 10000);
+            this.resumeBtn.setPosition(0, 0);
+
             cc.director.getScheduler().pauseTarget(this);
             this.gameZanTing();
             this.isPause = true;
@@ -1344,34 +1340,34 @@ cc.Class({
 
     //游戏继续
     gameZanTing: function () {
-      
-      
-      
+
+
+
 
         if (this.player != null) {
             this.player.getComponent("Player").pauseAction(); //让自己的飞机管理自己的子弹暂停？
         }
 
-         this.backGround.getComponent("background").pauseAction(); //暂停云和背景
+        this.backGround.getComponent("background").pauseAction(); //暂停云和背景
 
         let cc = this.node.childrenCount;
-        for(let i = 0; i< cc;i++) {
-            if(this.node.children[i].group === 'enemy') {
+        for (let i = 0; i < cc; i++) {
+            if (this.node.children[i].group === 'enemy') {
                 this.node.children[i].getComponent(this.node.children[i]._name).pauseAction(); //让敌机人机 自己暂停自己的子弹。
-            } else if(this.node.children[i].group === 'hBullet' ) {
+            } else if (this.node.children[i].group === 'hBullet') {
                 this.node.children[i].getComponent("heroBullet").pauseAction();
-            } else if(this.node.children[i].group === 'eBullet') {
+            } else if (this.node.children[i].group === 'eBullet') {
                 this.node.children[i].getComponent("enemyBullet").pauseAction();
-            }else if(this.node.children[i].group === 'prize') {
+            } else if (this.node.children[i].group === 'prize') {
                 this.node.children[i].getComponent("prize").pauseAction();
-            } else if(this.node.children[i].group == 'dazhaoPlane') {
+            } else if (this.node.children[i].group == 'dazhaoPlane') {
                 this.node.children[i].getComponent("dazhaoPlane").pauseAction();
             }
         }
 
         let coinGuanDaos = this.coinDropBox.children;
         let coinGDCounts = this.coinDropBox.childrenCount;
-        for(let i = 0; i<coinGDCounts;i++) {
+        for (let i = 0; i < coinGDCounts; i++) {
             coinGuanDaos[i].getComponent("coinGuanDao").pauseAction();
         }
 
@@ -1382,39 +1378,39 @@ cc.Class({
         this.bombSprite.off('touchmove', this.bombOnclickMove, this);
 
 
-        
-      
-    //背景音乐如何暂停？
+
+
+        //背景音乐如何暂停？
 
     },
     //游戏暂停
     gameJiXu: function () {
-       
+
 
         console.log("resumeAction");
         if (this.player != null) {
             this.player.getComponent("Player").resumeAction(); //让自己的飞机管理自己的子弹暂停？
         }
-         this.backGround.getComponent("background").resumeAction(); //暂停云和背景
+        this.backGround.getComponent("background").resumeAction(); //暂停云和背景
 
         let cc = this.node.childrenCount;
         for (let i = 0; i < cc; i++) {
             if (this.node.children[i].group === 'enemy') {
                 this.node.children[i].getComponent(this.node.children[i]._name).resumeAction(); //让敌机人机 自己暂停自己的子弹。
-            }else if(this.node.children[i].group === 'hBullet' ) {
+            } else if (this.node.children[i].group === 'hBullet') {
                 this.node.children[i].getComponent("heroBullet").resumeAction();
-            } else if(this.node.children[i].group === 'eBullet') {
+            } else if (this.node.children[i].group === 'eBullet') {
                 this.node.children[i].getComponent("enemyBullet").resumeAction();
-            }else if(this.node.children[i].group === 'prize') {
+            } else if (this.node.children[i].group === 'prize') {
                 this.node.children[i].getComponent("prize").resumeAction();
-            }else if(this.node.children[i].group == 'dazhaoPlane') {
+            } else if (this.node.children[i].group == 'dazhaoPlane') {
                 this.node.children[i].getComponent("dazhaoPlane").resumeAction();
             }
         }
 
         let coinGuanDaos = this.coinDropBox.children;
         let coinGDCounts = this.coinDropBox.childrenCount;
-        for(let i = 0; i<coinGDCounts;i++) {
+        for (let i = 0; i < coinGDCounts; i++) {
             coinGuanDaos[i].getComponent("coinGuanDao").resumeAction();
         }
 
@@ -1425,7 +1421,7 @@ cc.Class({
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombSprite.on('touchmove', this.bombOnclickMove, this);
 
-      // 
+        // 
 
         //背景音乐如何暂停？
 
@@ -1435,7 +1431,7 @@ cc.Class({
 
     },
 
-    
+
 
 
 

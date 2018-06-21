@@ -158,7 +158,7 @@ cc.Class({
         this.shoujiAni = null;
         if (sjPool.size() > 0) {
             this.shoujiAni = sjPool.get();
-            cc.log("sj还剩下：" +sjPool.size());
+            
         } else {
             this.shoujiAni = cc.instantiate(this.shoujiAniPre);
         }
@@ -174,6 +174,6 @@ cc.Class({
         }
      
 
-     //   this.node.destroy();
+        this.node.destroy();
     },
 });

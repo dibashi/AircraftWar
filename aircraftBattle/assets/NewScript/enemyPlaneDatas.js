@@ -6,7 +6,7 @@ var _generateType = cc.Enum({
     huojianpao: 4 //dazhao
 });
 
-var _isLiuLanQiDebug = 0,//1代表启动浏览器调试 0代表 接入微信平台
+
 
 //敌人子弹发射轨迹 跟机型挂钩？ 目前是这样实现的
 var _bulletTrack = cc.Enum({
@@ -199,5 +199,3 @@ export const wuDiTime = _wuDiTime;
 export const bulletTrack = _bulletTrack;
 export const enemyTrack = _enemyTrack;
 
-
-export const isLiuLanQiDebug = _isLiuLanQiDebug;
