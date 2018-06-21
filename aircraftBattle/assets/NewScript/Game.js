@@ -281,6 +281,27 @@ cc.Class({
         },
 
         singleTouchID: -1,//这个变量来觉得那些touch事件处理，用来关闭多点触摸
+
+        //两个东西 1个遮罩 一个 小飞机图标  两个根据stage来往上走，遮罩改变高度，飞机改变Y坐标
+        distanceMask: {
+            default: null,
+            type: cc.Node,
+        },
+
+        planeIcon:{
+            default: null,
+            type: cc.Node,
+        },
+        //原始的遮罩高度，用于计算
+        maskOriginHeight:0,
+        planeIconY:0,
+
+
+        progressNode:{
+            default: null,
+            type: cc.Node,
+        },
+        
     },
 
 
@@ -356,23 +377,15 @@ cc.Class({
         }
         D.globalHeroPlaneID = dddd;
 
-        //模板精灵
-        // let  moBanSprite = null;
 
         if (dddd == heroPlaneID.heroPlane0) {
             this.player = cc.instantiate(this.heroPlane0);
-
-            //  moBanSprite = this.node.getChildByName("lifeSprite0");
         }
         else if (dddd == heroPlaneID.heroPlane1) {
             this.player = cc.instantiate(this.heroPlane1);
-
-            //  moBanSprite = this.node.getChildByName("lifeSprite1");
         }
         else if (dddd == heroPlaneID.heroPlane2) {
             this.player = cc.instantiate(this.heroPlane2);
-
-            //moBanSprite = this.node.getChildByName("lifeSprite2");
         }
         else if (dddd == heroPlaneID.heroPlane3) {
             this.player = cc.instantiate(this.heroPlane3);
@@ -402,10 +415,6 @@ cc.Class({
 
         this.node.addChild(this.player);
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
-
-        this.stage = 0;
-        this.realStage = 0;
-        this.runStage();
 
 
         this.bombNo = parseInt(cc.sys.localStorage.getItem('dazhaoCount'));
@@ -492,6 +501,16 @@ cc.Class({
         //之前碰撞体积
         this.preColliderRadius = 20;
         this.player.getComponent(cc.CircleCollider).radius = this.preColliderRadius;
+
+
+        this.maskOriginHeight = this.distanceMask.height;
+        this.planeIconY = this.planeIcon.getPosition().y;
+
+
+
+        this.stage = 0;
+        this.realStage = 0;
+        this.runStage();
 
     },
 
@@ -927,11 +946,14 @@ cc.Class({
                 // this.stage = 0;//从新开始，
 
                 // this.realStage++;//表示着 现在是第几轮 从0计数
+                //0, 距离动画消失
                 //1,掉落金币
                 //2,播放动画 round X
                 //3,下一波
-
-
+                // let anim =  this.progressNode.getComponent(cc.Animation);
+                // anim.play("distanceNodeANI");
+                this.progressNode.runAction(cc.fadeOut(1));
+               
                 //把之前的暴走停掉
                 //开始现在的暴走
                 if (this.baozouFlag) {
@@ -975,6 +997,10 @@ cc.Class({
     },
 
     nextRound: function () {
+
+        this.planeIcon.setPosition(this.planeIcon.getPosition().x, this.planeIconY);
+        this.progressNode.runAction(cc.fadeIn(1));
+
         //1 降低我方飞机碰撞面积，2，关闭之前的金币暴走动画，3 开启暴走定时器 4进入下一回合
         //这里把我方飞机的碰撞面积减小，优化游戏过程中的体验
         let playerColliderArea = this.player.getComponent(cc.CircleCollider);
@@ -1000,6 +1026,14 @@ cc.Class({
 
     runStage() {
 
+        //ok 进入新stage 那边的距离要更新
+        let dataLength = globalStageData.length;
+      
+      //  let height = this.maskOriginHeight - (this.stage+1)*this.maskOriginHeight/dataLength;
+      //  this.distanceMask.height = height;
+        let y = this.planeIconY +this.stage*this.maskOriginHeight/(dataLength-1);
+        //this.planeIcon.setPosition(this.planeIcon.getPosition().x,y);
+        this.planeIcon.runAction(cc.moveTo(0.5,cc.v2(this.planeIcon.getPosition().x,y)));
 
         this.enemyCount = globalStageData[this.stage].length;
 
