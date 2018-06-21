@@ -530,6 +530,7 @@ cc.Class({
     },
 
     baozhaOver: function () {
+        cc.log("player baozhaover!~");
         this.unscheduleAllCallbacks();
 
 

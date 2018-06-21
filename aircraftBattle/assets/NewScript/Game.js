@@ -898,8 +898,11 @@ cc.Class({
     checkNextStage: function () {
 
         this.enemyCount--;
-        //   cc.log("enemyCount  " + this.enemyCount);
+        this.checkcheck();
+       
+    },
 
+    checkcheck:function() {
         if (this.enemyCount <= 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
@@ -1230,7 +1233,7 @@ cc.Class({
     gameOver() {
         //防止在复活页面等待时 出现bug
         this.unscheduleAllCallbacks();
-        this.checkNextStage();
+        this.checkcheck();
         if (this.dazhaoPlanes != null) {
             for (let i = 0; i < this.dazhaoPlanes.length; i++) {
                 this.dazhaoPlanes[i].destroy();
@@ -1242,11 +1245,11 @@ cc.Class({
         var bestScore = cc.sys.localStorage.getItem('bestScore');
 
 
-        // if (currentScore > bestScore) {//把最高分上传到服务器吧
-        //     cc.sys.localStorage.setItem('bestScore', currentScore);
+        if (currentScore > bestScore) {//把最高分上传到服务器吧
+            cc.sys.localStorage.setItem('bestScore', currentScore);
 
-        //     this.setBestScore(currentScore);
-        // }
+            this.setBestScore(currentScore);
+        }
 
 
         cc.sys.localStorage.setItem("currentScore", currentScore);
@@ -1258,17 +1261,17 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-        cc.director.loadScene('end');
+       // cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        // cc.eventManager.pauseTarget(this.node, true);
-        // let ss = cc.instantiate(this.reviveAlert);
-        // ss.setPosition(0, 100);
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.reviveAlert);
+        ss.setPosition(0, 100);
 
-        // ss.setLocalZOrder(100);
+        ss.setLocalZOrder(100);
 
-        // ss.getComponent("reviveAlert").onWho = this.node;
-        // this.node.addChild(ss);
+        ss.getComponent("reviveAlert").onWho = this.node;
+        this.node.addChild(ss);
 
 
 
