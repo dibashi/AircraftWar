@@ -23,7 +23,7 @@ var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 var globalJiSuTime = require("enemyPlaneDatas").jiSuTime;
 
 
-
+var isLiuLanQiDebug = require("enemyPlaneDatas").isLiuLanQiDebug;
 
 
 
@@ -1241,11 +1241,17 @@ cc.Class({
 
         var currentScore = parseInt(this.defenLabel.string);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
-        // if (currentScore > bestScore) {//把最高分上传到服务器吧
-        //     cc.sys.localStorage.setItem('bestScore', currentScore);
-
-        //     this.setBestScore(currentScore);
-        // }
+        
+        if(isLiuLanQiDebug == 1) {
+           
+        } else if(isLiuLanQiDebug == 0){
+            if (currentScore > bestScore) {//把最高分上传到服务器吧
+                cc.sys.localStorage.setItem('bestScore', currentScore);
+    
+                this.setBestScore(currentScore);
+            }
+        }
+       
 
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
@@ -1255,17 +1261,21 @@ cc.Class({
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
+        if(isLiuLanQiDebug == 1) {
+            cc.director.loadScene('end');
+        } else if(isLiuLanQiDebug == 0) {
+ //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
+        cc.eventManager.pauseTarget(this.node, true);
+        let ss = cc.instantiate(this.reviveAlert);
+        ss.setPosition(0, 100);
 
-       cc.director.loadScene('end');
-        //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        // cc.eventManager.pauseTarget(this.node, true);
-        // let ss = cc.instantiate(this.reviveAlert);
-        // ss.setPosition(0, 100);
+        ss.setLocalZOrder(100);
 
-        // ss.setLocalZOrder(100);
-
-        // ss.getComponent("reviveAlert").onWho = this.node;
-        // this.node.addChild(ss);
+        ss.getComponent("reviveAlert").onWho = this.node;
+        this.node.addChild(ss);
+        }
+       
+       
     },
 
 
