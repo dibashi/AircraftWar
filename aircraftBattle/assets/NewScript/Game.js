@@ -279,6 +279,8 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        singleTouchID:-1,//这个变量来觉得那些touch事件处理，用来关闭多点触摸
     },
 
 
@@ -427,7 +429,7 @@ cc.Class({
 
         this.node.on('touchmove', this.dragMove, this);
         this.node.on('touchstart', this.dragStart, this);
-
+        this.node.on('touchend',this.drageEnd,this);
 
         // this.goBaoZou();
 
@@ -527,18 +529,13 @@ cc.Class({
             this.player = cc.instantiate(this.heroPlane3);
         }
         else if (dddd == heroPlaneID.heroPlane4) {
-            //cc.log('zhixing111111');
             this.player = cc.instantiate(this.heroPlane4);
-            //cc.log(player);
         }
         else if (dddd == heroPlaneID.heroPlane5) {
             this.player = cc.instantiate(this.heroPlane5);
         }
         this.node.addChild(this.player);
         this.player.setPosition(0, -500);
-
-        // this.node.off('touchmove', this.dragMove, this);
-        // this.node.off('touchstart', this.dragStart, this);
 
 
         let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
@@ -549,9 +546,7 @@ cc.Class({
     },
 
     newPlaneMoved: function () {
-        // this.node.on('touchmove', this.dragMove, this);
-        // this.node.on('touchstart', this.dragStart, this);
-        //  this.goBaoZou();
+      
         this.goNewBaoZou();
     },
 
@@ -677,14 +672,29 @@ cc.Class({
         //3 应该没了
     },
 
+    drageEnd:function(event) {
+        if(event.getID() == this.singleTouchID) {
+            this.singleTouchID = -1;//-1标记可以再触摸
+        }
+    },
+
     dragStart: function (event) {
-        // cc.log("game dragStart");
+        if(this.singleTouchID == -1) {
+            this.singleTouchID = event.getID();
+        } else {
+            //已经被触摸设置了，那就不处理
+            return;
+        }
         this.touchBeginPoint = event.getLocation();
     },
 
     dragMove: function (event) {
 
         if (this.player == null || this.player._position == null) {
+            return;
+        }
+
+        if(event.getID() != this.singleTouchID) {
             return;
         }
 
