@@ -3,7 +3,7 @@
 var globalHeroPlaneData = require("heroPlaneDatas").heroPlaneData;
 var globalJiSuTiSu = require("enemyPlaneDatas").jiSuTiSu;
 
-var globalWuDiTime = require("enemyPlaneDatas").wuDiTime;
+
 
 var globalHeroBulletType = require("heroPlaneDatas").heroBulletType;
 var globalWingmanBulletType = require("heroPlaneDatas").wingmanBulletType;
@@ -38,10 +38,7 @@ cc.Class({
         //     type: cc.Prefab,
         // },
         // bBar: null,//label
-        wudi: false,
-        _wuditexiao: null,
-        _wudiTime: 0,
-
+      
         guandaoCount: 0, //管道1~5决定了5个弹道，
         guandaoArrays: null,
 
@@ -352,21 +349,7 @@ cc.Class({
 
 
 
-    wudichongci: function () {
-        if (this.wudi == false) {
-            this._wuditexiao = cc.instantiate(this.prizeTeXiao);//!!!
-            let armatureDisplay = this._wuditexiao.getComponent(dragonBones.ArmatureDisplay);
-            // let wudiTX = armatureDisplay.buildArmature("TXwudi");
-            armatureDisplay.playAnimation("wudi");
-            this.node.addChild(this._wuditexiao);
-
-            this.wudi = true;
-            this._wudiTime = globalWuDiTime;
-        } else {
-            this._wudiTime = globalWuDiTime;
-        }
-
-    },
+   
 
     addBlood: function () {
         this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
@@ -452,10 +435,7 @@ cc.Class({
                 this.dead();
 
             } else {
-                if (!this.wudi) {
-                    this.blood -= bDamage; //屏蔽后无敌 方便调试
-                    this.bBar.string = this.blood;
-                }
+           
 
             }
         } else if (other.node.group === "enemy") {
@@ -477,11 +457,11 @@ cc.Class({
                 return;
             }
 
-            if (!this.wudi) {
+            
                 cc.log("游戏结束");
                 this.dead();
 
-            }
+          
 
         }
     },
@@ -557,20 +537,7 @@ cc.Class({
         }
 
 
-        if (this.wudi && this._wudiTime <= 0) {
-            this.wudi = false;
-            if (this._wuditexiao) {
-                this._wuditexiao.destroy();
-                this._wuditexiao = null;
-            }
-        }
-
-        if (this.wudi) {
-            this._wudiTime -= dt;
-        }
-
-        // this._wudiTime(this.wuDiTime);
-
+     
 
     },
 
