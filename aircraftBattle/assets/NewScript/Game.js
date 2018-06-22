@@ -173,6 +173,11 @@ cc.Class({
             url: cc.AudioClip
         },
 
+        warningAni: {
+            default: null,
+            type: cc.Prefab,
+        },
+
         baozouWenZi: {
             default: null,
             type: cc.Prefab,
@@ -288,20 +293,20 @@ cc.Class({
             type: cc.Node,
         },
 
-        planeIcon:{
+        planeIcon: {
             default: null,
             type: cc.Node,
         },
         //原始的遮罩高度，用于计算
-        maskOriginHeight:0,
-        planeIconY:0,
+        maskOriginHeight: 0,
+        planeIconY: 0,
 
 
-        progressNode:{
+        progressNode: {
             default: null,
             type: cc.Node,
         },
-        
+
     },
 
 
@@ -685,12 +690,12 @@ cc.Class({
         //2 恢复飞机属性
         //   this.player.getComponent("Player").repairPlayerState();
         this.player.getComponent("Player").xizidan();
-        if(this.baozouHuDunAni!=null) {
+        if (this.baozouHuDunAni != null) {
 
             this.baozouHuDunAni.destroy();
             this.baozouHuDunAni = null;
         }
-       
+
 
         this.backGround.getComponent("background").speedFactor = 1;
         this.backGround.getComponent("background").speedYUNFactor = 1;
@@ -938,6 +943,12 @@ cc.Class({
 
     },
 
+    warningAniOver:function() {
+
+        this.scheduleOnce(this.runStage,1);
+
+    },
+
     checkcheck: function () {
         if (this.enemyCount <= 0) {//没有敌机，进入下一stage
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
@@ -945,7 +956,7 @@ cc.Class({
 
 
                 this.unschedule(this.runStage);
-                if(this.stage == 12) {//把12定义为boss,从0开始计数
+                if (this.stage == 12) {//把12定义为boss,从0开始计数
                     //0 若有暴走，关闭暴走。若没暴走，暂停暴走 总之，关闭暴走，暂停暴走
                     //0.1
                     //0.2
@@ -953,13 +964,19 @@ cc.Class({
                     this.goNewBaoZou();
                     //1，预警动画播放
                     //2,预警动画结束回调中 runstage~! 
+                    this.warningAni = cc.instantiate(this.warningAni);
+                    let armatureDisplay = this.warningAni.getComponent(dragonBones.ArmatureDisplay);
+
+                    armatureDisplay.playAnimation("yujing");//todo!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    this.node.addChild(this.warningAni);
+                    armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.warningAniOver, this);
 
                 } else {
-                    
+
                     this.scheduleOnce(this.runStage, 1);
                 }
 
-               
+
             }
             //需求变了，一轮一轮的+属性 不再是以前每轮都加 
             else {
@@ -973,7 +990,7 @@ cc.Class({
                 // let anim =  this.progressNode.getComponent(cc.Animation);
                 // anim.play("distanceNodeANI");
                 this.progressNode.runAction(cc.fadeOut(1));
-               
+
                 //把之前的暴走停掉
                 //开始现在的暴走
                 if (this.baozouFlag) {
@@ -1048,12 +1065,12 @@ cc.Class({
 
         //ok 进入新stage 那边的距离要更新
         let dataLength = globalStageData.length;
-      
-      //  let height = this.maskOriginHeight - (this.stage+1)*this.maskOriginHeight/dataLength;
-      //  this.distanceMask.height = height;
-        let y = this.planeIconY +this.stage*this.maskOriginHeight/(dataLength-1);
+
+        //  let height = this.maskOriginHeight - (this.stage+1)*this.maskOriginHeight/dataLength;
+        //  this.distanceMask.height = height;
+        let y = this.planeIconY + this.stage * this.maskOriginHeight / (dataLength - 1);
         //this.planeIcon.setPosition(this.planeIcon.getPosition().x,y);
-        this.planeIcon.runAction(cc.moveTo(0.5,cc.v2(this.planeIcon.getPosition().x,y)));
+        this.planeIcon.runAction(cc.moveTo(0.5, cc.v2(this.planeIcon.getPosition().x, y)));
 
         this.enemyCount = globalStageData[this.stage].length;
 
