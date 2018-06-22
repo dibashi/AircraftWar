@@ -858,7 +858,7 @@ cc.Class({
          this.player.addChild(this.hudunprogress);
          this.hudunprogress.setPosition(cc.v2(0, 0));   
 
-         this.scheduleOnce(this.hudunOver, 3.0);
+         this.scheduleOnce(this.hudunOver, 2.9);
     },
 
     hudunOver:function() {
