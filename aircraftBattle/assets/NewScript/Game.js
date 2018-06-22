@@ -685,7 +685,12 @@ cc.Class({
         //2 恢复飞机属性
         //   this.player.getComponent("Player").repairPlayerState();
         this.player.getComponent("Player").xizidan();
-        this.baozouHuDunAni.destroy();
+        if(this.baozouHuDunAni!=null) {
+
+            this.baozouHuDunAni.destroy();
+            this.baozouHuDunAni = null;
+        }
+       
 
         this.backGround.getComponent("background").speedFactor = 1;
         this.backGround.getComponent("background").speedYUNFactor = 1;
@@ -938,8 +943,23 @@ cc.Class({
             if (this.stage < globalStageData.length - 1) {//范围内 下一stage 若超出 重复最后的数据
                 this.stage++;
 
+
                 this.unschedule(this.runStage);
-                this.scheduleOnce(this.runStage, 1);
+                if(this.stage == 12) {//把12定义为boss,从0开始计数
+                    //0 若有暴走，关闭暴走。若没暴走，暂停暴走 总之，关闭暴走，暂停暴走
+                    //0.1
+                    //0.2
+                    this.closeBaozou();
+                    this.goNewBaoZou();
+                    //1，预警动画播放
+                    //2,预警动画结束回调中 runstage~! 
+
+                } else {
+                    
+                    this.scheduleOnce(this.runStage, 1);
+                }
+
+               
             }
             //需求变了，一轮一轮的+属性 不再是以前每轮都加 
             else {
