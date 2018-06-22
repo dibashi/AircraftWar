@@ -72,12 +72,12 @@
     "_animationName": "hudun",
     "playTimes": 0,
     "_N$dragonAsset": {
-      "__uuid__": "881b1646-47f3-4983-bd3a-0da45c0a4e34"
+      "__uuid__": "7794e74b-67e6-41c7-98e9-f146353994cd"
     },
     "_N$dragonAtlasAsset": {
-      "__uuid__": "2a70011e-b8df-41ab-b805-b2d7c0593309"
+      "__uuid__": "14e6d3f0-9581-4a7f-9ce2-ebf3e12d51e0"
     },
-    "_N$_defaultArmatureIndex": 1,
+    "_N$_defaultArmatureIndex": 0,
     "_N$_animationIndex": 1,
     "_N$timeScale": 1,
     "_N$debugBones": false
