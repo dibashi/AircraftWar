@@ -954,6 +954,8 @@ cc.Class({
             return;
         }
 
+        this._bulletToCoinAndRun();
+
 
 
         // if (this.shieldNo > 0) {
