@@ -68,8 +68,8 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_armatureName": "baozou",
-    "_animationName": "baozou",
+    "_armatureName": "chongci",
+    "_animationName": "chongci",
     "playTimes": 0,
     "_N$dragonAsset": {
       "__uuid__": "7794e74b-67e6-41c7-98e9-f146353994cd"
@@ -77,7 +77,7 @@
     "_N$dragonAtlasAsset": {
       "__uuid__": "14e6d3f0-9581-4a7f-9ce2-ebf3e12d51e0"
     },
-    "_N$_defaultArmatureIndex": 2,
+    "_N$_defaultArmatureIndex": 1,
     "_N$_animationIndex": 1,
     "_N$timeScale": 2,
     "_N$debugBones": false

@@ -438,8 +438,10 @@ cc.Class({
 
             }
         } else if (other.node.group === "enemy") {
-            
-                this.dead();
+            if(this.hasHuDun) { //是否有护盾
+                return;
+            }
+            this.dead();
         }
     },
 
