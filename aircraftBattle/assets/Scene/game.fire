@@ -3537,6 +3537,10 @@
       "__uuid__": "6f1cc949-8a07-437e-9cdb-7d13d09c5e4a"
     },
     "hudunPartice": null,
+    "hudunprogressTeXiao": {
+      "__uuid__": "de6d5393-a422-4ddb-b4bd-3376f9b9f3af"
+    },
+    "hudunprogress": null,
     "baozouFlag": false,
     "baozouInterval": 30,
     "baozouPossession": 5.5,

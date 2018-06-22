@@ -195,7 +195,18 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+      
+
+        
         hudunPartice: null,
+
+        hudunprogressTeXiao: {
+            default: null,
+            type: cc.Prefab,
+        },
+
+        hudunprogress:null,
 
         baozouFlag: false,//当前是否暴走，在大招里面释放
 
@@ -823,7 +834,7 @@ cc.Class({
                 this.player.getComponent("Player").hasHuDun = true;
                 this.hudunAniBofang();
             }
-            this.scheduleOnce(this.hudunOver, 3.0);
+            
         } else {
             console.log('没有护盾');
 
@@ -838,7 +849,16 @@ cc.Class({
          let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
          armatureDisplay.playAnimation("hudun");
          this.player.addChild(this.hudunPartice);
-         this.hudunPartice.setPosition(cc.v2(0, 0));    
+         this.hudunPartice.setPosition(cc.v2(0, 0));
+         
+         
+         this.hudunprogress = cc.instantiate(this.hudunprogressTeXiao);
+         let ainPro = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
+         ainPro.playAnimation("jishi");
+         this.player.addChild(this.hudunprogress);
+         this.hudunprogress.setPosition(cc.v2(0, 0));   
+
+         this.scheduleOnce(this.hudunOver, 3.0);
     },
 
     hudunOver:function() {
@@ -846,8 +866,11 @@ cc.Class({
         //2 护盾删除
         //3 可以触摸按钮了
         this.player.getComponent("Player").hasHuDun = false;
-        if(this.hudunPartice) {
+        if(this.hudunPartice ) {
             this.hudunPartice.destroy();
+        }
+        if(this.hudunprogress) {
+            this.hudunprogress.destroy();
         }
 
         this.shieldSprite.on('touchstart', this.shieldOnclick, this);
