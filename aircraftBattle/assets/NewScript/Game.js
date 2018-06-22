@@ -435,11 +435,14 @@ cc.Class({
 
         this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
 
-        //   this.shieldSprite.on('touchstart', this.shieldOnclick, this); //废弃的功能
+    
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width * this.shieldSprite.scale * 0.5, -hy + this.shieldSprite.getContentSize().height * this.shieldSprite.scale * 0.5);
 
         this.shieldSprite.setLocalZOrder(this.UIZorder);
+
+        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
+        this.shieldSprite.on('touchmove', this.shieldOnclickMove, this);
 
 
         this.node.on('touchmove', this.dragMove, this);
@@ -454,9 +457,7 @@ cc.Class({
         // this.node.runAction(cc.rotateTo(10,90));
 
 
-        if (this.shieldNo > 0) {
-            this.shieldTeXiao();
-        }
+      
 
 
 
@@ -587,16 +588,7 @@ cc.Class({
         this.unschedule(this.baozouProcessing);
     },
 
-    shieldTeXiao: function () {
-        this.hudunPartice = cc.instantiate(this.huDunTeXiao);
-
-        let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
-
-        armatureDisplay.playAnimation("hudun");
-
-        this.player.addChild(this.hudunPartice);
-        this.hudunPartice.setPosition(cc.v2(0, 0));
-    },
+  
 
     bazouWenZidOver: function () {
         this.baozouAni.destroy();
@@ -818,6 +810,54 @@ cc.Class({
         this.scheduleOnce(this.dazhaoPlaneOver1, 5.0);
     },
 
+    shieldOnclick:function(e) {
+        cc.log("hudun touch");
+        e.stopPropagation();
+        if (this.shieldNo > 0) {
+            this.shieldLabel.string = this.shieldNo - 1;
+            this.shieldNo -= 1;
+            cc.sys.localStorage.setItem('hudunCount', this.shieldNo);
+
+            
+            if(this.player) {
+                this.player.getComponent("Player").hasHuDun = true;
+                this.hudunAniBofang();
+            }
+            this.scheduleOnce(this.hudunOver, 3.0);
+        } else {
+            console.log('没有护盾');
+
+        }
+    },
+
+
+    hudunAniBofang:function() {
+         //必须让按钮先不能点，否则将引发bug！
+         this.shieldSprite.off('touchstart', this.shieldOnclick, this);
+         this.hudunPartice = cc.instantiate(this.huDunTeXiao);
+         let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
+         armatureDisplay.playAnimation("hudun");
+         this.player.addChild(this.hudunPartice);
+         this.hudunPartice.setPosition(cc.v2(0, 0));    
+    },
+
+    hudunOver:function() {
+        //1 不无敌了
+        //2 护盾删除
+        //3 可以触摸按钮了
+        this.player.getComponent("Player").hasHuDun = false;
+        if(this.hudunPartice) {
+            this.hudunPartice.destroy();
+        }
+
+        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
+
+    },
+
+    shieldOnclickMove:function(e) {
+        e.stopPropagation();
+    },
+
     //大招启动
     bombOnclick: function (e) {
         cc.log("bomb touch");
@@ -907,7 +947,7 @@ cc.Class({
         }
     },
 
-    shieldOnclick: function () {
+    bulletToShield: function () {
 
         if (this.baozouFlag) {
             this._bulletToCoinAndRun();
@@ -916,21 +956,21 @@ cc.Class({
 
 
 
-        if (this.shieldNo > 0) {
-            this.shieldLabel.string = this.shieldNo - 1;
-            this.shieldNo -= 1;
-            if (this.shieldNo == 0) {
-                //
-                this.hudunPartice.destroy();
-            }
+        // if (this.shieldNo > 0) {
+        //     this.shieldLabel.string = this.shieldNo - 1;
+        //     this.shieldNo -= 1;
+        //     if (this.shieldNo == 0) {
+        //         //
+        //         this.hudunPartice.destroy();
+        //     }
 
 
-            this._bulletToCoinAndRun();
+        //     this._bulletToCoinAndRun();
 
-        } else {
-            console.log('没有护盾');
+        // } else {
+        //     console.log('没有护盾');
 
-        }
+        // }
     },
 
 
@@ -1293,9 +1333,7 @@ cc.Class({
     },
 
     getShield: function () {
-        if (this.shieldNo == 0) {
-            this.shieldTeXiao();
-        }
+      
         this.shieldNo += 1;
         cc.sys.localStorage.setItem('hudunCount', this.shieldNo);
 

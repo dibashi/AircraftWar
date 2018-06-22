@@ -72,6 +72,8 @@ cc.Class({
 
         xizidanDamage:0,
         cuzidanDamage:0,
+
+        hasHuDun:false,//是否有护盾效果
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -80,7 +82,7 @@ cc.Class({
 
        
 
-
+        this.hasHuDun = false;
         cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
         if (this != undefined) {
             this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
@@ -411,19 +413,16 @@ cc.Class({
         if (other.node.group === "eBullet") {
             //暴走逻辑优先处理，可以防止护盾消耗。
             if (this.node.parent.getComponent('Game').baozouFlag) {
-                this.node.parent.getComponent('Game').shieldOnclick();
+                this.node.parent.getComponent('Game').bulletToShield();
                 return;
             }
 
-            //先判断是否有护盾
-            let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
-            if (hdCount > 0) {
-                let p = hdCount - 1;
-                cc.sys.localStorage.setItem('hudunCount', p);
-                this.node.parent.getComponent('Game').shieldOnclick();
+
+            if(this.hasHuDun) { //是否有护盾
+                this.node.parent.getComponent('Game').bulletToShield();
                 return;
             }
-
+         
 
             var bDamage = other.node.getComponent("enemyBullet").damage;
 
@@ -439,30 +438,8 @@ cc.Class({
 
             }
         } else if (other.node.group === "enemy") {
-            //暴走逻辑优先处理，可以防止护盾消耗。 废物暴走时刻，碰到敌方飞机 敌方飞机炸毁的功能
-            // if (this.node.parent.getComponent('Game').baozouFlag) {
-            //     other.node.getComponent(other.node._name).enemyBoomAni();
-            //     return;
-            // }
-
-            let hdCount = parseInt(cc.sys.localStorage.getItem('hudunCount'));
-            if (hdCount > 0) {
-
-                let p = hdCount - 1;
-                cc.sys.localStorage.setItem('hudunCount', p);
-                this.node.parent.getComponent('Game').shieldOnclick();
-                //  other.enemyDamagedAni();
-                //cc.log(other.node);
-                other.node.getComponent(other.node._name).enemyBoomAni();
-                return;
-            }
-
             
-                cc.log("游戏结束");
                 this.dead();
-
-          
-
         }
     },
 
