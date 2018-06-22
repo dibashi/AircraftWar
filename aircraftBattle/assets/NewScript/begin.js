@@ -98,6 +98,12 @@ cc.Class({
 
         },
 
+        reviveLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
 
 
         personalBestScore: null,
@@ -231,6 +237,7 @@ cc.Class({
         this.dazhaoLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('dazhaoCount');
         this.hudunLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('hudunCount');
         this.lifeLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('planeLifeCount');
+        this.reviveLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('reviveCount');
         //这里应该是好友的最佳 还是自己的历史最佳？ 这里先用自己的 
         this.personalBestScore.string = "最佳得分：" + cc.sys.localStorage.getItem("bestScore");
 
@@ -342,6 +349,10 @@ cc.Class({
 
 
         this.giftGetSuccess(tag);
+    },
+
+    refreshReviveCount:function() {
+        this.reviveLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('reviveCount');
     },
     //当前年月日
     currentYMD: function () {

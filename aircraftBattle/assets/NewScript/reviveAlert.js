@@ -133,7 +133,7 @@ cc.Class({
         let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
         cc.sys.localStorage.setItem('reviveCount', rc);
 
-        this.onWho.getComponent("Game").revive();
+        this.onWho.getComponent("Game").goNewPlane();
 
 
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);

@@ -3844,7 +3844,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "dazhaoLabel",
+    "_name": "reviveLabel",
     "_objFlags": 0,
     "_parent": {
       "__id__": 98
@@ -4072,6 +4072,9 @@
     },
     "lifeLabel": {
       "__id__": 93
+    },
+    "reviveLabel": {
+      "__id__": 99
     },
     "personalBestScore": null,
     "settingButton": null,

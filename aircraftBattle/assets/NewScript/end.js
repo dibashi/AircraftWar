@@ -175,6 +175,19 @@ cc.Class({
 
         wx.shareAppMessage({ title: "我邀请了8个好友一起PK，就差你了，赶紧来！",
         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"end_share"});
+
+        this.getReviveCallback();
     },
+
+
+    getReviveCallback:function() {
+        let rc =   cc.sys.localStorage.getItem('reviveCount');
+        let irc = parseInt(rc);
+       if(rc>=2) {
+           return;
+       } 
+       rc++;
+       cc.sys.localStorage.setItem("reviveCount",rc);
+   },
 
 });

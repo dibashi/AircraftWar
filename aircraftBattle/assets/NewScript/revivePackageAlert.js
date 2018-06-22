@@ -76,9 +76,26 @@ cc.Class({
         this.node.destroy();
 
         
-
+      
         wx.shareAppMessage({ title: "我邀请了8个好友一起PK，就差你了，赶紧来！",
         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"begin_share"});
+
+        this.getReviveCallback();
+    },
+
+    getReviveCallback:function() {
+         let rc =   cc.sys.localStorage.getItem('reviveCount');
+         let irc = parseInt(rc);
+        if(rc>=2) {
+            return;
+        } 
+        rc++;
+        cc.sys.localStorage.setItem("reviveCount",rc);
+
+        //先要获得 begin JS 然后刷新
+        if(this.onWho != null && this.onWho.getComponent("begin")!=null) {
+            this.onWho.getComponent("begin").refreshReviveCount();
+        }
     },
 
     
