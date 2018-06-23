@@ -146,11 +146,12 @@ cc.Class({
 
     onReviveClick: function () {
         cc.log("onReviveClick");
+       
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
-        let rc = parseInt(cc.sys.localStorage.getItem('planeLifeCount')) - 1;
-        cc.sys.localStorage.setItem('planeLifeCount', rc);
+        let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
+        cc.sys.localStorage.setItem('reviveCount', rc);
 
         this.onWho.getComponent("Game").goNewPlane();
 
@@ -178,11 +179,14 @@ cc.Class({
     onLifeClick:function() {
         cc.log("onlifeclick");
        
+       
+
+
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
-        let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
-        cc.sys.localStorage.setItem('reviveCount', rc);
+        let rc = parseInt(cc.sys.localStorage.getItem('planeLifeCount')) - 1;
+        cc.sys.localStorage.setItem('planeLifeCount', rc);
 
         this.onWho.getComponent("Game").goNewPlane();
 
