@@ -1861,7 +1861,7 @@
       "__id__": 1
     },
     "component": "reviveAlert",
-    "handler": "onGuangGaoClick",
+    "handler": "onLifeClick",
     "customEventData": ""
   },
   {
