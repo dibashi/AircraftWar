@@ -548,7 +548,7 @@ cc.Class({
         //     cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
         // }
 
-        cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
+        let lifeCount = cc.sys.localStorage.getItem('planeLifeCount');
 
         this.lifeLabel.getComponent(cc.Label).string = lifeCount;
 
