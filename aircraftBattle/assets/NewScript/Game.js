@@ -196,9 +196,9 @@ cc.Class({
             type: cc.Prefab,
         },
 
-      
 
-        
+
+
         hudunPartice: null,
 
         hudunprogressTeXiao: {
@@ -206,7 +206,7 @@ cc.Class({
             type: cc.Prefab,
         },
 
-        hudunprogress:null,
+        hudunprogress: null,
 
         baozouFlag: false,//当前是否暴走，在大招里面释放
 
@@ -309,13 +309,13 @@ cc.Class({
             type: cc.Node,
         },
 
-        spriteDistance:{
+        spriteDistance: {
             default: null,
             type: cc.Node,
         },
         //原始的遮罩高度，用于计算
         maskOriginHeight: 0,
-        spriteOriginDistance:0,
+        spriteOriginDistance: 0,
         planeIconY: 0,
 
 
@@ -452,7 +452,7 @@ cc.Class({
 
         this.shieldNo = parseInt(cc.sys.localStorage.getItem('hudunCount'));
 
-    
+
         this.shieldLabel.string = this.shieldNo;
         this.shieldSprite.setPosition(wx - this.shieldSprite.getContentSize().width * this.shieldSprite.scale * 0.5, -hy + this.shieldSprite.getContentSize().height * this.shieldSprite.scale * 0.5);
 
@@ -474,7 +474,7 @@ cc.Class({
         // this.node.runAction(cc.rotateTo(10,90));
 
 
-      
+
 
 
 
@@ -541,7 +541,7 @@ cc.Class({
 
     goNewPlane: function () {
         //从飞机生命数中扣除1辆
-       // 创建 飞入 然后可以操作
+        // 创建 飞入 然后可以操作
         // let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
         // if (lifeCount > 0) { //等于0的话 还能复活 说明是点了复活按钮 不能再扣生命值了 否则用户下次买了 还填不满这坑
         //     lifeCount = lifeCount - 1;
@@ -586,8 +586,8 @@ cc.Class({
         let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
         this.player.runAction(seq);
 
-     
-       this._bulletToCoinAndRun();
+
+        this._bulletToCoinAndRun();
 
     },
 
@@ -607,7 +607,7 @@ cc.Class({
         this.unschedule(this.baozouProcessing);
     },
 
-  
+
 
     bazouWenZidOver: function () {
         this.baozouAni.destroy();
@@ -829,7 +829,7 @@ cc.Class({
         this.scheduleOnce(this.dazhaoPlaneOver1, 5.0);
     },
 
-    shieldOnclick:function(e) {
+    shieldOnclick: function (e) {
         cc.log("hudun touch");
         e.stopPropagation();
         if (this.shieldNo > 0) {
@@ -837,12 +837,12 @@ cc.Class({
             this.shieldNo -= 1;
             cc.sys.localStorage.setItem('hudunCount', this.shieldNo);
 
-            
-            if(this.player) {
+
+            if (this.player) {
                 this.player.getComponent("Player").hasHuDun = true;
                 this.hudunAniBofang();
             }
-            
+
         } else {
             console.log('没有护盾');
 
@@ -850,34 +850,34 @@ cc.Class({
     },
 
 
-    hudunAniBofang:function() {
-         //必须让按钮先不能点，否则将引发bug！
-         this.shieldSprite.off('touchstart', this.shieldOnclick, this);
-         this.hudunPartice = cc.instantiate(this.huDunTeXiao);
-         let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
-         armatureDisplay.playAnimation("hudun");
-         this.player.addChild(this.hudunPartice);
-         this.hudunPartice.setPosition(cc.v2(0, 0));
-         
-         
-         this.hudunprogress = cc.instantiate(this.hudunprogressTeXiao);
-         let ainPro = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
-         ainPro.playAnimation("jishi");
-         this.player.addChild(this.hudunprogress);
-         this.hudunprogress.setPosition(cc.v2(0, 0));   
+    hudunAniBofang: function () {
+        //必须让按钮先不能点，否则将引发bug！
+        this.shieldSprite.off('touchstart', this.shieldOnclick, this);
+        this.hudunPartice = cc.instantiate(this.huDunTeXiao);
+        let armatureDisplay = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
+        armatureDisplay.playAnimation("hudun");
+        this.player.addChild(this.hudunPartice);
+        this.hudunPartice.setPosition(cc.v2(0, 0));
 
-         this.scheduleOnce(this.hudunOver, 2.9);
+
+        this.hudunprogress = cc.instantiate(this.hudunprogressTeXiao);
+        let ainPro = this.hudunPartice.getComponent(dragonBones.ArmatureDisplay);
+        ainPro.playAnimation("jishi");
+        this.player.addChild(this.hudunprogress);
+        this.hudunprogress.setPosition(cc.v2(0, 0));
+
+        this.scheduleOnce(this.hudunOver, 2.9);
     },
 
-    hudunOver:function() {
+    hudunOver: function () {
         //1 不无敌了
         //2 护盾删除
         //3 可以触摸按钮了
         this.player.getComponent("Player").hasHuDun = false;
-        if(this.hudunPartice ) {
+        if (this.hudunPartice) {
             this.hudunPartice.destroy();
         }
-        if(this.hudunprogress) {
+        if (this.hudunprogress) {
             this.hudunprogress.destroy();
         }
 
@@ -885,7 +885,7 @@ cc.Class({
 
     },
 
-    shieldOnclickMove:function(e) {
+    shieldOnclickMove: function (e) {
         e.stopPropagation();
     },
 
@@ -1016,9 +1016,9 @@ cc.Class({
 
     },
 
-    warningAniOver:function() {
+    warningAniOver: function () {
 
-        this.scheduleOnce(this.runStage,1);
+        this.scheduleOnce(this.runStage, 1);
 
     },
 
@@ -1109,6 +1109,7 @@ cc.Class({
     nextRound: function () {
 
         this.planeIcon.setPosition(this.planeIcon.getPosition().x, this.planeIconY);
+        this.distanceMask.scaleY = 0.0;
         this.progressNode.runAction(cc.fadeIn(1));
 
         //1 降低我方飞机碰撞面积，2，关闭之前的金币暴走动画，3 开启暴走定时器 4进入下一回合
@@ -1140,8 +1141,8 @@ cc.Class({
         let dataLength = globalStageData.length;
 
         //  let height = this.maskOriginHeight + this.stage*this.spriteOriginDistance/(dataLength-1);
-         // this.distanceMask.height = height;
-          this.distanceMask.runAction(cc.scaleTo(0.5,1, this.stage/(dataLength-1)));
+        // this.distanceMask.height = height;
+        this.distanceMask.runAction(cc.scaleTo(0.5, 1, this.stage / (dataLength - 1)));
         let y = this.planeIconY + this.stage * this.spriteOriginDistance / (dataLength - 1);
         //this.planeIcon.setPosition(this.planeIcon.getPosition().x,y);
         this.planeIcon.runAction(cc.moveTo(0.5, cc.v2(this.planeIcon.getPosition().x, y)));
@@ -1367,7 +1368,7 @@ cc.Class({
     },
 
     getShield: function () {
-      
+
         this.shieldNo += 1;
         cc.sys.localStorage.setItem('hudunCount', this.shieldNo);
 
@@ -1394,8 +1395,8 @@ cc.Class({
 
 
         var wuJiaChenggCurrentScore = parseInt(this.defenLabel.string);
-        var planeWcount =  cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
-        var currentScore = Math.ceil(wuJiaChenggCurrentScore + planeWcount*0.05*wuJiaChenggCurrentScore);
+        var planeWcount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
+        var currentScore = Math.ceil(wuJiaChenggCurrentScore + planeWcount * 0.05 * wuJiaChenggCurrentScore);
         var bestScore = cc.sys.localStorage.getItem('bestScore');
 
 
@@ -1409,8 +1410,8 @@ cc.Class({
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
         var c = cc.sys.localStorage.getItem('jinBiCount');
-        var d = Math.ceil(parseInt(this._jinBiCount) + planeWcount*0.05* parseInt(this._jinBiCount)); //加成后
-        
+        var d = Math.ceil(parseInt(this._jinBiCount) + planeWcount * 0.05 * parseInt(this._jinBiCount)); //加成后
+
         var newC = parseInt(c) + parseInt(d);
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount", d);
