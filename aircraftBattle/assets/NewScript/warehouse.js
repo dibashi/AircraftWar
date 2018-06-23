@@ -43,7 +43,7 @@ cc.Class({
 
 
 
-      //  settingButton: null,
+        //  settingButton: null,
 
         soundSetting: {
             default: null,
@@ -71,26 +71,68 @@ cc.Class({
 
         },
 
-        maxLevel: {
-            default: null,
-            type: cc.Node,
-
-        },
+       
 
         goBattle: {
             default: null,
             type: cc.Node,
         },
 
-        currentLevelLabel:{
-            default:null,
-            type:cc.Node,
+        currentLevelLabel: {
+            default: null,
+            type: cc.Node,
         },
 
 
-        planeMoney:10000,
-        wingmanMoney:5000,
+        planeMoney: 10000,
+        wingmanMoney: 5000,
 
+
+        rewardCurrentSpriteNode: {
+            default: null,
+            type: cc.Node
+        },
+
+        rewardNextSpriteNode: {
+            default: null,
+            type: cc.Node
+        },
+
+        reward_ziti0:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti1:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti2:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti3:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti4:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti5:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti6:{
+            default: null,
+            type: cc.Node
+        },
+        reward_ziti7:{
+            default: null,
+            type: cc.Node
+        },
+
+
+        rewardSpriteFrameArray:null,
 
     },
 
@@ -112,13 +154,29 @@ cc.Class({
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
         this.spriteCoin = this.node.getChildByName("spriteCoin");
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2)-10);
+        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2) - 10);
         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
         this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
-     //   this.settingButton = this.node.getChildByName("soundSetting");
-      //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
+        //   this.settingButton = this.node.getChildByName("soundSetting");
+        //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.settingButton.getContentSize().height / 2));
 
         this.planeArray = this.planes.children;
+
+
+        this.rewardSpriteFrameArray = new Array();
+
+        this.rewardSpriteFrameArray[0] = this.reward_ziti0.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[1] = this.reward_ziti1.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[2] = this.reward_ziti2.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[3] = this.reward_ziti3.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[4] = this.reward_ziti4.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[5] = this.reward_ziti5.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[6] = this.reward_ziti6.getComponent(cc.Sprite).spriteFrame;
+        this.rewardSpriteFrameArray[7] = this.reward_ziti7.getComponent(cc.Sprite).spriteFrame;
+
+        
+
+
         this.currentID = 0;
         //哪些飞机显示，哪些飞机隐藏，显示的飞机的僚机哪些显示，哪些隐藏
         this.refresh();
@@ -151,18 +209,25 @@ cc.Class({
         if (wingManCount >= 6) {
 
             this.isWingmanGouMai = false;
-            this.maxLevel.opacity = 255;
+            
             this.addLevel.getComponent(cc.Button).interactable = false;
         } else {
             this.isWingmanGouMai = true;
-            this.maxLevel.opacity = 0;
+            
             this.addLevel.getComponent(cc.Button).interactable = true;
         }
     },
 
-    currentLevelFun:function(){
+    currentLevelFun: function () {
         let wingManCount = cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID);
         this.currentLevelLabel.getComponent(cc.Label).string = wingManCount;
+
+        this.rewardCurrentSpriteNode.getComponent(cc.Sprite).spriteFrame = this.rewardSpriteFrameArray[wingManCount];
+        cc.log(this.rewardNextSpriteNode);
+        cc.log(this.rewardNextSpriteNode.getComponent(cc.Sprite));
+
+    cc.log(parseInt(wingManCount)+1);
+        this.rewardNextSpriteNode.getComponent(cc.Sprite).spriteFrame = this.rewardSpriteFrameArray[parseInt(wingManCount)+1];
     },
 
 
@@ -178,13 +243,13 @@ cc.Class({
         cc.log("!!!-->" + 'heroPlaneWingmanCount' + this.currentID);
         for (let i = 0; i < this.planeArray[this.currentID].childrenCount; i++) {
             this.planeArray[this.currentID].getChildByName("wingman" + i).active = true;
-            this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active =false;
+            this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active = false;
         }
 
         for (let i = 0; i < wmCount; i++) {
             this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active = true;
         }
-        
+
         this.currentLevelFun();
     },
 
@@ -254,7 +319,7 @@ cc.Class({
 
             ss.getComponent("Alert").onWho = this.node;
             this.node.addChild(ss);
-    
+
         } else {
             let afterCoint = currentCoin - this.planeMoney;
             cc.sys.localStorage.setItem('jinBiCount', afterCoint);
