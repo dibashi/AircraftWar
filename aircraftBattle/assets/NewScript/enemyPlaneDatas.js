@@ -71,7 +71,13 @@ var _stage = [
 //     //{ enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 },
 //    ],
 
-   
+    //9
+    [
+        { enemyID: 3, beginX: 180, beginY: 800, endX: 180, endY: 360 },
+        { enemyID: 3, beginX: -180, beginY: 800, endX: -180, endY: 420 }
+
+    ],
+
 
 
     //1
