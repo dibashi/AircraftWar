@@ -1403,7 +1403,7 @@ cc.Class({
         if (currentScore > bestScore) {//把最高分上传到服务器吧
             cc.sys.localStorage.setItem('bestScore', currentScore);
 
-       //     this.setBestScore(currentScore);
+            this.setBestScore(currentScore);
         }
 
 
