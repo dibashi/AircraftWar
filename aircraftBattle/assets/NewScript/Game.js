@@ -1384,7 +1384,9 @@ cc.Class({
         }
 
 
-        var currentScore = parseInt(this.defenLabel.string);
+        var wuJiaChenggCurrentScore = parseInt(this.defenLabel.string);
+        var planeWcount =  cc.sys.localStorage.getItem('heroPlaneWingmanCount' + D.globalHeroPlaneID);
+        var currentScore = wuJiaChenggCurrentScore + planeWcount*0.05*wuJiaChenggCurrentScore;
         var bestScore = cc.sys.localStorage.getItem('bestScore');
 
 
@@ -1398,7 +1400,8 @@ cc.Class({
         cc.sys.localStorage.setItem("currentScore", currentScore);
 
         var c = cc.sys.localStorage.getItem('jinBiCount');
-        var d = this._jinBiCount;
+        var d = parseInt(this._jinBiCount) + planeWcount*0.05* parseInt(this._jinBiCount); //加成后
+        
         var newC = parseInt(c) + parseInt(d);
         cc.sys.localStorage.setItem('jinBiCount', newC);
         cc.sys.localStorage.setItem("getJinBiCount", d);

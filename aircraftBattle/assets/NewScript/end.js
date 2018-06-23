@@ -91,10 +91,10 @@ cc.Class({
          //写入数据
         this.coinLabel.getComponent(cc.Label).string = jbc;
         this.historyLabel.getComponent(cc.Label).string = "历史最高分：" +hs;
-        this.currentLabel.getComponent(cc.Label).string = "本局得分：" +cs;
+        this.currentLabel.getComponent(cc.Label).string = "加成后本局得分：" +cs;
       //  this.killedEnemyLabel.getComponent(cc.Label).string = "击落目标：" +kc;
         
-      this.getJinBiCountLabel.getComponent(cc.Label).string = "本局获得金币: "+gc;
+      this.getJinBiCountLabel.getComponent(cc.Label).string = "加成后获得金币: "+gc;
 
         //适配
          //适配
