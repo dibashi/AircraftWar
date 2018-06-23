@@ -308,8 +308,14 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+
+        spriteDistance:{
+            default: null,
+            type: cc.Node,
+        },
         //原始的遮罩高度，用于计算
         maskOriginHeight: 0,
+        spriteOriginDistance:0,
         planeIconY: 0,
 
 
@@ -521,6 +527,8 @@ cc.Class({
 
 
         this.maskOriginHeight = this.distanceMask.height;
+        this.distanceMask.scaleY = 0.0;
+        this.spriteOriginDistance = this.spriteDistance.height;
         this.planeIconY = this.planeIcon.getPosition().y;
 
 
@@ -1131,9 +1139,10 @@ cc.Class({
         //ok 进入新stage 那边的距离要更新
         let dataLength = globalStageData.length;
 
-        //  let height = this.maskOriginHeight - (this.stage+1)*this.maskOriginHeight/dataLength;
-        //  this.distanceMask.height = height;
-        let y = this.planeIconY + this.stage * this.maskOriginHeight / (dataLength - 1);
+        //  let height = this.maskOriginHeight + this.stage*this.spriteOriginDistance/(dataLength-1);
+         // this.distanceMask.height = height;
+          this.distanceMask.runAction(cc.scaleTo(0.5,1, this.stage/(dataLength-1)));
+        let y = this.planeIconY + this.stage * this.spriteOriginDistance / (dataLength - 1);
         //this.planeIcon.setPosition(this.planeIcon.getPosition().x,y);
         this.planeIcon.runAction(cc.moveTo(0.5, cc.v2(this.planeIcon.getPosition().x, y)));
 
