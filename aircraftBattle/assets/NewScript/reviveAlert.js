@@ -24,6 +24,15 @@ cc.Class({
             type: cc.Node
         },
 
+        lifeBtn: {
+            default: null,
+            type: cc.Node
+        },
+        lifeCountLabel: {
+            default: null,
+            type: cc.Node
+        },
+
         reviveCountLabel: {
             default: null,
             type: cc.Node
@@ -75,6 +84,16 @@ cc.Class({
             this.ggBtn.getComponent(cc.Button).interactable = true;
         }else {
             this.ggBtn.getComponent(cc.Button).interactable = false;
+        }
+
+
+        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        this.lifeCountLabel.getComponent(cc.Label).string = "X" + lifeCount;
+
+        if (lifeCount > 0) {
+          this.lifeBtn.getComponent(cc.Button).interactable = true;
+        }  else {
+            this.lifeBtn.getComponent(cc.Button).interactable = false;
         }
 
 
@@ -130,8 +149,8 @@ cc.Class({
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
-        let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
-        cc.sys.localStorage.setItem('reviveCount', rc);
+        let rc = parseInt(cc.sys.localStorage.getItem('planeLifeCount')) - 1;
+        cc.sys.localStorage.setItem('planeLifeCount', rc);
 
         this.onWho.getComponent("Game").goNewPlane();
 
@@ -154,6 +173,24 @@ cc.Class({
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
+    },
+
+    onLifeClick:function() {
+        cc.log("onlifeclick");
+       
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+        cc.eventManager.pauseTarget(this.node, true);
+
+        let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) - 1;
+        cc.sys.localStorage.setItem('reviveCount', rc);
+
+        this.onWho.getComponent("Game").goNewPlane();
+
+
+        let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+        let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
+        this.node.runAction(actionFadeOut);
+
     },
 
     onFadeOutFinish: function () {

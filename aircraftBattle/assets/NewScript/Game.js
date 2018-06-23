@@ -541,16 +541,15 @@ cc.Class({
 
     goNewPlane: function () {
         //从飞机生命数中扣除1辆
-        //创建 飞入 然后可以操作
-        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
-        if (lifeCount > 0) { //等于0的话 还能复活 说明是点了复活按钮 不能再扣生命值了 否则用户下次买了 还填不满这坑
-            lifeCount = lifeCount - 1;
-            cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
-        }
+       // 创建 飞入 然后可以操作
+        // let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        // if (lifeCount > 0) { //等于0的话 还能复活 说明是点了复活按钮 不能再扣生命值了 否则用户下次买了 还填不满这坑
+        //     lifeCount = lifeCount - 1;
+        //     cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
+        // }
 
+        cc.sys.localStorage.setItem('planeLifeCount', lifeCount);
 
-
-        // let lifeLabel =  this.node.getChildByName("lifeLabel");
         this.lifeLabel.getComponent(cc.Label).string = lifeCount;
 
 
@@ -587,7 +586,8 @@ cc.Class({
         let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
         this.player.runAction(seq);
 
-        this.getShield();
+     
+       this._bulletToCoinAndRun();
 
     },
 

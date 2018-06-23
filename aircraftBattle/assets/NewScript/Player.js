@@ -493,15 +493,18 @@ cc.Class({
         this.unscheduleAllCallbacks();
 
 
-        let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
-        if (lifeCount > 0) {
-            this.node.parent.getComponent("Game").goNewPlane();
-            this.node.destroy();
-        } else {
+        // let lifeCount = parseInt(cc.sys.localStorage.getItem('planeLifeCount'));
+        // if (lifeCount > 0) {
+        //     this.node.parent.getComponent("Game").goNewPlane();
+        //     this.node.destroy();
+        // } else {
 
-            this.node.parent.getComponent('Game').gameOver();
-            this.node.destroy();
-        }
+        //     this.node.parent.getComponent('Game').gameOver();
+        //     this.node.destroy();
+        // }
+
+        this.node.parent.getComponent('Game').gameOver();
+         this.node.destroy();
 
 
 
