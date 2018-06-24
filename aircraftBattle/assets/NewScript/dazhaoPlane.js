@@ -43,7 +43,7 @@ cc.Class({
 
     onLoad() {
 
-        this.onceBulletCount = 3;
+        this.onceBulletCount = 2;
 
         this.guandaoArrays = new Array();
 

@@ -53,13 +53,13 @@ var _enemyPlaneData = [
     //蓝
     { enemyID: 1, blood: 180, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
     //红
-    { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.4, fallingObject: _generateType.jisushesu },
+    { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.3, fallingObject: _generateType.jisushesu },
     //青色
     { enemyID: 3, blood: 90, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi }, //10~30金币
     { enemyID: 4, blood: 5, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
 
     //小型boss 
-    { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 1, fallingObject: _generateType.wudichongci },
+    { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 0.2, fallingObject: _generateType.wudichongci },
     //最后大boss
     { enemyID: 6, blood: 270, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },//金币 20~50 <=100 ;两家飞机 90 60
 
@@ -86,10 +86,24 @@ var _stage = [
     //     //{ enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 },
     //    ],
 
+    // [
+    //     { enemyID: 7, beginX: -500, beginY: 200, endX: 500, endY: 600 },
+    // ],
+
+    // [
+    //     { enemyID: 0, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+    // ],
+
+    // [
+    //     { enemyID: 0, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+    // ],
+
+    // [
+    //     { enemyID: 0, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+    // ],
 
 
-
-    //1
+   // 1
     [
         { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 },
 
@@ -104,18 +118,26 @@ var _stage = [
     //3
     [
         { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 420 },
-        { enemyID: 7, beginX: 600, beginY: 450, endX: 120, endY: 360 },
-        { enemyID: 7, beginX: -600, beginY: 450, endX: -120, endY: 360 },
+        { enemyID: 7, beginX: -500, beginY: 300, endX: 500, endY: 500 },
+        { enemyID: 7, beginX: 500, beginY: 300, endX: -500, endY: 500 },
 
     ],
     //4
     [
-        { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 420 },
-        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 420 },
+        // { enemyID: 7, beginX: 120, beginY: 800, endX: 120, endY: 420 },
+        // { enemyID: 7, beginX: -120, beginY: 800, endX: -120, endY: 420 },
       
 
-        { enemyID: 7, beginX: 600, beginY: 450, endX: 240, endY: 360 },
-        { enemyID: 7, beginX: -600, beginY: 450, endX: -240, endY: 360 },
+        // { enemyID: 7, beginX: 600, beginY: 450, endX: 240, endY: 360 },
+        // { enemyID: 7, beginX: -600, beginY: 450, endX: -240, endY: 360 },
+
+         { enemyID: 7, beginX: -500, beginY: 250, endX: 500, endY: 600 },
+        { enemyID: 7, beginX: 500, beginY: 600, endX: -500, endY: 250 },
+      
+
+        { enemyID: 7, beginX: -500, beginY: 600, endX: 500, endY: 250 },
+        { enemyID: 7, beginX: 500, beginY: 250, endX: -500, endY: 600 },
+        
     ],
 
     //5

@@ -1216,6 +1216,11 @@ cc.Class({
 
                 enemy.getComponent("enemyPlane" + enemyID).endX = globalStageData[this.stage][i].endX;
                 enemy.getComponent("enemyPlane" + enemyID).endY = globalStageData[this.stage][i].endY;
+                if(enemyID == 7) {
+                    enemy.getComponent("enemyPlane" + enemyID).beginX = globalStageData[this.stage][i].beginX;
+                    enemy.getComponent("enemyPlane" + enemyID).beginY = globalStageData[this.stage][i].beginY;
+                }
+                
             }
 
             enemy.setPosition(globalStageData[this.stage][i].beginX, globalStageData[this.stage][i].beginY);//初始位置初始化
@@ -1653,6 +1658,8 @@ cc.Class({
            enemy.getComponent("enemyPlane7" ).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
            enemy.getComponent("enemyPlane7" ).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
 
+           enemy.getComponent("enemyPlane7" ).beginX = beginX;
+           enemy.getComponent("enemyPlane7" ).beginY = beginY;
            enemy.getComponent("enemyPlane7" ).endX = endX;
            enemy.getComponent("enemyPlane7" ).endY = endY;
        }
