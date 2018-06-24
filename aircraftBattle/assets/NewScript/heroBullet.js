@@ -53,6 +53,11 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        shoujiAudio:{
+            default:null,
+            url:cc.AudioClip,
+        },
+
         isPoolBullet: false,//子弹是否是子弹池的 
     },
 
@@ -168,7 +173,7 @@ cc.Class({
             var anim = this.shoujiAni.getComponent(cc.Animation);
             this.shoujiAni.setPosition(this.node.getPosition().x, this.node.getPosition().y + this.node.getContentSize().height / 2);
 
-            // anim.on("stop", cc.find("Canvas").getComponent("Game").shoujiDamageOver, cc.find("Canvas").getComponent("Game"));
+            cc.audioEngine.playEffect(this.shoujiAudio,false);
 
             anim.play();
         }
