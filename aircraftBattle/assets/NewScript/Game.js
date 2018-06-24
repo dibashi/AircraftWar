@@ -1621,6 +1621,43 @@ cc.Class({
 
     },
 
+    callEnemysInBoos:function() {
+        this.goNewEnemysInBoss(7,600,450,180,360);
+        this.goNewEnemysInBoss(7,-600,450,-180,360);
+ 
+        
+    },
+
+    goNewEnemysInBoss:function(enemyID,beginX,beginY,endX,endY) {
+        let enemy = null;
+        if(enemyID == 7) {
+             enemy = cc.instantiate(this.enemyPlane7);
+        }
+        
+
+        //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
+        if (enemy.getComponent("enemyPlane7" ) != undefined) {
+            enemy.getComponent("enemyPlane7" ).enemyID = enemyID;
+           enemy.getComponent("enemyPlane7" ).blood = globalEnemyPlaneData[enemyID].blood;
+
+           enemy.getComponent("enemyPlane7" ).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed;
+           enemy.getComponent("enemyPlane7" ).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
+
+           enemy.getComponent("enemyPlane7").damage = globalEnemyPlaneData[enemyID].damage;
+           enemy.getComponent("enemyPlane7" ).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
+           enemy.getComponent("enemyPlane7" ).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
+
+           enemy.getComponent("enemyPlane7" ).endX = endX;
+           enemy.getComponent("enemyPlane7" ).endY = endY;
+       }
+
+       enemy.setPosition(beginX, beginY);//初始位置初始化
+       this.node.addChild(enemy);
+
+       enemy.getComponent("enemyPlane" + enemyID).enterScene();//让敌机自己来执行自己的进入场景
+       this.enemyCount++
+    },
+
 
 
 

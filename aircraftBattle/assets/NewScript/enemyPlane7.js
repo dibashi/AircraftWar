@@ -71,6 +71,8 @@ cc.Class({
       
         endX:null,//在场景中的位置
         endY:null,//在场景中的位置
+
+        originBlood:0,//记录下原始的血量 用于当血量小于50%时 召唤小飞机
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -95,7 +97,7 @@ cc.Class({
     zuoyoushangxia: function () {
         let jumpDuration = 3;
         let jumpHeight = Math.random() * 200;
-        let moveDis = Math.random() * 200;
+        let moveDis = Math.random() * 230;
         let jumpUp = cc.moveBy(jumpDuration, cc.p(0, jumpHeight));
         let jumpDown = cc.moveBy(jumpDuration, cc.p(0, -jumpHeight));
         let seq1 = cc.sequence(jumpUp, jumpDown);
@@ -250,7 +252,7 @@ cc.Class({
             } else {
 
                 this.blood -= bDamage;
-             
+                
 
             }
         }

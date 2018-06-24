@@ -63,137 +63,144 @@ var _enemyPlaneData = [
     //最后大boss
     { enemyID: 6, blood: 270, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 0.4, fallingObject: _generateType.jinbi },//金币 20~50 <=100 ;两家飞机 90 60
 
-   
+
 
     //左右飞入 黄色 飞机
     { enemyID: 7, blood: 18, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
-    
-    
+
+
 ];
 
 
 
 var _stage = [
- 
 
-  
-   [
-           // 飞机3 吃到 激素 播放 金币冲刺 会产生bug
-   // { enemyID: 3, beginX: 0, beginY: 800, endX: 0, endY: 360 },
 
-    { enemyID: 7, beginX: 600, beginY: 450, endX: 120, endY: 360 },
-    { enemyID: 7, beginX: -600, beginY: 450, endX: -120, endY: 360 },
-    //{ enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 },
-   ],
+
+    //    [
+    //            // 飞机3 吃到 激素 播放 金币冲刺 会产生bug
+    //    // { enemyID: 3, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+
+    //     { enemyID: 7, beginX: 600, beginY: 450, endX: 120, endY: 360 },
+    //     { enemyID: 7, beginX: -600, beginY: 450, endX: -120, endY: 360 },
+    //     //{ enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 },
+    //    ],
 
 
 
 
     //1
-//     [
-//         { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+    [
+        { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 },
 
 
-//     ],
-//     //2
-//     [
-//         { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 360 },
+    ],
+    //2
+    [
+        { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 360 },
 
-//         { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 360 },
-//     ],
-//     //3
-//     [
-//         { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 },
+        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 360 },
+    ],
+    //3
+    [
+        { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 420 },
+        { enemyID: 7, beginX: 600, beginY: 450, endX: 120, endY: 360 },
+        { enemyID: 7, beginX: -600, beginY: 450, endX: -120, endY: 360 },
 
+    ],
+    //4
+    [
+        { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 420 },
+        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 420 },
+      
 
-//     ],
-//     //4
-//     [
-//         { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 420 },
-//         { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 420 },
-//         { enemyID: 0, beginX: 240, beginY: 800, endX: 240, endY: 300 },
-//         { enemyID: 0, beginX: -240, beginY: 800, endX: -240, endY: 300 }
-//     ],
+        { enemyID: 7, beginX: 600, beginY: 450, endX: 240, endY: 360 },
+        { enemyID: 7, beginX: -600, beginY: 450, endX: -240, endY: 360 },
+    ],
 
-//     //5
-//     [
-//         { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 300 },
-//         { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 300 },
-//         { enemyID: 0, beginX: 240, beginY: 800, endX: 240, endY: 420 },
-//         { enemyID: 0, beginX: -240, beginY: 800, endX: -240, endY: 420 },
-//         { enemyID: 1, beginX: 0, beginY: 800, endX: 0, endY: 360 }//这个是中间
-//     ],
-//     //6
-//     [
-//         { enemyID: 5, beginX: 0, beginY: 800, endX: 0, endY: 360 },
-
-
-//     ],
-//     //7
-//     [
-//         { enemyID: 2, beginX: 180, beginY: 800, endX: 180, endY: 300 },
-//         { enemyID: 2, beginX: -180, beginY: 800, endX: -180, endY: 300 },
-
-//         { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 }//这个是中间
-//     ],
-//     //8
-//     [
-//         { enemyID: 5, beginX: 180, beginY: 800, endX: 180, endY: 420 },
-//         { enemyID: 5, beginX: -180, beginY: 800, endX: -180, endY: 360 }
-
-//     ],
-
-//     //9
-//     [
-//         { enemyID: 3, beginX: 180, beginY: 800, endX: 180, endY: 360 },
-//         { enemyID: 3, beginX: -180, beginY: 800, endX: -180, endY: 420 }
-
-//     ],
-
-//  //   10
-//  [
-//     { enemyID: 2, beginX: -240, beginY: 800, endX: -240, endY: 270 },
-//     { enemyID: 0, beginX: -142, beginY: 800, endX: -142, endY: 350 },
-//     { enemyID: 2, beginX: -44, beginY: 800, endX: -44, endY: 420 },
-//     { enemyID: 0, beginX: 54, beginY: 800, endX: 54, endY: 240 },
-//     { enemyID: 2, beginX: 152, beginY: 800, endX: 152, endY: 340 },
-//     { enemyID: 0, beginX: 240, beginY: 800, endX: 240, endY: 400 },
-// ],
-
-//  //11
-
-//  [
-//     { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 250 },
-//     { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 250 },
-//     { enemyID: 2, beginX: 240, beginY: 800, endX: 240, endY: 320 },
-//     { enemyID: 2, beginX: -240, beginY: 800, endX: -240, endY: 320 },
-
-//     { enemyID: 1, beginX: 0, beginY: 800, endX: 0, endY: 420 }//这个是中间
-
-// ],
+    //5
+    [
+        { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 300 },
+        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 300 },
+        { enemyID: 0, beginX: 240, beginY: 800, endX: 240, endY: 420 },
+        { enemyID: 0, beginX: -240, beginY: 800, endX: -240, endY: 420 },
+        { enemyID: 1, beginX: 0, beginY: 800, endX: 0, endY: 360 }//这个是中间
+    ],
+    //6
+    [
+        { enemyID: 5, beginX: 0, beginY: 800, endX: 0, endY: 360 },
 
 
-//   //12
+    ],
+    //7
+    [
+        { enemyID: 2, beginX: 180, beginY: 800, endX: 180, endY: 300 },
+        { enemyID: 2, beginX: -180, beginY: 800, endX: -180, endY: 300 },
 
-//   [
-//     { enemyID: 0, beginX: 180, beginY: 800, endX: 180, endY: 200 },
-//     { enemyID: 0, beginX: -180, beginY: 800, endX: -180, endY: 200 },
-//     { enemyID: 2, beginX: 200, beginY: 800, endX: 200, endY: 270 },
-//     { enemyID: 2, beginX: -200, beginY: 800, endX: -200, endY: 270 },
+        { enemyID: 2, beginX: 0, beginY: 800, endX: 0, endY: 360 }//这个是中间
+    ],
+    //8
+    [
+        { enemyID: 5, beginX: 180, beginY: 800, endX: 180, endY: 420 },
+        { enemyID: 5, beginX: -180, beginY: 800, endX: -180, endY: 360 }
 
-//     { enemyID: 5, beginX: 0, beginY: 800, endX: 0, endY: 420 }//这个是中间
+    ],
 
-// ],
-//    //13
-//    [
-//     { enemyID: 0, beginX: -240, beginY: 800, endX: -240, endY: 200 },
-//     { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 200 },
-//     { enemyID: 2, beginX: 200, beginY: 800, endX: 200, endY: 270 },
+    //9
+    [
+    
+        { enemyID: 3, beginX: 600, beginY: 450, endX: 180, endY: 360 },
+        { enemyID: 3, beginX: -600, beginY: 450, endX: -180, endY: 420 },
+
+    ],
+
+    //   10
+    [
+        { enemyID: 2, beginX: -240, beginY: 800, endX: -240, endY: 270 },
+        { enemyID: 0, beginX: -142, beginY: 800, endX: -142, endY: 350 },
+        { enemyID: 2, beginX: -44, beginY: 800, endX: -44, endY: 420 },
+        { enemyID: 0, beginX: 54, beginY: 800, endX: 54, endY: 240 },
+        { enemyID: 2, beginX: 152, beginY: 800, endX: 152, endY: 340 },
+        { enemyID: 0, beginX: 240, beginY: 800, endX: 240, endY: 400 },
+    ],
+
+    //11
+
+    [
+        { enemyID: 0, beginX: 120, beginY: 800, endX: 120, endY: 250 },
+        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 250 },
+        { enemyID: 2, beginX: 240, beginY: 800, endX: 240, endY: 320 },
+        { enemyID: 2, beginX: -240, beginY: 800, endX: -240, endY: 320 },
+
+        { enemyID: 1, beginX: 0, beginY: 800, endX: 0, endY: 420 }//这个是中间
+
+    ],
 
 
-//     { enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 }//这个是中间
+    //12
 
-// ],
+    [
+        { enemyID: 0, beginX: 180, beginY: 800, endX: 180, endY: 200 },
+        { enemyID: 0, beginX: -180, beginY: 800, endX: -180, endY: 200 },
+        { enemyID: 2, beginX: 200, beginY: 800, endX: 200, endY: 270 },
+        { enemyID: 2, beginX: -200, beginY: 800, endX: -200, endY: 270 },
+
+        { enemyID: 5, beginX: 0, beginY: 800, endX: 0, endY: 420 }//这个是中间
+
+    ],
+    //13
+    [
+        { enemyID: 0, beginX: -240, beginY: 800, endX: -240, endY: 200 },
+        { enemyID: 0, beginX: -120, beginY: 800, endX: -120, endY: 200 },
+        { enemyID: 2, beginX: 200, beginY: 800, endX: 200, endY: 270 },
+
+
+        { enemyID: 6, beginX: 0, beginY: 800, endX: 0, endY: 400 },//这个是中间
+
+        // { enemyID: 7, beginX: 600, beginY: 450, endX: 600, endY: 360 },
+        // { enemyID: 7, beginX: -600, beginY: 450, endX: -600, endY: 360 },
+
+    ],
 
 
 ];

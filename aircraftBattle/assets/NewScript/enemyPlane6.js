@@ -90,6 +90,10 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+
+
+        originBlood:0,//记录下原始的血量 用于当血量小于50%时 召唤小飞机
+        isHuangseChuanZhan:false,//记录黄色小飞机是否出战了
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -106,6 +110,10 @@ cc.Class({
     },
 
     enterScene: function () {
+
+        this.originBlood = this.blood;
+        this.isHuangseChuanZhan = false;
+
         var callback = cc.callFunc(this.enterCallback, this);
         var seq = cc.sequence(cc.moveTo(1, cc.v2(this.endX, this.endY)), callback);
         this.node.runAction(seq);
@@ -466,11 +474,10 @@ cc.Class({
             } else {
 
                 this.blood -= bDamage;
-                //  this.bBar.string = this.blood;
-          //      this.enemyDamagedAni();
-                //根据掉血量来加分吧
-                //this.node.parent.getComponent('Game').addScore(bDamage);
-                //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
+                if(this.blood<= (this.originBlood*0.5) && !this.isHuangseChuanZhan) {
+                    this.isHuangseChuanZhan = true
+                    this.node.parent.getComponent("Game").callEnemysInBoos();
+                }
 
             }
         }
