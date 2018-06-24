@@ -173,6 +173,11 @@ cc.Class({
             url: cc.AudioClip
         },
 
+        bulletToShieldAudio:{
+            default:null,
+            url:cc.AudioClip
+        },
+
         warningAni: {
             default: null,
             type: cc.Prefab,
@@ -986,7 +991,7 @@ cc.Class({
         }
 
         this._bulletToCoinAndRun();
-
+        cc.audioEngine.playEffect(this.bulletToShieldAudio,false);
 
 
         // if (this.shieldNo > 0) {

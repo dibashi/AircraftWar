@@ -3515,6 +3515,9 @@
     "buttonAudio": {
       "__uuid__": "fa0bfb69-7891-4fde-8363-b408db4e214d"
     },
+    "bulletToShieldAudio": {
+      "__uuid__": "8dc27c0f-8475-43f4-ad9d-7e6c5ecc35ad"
+    },
     "warningAni": {
       "__uuid__": "3988326a-1c34-451f-922f-b9000a086e24"
     },
