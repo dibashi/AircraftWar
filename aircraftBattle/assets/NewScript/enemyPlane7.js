@@ -68,11 +68,14 @@ cc.Class({
             type: cc.Prefab,
         },
 
-      
-        endX:null,//在场景中的位置
-        endY:null,//在场景中的位置
+        beginX:0,
+        beginY:0,
+        endX:0,//在场景中的位置
+        endY:0,//在场景中的位置
 
         originBlood:0,//记录下原始的血量 用于当血量小于50%时 召唤小飞机
+
+        tintFlag:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -87,9 +90,11 @@ cc.Class({
     },
 
     enterScene:function() {
-        var callback = cc.callFunc(this.enterCallback,this);
-        var seq = cc.sequence(cc.moveTo(1, cc.v2(this.endX,this.endY)), callback);
-        this.node.runAction(seq);
+        //var callback = cc.callFunc(this.enterCallback,this);
+        //var seq = cc.sequence(cc.moveTo(1, cc.v2(this.endX,this.endY)), callback);
+        //this.node.runAction(seq);
+
+        this.enterCallback();
     },
 
 
@@ -110,12 +115,24 @@ cc.Class({
 
         this.node.runAction(cc.repeatForever(sp1));
 
+
+
+    },
+
+    bazixing:function() {
+        let mt1 = cc.moveTo(2,cc.v2(this.endX,this.endY));
+        let mt2 = cc.moveTo(1,cc.v2(this.endX,this.beginY));
+        let mt3 = cc.moveTo(2,cc.v2(this.beginX,this.endY));
+        let mt4 = cc.moveTo(1,cc.v2(this.beginX,this.beginY));
+        let seq = cc.sequence(mt1,mt2,mt3,mt4);
+        let fe = cc.repeatForever(seq);
+        this.node.runAction(fe);
     },
 
     enterCallback: function () {
 
-        this.zuoyoushangxia();
        
+       this.bazixing();
         
 
 
@@ -132,7 +149,7 @@ cc.Class({
 
     sanfazhixian: function () {
         for (let i = 0; i < 3; i++) {
-            this.node.runAction(cc.sequence(cc.delayTime(0.2 * (i)), cc.callFunc(this.zhixianxiangxia, this)));
+            this.node.runAction(cc.sequence(cc.delayTime(0.3 * (i)), cc.callFunc(this.zhixianxiangxia, this)));
         }
     },  
 
@@ -185,29 +202,19 @@ cc.Class({
 
 
     enemyDamagedAni: function () {
+        
 
-        this.shoujiAni = null;
-        if (this.shoujiAniPool.size() > 0) {
-            this.shoujiAni = this.shoujiAniPool.get();
-        } else {
-            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
-        }
+        this.tintFlag = true;
 
-        this.node.parent.addChild(this.shoujiAni);
-    //    this.shoujiAni.setPosition(pos.x,pos.y+size.height/2+10);
-   
-        var anim = this.shoujiAni.getComponent(cc.Animation);
-
-        anim.play();
+        let tintOver = cc.callFunc(this.tintOver, this);
+        let actionFadeInOut = cc.sequence(cc.tintTo(0.1,255,87,102), cc.tintTo(0.1, 255,255,255), tintOver);
+        this.node.runAction(actionFadeInOut);
 
     },
 
-//     damagedOver: function (event) {
-// cc.log("shouji over!");
-//         this.shoujiAni.removeFromParent();
-//         this.shoujiAniPool.put(this.shoujiAni);
-
-//     },
+    tintOver:function() {
+        this.tintFlag = false;
+    },
 
     resumeAction: function () {
         console.log("enemy resume!");
@@ -253,7 +260,9 @@ cc.Class({
 
                 this.blood -= bDamage;
                 
-
+                if(!this.tintFlag) {
+                    this.enemyDamagedAni();
+                }
             }
         }
 

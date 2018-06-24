@@ -71,6 +71,7 @@ cc.Class({
       
         endX:null,//在场景中的位置
         endY:null,//在场景中的位置
+        tintFlag:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -122,6 +123,22 @@ cc.Class({
         let seq = cc.sequence(cal1,cal2);
         this.node.runAction(seq)
        
+    },
+
+
+    enemyDamagedAni: function () {
+        
+
+        this.tintFlag = true;
+
+        let tintOver = cc.callFunc(this.tintOver, this);
+        let actionFadeInOut = cc.sequence(cc.tintTo(0.1,255,87,102), cc.tintTo(0.1, 255,255,255), tintOver);
+        this.node.runAction(actionFadeInOut);
+
+    },
+
+    tintOver:function() {
+        this.tintFlag = false;
     },
 
     wunai:function() {
@@ -182,23 +199,7 @@ cc.Class({
     },
 
 
-    enemyDamagedAni: function () {
-
-        this.shoujiAni = null;
-        if (this.shoujiAniPool.size() > 0) {
-            this.shoujiAni = this.shoujiAniPool.get();
-        } else {
-            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
-        }
-
-        this.node.parent.addChild(this.shoujiAni);
-    //    this.shoujiAni.setPosition(pos.x,pos.y+size.height/2+10);
    
-        var anim = this.shoujiAni.getComponent(cc.Animation);
-
-        anim.play();
-
-    },
 
 //     damagedOver: function (event) {
 // cc.log("shouji over!");
@@ -248,10 +249,14 @@ cc.Class({
 
                 // this.node.destroy();
             } else {
-
+                
                 this.blood -= bDamage;
-             
+                
 
+                if(!this.tintFlag) {
+                    this.enemyDamagedAni();
+                }
+            
             }
         }
 

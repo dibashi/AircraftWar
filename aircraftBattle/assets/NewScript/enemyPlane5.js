@@ -82,6 +82,8 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+
+        tintFlag:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -316,39 +318,18 @@ cc.Class({
 
 
     enemyDamagedAni: function () {
+        
 
+        this.tintFlag = true;
 
-        // this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        // let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
-
-        // armatureDisplay.playAnimation("baozha");
-
-        // this.node.addChild(this.damagedTeXiao);
-        // armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.damagedOver, this);
-        this.shoujiAni = null;
-        if (this.shoujiAniPool.size() > 0) {
-            this.shoujiAni = this.shoujiAniPool.get();
-        } else {
-            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
-        }
-
-        this.node.addChild(this.shoujiAni);
-        var anim = this.shoujiAni.getComponent(cc.Animation);
-
-        anim.play();
+        let tintOver = cc.callFunc(this.tintOver, this);
+        let actionFadeInOut = cc.sequence(cc.tintTo(0.1,255,87,102), cc.tintTo(0.1, 255,255,255), tintOver);
+        this.node.runAction(actionFadeInOut);
 
     },
 
-    damagedOver: function (event) {
-
-        //这个有问题 要放动画回调 TODO!
-
-
-        // this.damagedTeXiao.destroy();
-
-        this.shoujiAni.removeFromParent();
-        this.shoujiAniPool.put(this.shoujiAni);
-
+    tintOver:function() {
+        this.tintFlag = false;
     },
 
     resumeAction: function () {
@@ -401,6 +382,9 @@ cc.Class({
                 //this.node.parent.getComponent('Game').addScore(bDamage);
                 //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
 
+                if(!this.tintFlag) {
+                    this.enemyDamagedAni();
+                }
             }
         }
 

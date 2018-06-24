@@ -67,6 +67,8 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+
+        tintFlag:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -279,31 +281,18 @@ cc.Class({
 
 
     enemyDamagedAni: function () {
+        
 
-        this.shoujiAni = null;
-        if (this.shoujiAniPool.size() > 0) {
-            this.shoujiAni = this.shoujiAniPool.get();
-        } else {
-            this.shoujiAni = cc.instantiate(this.shoujiAniPre);
-        }
+        this.tintFlag = true;
 
-        this.node.addChild(this.shoujiAni);
-        var anim = this.shoujiAni.getComponent(cc.Animation);
-
-        anim.play();
+        let tintOver = cc.callFunc(this.tintOver, this);
+        let actionFadeInOut = cc.sequence(cc.tintTo(0.1,255,87,102), cc.tintTo(0.1, 255,255,255), tintOver);
+        this.node.runAction(actionFadeInOut);
 
     },
 
-    damagedOver: function (event) {
-
-        //这个有问题 要放动画回调 TODO!
-
-
-        // this.damagedTeXiao.destroy();
-        
-        this.shoujiAni.removeFromParent();
-        this.shoujiAniPool.put(this.shoujiAni);
-
+    tintOver:function() {
+        this.tintFlag = false;
     },
 
     resumeAction: function () {
@@ -350,6 +339,10 @@ cc.Class({
             } else {
 
                 this.blood -= bDamage;
+
+                if(!this.tintFlag) {
+                    this.enemyDamagedAni();
+                }
 
             }
         }
