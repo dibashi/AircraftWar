@@ -120,9 +120,9 @@ cc.Class({
     },
 
     bazixing:function() {
-        let mt1 = cc.moveTo(2,cc.v2(this.endX,this.endY));
+        let mt1 = cc.moveTo(3,cc.v2(this.endX,this.endY));
         let mt2 = cc.moveTo(1,cc.v2(this.endX,this.beginY));
-        let mt3 = cc.moveTo(2,cc.v2(this.beginX,this.endY));
+        let mt3 = cc.moveTo(3,cc.v2(this.beginX,this.endY));
         let mt4 = cc.moveTo(1,cc.v2(this.beginX,this.beginY));
         let seq = cc.sequence(mt1,mt2,mt3,mt4);
         let fe = cc.repeatForever(seq);

@@ -626,7 +626,10 @@
     },
     "node4": {
       "__id__": 10
-    }
+    },
+    "originBlood": 0,
+    "isHuangseChuanZhan": false,
+    "tintFlag": false
   },
   {
     "__type__": "cc.Animation",
@@ -637,11 +640,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "abe8eb83-0980-493a-bb61-fb43756dd668"
+      "__uuid__": "716471a7-e627-4bb4-a541-a42c18a7080c"
     },
     "_clips": [
       {
-        "__uuid__": "abe8eb83-0980-493a-bb61-fb43756dd668"
+        "__uuid__": "716471a7-e627-4bb4-a541-a42c18a7080c"
       }
     ],
     "playOnLoad": false
