@@ -109,6 +109,14 @@ cc.Class({
       this.settingButton = this.node.getChildByName("soundSetting");
       this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
      
+   
+      let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+      if (gameSoundBG == 1) {
+          cc.audioEngine.playMusic(this.audio, true);
+      } else {
+          cc.audioEngine.stopMusic();
+      }
+   
     },
 
     start () {

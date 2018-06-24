@@ -173,9 +173,14 @@ cc.Class({
             url: cc.AudioClip
         },
 
-        bulletToShieldAudio:{
-            default:null,
-            url:cc.AudioClip
+        bulletToShieldAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
+
+        bossAudio: {
+            default: null,
+            url: cc.AudioClip
         },
 
         warningAni: {
@@ -991,7 +996,7 @@ cc.Class({
         }
 
         this._bulletToCoinAndRun();
-        cc.audioEngine.playEffect(this.bulletToShieldAudio,false);
+        cc.audioEngine.playEffect(this.bulletToShieldAudio, false);
 
 
         // if (this.shieldNo > 0) {
@@ -1049,6 +1054,11 @@ cc.Class({
                     this.node.addChild(this.warningAni);
                     armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.warningAniOver, this);
 
+                    let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+                    if (gameSoundBG == 1) {
+                        cc.audioEngine.playMusic(this.bossAudio, true);
+                    }
+
                 } else {
 
                     this.scheduleOnce(this.runStage, 1);
@@ -1067,6 +1077,10 @@ cc.Class({
                 //3,下一波
                 // let anim =  this.progressNode.getComponent(cc.Animation);
                 // anim.play("distanceNodeANI");
+                let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
+                if (gameSoundBG == 1) {
+                    cc.audioEngine.playMusic(this.bossAudio, true);
+                }
                 this.progressNode.runAction(cc.fadeOut(1));
 
                 //把之前的暴走停掉
@@ -1408,7 +1422,7 @@ cc.Class({
         if (currentScore > bestScore) {//把最高分上传到服务器吧
             cc.sys.localStorage.setItem('bestScore', currentScore);
 
-          //  this.setBestScore(currentScore);
+            //  this.setBestScore(currentScore);
         }
 
 
@@ -1422,7 +1436,7 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-               cc.director.loadScene('end');
+        cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
         // cc.eventManager.pauseTarget(this.node, true);

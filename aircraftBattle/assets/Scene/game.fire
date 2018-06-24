@@ -3518,6 +3518,9 @@
     "bulletToShieldAudio": {
       "__uuid__": "8dc27c0f-8475-43f4-ad9d-7e6c5ecc35ad"
     },
+    "bossAudio": {
+      "__uuid__": "6cc96b1f-81c3-4cf4-80a5-e05ec48e0e14"
+    },
     "warningAni": {
       "__uuid__": "3988326a-1c34-451f-922f-b9000a086e24"
     },
