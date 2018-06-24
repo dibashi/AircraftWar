@@ -53,15 +53,15 @@ var _enemyPlaneData = [
     //蓝
     { enemyID: 1, blood: 180, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
     //红
-    { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },
+    { enemyID: 2, blood: 36, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.4, fallingObject: _generateType.jisushesu },
     //青色
     { enemyID: 3, blood: 90, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.5, fallingObject: _generateType.jinbi }, //10~30金币
     { enemyID: 4, blood: 5, shootingSpeed: 0.5, flyingSpeed: 5, damage: 1, dropProbability: 0.1, fallingObject: _generateType.huojianpao },
 
     //小型boss 
-    { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 0.4, fallingObject: _generateType.wudichongci },
+    { enemyID: 5, blood: 108, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 1, fallingObject: _generateType.wudichongci },
     //最后大boss
-    { enemyID: 6, blood: 270, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 0.4, fallingObject: _generateType.jinbi },//金币 20~50 <=100 ;两家飞机 90 60
+    { enemyID: 6, blood: 270, shootingSpeed: 0.5, flyingSpeed: 6, damage: 1, dropProbability: 1, fallingObject: _generateType.jinbi },//金币 20~50 <=100 ;两家飞机 90 60
 
 
 

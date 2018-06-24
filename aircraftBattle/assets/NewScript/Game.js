@@ -1238,7 +1238,13 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     //  cc.log("jinbi!");
-                    let jinBiCount = Math.floor(Math.random() * 13);
+                    let jinBiCount =0
+                    if(enemyID == 6){
+                        jinBiCount = 50;
+                    } else {
+                        jinBiCount = Math.floor(Math.random() * 13);
+                    }
+                     
                     for (let i = 0; i < jinBiCount; i++) {
 
                         if (this.jinbiPool.size() > 0) {

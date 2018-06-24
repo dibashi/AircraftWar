@@ -176,7 +176,7 @@ cc.Class({
             var anim = this.shoujiAni.getComponent(cc.Animation);
             this.shoujiAni.setPosition(this.node.getPosition().x, this.node.getPosition().y + this.node.getContentSize().height / 2);
 
-            cc.audioEngine.playEffect(this.shoujiAudio,false);
+         //   cc.audioEngine.playEffect(this.shoujiAudio,false);
 
             anim.play();
         }

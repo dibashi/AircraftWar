@@ -131,7 +131,7 @@ cc.Class({
             switch (this.prizeType) {
                 case generateType.jinbi:
                     this.node.parent.getComponent("Game").getJinBi();
-                    cc.audioEngine.playEffect(this.prizeAudio,false);
+                   // cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case 10:
                     this.node.parent.getComponent("Game").getJinBi();
