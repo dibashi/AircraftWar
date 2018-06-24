@@ -62,6 +62,11 @@ cc.Class({
             type: cc.Prefab,
         },
 
+        enemyPlane7: {
+            default: null,
+            type: cc.Prefab,
+        },
+
 
 
         heroPlane0: {
@@ -1194,6 +1199,8 @@ cc.Class({
                 enemy = cc.instantiate(this.enemyPlane5);
             } else if (enemyID === 6) {
                 enemy = cc.instantiate(this.enemyPlane6);
+            } else if (enemyID === 7) {
+                enemy = cc.instantiate(this.enemyPlane7);
             }
             //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
             if (enemy.getComponent("enemyPlane" + enemyID) != undefined) {

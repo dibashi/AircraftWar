@@ -68,6 +68,11 @@ cc.Class({
             url: cc.AudioClip
         },
 
+        audio:{
+            default: null,
+            url: cc.AudioClip
+        },
+
 
         revivePackageAlert: {
             default: null,

@@ -3443,6 +3443,9 @@
     "enemyPlane6": {
       "__uuid__": "80ec6177-8a07-4539-8c37-3a1fbc4f5f7b"
     },
+    "enemyPlane7": {
+      "__uuid__": "73bec793-bf0b-4e6f-b046-8d37e2b11270"
+    },
     "heroPlane0": {
       "__uuid__": "bfce2d2d-052f-49c4-b376-6bc13ce29903"
     },

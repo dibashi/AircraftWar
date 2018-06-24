@@ -236,7 +236,7 @@ cc.Class({
     
     enemyBoomAni: function () {
       
-        this.node.parent.getComponent('Game').addScore(5);
+        this.node.parent.getComponent('Game').addScore(10);
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
         this.node.group = "NOOOOOOO";
 
@@ -249,20 +249,7 @@ cc.Class({
         cc.audioEngine.playEffect(this.boomAudio, false);
 
       
-        // this.node.parent.getComponent('Game').addScore(5);
-        // this.node.group = "NOOOOOOO";
-        //   this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
-        //   this.damagedTeXiao.rotation = 180;
-        //   this.damagedTeXiao.y =this.damagedTeXiao.y+90;
-        // let armatureDisplay = this.damagedTeXiao.getComponent(dragonBones.ArmatureDisplay);
-        // armatureDisplay.playAnimation("bossBZ");
-        // this.node.parent.getComponent('Game').generatePrize(this.enemyID, this.node.getPosition());
-        // this.unscheduleAllCallbacks();
-        // this.node.addChild(this.damagedTeXiao);
-        // armatureDisplay.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.baozhaOver, this);
-
-        // cc.audioEngine.playEffect(this.boomAudio, false);
-        // this.damagedTeXiao.scale = 0.5;
+     
     },
 
     baozhaOver: function () {
@@ -363,11 +350,6 @@ cc.Class({
             } else {
 
                 this.blood -= bDamage;
-                //  this.bBar.string = this.blood;
-            //    this.enemyDamagedAni();
-                //根据掉血量来加分吧
-                //this.node.parent.getComponent('Game').addScore(bDamage);
-                //this.node.parent.getChildByName("score").getComponent(cc.Label).string = parseInt(this.node.parent.getChildByName("score").getComponent(cc.Label).string)  + bDamage;
 
             }
         }

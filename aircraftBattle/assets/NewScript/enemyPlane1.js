@@ -241,7 +241,7 @@ cc.Class({
 
     enemyBoomAni: function () {
        
-        this.node.parent.getComponent('Game').addScore(10);
+        this.node.parent.getComponent('Game').addScore(20);
   
         this.node.group = "NOOOOOOO";
 

@@ -248,7 +248,7 @@ cc.Class({
     enemyBoomAni: function () {
        
        
-        this.node.parent.getComponent('Game').addScore(6);
+        this.node.parent.getComponent('Game').addScore(12);
         //这里有一个问题 敌机在爆炸后消失 所以在爆炸的动画过程中 如果被击中，还是会触发 要关闭该敌机的碰撞
         this.node.group = "NOOOOOOO";
 
@@ -262,7 +262,7 @@ cc.Class({
       
 
 
-        // this.node.parent.getComponent('Game').addScore(6);
+        // this.node.parent.getComponent('Game').addScore(12);
         // this.node.group = "NOOOOOOO";
         //   this.damagedTeXiao = cc.instantiate(this.prizeTeXiao);//!!!
         //   this.damagedTeXiao.rotation = 180;
