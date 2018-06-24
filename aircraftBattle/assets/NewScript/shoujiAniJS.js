@@ -43,8 +43,8 @@ cc.Class({
    
     shoujiAniDamageOver:function() {
        
-      
-        if(this.shoujiPool.size()<this.shoujiPoolSize) {
+        
+        if(this.shoujiPool!=null && this.shoujiPool.size()<this.shoujiPoolSize) {
             this.shoujiPool.put(this.node);
            
         } else {

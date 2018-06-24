@@ -3521,6 +3521,9 @@
     "bossAudio": {
       "__uuid__": "6cc96b1f-81c3-4cf4-80a5-e05ec48e0e14"
     },
+    "gameAudio": {
+      "__uuid__": "1353a94c-6ed6-486f-8d60-8de66b02878f"
+    },
     "warningAni": {
       "__uuid__": "3988326a-1c34-451f-922f-b9000a086e24"
     },

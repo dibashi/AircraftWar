@@ -169,7 +169,10 @@ cc.Class({
         }
 
         if (this.shoujiAni != null) {
-            this.node.parent.addChild(this.shoujiAni);
+            if(this.node.parent!=null) {
+                this.node.parent.addChild(this.shoujiAni);
+            }
+            
             var anim = this.shoujiAni.getComponent(cc.Animation);
             this.shoujiAni.setPosition(this.node.getPosition().x, this.node.getPosition().y + this.node.getContentSize().height / 2);
 

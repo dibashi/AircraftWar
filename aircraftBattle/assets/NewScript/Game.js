@@ -183,6 +183,11 @@ cc.Class({
             url: cc.AudioClip
         },
 
+        gameAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
+
         warningAni: {
             default: null,
             type: cc.Prefab,
@@ -1079,7 +1084,7 @@ cc.Class({
                 // anim.play("distanceNodeANI");
                 let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
                 if (gameSoundBG == 1) {
-                    cc.audioEngine.playMusic(this.bossAudio, true);
+                    cc.audioEngine.playMusic(this.gameAudio, true);
                 }
                 this.progressNode.runAction(cc.fadeOut(1));
 
