@@ -313,27 +313,27 @@ cc.Class({
 
     start() {
 
-        let isloaded = parseInt(cc.sys.localStorage.getItem("isLoaded"));
-        if (isloaded == 1) {
+        // let isloaded = parseInt(cc.sys.localStorage.getItem("isLoaded"));
+        // if (isloaded == 1) {
 
 
-            cc.sys.localStorage.setItem('bestScore', 0);
-            this.setBestScore(0);
-        }
+        //     cc.sys.localStorage.setItem('bestScore', 0);
+        //     this.setBestScore(0);
+        // }
 
 
 
-        wx.showShareMenu();
+        // wx.showShareMenu();
 
 
-        wx.onShareAppMessage(function () {
-            // 用户点击了“转发”按钮
-            return {
-                title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
-                imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
+        // wx.onShareAppMessage(function () {
+        //     // 用户点击了“转发”按钮
+        //     return {
+        //         title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
+        //         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
 
-            }
-        });
+        //     }
+        // });
 
 
     },
