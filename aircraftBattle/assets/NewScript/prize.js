@@ -59,7 +59,7 @@ cc.Class({
         let ndx = dx / dis;
         let ndy = dy / dis;
 
-        if (this.prizeType != generateType.jinbi && this.prizeType!=10) {
+        if (this.prizeType != generateType.jinbi && this.prizeType != 10) {
 
             //以前不吸
 
@@ -91,7 +91,7 @@ cc.Class({
             let rdy = ndy * speed * dt * 60;
             this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
 
-        } else if(this.prizeType == 10) {//掉落金币阶段
+        } else if (this.prizeType == 10) {//掉落金币阶段
             let speed = 25;
             this.node.setPosition(bPos.x, bPos.y - speed);
         }
@@ -130,13 +130,10 @@ cc.Class({
             //根据奖品类型来触发属性，game中的引用较多，直接传给game让其处理。
             switch (this.prizeType) {
                 case generateType.jinbi:
-                    //  cc.log("get jinbi!");
-                    // var jinbiPrefab = cc.instantiate(this.prizeJinBi);
-                    // this.node.addChild(jinbiPrefab);
-                    // jinbiPrefab.setPosition(prizePosition);
-                    // jinbiPrefab.getComponent("prize").prizeType = generateType.jinbi;
                     this.node.parent.getComponent("Game").getJinBi();
-                    //   cc.audioEngine.playEffect(this.prizeAudio,false);
+                    break;
+                case 10:
+                    this.node.parent.getComponent("Game").getJinBi();
                     break;
                 case generateType.wudichongci:
                     //cc.log("get wudichongci!");
@@ -167,12 +164,12 @@ cc.Class({
             }
 
             // this.node.destroy();
-            if (this.prizePool!=undefined && this.prizePool!=null) { //掉落金币那一块 没有使用对象池，所以这里添加了代码
+            if (this.prizePool != undefined && this.prizePool != null) { //掉落金币那一块 没有使用对象池，所以这里添加了代码
                 this.prizePool.put(this.node);
-            } else  {
+            } else {
                 this.node.destroy();
             }
-                
+
         }
 
     },
