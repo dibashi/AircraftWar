@@ -52,8 +52,8 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 1.5,
+    "_scaleY": 1.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 283,
@@ -108,7 +108,8 @@
     "prizeAudio": {
       "__uuid__": "cc35f357-3c53-422e-914a-1b3330bb0681"
     },
-    "prizePool": null
+    "prizePool": null,
+    "isPause": false
   },
   {
     "__type__": "cc.CircleCollider",
