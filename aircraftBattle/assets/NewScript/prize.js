@@ -131,15 +131,13 @@ cc.Class({
             switch (this.prizeType) {
                 case generateType.jinbi:
                     this.node.parent.getComponent("Game").getJinBi();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case 10:
                     this.node.parent.getComponent("Game").getJinBi();
+                    cc.audioEngine.playEffect(this.prizeAudio,false);
                     break;
                 case generateType.wudichongci:
-                    //cc.log("get wudichongci!");
-                    //this.node.parent.getComponent("Game").getWuDiChongCi();
-                    //todo
-                    //other.node.getComponent("Player").wudichongci();
                     this.node.parent.getComponent("Game").getShield();
                     cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
