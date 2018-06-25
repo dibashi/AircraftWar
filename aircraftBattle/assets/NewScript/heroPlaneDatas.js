@@ -19,7 +19,7 @@ var _wingmanBulletType = cc.Enum({
 var _heroPlaneData = [
     { planeImage: "heroPlane0", blood: 1, shootingSpeed: 0.833333, flyingSpeed: 25, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:10 },//wingmanBulletType 决定加载哪个子弹预制体目前只实现了一个
     { planeImage: "heroPlane1", blood: 1, shootingSpeed: 1, flyingSpeed: 30, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:6 },//onceBulletCount 决定一次发射多少个子弹
-    { planeImage: "heroPlane2", blood: 1, shootingSpeed: 0.833333, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 1,wingmanBulletType:0,onceBulletCount:10},
+    { planeImage: "heroPlane2", blood: 1, shootingSpeed: 0.833333, flyingSpeed: 20, bulletType: _heroBulletType.ordinary, damage: 2,wingmanBulletType:0,onceBulletCount:10},
 
   
     
