@@ -20,7 +20,7 @@ cc.Class({
 
         //bulletIsOpen: false,
         // bulletIntelval: 0.75,
-        shootingSpeed: 1,//一秒钟发射子弹数
+        shootingSpeed: 3,//一秒钟发射子弹数
         //flyingSpeed:0,
 
         // bulletType: 0,//0普通 1 光束
