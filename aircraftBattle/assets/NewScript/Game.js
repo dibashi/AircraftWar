@@ -600,11 +600,12 @@ cc.Class({
             this.player = cc.instantiate(this.heroPlane5);
         }
         this.node.addChild(this.player);
-        this.player.setPosition(0, -500);
+        this.player.setPosition(0, 80-cc.director.getVisibleSize().height * 0.5);
 
 
-        let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
-        this.player.runAction(seq);
+       // let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
+       // this.player.runAction(seq);
+       this.newPlaneMoved();
 
 
         this._bulletToCoinAndRun();
