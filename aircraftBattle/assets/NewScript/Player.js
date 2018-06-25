@@ -485,6 +485,7 @@ cc.Class({
         ani.play();
         this.node.parent.getComponent("Game").renewBaoZou();
 
+        cc.eventManager.pauseTarget(this.node.parent, true);
 
     },
 
