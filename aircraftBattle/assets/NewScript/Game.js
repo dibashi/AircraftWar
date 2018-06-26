@@ -610,6 +610,13 @@ cc.Class({
 
         this._bulletToCoinAndRun();
 
+        this.bombSprite.on('touchstart', this.bombOnclick, this);
+        this.bombSprite.on('touchmove', this.bombOnclickMove, this);
+
+        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
+        this.shieldSprite.on('touchmove', this.shieldOnclickMove, this);
+
+
     },
 
     newPlaneMoved: function () {
