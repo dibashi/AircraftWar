@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Alert",
+    "_name": "zuShiBuZu",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -190,7 +190,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "fcbpwyLVpNKpYk5VcDVlEO",
     "sync": false
@@ -376,7 +376,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "67b0doVRhBx5gP2G3ylCO2",
     "sync": false
@@ -492,7 +492,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "28zEucM+NLW66Lbe4hskQ4",
     "sync": false
@@ -570,7 +570,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "金币不足",
+    "_N$string": "钻石不足",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -608,7 +608,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "d323dSi1F5GnbitgoAT0+JT",
     "sync": false
@@ -758,7 +758,7 @@
     "target": {
       "__id__": 1
     },
-    "component": "Alert",
+    "component": "zuanShiBuZuAlert",
     "handler": "onCancelClick",
     "customEventData": ""
   },
@@ -794,7 +794,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "567d9t0QUxPJIv+Jvo/nsE2",
     "sync": false
@@ -859,7 +859,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "72cfbsbVupCxJjXfv3WMSIX",
     "sync": false
@@ -952,7 +952,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "17fuCWpBdOprcoUVKfZHyu",
     "sync": false
@@ -984,7 +984,7 @@
     "_originalHeight": 750
   },
   {
-    "__type__": "895388Yt+5Bw4gBJ6wl/vWY",
+    "__type__": "3234c7L6e5HNJHSl5aTo06W",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1002,7 +1002,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "fbde453b-1770-4975-9b78-61112ffa6990"
+      "__uuid__": "0c74a3a3-d882-4608-98dd-cb26fc3316ec"
     },
     "fileId": "7cbb2rRetpJ+ZC3lAMKIxy5",
     "sync": false

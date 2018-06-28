@@ -229,6 +229,9 @@ cc.Class({
             //新的需求 加入复活卡 复活卡的数量  初始化为0 之后每邀请一个好友对其值增1
             //不能超过2，每使用一次复活将其值减小1
             cc.sys.localStorage.setItem('reviveCount', 0);
+
+            //钻石数量初始化
+            cc.sys.localStorage.setItem('diamondCount', 0);
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);

@@ -44,14 +44,7 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
-        node4: {
-            default: null,
-            type: cc.Prefab,
-        },
-        node5: {
-            default: null,
-            type: cc.Prefab,
-        },
+
 
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
@@ -94,8 +87,8 @@ cc.Class({
 
         this.getPrizeByTag();
 
-        if (this.onWho.getComponent("store") != null && this.onWho.getComponent("store") != undefined) {
-            this.onWho.getComponent("store").refreshPrize();
+        if (this.onWho.getComponent("diamondStore") != null && this.onWho.getComponent("diamondStore") != undefined) {
+            this.onWho.getComponent("diamondStore").refreshPrize();
         }
 
     },
@@ -104,80 +97,26 @@ cc.Class({
         cc.log(this._nodeTag);
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
-        let jbC = cc.sys.localStorage.getItem('jinBiCount');
-        let dzC = cc.sys.localStorage.getItem('dazhaoCount');
-        let hdC = cc.sys.localStorage.getItem('hudunCount');
-        let plC = cc.sys.localStorage.getItem('planeLifeCount');
 
         let dc = cc.sys.localStorage.getItem('diamondCount');
 
         if (this._nodeTag == 0) {
             cc.log("!!!!!!!nodeTag0");
-            let ajbC = parseInt(jbC) + 50;
-            let adzC = parseInt(dzC) + 1;
-            let ahdC = parseInt(hdC) + 1;
-            let aplC = parseInt(plC) + 1;
-
-            let adc = parseInt(dc) - 100;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('jinBiCount', ajbC);
-            cc.sys.localStorage.setItem('dazhaoCount', adzC);
-            cc.sys.localStorage.setItem('hudunCount', ahdC);
-            cc.sys.localStorage.setItem('planeLifeCount', aplC);
+            dc = parseInt(dc) + 100;
+            cc.sys.localStorage.setItem('diamondCount', dc);
 
         } else if (this._nodeTag == 1) {
-            let ajbC = parseInt(jbC) + 200;
-            let adzC = parseInt(dzC) + 3;
-            let ahdC = parseInt(hdC) + 3;
-            let aplC = parseInt(plC) + 1;
-
-            let adc = parseInt(dc) - 1200;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('jinBiCount', ajbC);
-            cc.sys.localStorage.setItem('dazhaoCount', adzC);
-            cc.sys.localStorage.setItem('hudunCount', ahdC);
-            cc.sys.localStorage.setItem('planeLifeCount', aplC);
+            dc = parseInt(dc) + 888;
+            cc.sys.localStorage.setItem('diamondCount', dc);
 
         } else if (this._nodeTag == 2) {
-            let ajbC = parseInt(jbC) + 100000;
-            let adzC = parseInt(dzC) + 10;
-            let ahdC = parseInt(hdC) + 10;
-            let aplC = parseInt(plC) + 10;
-
-            let adc = parseInt(dc) - 12800;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('jinBiCount', ajbC);
-            cc.sys.localStorage.setItem('dazhaoCount', adzC);
-            cc.sys.localStorage.setItem('hudunCount', ahdC);
-            cc.sys.localStorage.setItem('planeLifeCount', aplC);
+            dc = parseInt(dc) + 1500;
+            cc.sys.localStorage.setItem('diamondCount', dc);
         }
         else if (this._nodeTag == 3) {
-            let ajbC = parseInt(jbC) + 10000;
-
-            let adc = parseInt(dc) - 1200;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('jinBiCount', ajbC);
+            dc = parseInt(dc) + 25000;
+            cc.sys.localStorage.setItem('diamondCount', dc);
         }
-        else if (this._nodeTag == 4) {
-            let adzC = parseInt(dzC) + 4;
-
-            let adc = parseInt(dc) - 800;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('dazhaoCount', adzC);
-        } else if (this._nodeTag == 5) {
-            let ahdC = parseInt(hdC) + 4;
-
-            let adc = parseInt(dc) - 1200;
-            cc.sys.localStorage.setItem('diamondCount', adc);
-
-            cc.sys.localStorage.setItem('hudunCount', ahdC);
-        }
-
     },
 
 
@@ -223,15 +162,7 @@ cc.Class({
             _node = cc.instantiate(this.node3);
             _node.scale = 1.5;
         }
-        else if (nodeTag == 4) {
-            //cc.log('zhixing111111');
-            _node = cc.instantiate(this.node4);
-            _node.scale = 1.5;
-        }
-        else if (nodeTag == 5) {
-            _node = cc.instantiate(this.node5);
-            _node.scale = 1.5;
-        }
+
         this.node.addChild(_node);
     },
 });
