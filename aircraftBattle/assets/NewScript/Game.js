@@ -615,6 +615,11 @@ cc.Class({
 
         this.shieldSprite.on('touchstart', this.shieldOnclick, this);
         this.shieldSprite.on('touchmove', this.shieldOnclickMove, this);
+
+
+        this.node.on('touchmove', this.dragMove, this);
+        this.node.on('touchstart', this.dragStart, this);
+        this.node.on('touchend', this.drageEnd, this);
     },
 
     newPlaneMoved: function () {
@@ -741,12 +746,14 @@ cc.Class({
     },
 
     drageEnd: function (event) {
-        if (event.getID() == this.singleTouchID) {
+        cc.log("touch end 执行了！");
+      //  if (event.getID() == this.singleTouchID) {
             this.singleTouchID = -1;//-1标记可以再触摸
-        }
+       // }
     },
 
     dragStart: function (event) {
+        cc.log("touch begin  "+ this.singleTouchID);
         if (this.singleTouchID == -1) {
             this.singleTouchID = event.getID();
         } else {
@@ -757,6 +764,8 @@ cc.Class({
     },
 
     dragMove: function (event) {
+
+        cc.log("touch move  "+ this.singleTouchID);
 
         if (this.player == null || this.player._position == null) {
             return;
@@ -1478,7 +1487,8 @@ cc.Class({
         this.node.addChild(ss);
 
 
-
+        cc.log("touch id " + this.singleTouchID);
+        this.singleTouchID = -1;
     },
 
 
