@@ -412,9 +412,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 228,
-      "g": 5,
-      "b": 5,
+      "r": 255,
+      "g": 82,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -434,8 +434,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 125
+      "x": 12.099999999999966,
+      "y": 122.80000000000001
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -477,9 +477,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 41,
-    "_left": 30,
-    "_right": 30,
-    "_top": 133,
+    "_left": 42.09999999999998,
+    "_right": 17.90000000000002,
+    "_top": 135.2,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -773,12 +773,12 @@
       "__id__": 26
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 68,
     "_color": {
       "__type__": "cc.Color",
-      "r": 235,
-      "g": 147,
-      "b": 77,
+      "r": 199,
+      "g": 50,
+      "b": 22,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,

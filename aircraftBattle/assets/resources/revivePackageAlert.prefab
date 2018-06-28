@@ -409,8 +409,8 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 25,
+      "r": 255,
+      "g": 82,
       "b": 0,
       "a": 255
     },
@@ -431,8 +431,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 9,
-      "y": 82
+      "x": 3.2000000000000455,
+      "y": 136.4
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -474,9 +474,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 41,
-    "_left": 39,
-    "_right": 21,
-    "_top": 176,
+    "_left": 33.20000000000002,
+    "_right": 26.799999999999994,
+    "_top": 121.6,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -550,8 +550,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -132.4
+      "x": 8,
+      "y": -136
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -667,7 +667,7 @@
     "_left": 464,
     "_right": 0,
     "_top": 0,
-    "_bottom": 81.1,
+    "_bottom": 77.5,
     "_verticalCenter": 0,
     "_horizontalCenter": -120,
     "_isAbsLeft": true,
@@ -886,9 +886,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 25,
-      "b": 0,
+      "r": 255,
+      "g": 84,
+      "b": 30,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -908,8 +908,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 39,
-      "y": -2
+      "x": 47.69999999999999,
+      "y": 17.400000000000006
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -951,9 +951,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 41,
-    "_left": 339,
-    "_right": 261,
-    "_top": 260,
+    "_left": 347.7,
+    "_right": 252.3,
+    "_top": 240.6,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -1086,8 +1086,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -39,
-      "y": 1
+      "x": -32.4,
+      "y": 15.6
     },
     "_skewX": 0,
     "_skewY": 0,
