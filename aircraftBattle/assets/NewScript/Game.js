@@ -615,8 +615,6 @@ cc.Class({
 
         this.shieldSprite.on('touchstart', this.shieldOnclick, this);
         this.shieldSprite.on('touchmove', this.shieldOnclickMove, this);
-
-
     },
 
     newPlaneMoved: function () {
@@ -1470,7 +1468,7 @@ cc.Class({
        // cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-        cc.eventManager.pauseTarget(this.node, true);
+       // cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.reviveAlert);
         ss.setPosition(0, 100);
 
@@ -1587,6 +1585,8 @@ cc.Class({
         this.bombSprite.off('touchmove', this.bombOnclickMove, this);
 
 
+        this.shieldSprite.off('touchstart', this.shieldOnclick, this);
+        this.shieldSprite.off('touchmove', this.shieldOnclickMove, this);
 
 
         //背景音乐如何暂停？
@@ -1630,6 +1630,8 @@ cc.Class({
         this.bombSprite.on('touchstart', this.bombOnclick, this);
         this.bombSprite.on('touchmove', this.bombOnclickMove, this);
 
+        this.shieldSprite.on('touchstart', this.shieldOnclick, this);
+        this.shieldSprite.on('touchmove', this.shieldOnclickMove, this);
         // 
 
         //背景音乐如何暂停？
