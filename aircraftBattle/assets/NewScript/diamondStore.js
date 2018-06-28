@@ -127,39 +127,25 @@ cc.Class({
     button1Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("超值礼包");
-         ss.getComponent("storeAlert").setPriceText("¥12购买");
-         ss.getComponent("storeAlert").setNodeTag(1);
+        ss.getComponent("diamondAlert").setTitle("钻石购买");
+         ss.getComponent("diamondAlert").setPriceText("¥8购买");
+         ss.getComponent("diamondAlert").setNodeTag(1);
     },
     button2Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("土豪金礼包");
-         ss.getComponent("storeAlert").setPriceText("¥128购买");
-         ss.getComponent("storeAlert").setNodeTag(2);
+        ss.getComponent("diamondAlert").setTitle("钻石购买");
+         ss.getComponent("diamondAlert").setPriceText("¥12购买");
+         ss.getComponent("diamondAlert").setNodeTag(2);
     },
     button3Click:function() {
         let ss = this.alertPop();
 
-        ss.getComponent("storeAlert").setTitle("金币礼包");
-         ss.getComponent("storeAlert").setPriceText("¥12购买");
-         ss.getComponent("storeAlert").setNodeTag(3);
+        ss.getComponent("diamondAlert").setTitle("钻石购买");
+        ss.getComponent("diamondAlert").setPriceText("¥128购买");
+        ss.getComponent("diamondAlert").setNodeTag(3);
     },
-    button4Click:function() {
-        let ss = this.alertPop();
-
-        ss.getComponent("storeAlert").setTitle("进攻礼包");
-         ss.getComponent("storeAlert").setPriceText("¥8购买");
-         ss.getComponent("storeAlert").setNodeTag(4);
-    },
-    button5Click:function() {
-        let ss = this.alertPop();
-
-        ss.getComponent("storeAlert").setTitle("防御礼包");
-         ss.getComponent("storeAlert").setPriceText("¥12购买");
-         ss.getComponent("storeAlert").setNodeTag(5);
-    },
-
+   
     refreshPrize:function() {
         //刷新 金币 必杀 护盾 飞机命数的值
         this.diamondLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('diamondCount');
