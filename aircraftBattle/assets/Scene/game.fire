@@ -3411,8 +3411,8 @@
       "width": 720,
       "height": 1280
     },
-    "_fitWidth": true,
-    "_fitHeight": false
+    "_fitWidth": false,
+    "_fitHeight": true
   },
   {
     "__type__": "cf4f851Vq5GT41ww3AakvLN",

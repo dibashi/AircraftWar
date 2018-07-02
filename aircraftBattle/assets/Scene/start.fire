@@ -4020,8 +4020,8 @@
       "width": 720,
       "height": 1280
     },
-    "_fitWidth": true,
-    "_fitHeight": false
+    "_fitWidth": false,
+    "_fitHeight": true
   },
   {
     "__type__": "fb725/LfttIz5ry3JfOqq5i",
