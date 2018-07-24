@@ -258,7 +258,10 @@ cc.Class({
         shoujiPool: null,
         shoujiPoolSize: 15,
         //为了性能做成成员变量
-        coinLabel: null,
+        coinLabel: {
+            default: null,
+            type: cc.Label,
+        },
         defenLabel: null,
 
 
@@ -383,14 +386,14 @@ cc.Class({
 
         let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
         newRecordLabel.active = false;
-        this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
+       // this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
 
-        let jinbiKuangTi = null;
-        jinbiKuangTi = this.node.getChildByName("kuangti_jinbi");
-        let sjbw = jinbiKuangTi.getContentSize().width;
-        let sjbh = jinbiKuangTi.getContentSize().height;
+        // let jinbiKuangTi = null;
+        // jinbiKuangTi = this.node.getChildByName("kuangti_jinbi");
+        // let sjbw = jinbiKuangTi.getContentSize().width;
+        // let sjbh = jinbiKuangTi.getContentSize().height;
 
-        jinbiKuangTi.setPosition(-wx + jinbiKuangTi.getContentSize().width / 2, hy - 10 - (jinbiKuangTi.getContentSize().height / 2));
+        // jinbiKuangTi.setPosition(-wx + jinbiKuangTi.getContentSize().width / 2, hy - 10 - (jinbiKuangTi.getContentSize().height / 2));
 
         //金币不显示 
         // this.node.getChildByName("kuangti_jinbi").active = false;
@@ -448,7 +451,7 @@ cc.Class({
         // moBanSprite.setPosition(-moBanSprite.getContentSize().width*moBanSprite.scale*0.5,-hy+moBanSprite.getContentSize().height*moBanSprite.scale*0.5);
 
         //  this.spriteLife.setPosition(-wx + this.spriteLife.getContentSize().width / 2, hy - sjbh - 10 - (this.spriteLife.getContentSize().height / 2));
-        this.spriteLife.setPosition(jinbiKuangTi.getPosition().x + jinbiKuangTi.getContentSize().width / 2 + this.spriteLife.getContentSize().width / 2 + 10, jinbiKuangTi.getPosition().y);
+        //this.spriteLife.setPosition(jinbiKuangTi.getPosition().x + jinbiKuangTi.getContentSize().width / 2 + this.spriteLife.getContentSize().width / 2 + 10, jinbiKuangTi.getPosition().y);
 
         this.spriteLife.setLocalZOrder(this.UIZorder);
 
@@ -530,7 +533,7 @@ cc.Class({
         }
 
 
-        this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
+        //this.coinLabel = this.node.getChildByName("kuangti_jinbi").getChildByName("jinbi").getComponent(cc.Label);
         this.coinLabel.string = "0";
 
         this.defenLabel = this.node.getChildByName("score").getComponent(cc.Label);

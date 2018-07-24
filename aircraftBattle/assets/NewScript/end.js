@@ -105,14 +105,14 @@ cc.Class({
          //适配
          let wx = cc.director.getVisibleSize().width * 0.5;
          let hy = cc.director.getVisibleSize().height * 0.5;
-         this.spriteCoin = this.node.getChildByName("spriteCoin");
-         this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
+    //      this.spriteCoin = this.node.getChildByName("spriteCoin");
+    //      this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2));
  
-         this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+    //      this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
        
  
-      this.settingButton = this.node.getChildByName("soundSetting");
-      this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
+    //   this.settingButton = this.node.getChildByName("soundSetting");
+    //   this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
      
    
       let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');

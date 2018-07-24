@@ -9506,12 +9506,12 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.8,
-    "_scaleY": 0.8,
+    "_scaleX": 0.7,
+    "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -266.8,
-      "y": 608.4
+      "x": -277.2,
+      "y": 611.1
     },
     "_skewX": 0,
     "_skewY": 0,

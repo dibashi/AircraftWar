@@ -15,7 +15,7 @@ cc.Class({
 
 
         spriteCoin: null,
-        labelCoin: null,
+       // labelCoin: null,
 
         buttonAudio: {
             default: null,
@@ -71,6 +71,12 @@ cc.Class({
 
         },
 
+        labelCoin: {
+            default: null,
+            type: cc.Node,
+
+        },
+
         dazhaoLabel: {
             default: null,
             type: cc.Node,
@@ -82,6 +88,13 @@ cc.Class({
             type: cc.Node,
 
         },
+
+        hudunLabel: {
+            default: null,
+            type: cc.Node,
+
+        },
+
 
         hudunLabel: {
             default: null,
@@ -129,16 +142,16 @@ cc.Class({
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
-        this.spriteCoin = this.node.getChildByName("spriteCoin");
-        this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2) - 10);
-        this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
-        this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
+        // this.spriteCoin = this.node.getChildByName("spriteCoin");
+        //  this.spriteCoin.setPosition(this.spriteCoin.getContentSize().width / 2 - wx, hy - (this.spriteCoin.getContentSize().height / 2) - 10);
+        // this.labelCoin = this.node.getChildByName("spriteCoin").getChildByName("coinLabel").getComponent(cc.Label);
+        //this.labelCoin.string = cc.sys.localStorage.getItem("jinBiCount");
 
-        this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x + this.spriteCoin.getContentSize().width / 2 * this.spriteCoin.scale + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + 5, this.spriteCoin.getPosition().y);
-        this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + 5, this.spriteCoin.getPosition().y);
-        this.spriteLife.setPosition(this.spriteHuDun.getPosition().x + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + this.spriteLife.getContentSize().width / 2 * this.spriteLife.scale + 5, this.spriteCoin.getPosition().y);
+        //    this.spriteDaZhao.setPosition(this.spriteCoin.getPosition().x + this.spriteCoin.getContentSize().width / 2 * this.spriteCoin.scale + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + 5, this.spriteCoin.getPosition().y);
+        //   this.spriteHuDun.setPosition(this.spriteDaZhao.getPosition().x + this.spriteDaZhao.getContentSize().width / 2 * this.spriteDaZhao.scale + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + 5, this.spriteCoin.getPosition().y);
+        //   this.spriteLife.setPosition(this.spriteHuDun.getPosition().x + this.spriteHuDun.getContentSize().width / 2 * this.spriteHuDun.scale + this.spriteLife.getContentSize().width / 2 * this.spriteLife.scale + 5, this.spriteCoin.getPosition().y);
 
-        this.spriteDiamond.setPosition(this.spriteDiamond.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.spriteDiamond.getContentSize().height / 2));
+        //   this.spriteDiamond.setPosition(this.spriteDiamond.getContentSize().width / 2 - wx, hy - this.spriteCoin.getContentSize().height - 10 - (this.spriteDiamond.getContentSize().height / 2));
         //  this.settingButton = this.node.getChildByName("soundSetting");
         //  this.settingButton.setPosition(this.settingButton.getContentSize().width / 2-wx,hy - this.spriteCoin.getContentSize().height-10 -(this.settingButton.getContentSize().height / 2));
         this.labelCoin.getComponent(cc.Label).string = cc.sys.localStorage.getItem('jinBiCount');
@@ -179,7 +192,7 @@ cc.Class({
 
     },
 
-   
+
 
     alertPop: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
@@ -192,7 +205,7 @@ cc.Class({
         this.node.addChild(ss);
         return ss;
     },
-    popZuanShiBuZu:function() {
+    popZuanShiBuZu: function () {
         cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.zuanShiBuZuAlert);
         ss.setPosition(0, 0);
@@ -303,7 +316,7 @@ cc.Class({
             this.popZuanShiBuZu();
             return;
         }
-        
+
         let ss = this.alertPop();
 
         ss.getComponent("storeAlert").setTitle("防御礼包");

@@ -75,30 +75,30 @@ cc.Class({
             if (data.message == "friendRank") {
                 //获得自己信息，显示到panel上？ 再测
              
-                self.list1.setPosition(0, 81.5);
-                self.list2.setPosition(0, -10000);
-                // self.list1.active = true;
-                // self.list2.active = false;
+                // self.list1.setPosition(0, 81.5);
+                // self.list2.setPosition(0, -10000);
+                self.list1.active = true;
+                self.list2.active = false;
 
                 // self.friendInfo(); //为了在获取排行榜数据时 自己的数据已经获得 这里我在 getMyInfo中调用！
             } else if (data.message == "userInfo") {
                 console.log("leaderboard userInfo ~!");
                 
 
-                self.list1.setPosition(0, 81.5);
-                self.list2.setPosition(0, -10000);
-                // self.list1.active = true;
-                // self.list2.active = false;
+                // self.list1.setPosition(0, 81.5);
+                // self.list2.setPosition(0, -10000);
+                self.list1.active = true;
+                self.list2.active = false;
 
                 self.getMyInfo();
             } else if (data.message == "nextInfo") {
               
 
-                self.list1.setPosition(0, -10000);
-                self.list2.setPosition(0, 0);
+                // self.list1.setPosition(0, -10000);
+                // self.list2.setPosition(0, -400);
 
-                // self.list1.active = false;
-                // self.list2.active = true;
+                self.list1.active = false;
+                self.list2.active = true;
 
                 self.getMyInfoAndNext();
                
