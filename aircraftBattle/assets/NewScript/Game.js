@@ -347,6 +347,8 @@ cc.Class({
             type: cc.Node,
         },
 
+        enemyPlaneScale:0.7,//新需求，飞机尺寸过大，需要缩放
+        playerScale:1.0,//预制那边是1.5
     },
 
 
@@ -460,7 +462,9 @@ cc.Class({
 
         this.node.addChild(this.player);
         this.player.setPosition(0, this.player.getContentSize().height - this.node.getContentSize().height / 2);//(0, -241)
-
+        // cc.log("飞机 缩放大小")
+        // cc.log(this.player.scale);
+        this.player.scale = this.playerScale;
 
         this.bombNo = parseInt(cc.sys.localStorage.getItem('dazhaoCount'));
         this.bombSprite.on('touchstart', this.bombOnclick, this);
@@ -602,6 +606,7 @@ cc.Class({
         else if (dddd == heroPlaneID.heroPlane5) {
             this.player = cc.instantiate(this.heroPlane5);
         }
+        this.player.scale= this.playerScale;
         this.node.addChild(this.player);
         this.player.setPosition(0, 80-cc.director.getVisibleSize().height * 0.5);
 
@@ -1240,7 +1245,7 @@ cc.Class({
                 }
                 
             }
-
+            enemy.scale=this.enemyPlaneScale;
             enemy.setPosition(globalStageData[this.stage][i].beginX, globalStageData[this.stage][i].beginY);//初始位置初始化
             this.node.addChild(enemy);
 
