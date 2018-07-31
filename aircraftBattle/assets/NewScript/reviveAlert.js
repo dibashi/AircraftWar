@@ -108,6 +108,8 @@ cc.Class({
     start() {
       
         this.tex = new cc.Texture2D();
+        window.sharedCanvas.width = 720;
+        window.sharedCanvas.height = 1280;
     },
 
     _updaetSubDomainCanvas() {
