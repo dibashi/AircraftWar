@@ -192,6 +192,13 @@ cc.Class({
         this.getReviveCallback();
     },
 
+    
+    planesClick: function () {
+        cc.audioEngine.playEffect(this.buttonAudio, false);
+
+        cc.director.loadScene('warehouse');
+    },
+
 
     getReviveCallback:function() {
         let rc =   cc.sys.localStorage.getItem('reviveCount');
