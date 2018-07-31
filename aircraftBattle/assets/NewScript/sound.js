@@ -97,7 +97,7 @@ cc.Class({
         let effectSound = cc.sys.localStorage.getItem('effectSound');
         cc.audioEngine.playEffect(this.buttonAudio,false);
         if (effectSound == 1) {
-            cc.log("offEffectButtonClick");
+           // cc.log("offEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 0);
             this.effectButton.spriteFrame = this.offSprite.spriteFrame;
             //关闭的实际代码
@@ -107,7 +107,7 @@ cc.Class({
            cc.audioEngine.setMusicVolume(0.1);
            
         } else {
-            cc.log("onEffectButtonClick");
+          //  cc.log("onEffectButtonClick");
             cc.sys.localStorage.setItem('effectSound', 1);
             this.effectButton.spriteFrame = this.onSprite.spriteFrame;
             //打开的实际代码
@@ -116,7 +116,7 @@ cc.Class({
     },
 
     onBgButtonClick: function () {
-        cc.log("onBgButtonClick");
+       // cc.log("onBgButtonClick");
         cc.audioEngine.playEffect(this.buttonAudio,false);
         let gameSoundBG = cc.sys.localStorage.getItem('gameSoundBG');
         if (gameSoundBG == 1) {
@@ -133,7 +133,7 @@ cc.Class({
     },
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+       // cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio,false);
         cc.eventManager.pauseTarget(this.node, true);
 

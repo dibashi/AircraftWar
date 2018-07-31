@@ -136,7 +136,7 @@ cc.Class({
         this.node.runAction(actionFadeIn);
     },
     onFadeInFinish: function () {
-        cc.log(this.node);
+     //   cc.log(this.node);
         cc.eventManager.resumeTarget(this.node, true);
     },
 
@@ -145,7 +145,7 @@ cc.Class({
 
 
     onReviveClick: function () {
-        cc.log("onReviveClick");
+     //   cc.log("onReviveClick");
        
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
@@ -162,7 +162,7 @@ cc.Class({
     },
 
     onGuangGaoClick: function () {
-        cc.log("onGuangGaoClick");
+      //  cc.log("onGuangGaoClick");
         cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
@@ -177,7 +177,7 @@ cc.Class({
     },
 
     onLifeClick:function() {
-        cc.log("onlifeclick");
+    //    cc.log("onlifeclick");
        
        
 
@@ -204,7 +204,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+      //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

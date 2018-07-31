@@ -66,7 +66,7 @@ cc.Class({
 
     pauseAction: function () {
         this.isPause = true;
-      cc.log("子弹暂停");
+     // cc.log("子弹暂停");
         this.node.pauseAllActions();
 
         if(this.node.getComponent(cc.Animation)!=null &&this.node.getComponent(cc.Animation)!= undefined) {

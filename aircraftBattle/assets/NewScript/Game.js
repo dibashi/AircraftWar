@@ -761,7 +761,7 @@ cc.Class({
     },
 
     dragStart: function (event) {
-        cc.log("touch begin  " + this.singleTouchID);
+       // cc.log("touch begin  " + this.singleTouchID);
         if (this.singleTouchID == -1) {
             this.singleTouchID = event.getID();
         } else {
@@ -773,7 +773,7 @@ cc.Class({
 
     dragMove: function (event) {
 
-        cc.log("touch move  " + this.singleTouchID);
+       // cc.log("touch move  " + this.singleTouchID);
 
         if (this.player == null || this.player._position == null) {
             return;

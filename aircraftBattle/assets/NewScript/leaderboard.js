@@ -58,7 +58,7 @@ cc.Class({
 
 
     onLoad() {
-        console.log("lllllload!");
+      //  console.log("lllllload!");
         wx.postMessage({
             message: "userInfo",
         });

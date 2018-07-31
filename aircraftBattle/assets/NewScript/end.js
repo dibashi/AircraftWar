@@ -131,25 +131,25 @@ cc.Class({
     
 
     share: function(){ 
-       cc.log("share");
+       //cc.log("share");
     },
     ad: function(){ 
-        cc.log("ad");
+       // cc.log("ad");
     },
     coin: function(){ 
-        cc.log("coin");
+      //  cc.log("coin");
     },
 
     reStart:function() {
         cc.director.loadScene("game");
     },
     giveup: function(){ 
-        cc.log("giveup");
+       // cc.log("giveup");
         cc.director.loadScene("start");
     },
 
     revive:function() {
-        cc.log("revive");
+        //cc.log("revive");
     },
 
 
@@ -178,7 +178,7 @@ cc.Class({
     },
 
     onInviteFriendClick:function(){
-        cc.log("onInviteFriendClick");
+       // cc.log("onInviteFriendClick");
 
 
         cc.audioEngine.playEffect(this.buttonAudio, false);

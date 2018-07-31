@@ -68,7 +68,7 @@ cc.Class({
 
 
     onInviteClick:function() {
-        cc.log("onInviteClick");
+      //  cc.log("onInviteClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
@@ -108,7 +108,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+      //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

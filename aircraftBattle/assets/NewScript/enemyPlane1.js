@@ -274,7 +274,7 @@ cc.Class({
     },
 
     jianyin:function() {
-        cc.log("bowo bowo");
+        //cc.log("bowo bowo");
         var anim = this.node.getComponent(cc.Animation);
          anim.play();
     },
@@ -322,7 +322,7 @@ cc.Class({
     },
 
     resumeAction: function () {
-        console.log("enemy resume!");
+        //console.log("enemy resume!");
         this.isPause = true;
 
         this.node.resumeAllActions();
@@ -331,7 +331,7 @@ cc.Class({
     },
 
     pauseAction: function () {
-        console.log("enemy pause!");
+       // console.log("enemy pause!");
         this.isPause = false;
 
         this.node.pauseAllActions();

@@ -87,7 +87,7 @@ cc.Class({
 
     pauseAction: function () {
         this.isPause = true;
-        cc.log("子弹暂停");
+      //  cc.log("子弹暂停");
         this.node.pauseAllActions();
 
         if (this.node.getComponent(cc.Animation) != null && this.node.getComponent(cc.Animation) != undefined) {
@@ -124,12 +124,12 @@ cc.Class({
                     cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.xinjiaxue:
-                    cc.log("get xinjiaxue!");
+               //     cc.log("get xinjiaxue!");
                     other.node.getComponent("Player").addBlood();
                     cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.jisushesu:
-                    cc.log("get jisushesu!");
+             //       cc.log("get jisushesu!");
                     // other.node.getComponent("Player").raiseTheSpeedOfFire();
                     //播放火力提升动画
                     this.node.parent.getComponent("Game").fireBoostAni();
@@ -137,7 +137,7 @@ cc.Class({
                     cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
                 case generateType.huojianpao:
-                    cc.log("get huojianpao!");
+            //        cc.log("get huojianpao!");
                     this.node.parent.getComponent("Game").getHuoJianPao();
                     cc.audioEngine.playEffect(this.prizeAudio, false);
                     break;
