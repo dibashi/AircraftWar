@@ -754,7 +754,7 @@ cc.Class({
     },
 
     drageEnd: function (event) {
-        cc.log("touch end 执行了！");
+       // cc.log("touch end 执行了！");
         //  if (event.getID() == this.singleTouchID) {
         this.singleTouchID = -1;//-1标记可以再触摸
         // }
