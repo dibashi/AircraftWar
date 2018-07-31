@@ -347,8 +347,8 @@ cc.Class({
             type: cc.Node,
         },
 
-        enemyPlaneScale:0.7,//新需求，飞机尺寸过大，需要缩放
-        playerScale:1.0,//预制那边是1.5
+        enemyPlaneScale: 0.7,//新需求，飞机尺寸过大，需要缩放
+        playerScale: 1.0,//预制那边是1.5
     },
 
 
@@ -388,7 +388,7 @@ cc.Class({
 
         let newRecordLabel = this.node.getChildByName("score").getChildByName("newRecord");
         newRecordLabel.active = false;
-       // this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
+        // this.node.getChildByName("score").setPosition(0, hy - 30 - newRecordLabel.getContentSize().height - this.node.getChildByName("score").getContentSize().height / 2);//锚点0.5  0.5
 
         // let jinbiKuangTi = null;
         // jinbiKuangTi = this.node.getChildByName("kuangti_jinbi");
@@ -606,14 +606,14 @@ cc.Class({
         else if (dddd == heroPlaneID.heroPlane5) {
             this.player = cc.instantiate(this.heroPlane5);
         }
-        this.player.scale= this.playerScale;
+        this.player.scale = this.playerScale;
         this.node.addChild(this.player);
-        this.player.setPosition(0, 80-cc.director.getVisibleSize().height * 0.5);
+        this.player.setPosition(0, 80 - cc.director.getVisibleSize().height * 0.5);
 
 
-       // let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
-       // this.player.runAction(seq);
-       this.newPlaneMoved();
+        // let seq = cc.sequence(cc.moveTo(0.8, cc.v2(0, 50 + this.player.getContentSize().height - this.node.getContentSize().height / 2)).easing(cc.easeOut(3.0)), cc.callFunc(this.newPlaneMoved, this));
+        // this.player.runAction(seq);
+        this.newPlaneMoved();
 
 
         this._bulletToCoinAndRun();
@@ -755,13 +755,13 @@ cc.Class({
 
     drageEnd: function (event) {
         cc.log("touch end 执行了！");
-      //  if (event.getID() == this.singleTouchID) {
-            this.singleTouchID = -1;//-1标记可以再触摸
-       // }
+        //  if (event.getID() == this.singleTouchID) {
+        this.singleTouchID = -1;//-1标记可以再触摸
+        // }
     },
 
     dragStart: function (event) {
-        cc.log("touch begin  "+ this.singleTouchID);
+        cc.log("touch begin  " + this.singleTouchID);
         if (this.singleTouchID == -1) {
             this.singleTouchID = event.getID();
         } else {
@@ -773,7 +773,7 @@ cc.Class({
 
     dragMove: function (event) {
 
-        cc.log("touch move  "+ this.singleTouchID);
+        cc.log("touch move  " + this.singleTouchID);
 
         if (this.player == null || this.player._position == null) {
             return;
@@ -1239,13 +1239,13 @@ cc.Class({
 
                 enemy.getComponent("enemyPlane" + enemyID).endX = globalStageData[this.stage][i].endX;
                 enemy.getComponent("enemyPlane" + enemyID).endY = globalStageData[this.stage][i].endY;
-                if(enemyID == 7) {
+                if (enemyID == 7) {
                     enemy.getComponent("enemyPlane" + enemyID).beginX = globalStageData[this.stage][i].beginX;
                     enemy.getComponent("enemyPlane" + enemyID).beginY = globalStageData[this.stage][i].beginY;
                 }
-                
+
             }
-            enemy.scale=this.enemyPlaneScale;
+            enemy.scale = this.enemyPlaneScale;
             enemy.setPosition(globalStageData[this.stage][i].beginX, globalStageData[this.stage][i].beginY);//初始位置初始化
             this.node.addChild(enemy);
 
@@ -1266,13 +1266,13 @@ cc.Class({
             switch (globalEnemyPlaneData[enemyID].fallingObject) {
                 case generateType.jinbi:
                     //  cc.log("jinbi!");
-                    let jinBiCount =0
-                    if(enemyID == 6){
+                    let jinBiCount = 0
+                    if (enemyID == 6) {
                         jinBiCount = 50;
                     } else {
                         jinBiCount = Math.floor(Math.random() * 13);
                     }
-                     
+
                     for (let i = 0; i < jinBiCount; i++) {
 
                         if (this.jinbiPool.size() > 0) {
@@ -1320,7 +1320,8 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.wudichongci;
-                    pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                   // pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                   this.newPrizeRunAction(pf);
                     break;
                 case generateType.xinjiaxue:
                     cc.log("xinjiaxue!");
@@ -1328,7 +1329,8 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.xinjiaxue;
-                    pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                   // pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                   this.newPrizeRunAction(pf);
                     break;
                 case generateType.jisushesu:
                     cc.log("jisushesu!");
@@ -1343,7 +1345,11 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.jisushesu;
-                    pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                    //pf.runAction(cc.moveTo(5, this.player.getPosition()));
+
+                   this.newPrizeRunAction(pf);
+                    
+
                     break;
                 case generateType.huojianpao:
                     cc.log("huojianpao!");
@@ -1357,7 +1363,8 @@ cc.Class({
                     this.node.addChild(pf);
                     pf.setPosition(prizePosition);
                     pf.getComponent("prize").prizeType = generateType.huojianpao;
-                    pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                    //pf.runAction(cc.moveTo(5, this.player.getPosition()));
+                    this.newPrizeRunAction(pf);
                     break;
             }
             //写在这里则所有奖品的动画都是一样的，将来可能要分别实现
@@ -1381,6 +1388,21 @@ cc.Class({
             //     pf.runAction(cc.repeatForever(sp1));
 
         }
+    },
+
+    newPrizeRunAction:function(pf) {
+        let r0 = cc.moveBy(4, cc.v2(-360 - pf.x + pf.getContentSize().width/2, -250));
+                   
+        let seq = cc.sequence(r0, cc.callFunc(this.newPrizeAction,this,pf));
+        pf.runAction(seq);
+
+    },
+
+    newPrizeAction:function(pf) {
+        let r1 = cc.moveBy(4, cc.v2(720 - pf.getContentSize().width, -250));
+        let r2 = cc.moveBy(4, cc.v2(pf.getContentSize().width - 720, -250));
+        let fr = cc.repeatForever(cc.sequence(r1, r2));
+        pf.runAction(fr);
     },
 
     fireBoostAni: function () {
@@ -1468,7 +1490,7 @@ cc.Class({
         if (currentScore > bestScore) {//把最高分上传到服务器吧
             cc.sys.localStorage.setItem('bestScore', currentScore);
 
-             this.setBestScore(currentScore);
+            this.setBestScore(currentScore);
         }
 
 
@@ -1482,10 +1504,10 @@ cc.Class({
         cc.sys.localStorage.setItem("getJinBiCount", d);
 
 
-       // cc.director.loadScene('end');
+        // cc.director.loadScene('end');
 
         //弹出复活框  或许将来是根据 当前免费广告观看次数 以及 复活卡数量 来选择是直接结束 还是弹窗
-       // cc.eventManager.pauseTarget(this.node, true);
+        // cc.eventManager.pauseTarget(this.node, true);
         let ss = cc.instantiate(this.reviveAlert);
         ss.setPosition(0, 100);
 
@@ -1660,43 +1682,43 @@ cc.Class({
 
     },
 
-    callEnemysInBoos:function() {
-        this.goNewEnemysInBoss(7,600,450,180,360);
-        this.goNewEnemysInBoss(7,-600,450,-180,360);
- 
-        
+    callEnemysInBoos: function () {
+        this.goNewEnemysInBoss(7, 600, 450, 180, 360);
+        this.goNewEnemysInBoss(7, -600, 450, -180, 360);
+
+
     },
 
-    goNewEnemysInBoss:function(enemyID,beginX,beginY,endX,endY) {
+    goNewEnemysInBoss: function (enemyID, beginX, beginY, endX, endY) {
         let enemy = null;
-        if(enemyID == 7) {
-             enemy = cc.instantiate(this.enemyPlane7);
+        if (enemyID == 7) {
+            enemy = cc.instantiate(this.enemyPlane7);
         }
-        
+
 
         //不写在单独的脚本之中 ，全部放在 data文件里 方便集中修改
-        if (enemy.getComponent("enemyPlane7" ) != undefined) {
-            enemy.getComponent("enemyPlane7" ).enemyID = enemyID;
-           enemy.getComponent("enemyPlane7" ).blood = globalEnemyPlaneData[enemyID].blood;
+        if (enemy.getComponent("enemyPlane7") != undefined) {
+            enemy.getComponent("enemyPlane7").enemyID = enemyID;
+            enemy.getComponent("enemyPlane7").blood = globalEnemyPlaneData[enemyID].blood;
 
-           enemy.getComponent("enemyPlane7" ).shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed;
-           enemy.getComponent("enemyPlane7" ).flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
+            enemy.getComponent("enemyPlane7").shootingSpeed = globalEnemyPlaneData[enemyID].shootingSpeed;
+            enemy.getComponent("enemyPlane7").flyingSpeed = globalEnemyPlaneData[enemyID].flyingSpeed;
 
-           enemy.getComponent("enemyPlane7").damage = globalEnemyPlaneData[enemyID].damage;
-           enemy.getComponent("enemyPlane7" ).dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
-           enemy.getComponent("enemyPlane7" ).fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
+            enemy.getComponent("enemyPlane7").damage = globalEnemyPlaneData[enemyID].damage;
+            enemy.getComponent("enemyPlane7").dropProbability = globalEnemyPlaneData[enemyID].dropProbability;
+            enemy.getComponent("enemyPlane7").fallingObject = globalEnemyPlaneData[enemyID].fallingObject;
 
-           enemy.getComponent("enemyPlane7" ).beginX = beginX;
-           enemy.getComponent("enemyPlane7" ).beginY = beginY;
-           enemy.getComponent("enemyPlane7" ).endX = endX;
-           enemy.getComponent("enemyPlane7" ).endY = endY;
-       }
+            enemy.getComponent("enemyPlane7").beginX = beginX;
+            enemy.getComponent("enemyPlane7").beginY = beginY;
+            enemy.getComponent("enemyPlane7").endX = endX;
+            enemy.getComponent("enemyPlane7").endY = endY;
+        }
 
-       enemy.setPosition(beginX, beginY);//初始位置初始化
-       this.node.addChild(enemy);
+        enemy.setPosition(beginX, beginY);//初始位置初始化
+        this.node.addChild(enemy);
 
-       enemy.getComponent("enemyPlane" + enemyID).enterScene();//让敌机自己来执行自己的进入场景
-       this.enemyCount++
+        enemy.getComponent("enemyPlane" + enemyID).enterScene();//让敌机自己来执行自己的进入场景
+        this.enemyCount++
     },
 
 

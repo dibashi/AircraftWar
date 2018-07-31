@@ -61,27 +61,9 @@ cc.Class({
 
         if (this.prizeType != generateType.jinbi && this.prizeType != 10) {
 
-            //以前不吸
-
-            // if ( dis< 80) {
-            //     let speed = 10
-            //     let rdx = ndx * speed;
-            //     let rdy = ndy * speed;
-            //     this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-
-            // } else {
-            //     let speed = 3;
-            //     this.node.setPosition(bPos.x, bPos.y - speed);
-            // }
-            //现在吸 速度比金币慢点
-
-            // let speed = 8;
-
-            // let rdx = ndx * speed*dt*60;
-            // let rdy = ndy * speed*dt*60;
-            // this.node.setPosition(bPos.x + rdx, bPos.y + rdy);
-            let speed = 5;
-            this.node.setPosition(bPos.x, bPos.y - speed);
+           
+          //  let speed = 5;
+           // this.node.setPosition(bPos.x, bPos.y - speed);
 
         } else if (this.prizeType == generateType.jinbi) {
 
