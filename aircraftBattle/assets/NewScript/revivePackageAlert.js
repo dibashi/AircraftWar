@@ -68,7 +68,13 @@ cc.Class({
 
 
     onInviteClick:function() {
-        cc.log("onInviteClick");
+        //邀请好友
+        let query_string = cc.sys.localStorage.getItem("openid");
+
+        wx.shareAppMessage({ title: "我邀请了8个好友一起PK，就差你了，赶紧来！",
+        imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query: "otherID=" + query_string});
+
+      //  cc.log("onInviteClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
@@ -77,10 +83,9 @@ cc.Class({
 
         
       
-        wx.shareAppMessage({ title: "我邀请了8个好友一起PK，就差你了，赶紧来！",
-        imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg",query:"begin_share"});
+       
 
-        this.getReviveCallback();
+       // this.getReviveCallback();
     },
 
     getReviveCallback:function() {
@@ -108,7 +113,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+      //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

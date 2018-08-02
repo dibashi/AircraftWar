@@ -195,7 +195,7 @@ cc.Class({
 
             cc.sys.localStorage.setItem('globalHeroPlaneID', 0);
 
-
+            cc.sys.localStorage.setItem("openid", "0");
             //初始化一下玩家对各个飞机拥有的僚机数量
             cc.sys.localStorage.setItem('heroPlaneWingmanCount0', 2);
             cc.sys.localStorage.setItem('heroPlaneWingmanCount1', 0);
@@ -311,6 +311,9 @@ cc.Class({
 
         this.jindutiao2.active = false;
 
+        this.getUerOpenID();
+
+        this.schedule(this.refreshrecommended, 4);
     },
 
 
@@ -326,18 +329,45 @@ cc.Class({
 
 
 
-        wx.showShareMenu();
+        // wx.showShareMenu();
 
 
-        wx.onShareAppMessage(function () {
-            // 用户点击了“转发”按钮
-            return {
-                title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
-                imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
+        // wx.onShareAppMessage(function () {
+        //     // 用户点击了“转发”按钮
+        //     return {
+        //         title: '我邀请了8个好友一起PK，就差你了，赶紧来！',
+        //         imageUrl: "http://www.youngwingtec.com/VRContent/bowuguan/res/raw-assets/Texture/shareLogo.5717b.jpg"
 
-            }
+        //     }
+        // });
+
+
+    },
+
+    //从服务器获得用户的推荐奖励，并刷新在界面上
+    refreshrecommended: function () {
+        let self = this;
+        let openid = cc.sys.localStorage.getItem("openid");
+        if (openid == "0") {
+            return;
+        }
+
+
+        wx.request({
+            url: 'https://bpw.blyule.com/game_old/public/index.php/index/index/getprise?userid=' + openid,
+            data: {
+                userid: openid,
+            },
+            success: (obj, statusCode, header) => {
+                //console.log("成功获得服务器那边的用户奖励数据！！！！ 服务器返回的数据！！--> ");
+                //console.log(obj);
+                if (obj.data.code > 0) {
+                    let rc = parseInt(cc.sys.localStorage.getItem('reviveCount')) + obj.data.code;
+                    cc.sys.localStorage.setItem('reviveCount', rc);
+                    self.reviveLabel.getComponent(cc.Label).string = rc;
+                }
+            },
         });
-
 
     },
 
@@ -354,7 +384,7 @@ cc.Class({
         this.giftGetSuccess(tag);
     },
 
-    refreshReviveCount:function() {
+    refreshReviveCount: function () {
         this.reviveLabel.getComponent(cc.Label).string = cc.sys.localStorage.getItem('reviveCount');
     },
     //当前年月日
@@ -446,4 +476,69 @@ cc.Class({
         ss.getComponent("getGiftAlert").onWho = this.node;
         this.node.addChild(ss);
     },
+
+
+    getUerOpenID: function () {
+        // console.log("getUserOpenID!");
+        let self = this;
+        self.openid = cc.sys.localStorage.getItem("openid");
+        if (self.openid == "0") {//保证用户是第一次进游戏
+            // console.log("发送wx.login请求!");
+            wx.login({
+                success: (res) => {
+                    let codeInfo = res.code;
+                    //console.log('start场景，codeInfo：--->', codeInfo);
+                    if (res.code) {
+                        //发起网络请求
+                        wx.request({
+                            url: 'https://bpw.blyule.com/game_old/public/index.php/index/index/getopenid?code=' + res.code,
+                            data: {
+                                code: res.code,
+                            },
+                            success: (obj, statusCode, header) => {
+                                // console.log("请求openid,服务器返回的数据！！--> " + obj);
+                                // console.log(obj.data.openid);
+
+                                self.openid = obj.data.openid;
+                                cc.sys.localStorage.setItem("openid", obj.data.openid);//之所以要存，是在分享的时候放入query中
+                                //微信官方文档那里写的调用函数是getLaunchInfoSync，但是根本搜不到这个API，应该是下面这个。
+                                var launchOption = wx.getLaunchOptionsSync();
+                                //  console.log(launchOption);
+                                //  self.otherOpenIDLabel.string = JSON.stringify(launchOption.query) + "query.otherID-->" + launchOption.query.otherID;
+
+                                if (launchOption.query.otherID == null || launchOption.query.otherID == undefined) {
+                                    launchOption.query.otherID = 0;
+                                }
+                                // console.log("看下 自己的openid 和 推荐方的openid");
+                                // console.log(self.openid);
+                                // console.log(launchOption.query.otherID);
+                                wx.request({
+                                    url: 'https://bpw.blyule.com/game_old/public/index.php/index/index/add?userid=' + self.openid + "&" + "cuid=" + launchOption.query.otherID,
+                                    data: {
+                                        userid: self.openid,
+                                        cuid: launchOption.query.otherID,
+                                    },
+                                    success: (data, statusCode, header) => {
+                                        //  console.log("添加用户成功！ 服务器返回的数据！！--> ");
+                                        //  console.log(data);
+
+                                        //  console.log("看下自己的openid数据！！--> ");
+                                        //  console.log(self.openid);
+                                    },
+                                });
+
+
+                            },
+                        });
+                    }
+                }
+            });
+        }//end if
+
+
+
+    },
+
+
+
 });

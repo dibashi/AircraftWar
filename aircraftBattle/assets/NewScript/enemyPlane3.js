@@ -296,7 +296,7 @@ cc.Class({
     },
 
     resumeAction: function () {
-        console.log("enemy resume!");
+    //    console.log("enemy resume!");
         this.isPause = true;
 
         this.node.resumeAllActions();
@@ -305,7 +305,7 @@ cc.Class({
     },
 
     pauseAction: function () {
-        console.log("enemy pause!");
+      //  console.log("enemy pause!");
         this.isPause =false;
 
         this.node.pauseAllActions();

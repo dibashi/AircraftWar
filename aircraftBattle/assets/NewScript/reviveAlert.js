@@ -48,6 +48,11 @@ cc.Class({
             type: cc.Node
         },
 
+        skip:{
+            default:null,
+            type: cc.Node,
+        },
+
 
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
@@ -59,7 +64,8 @@ cc.Class({
 
     onLoad() {
 
-
+        this.skip.active = false;
+        this.scheduleOnce(this.showSkip,3.0);
         this.startFadeIn();
 
         //1 读取分数到分数label 2 读取复活卡个数 到复活卡个数label  根据复活个数 来设置复活按钮的开启与否 
@@ -105,9 +111,16 @@ cc.Class({
 
     },
 
+
+    showSkip:function() {
+        this.skip.active = true;''
+    },
+
     start() {
       
         this.tex = new cc.Texture2D();
+        window.sharedCanvas.width = 720;
+        window.sharedCanvas.height = 1280;
     },
 
     _updaetSubDomainCanvas() {
@@ -136,7 +149,7 @@ cc.Class({
         this.node.runAction(actionFadeIn);
     },
     onFadeInFinish: function () {
-        cc.log(this.node);
+     //   cc.log(this.node);
         cc.eventManager.resumeTarget(this.node, true);
     },
 
@@ -145,7 +158,7 @@ cc.Class({
 
 
     onReviveClick: function () {
-        cc.log("onReviveClick");
+     //   cc.log("onReviveClick");
        
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
@@ -162,7 +175,7 @@ cc.Class({
     },
 
     onGuangGaoClick: function () {
-        cc.log("onGuangGaoClick");
+      //  cc.log("onGuangGaoClick");
         cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
@@ -177,7 +190,7 @@ cc.Class({
     },
 
     onLifeClick:function() {
-        cc.log("onlifeclick");
+    //    cc.log("onlifeclick");
        
        
 
@@ -204,7 +217,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+      //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

@@ -83,7 +83,7 @@ cc.Class({
 
 
     gouMaiClick: function () {
-        cc.log("gouMaiClick");
+     //   cc.log("gouMaiClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
@@ -100,8 +100,8 @@ cc.Class({
 
     },
     getPrizeByTag: function () {
-        cc.log("!!!!!!!");
-        cc.log(this._nodeTag);
+      //  cc.log("!!!!!!!");
+     //   cc.log(this._nodeTag);
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
         let jbC = cc.sys.localStorage.getItem('jinBiCount');
@@ -112,7 +112,7 @@ cc.Class({
         let dc = cc.sys.localStorage.getItem('diamondCount');
 
         if (this._nodeTag == 0) {
-            cc.log("!!!!!!!nodeTag0");
+       //     cc.log("!!!!!!!nodeTag0");
             let ajbC = parseInt(jbC) + 50;
             let adzC = parseInt(dzC) + 1;
             let ahdC = parseInt(hdC) + 1;
@@ -182,7 +182,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+     //   cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);

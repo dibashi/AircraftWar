@@ -73,7 +73,7 @@ cc.Class({
 
     goMain:function() {
         cc.audioEngine.playEffect(this.buttonAudio,false);
-        cc.log("goMain");
+       // cc.log("goMain");
         cc.director.loadScene('store');
        
 
@@ -116,7 +116,7 @@ cc.Class({
     },
 
     button0Click:function() {
-        cc.log("btn0 click!");
+       // cc.log("btn0 click!");
         //1 弹窗 把物品放在 弹窗 上  确定则购买， 取消则返回
         let ss = this.alertPop();
 

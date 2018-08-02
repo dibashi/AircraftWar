@@ -156,6 +156,7 @@ cc.Class({
 
         bl = cc.instantiate(this.bullet0);
 
+        bl.scale = 0.7;
 
         bl.getComponent("enemyBullet").flyingSpeed = globalEnemyPlaneData[this.enemyID].flyingSpeed;
         bl.getComponent("enemyBullet").damage = this.damage;
@@ -209,7 +210,7 @@ cc.Class({
 //     },
 
     resumeAction: function () {
-        console.log("enemy resume!");
+        //console.log("enemy resume!");
         this.isPause = true;
 
         this.node.resumeAllActions();
@@ -218,7 +219,7 @@ cc.Class({
     },
 
     pauseAction: function () {
-        console.log("enemy pause!");
+      //  console.log("enemy pause!");
         this.isPause =false;
 
         this.node.pauseAllActions();

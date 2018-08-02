@@ -162,7 +162,7 @@ cc.Class({
 
 
     onLingQuClick: function () {
-        cc.log("onLingQuClick");
+      //  cc.log("onLingQuClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
@@ -183,7 +183,7 @@ cc.Class({
         //   cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
         //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
-        cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
+     //   cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
 
         //使用时间记录下
         cc.sys.localStorage.setItem('lqTime', Date.now());
@@ -206,7 +206,7 @@ cc.Class({
     },
 
     onGuangGaoClick: function () {
-        cc.log("onGuangGaoClick");
+   //     cc.log("onGuangGaoClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
@@ -227,7 +227,7 @@ cc.Class({
         //    cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
         //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
-        cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
+      //  cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
 
         //使用时间记录下
         //  cc.sys.localStorage.setItem('lqTime', Date.now());
@@ -256,7 +256,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-        cc.log("onCancelClick");
+      //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 

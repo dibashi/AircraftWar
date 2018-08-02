@@ -55,7 +55,7 @@ cc.Class({
         if (this.enableGuanDao == ena) {
             return;
         }
-        cc.log("1~~~开始发射金币");
+       // cc.log("1~~~开始发射金币");
         this.enableGuanDao = ena;
         if (ena) {
             this.startFire();
@@ -84,7 +84,7 @@ cc.Class({
  
 
     susheCallback: function () {
-        cc.log("~! gogo dropcoin");
+       // cc.log("~! gogo dropcoin");
         var bl = null;
         bl = cc.instantiate(this.coin0);
 

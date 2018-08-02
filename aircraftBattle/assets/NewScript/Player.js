@@ -83,7 +83,7 @@ cc.Class({
        
 
         this.hasHuDun = false;
-        cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
+     //   cc.log('player heroPlaneID  ' + D.globalHeroPlaneID);
         if (this != undefined) {
             this.shootingSpeed = globalHeroPlaneData[D.globalHeroPlaneID].shootingSpeed;
             this.blood = globalHeroPlaneData[D.globalHeroPlaneID].blood;
@@ -146,7 +146,7 @@ cc.Class({
 
         }
         //启动僚机
-        cc.log("llll---> " + this.wingmanArrays.length);
+      //  cc.log("llll---> " + this.wingmanArrays.length);
         if (this.wingmanArrays.length > 0) {
             this.runWingman();
         }
@@ -430,7 +430,7 @@ cc.Class({
 
 
 
-                cc.log("游戏结束");
+            //    cc.log("游戏结束");
                 this.dead();
 
             } else {
@@ -490,7 +490,7 @@ cc.Class({
     },
 
     baozhaOver: function () {
-        cc.log("player baozhaover!~");
+     //   cc.log("player baozhaover!~");
         this.unscheduleAllCallbacks();
 
 

@@ -32,10 +32,13 @@
     "_components": [
       {
         "__id__": 71
+      },
+      {
+        "__id__": 72
       }
     ],
     "_prefab": {
-      "__id__": 72
+      "__id__": 73
     },
     "_id": "",
     "_opacity": 255,
@@ -332,7 +335,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -283
+      "y": -271
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -506,7 +509,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 120
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -570,7 +573,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 65
+      "y": 30
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1023,7 +1026,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 300,
-      "height": 40
+      "height": 60
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1031,8 +1034,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -62,
-      "y": 143
+      "x": -40,
+      "y": 128
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1052,7 +1055,7 @@
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
-    "_lineHeight": 40,
+    "_lineHeight": 60,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -1074,9 +1077,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 41,
-    "_left": 123,
-    "_right": 247,
-    "_top": 115,
+    "_left": 145,
+    "_right": 225,
+    "_top": 120,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -1255,7 +1258,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 200,
-      "height": 40
+      "height": 60
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1263,8 +1266,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 19,
-      "y": 143.1
+      "x": 41,
+      "y": 128
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1284,7 +1287,7 @@
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
-    "_lineHeight": 40,
+    "_lineHeight": 60,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -1306,9 +1309,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 41,
-    "_left": 354,
-    "_right": 116,
-    "_top": 114.9,
+    "_left": 376,
+    "_right": 94,
+    "_top": 120,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -1387,7 +1390,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -41
+      "y": -90
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1849,7 +1852,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -135
+      "y": -368
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2189,7 +2192,7 @@
     "_right": 0,
     "_top": 0,
     "_bottom": 0,
-    "_verticalCenter": 0,
+    "_verticalCenter": 120,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
     "_isAbsRight": true,
@@ -2240,10 +2243,29 @@
     "scoreLabel": {
       "__id__": 38
     },
+    "skip": {
+      "__id__": 9
+    },
     "onWho": null,
     "display": {
       "__id__": 7
     }
+  },
+  {
+    "__type__": "cc.Canvas",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_designResolution": {
+      "__type__": "cc.Size",
+      "width": 720,
+      "height": 1280
+    },
+    "_fitWidth": true,
+    "_fitHeight": false
   },
   {
     "__type__": "cc.PrefabInfo",

@@ -70,7 +70,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         let self = this;
-        console.log("leaderboard  onload~!");
+       // console.log("leaderboard  onload~!");
         wx.onMessage(data => {
             if (data.message == "friendRank") {
                 //获得自己信息，显示到panel上？ 再测
@@ -82,7 +82,7 @@ cc.Class({
 
                 // self.friendInfo(); //为了在获取排行榜数据时 自己的数据已经获得 这里我在 getMyInfo中调用！
             } else if (data.message == "userInfo") {
-                console.log("leaderboard userInfo ~!");
+             //   console.log("leaderboard userInfo ~!");
                 
 
                 // self.list1.setPosition(0, 81.5);
@@ -118,7 +118,7 @@ cc.Class({
         wx.getFriendCloudStorage({
             keyList: ["driver_MaxScore"],
             success(res) {
-                console.log(res)
+           //     console.log(res)
                 if (res.data) {
                     // self.tips.active = false;
                     //按maxScore从大到小排列
@@ -146,9 +146,9 @@ cc.Class({
                         }
                     }
                     if (sameNameList.length < 1) { //煞费苦心！
-                        console.log("Rank:好友的信息1：未找到同名自己"); //连自己都没有在数据表中？
+                    //    console.log("Rank:好友的信息1：未找到同名自己"); //连自己都没有在数据表中？
                     } else if (sameNameList.length == 1) {
-                        console.log("Rank:好友的信息2：找到1个同名自己"); //这里获得的数据是所有好友的数据当然包括自己的，如果只有一个和自己重名，那么必然是自己
+                    //    console.log("Rank:好友的信息2：找到1个同名自己"); //这里获得的数据是所有好友的数据当然包括自己的，如果只有一个和自己重名，那么必然是自己
                         selfDataIndex = sameNameList[0];
                     }
 
@@ -161,23 +161,23 @@ cc.Class({
                             }
                         }
                         if (sameHeadList.length < 1) {
-                            console.log("Rank:好友的信息3：未找到同头像自己");
+                     //       console.log("Rank:好友的信息3：未找到同头像自己");
                         }
                         else {
                             selfDataIndex = sameHeadList[0];
                         }
                     }
-                    console.log("Rank:selfDataIndex=" + selfDataIndex);
+                   // console.log("Rank:selfDataIndex=" + selfDataIndex);
 
                     let kvl = res.data[selfDataIndex].KVDataList;
-                    console.log(kvl);
+                    //console.log(kvl);
                     let s = -1;
                     for (var i = 0; i < kvl.length; i++) {
                         if (kvl[i].key == "driver_MaxScore") {
                             s = kvl[i].value;
                         }
                     }
-                    console.log("ss-> " + s);
+                   // console.log("ss-> " + s);
                     self.selfScore = s;
 
 
@@ -190,7 +190,7 @@ cc.Class({
             },
             fail() {
                 //console.log(res)
-                console.log("Rank:获取好友的信息失败");
+            //    console.log("Rank:获取好友的信息失败");
                 //  self.tips.active = true;
             }
         })
@@ -200,7 +200,7 @@ cc.Class({
         this.selfRankLabel.getComponent(cc.Label).string = parseInt(sRank) + 1;
         this.selfNameLabel.getComponent(cc.Label).string = this.selfName;
         //分数本地其实有一份。 怕以后要改 还是用网络的吧
-        console.log("selfscore--> " + this.selfScore);
+      //  console.log("selfscore--> " + this.selfScore);
         this.selfScoreLabel.getComponent(cc.Label).string = this.selfScore;
 
 
@@ -263,7 +263,7 @@ cc.Class({
 
 
     getMyInfo: function () {
-        console.log("ggggggg");
+       // console.log("ggggggg");
 
         let self = this;
 
@@ -272,33 +272,33 @@ cc.Class({
             lang: 'zh_CN',
             success(res) {
                 if (res.data) {
-                    console.log(res.data);
+                   // console.log(res.data);
                     if (res.data[0].nickName != undefined && res.data[0].avatarUrl != undefined) {
 
                         self.selfName = res.data[0].nickName;
                         self.selfHead = res.data[0].avatarUrl;
 
-                        console.log(self.selfName);
-                        console.log(self.selfHead);
+                       // console.log(self.selfName);
+                       // console.log(self.selfHead);
 
 
                         self.friendInfo();
 
                     } else {
-                        console.log("自己的信息1:undefined");
+                      //  console.log("自己的信息1:undefined");
                     }
                 }
             },
             fail() {
                 //console.log(res)
-                console.log("获取自己的信息失败");
+               // console.log("获取自己的信息失败");
             }
         })
     },
 
 
     getMyInfoAndNext: function () {
-        console.log("ggggggg");
+       // console.log("ggggggg");
 
         let self = this;
 
@@ -307,26 +307,26 @@ cc.Class({
             lang: 'zh_CN',
             success(res) {
                 if (res.data) {
-                    console.log(res.data);
+                 //   console.log(res.data);
                     if (res.data[0].nickName != undefined && res.data[0].avatarUrl != undefined) {
 
                         self.selfName = res.data[0].nickName;
                         self.selfHead = res.data[0].avatarUrl;
 
-                        console.log(self.selfName);
-                        console.log(self.selfHead);
+                   //     console.log(self.selfName);
+                  //      console.log(self.selfHead);
 
 
                         self.getNext();
 
                     } else {
-                        console.log("自己的信息1:undefined");
+                 //       console.log("自己的信息1:undefined");
                     }
                 }
             },
             fail() {
                 //console.log(res)
-                console.log("获取自己的信息失败");
+          //      console.log("获取自己的信息失败");
             }
         })
     },
@@ -337,7 +337,7 @@ cc.Class({
         wx.getFriendCloudStorage({
             keyList: ["driver_MaxScore"],
             success(res) {
-                console.log(res)
+            //    console.log(res)
                 if (res.data) {
                     // self.tips.active = false;
                     //按maxScore从大到小排列
@@ -354,9 +354,9 @@ cc.Class({
                         }
                     }
                     if (sameNameList.length < 1) { //煞费苦心！
-                        console.log("Rank:好友的信息1：未找到同名自己"); //连自己都没有在数据表中？
+                 //       console.log("Rank:好友的信息1：未找到同名自己"); //连自己都没有在数据表中？
                     } else if (sameNameList.length == 1) {
-                        console.log("Rank:好友的信息2：找到1个同名自己"); //这里获得的数据是所有好友的数据当然包括自己的，如果只有一个和自己重名，那么必然是自己
+                  //      console.log("Rank:好友的信息2：找到1个同名自己"); //这里获得的数据是所有好友的数据当然包括自己的，如果只有一个和自己重名，那么必然是自己
                         selfDataIndex = sameNameList[0];
                     }
 
@@ -369,26 +369,26 @@ cc.Class({
                             }
                         }
                         if (sameHeadList.length < 1) {
-                            console.log("Rank:好友的信息3：未找到同头像自己");
+                    //        console.log("Rank:好友的信息3：未找到同头像自己");
                         }
                         else {
                             selfDataIndex = sameHeadList[0];
                         }
                     }
-                    console.log("Rank:selfDataIndex=" + selfDataIndex);
+                  //  console.log("Rank:selfDataIndex=" + selfDataIndex);
 
                     if (selfDataIndex <= 0) {
                         self.list2.active = false;
                     } else {
                         let kvl = res.data[selfDataIndex - 1].KVDataList;
-                        console.log("kvl-> " + kvl);
+                   //     console.log("kvl-> " + kvl);
                         let s = -1;
                         for (var i = 0; i < kvl.length; i++) {
                             if (kvl[i].key == "driver_MaxScore") {
                                 s = kvl[i].value;
                             }
                         }
-                        console.log("s-> " + s);
+                    //    console.log("s-> " + s);
                         self.nextScore.getComponent(cc.Label).string = s + "分";
                         self.createImage(self.nextHead.getComponent(cc.Sprite),res.data[selfDataIndex-1].avatarUrl);
 
@@ -402,7 +402,7 @@ cc.Class({
             },
             fail() {
                 //console.log(res)
-                console.log("Rank:获取好友的信息失败");
+              //  console.log("Rank:获取好友的信息失败");
                 //  self.tips.active = true;
 
                 self.list2.active = false;

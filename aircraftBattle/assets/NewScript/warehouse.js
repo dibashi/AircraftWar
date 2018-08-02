@@ -189,7 +189,7 @@ cc.Class({
     planeGouMaiJudgment: function () {
         //1拥有 0没有
         let isPossess = cc.sys.localStorage.getItem("heroPlanePossess" + this.currentID);
-        cc.log("ispossess--> " + isPossess);
+      //  cc.log("ispossess--> " + isPossess);
         if (isPossess == 1) {
 
             this.addLevel.setPosition(0, -386);
@@ -223,10 +223,10 @@ cc.Class({
         this.currentLevelLabel.getComponent(cc.Label).string = wingManCount;
 
         this.rewardCurrentSpriteNode.getComponent(cc.Sprite).spriteFrame = this.rewardSpriteFrameArray[wingManCount];
-        cc.log(this.rewardNextSpriteNode);
-        cc.log(this.rewardNextSpriteNode.getComponent(cc.Sprite));
+      //  cc.log(this.rewardNextSpriteNode);
+      //  cc.log(this.rewardNextSpriteNode.getComponent(cc.Sprite));
 
-    cc.log(parseInt(wingManCount)+1);
+  //  cc.log(parseInt(wingManCount)+1);
         this.rewardNextSpriteNode.getComponent(cc.Sprite).spriteFrame = this.rewardSpriteFrameArray[parseInt(wingManCount)+1];
     },
 
@@ -240,7 +240,7 @@ cc.Class({
         this.planeArray[this.currentID].active = true;
 
         let wmCount = parseInt(cc.sys.localStorage.getItem('heroPlaneWingmanCount' + this.currentID));
-        cc.log("!!!-->" + 'heroPlaneWingmanCount' + this.currentID);
+     //   cc.log("!!!-->" + 'heroPlaneWingmanCount' + this.currentID);
         for (let i = 0; i < this.planeArray[this.currentID].childrenCount; i++) {
             this.planeArray[this.currentID].getChildByName("wingman" + i).active = true;
             this.planeArray[this.currentID].getChildByName("wingman" + i).getChildByName("sprite1").active = false;
@@ -281,11 +281,11 @@ cc.Class({
     //既然能够被点击 就正常购买 如果不能购买 按钮是禁用的。
     addWingman: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
-        cc.log("addWingman");
+       // cc.log("addWingman");
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
         if (currentCoin < this.wingmanMoney) {
-            cc.log("金币不足，请购买！");
+          //  cc.log("金币不足，请购买！");
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
 
@@ -306,14 +306,14 @@ cc.Class({
 
     addPlane: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
-        cc.log("addPlane");
+        //cc.log("addPlane");
 
         //购买飞机逻辑 先判断钱是否够，不够就提示，够则1扣钱，2，add进本地存储，3刷新this.planeGouMaiJudgment();
         //这里先将每架飞机的价钱置为200;TODO!!!
 
         let currentCoin = parseInt(cc.sys.localStorage.getItem('jinBiCount'));
         if (currentCoin < this.planeMoney) {
-            cc.log("金币不够，请购买！");
+        //    cc.log("金币不够，请购买！");
             let ss = cc.instantiate(this.alert);
             ss.setPosition(0, 0);
 
@@ -341,7 +341,7 @@ cc.Class({
 
     goMain: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
-        cc.log("goMain");
+       // cc.log("goMain");
         cc.director.loadScene('start');
 
 
