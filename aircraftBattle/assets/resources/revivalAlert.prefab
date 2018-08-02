@@ -32,10 +32,13 @@
     "_components": [
       {
         "__id__": 71
+      },
+      {
+        "__id__": 72
       }
     ],
     "_prefab": {
-      "__id__": 72
+      "__id__": 73
     },
     "_id": "",
     "_opacity": 255,
@@ -2247,6 +2250,22 @@
     "display": {
       "__id__": 7
     }
+  },
+  {
+    "__type__": "cc.Canvas",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_designResolution": {
+      "__type__": "cc.Size",
+      "width": 720,
+      "height": 1280
+    },
+    "_fitWidth": true,
+    "_fitHeight": false
   },
   {
     "__type__": "cc.PrefabInfo",
