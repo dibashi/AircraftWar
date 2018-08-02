@@ -423,7 +423,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 610,
-      "height": 40
+      "height": 60
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -452,7 +452,7 @@
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
-    "_lineHeight": 40,
+    "_lineHeight": 60,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -476,7 +476,7 @@
     "_alignFlags": 41,
     "_left": 33.20000000000002,
     "_right": 26.799999999999994,
-    "_top": 121.6,
+    "_top": 111.6,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
