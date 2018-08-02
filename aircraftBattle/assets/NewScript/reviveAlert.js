@@ -48,6 +48,11 @@ cc.Class({
             type: cc.Node
         },
 
+        skip:{
+            default:null,
+            type: cc.Node,
+        },
+
 
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
@@ -59,7 +64,8 @@ cc.Class({
 
     onLoad() {
 
-
+        this.skip.active = false;
+        this.scheduleOnce(this.showSkip,3.0);
         this.startFadeIn();
 
         //1 读取分数到分数label 2 读取复活卡个数 到复活卡个数label  根据复活个数 来设置复活按钮的开启与否 
@@ -103,6 +109,11 @@ cc.Class({
 
         this.display.scale = 1.0;
 
+    },
+
+
+    showSkip:function() {
+        this.skip.active = true;''
     },
 
     start() {
