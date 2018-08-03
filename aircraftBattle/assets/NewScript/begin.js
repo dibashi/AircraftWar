@@ -165,6 +165,10 @@ cc.Class({
     onLoad() {
 
 
+        let self = this;
+        
+
+
         //适配
         let wx = cc.director.getVisibleSize().width * 0.5;
         let hy = cc.director.getVisibleSize().height * 0.5;
@@ -327,6 +331,38 @@ cc.Class({
             this.setBestScore(0);
         }
 
+
+
+
+        if (!cc.videoAd) {
+            //先创建，可不用，由于是单例模式，所以后面再创建就快了。
+            cc.videoAd = wx.createRewardedVideoAd({
+                adUnitId: 'adunit-aa5bb944ef989f55'
+            });
+
+            cc.videoAd.onClose(res => {
+                // 用户点击了【关闭广告】按钮
+                // 小于 2.1.0 的基础库版本，res 是一个 undefined
+                console.log("这是复活界面~！");
+
+                if (res && res.isEnded || res === undefined) {
+                    // 正常播放结束，可以下发游戏奖励
+                    console.log("这里给用户奖励！！");
+                    console.log(res);
+                   if(cc.find("Canvas/giftPackageAlert")) {
+                       console.log("非复活");
+                    cc.find("Canvas/giftPackageAlert").getComponent("giftPackageAlert").givePrize();
+                   } else if(cc.find("Canvas/revivalAlert")) {
+                    console.log("复活");
+                    cc.find("Canvas/revivalAlert").getComponent("reviveAlert").givePrize();
+                   }
+                }
+                else {
+                    // 播放中途退出，不下发游戏奖励
+                    console.log("中途退出，没有奖励！");
+                }
+            });
+        }
 
 
         // wx.showShareMenu();

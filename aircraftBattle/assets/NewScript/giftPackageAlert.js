@@ -43,15 +43,34 @@ cc.Class({
         dxGG: 0,
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
+        adInterval:30,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        //先创建，可不用，由于是单例模式，所以后面再创建就快了。
-        let videoAd = wx.createRewardedVideoAd({
-            adUnitId: 'adunit-aa5bb944ef989f55'
-        });
+        // let self =this;
+        // //先创建，可不用，由于是单例模式，所以后面再创建就快了。
+        // this.videoAd = wx.createRewardedVideoAd({
+        //     adUnitId: 'adunit-aa5bb944ef989f55'
+        // });
+
+        // this.videoAd.onClose(res => {
+        //     // 用户点击了【关闭广告】按钮
+        //     // 小于 2.1.0 的基础库版本，res 是一个 undefined
+        //     console.log("这是广告领取界面~！");
+
+        //     if (res && res.isEnded || res === undefined) {
+        //         // 正常播放结束，可以下发游戏奖励
+        //         console.log("这里给用户奖励！！");
+        //         console.log(res);
+        //         self.givePrize();
+        //     }
+        //     else {
+        //         // 播放中途退出，不下发游戏奖励
+        //         console.log("中途退出，没有奖励！");
+        //     }
+        // });
 
         //把那边的node加载到这个界面
 
@@ -87,11 +106,11 @@ cc.Class({
 
         this.dxGG = parseInt((d4 - d3) * 0.001);
         // cc.log("aaaa  " +this.dxLQ);
-        if (this.dxGG > (0.5 * 60 * 60)) {//超过1个小时 //改为半小时了
+        if (this.dxGG > (this.adInterval * 60 * 60)) {//超过1个小时 //改为半小时了
             this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
         } else {
-            this.dxGG = 0.5 * 60 * 60 - this.dxGG;
+            this.dxGG = this.adInterval * 60 * 60 - this.dxGG;
             this.ggBtn.getComponent(cc.Button).interactable = false;
             this.countdownGG.active = true;
             this.setTimeToLabel(this.dxGG, this.countdownGG);
@@ -214,42 +233,7 @@ cc.Class({
         //     cc.log("onGuangGaoClick");
         let self = this;
         cc.audioEngine.playEffect(this.buttonAudio, false);
-
-
-
-        let videoAd = wx.createRewardedVideoAd({
-            adUnitId: 'adunit-aa5bb944ef989f55'
-        });
-
-        videoAd.load()
-            .then(() => videoAd.show())
-            .catch(err => console.log(err.errMsg));
-
-        //不行，这里不管用户是否看完广告，都会给奖励。
-        videoAd.onClose(() => {
-            // The user clicked the [Close Ad] button
-            console.log("用户关闭广告~！");
-            console.log("这里给用户奖励！！");
-        });
-
-
-        videoAd.onClose(res => {
-            // 用户点击了【关闭广告】按钮
-            // 小于 2.1.0 的基础库版本，res 是一个 undefined
-            console.log("用户关闭广告~！");
-
-            if (res && res.isEnded || res === undefined) {
-                // 正常播放结束，可以下发游戏奖励
-                console.log("这里给用户奖励！！");
-
-                self.givePrize();
-            }
-            else {
-                // 播放中途退出，不下发游戏奖励
-                console.log("中途退出，没有奖励！");
-            }
-        })
-
+        cc.videoAd.show();
     },
 
     givePrize: function () {
@@ -307,3 +291,50 @@ cc.Class({
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //观看广告按钮点击
+// onGuangGaoClick: function () {
+//     let self = this;
+
+//     let videoAd = wx.createRewardedVideoAd({
+//         adUnitId: 'adunit-123456'
+//     });
+
+//     videoAd.load()
+//         .then(() => videoAd.show())
+//         .catch(err => console.log(err.errMsg));
+
+
+//     videoAd.onClose(res => {
+//         console.log("用户关闭广告~！");
+//         if (res && res.isEnded || res === undefined) {
+//             // 正常播放结束，可以下发游戏奖励
+//             console.log("这里给用户奖励！！");
+//             console.log(res);
+//             self.givePrize();
+//         }
+//         else {
+//             // 播放中途退出，不下发游戏奖励
+//             console.log("中途退出，没有奖励！");
+//         }
+//     });
+
+// },
+
+// givePrize: function () {
+//     console.log("给用户奖励！~~");
+// },

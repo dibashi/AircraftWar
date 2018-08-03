@@ -64,6 +64,31 @@ cc.Class({
 
     onLoad() {
 
+        // let self =this;
+        // //先创建，可不用，由于是单例模式，所以后面再创建就快了。
+        // this.videoAd = wx.createRewardedVideoAd({
+        //     adUnitId: 'adunit-aa5bb944ef989f55'
+        // });
+        
+        // this.videoAd.onClose(res => {
+        //     // 用户点击了【关闭广告】按钮
+        //     // 小于 2.1.0 的基础库版本，res 是一个 undefined
+        //     console.log("这是复活界面~！");
+
+        //     if (res && res.isEnded || res === undefined) {
+        //         // 正常播放结束，可以下发游戏奖励
+        //         console.log("这里给用户奖励！！");
+        //         console.log(res);
+        //         self.givePrize();
+        //     }
+        //     else {
+        //         // 播放中途退出，不下发游戏奖励
+        //         console.log("中途退出，没有奖励！");
+        //     }
+        // });
+
+        // console.log(this.videoAd);
+
         this.skip.active = false;
         this.scheduleOnce(this.showSkip,3.0);
         this.startFadeIn();
@@ -108,6 +133,9 @@ cc.Class({
         });
 
         this.display.scale = 1.0;
+
+
+
 
     },
 
@@ -176,9 +204,37 @@ cc.Class({
 
     onGuangGaoClick: function () {
       //  cc.log("onGuangGaoClick");
-        cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
-        cc.audioEngine.playEffect(this.buttonAudio, false);
+      let self = this;
+      cc.audioEngine.playEffect(this.buttonAudio, false);
+      cc.videoAd.show();
+
+
+     
+
+
+
+
+        // cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
+        // cc.audioEngine.playEffect(this.buttonAudio, false);
+        // cc.eventManager.pauseTarget(this.node, true);
+
+
+        // this.onWho.getComponent("Game").goNewPlane();
+
+
+        // let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
+        // let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
+        // this.node.runAction(actionFadeOut);
+    },
+
+    givePrize: function () {
+        console.log("给用户奖励！~~");
+
         cc.eventManager.pauseTarget(this.node, true);
+        // 添加 金币 护盾 必杀 生命
+        // 1 读取 2 添加 3 写入
+        cc.sys.localStorage.setItem("GuangGaoFuhuoFlag",0);
+       
 
 
         this.onWho.getComponent("Game").goNewPlane();
