@@ -87,11 +87,11 @@ cc.Class({
 
         this.dxGG = parseInt((d4 - d3) * 0.001);
         // cc.log("aaaa  " +this.dxLQ);
-        if (this.dxGG > (1 * 60 * 60)) {//超过1个小时
+        if (this.dxGG > (0.5 * 60 * 60)) {//超过1个小时 //改为半小时了
             this.ggBtn.getComponent(cc.Button).interactable = true;
             this.countdownGG.active = false;
         } else {
-            this.dxGG = 1 * 60 * 60 - this.dxGG;
+            this.dxGG = 0.5 * 60 * 60 - this.dxGG;
             this.ggBtn.getComponent(cc.Button).interactable = false;
             this.countdownGG.active = true;
             this.setTimeToLabel(this.dxGG, this.countdownGG);
