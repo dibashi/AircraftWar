@@ -304,7 +304,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 457.5000114375003,
-      "height": 43
+      "height": 40
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -313,7 +313,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 211.3333333
+      "y": 211.83333325
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -331,9 +331,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 43,
-    "_fontSize": 43,
-    "_lineHeight": 43,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -357,7 +357,7 @@
     "_alignFlags": 41,
     "_left": 30,
     "_right": 30,
-    "_top": 38.00000075,
+    "_top": 39.50000075,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -406,9 +406,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 72,
-      "b": 1,
+      "r": 252,
+      "g": 229,
+      "b": 190,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -429,7 +429,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 6.5
+      "y": -15
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -473,7 +473,7 @@
     "_alignFlags": 41,
     "_left": 255,
     "_right": 255,
-    "_top": 241.5,
+    "_top": 263,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -522,9 +522,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 71,
-      "b": 0,
+      "r": 252,
+      "g": 229,
+      "b": 190,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -545,7 +545,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 88.4
+      "y": 96
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -589,7 +589,7 @@
     "_alignFlags": 41,
     "_left": 172.3641975308642,
     "_right": 172.3641975308642,
-    "_top": 144.6,
+    "_top": 137,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,

@@ -632,8 +632,8 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 315,
-      "y": 520
+      "x": -327,
+      "y": 431
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -747,8 +747,8 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": 0,
-    "_right": 25,
-    "_top": 100,
+    "_right": 667,
+    "_top": 189,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -970,7 +970,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 138,
-      "height": 142
+      "height": 135
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1760,8 +1760,8 @@
     "_scaleY": 0.8,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -303,
-      "y": 545
+      "x": 305,
+      "y": 546
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1812,7 +1812,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 23,
+      "x": 28.4,
       "y": 0
     },
     "_skewX": 0,
@@ -2210,8 +2210,8 @@
     "_scaleY": 0.8,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -303,
-      "y": 483
+      "x": 305,
+      "y": 488
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2262,7 +2262,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 23,
+      "x": 28.4,
       "y": 0
     },
     "_skewX": 0,
@@ -2434,8 +2434,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -303,
-      "y": 356
+      "x": -300,
+      "y": 546
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2477,8 +2477,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 44,
-      "height": 40
+      "width": 39,
+      "height": 35
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2486,7 +2486,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 22,
+      "x": 24.2,
       "y": 0
     },
     "_skewX": 0,
@@ -2505,9 +2505,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 35,
+    "_fontSize": 35,
+    "_lineHeight": 35,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -2658,8 +2658,8 @@
     "_scaleY": 0.8,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -301,
-      "y": 420
+      "x": -300,
+      "y": 488
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2710,7 +2710,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 20,
+      "x": 27.7,
       "y": 0
     },
     "_skewX": 0,
