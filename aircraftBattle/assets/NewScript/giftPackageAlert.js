@@ -48,6 +48,11 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        //先创建，可不用，由于是单例模式，所以后面再创建就快了。
+        let videoAd = wx.createRewardedVideoAd({
+            adUnitId: 'adunit-aa5bb944ef989f55'
+        });
+
         //把那边的node加载到这个界面
 
         this.startFadeIn();
@@ -162,7 +167,7 @@ cc.Class({
 
 
     onLingQuClick: function () {
-      //  cc.log("onLingQuClick");
+        //  cc.log("onLingQuClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
@@ -173,7 +178,7 @@ cc.Class({
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
 
-        let ajbC = parseInt(jbC) + 100;
+        let ajbC = parseInt(jbC) + 500;
         //   let adzC = parseInt(dzC) + 1;
         let ahdC = parseInt(hdC) + 1;
         //  let aplC = parseInt(plC) + 1;
@@ -183,7 +188,7 @@ cc.Class({
         //   cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
         //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
-     //   cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
+        //   cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
 
         //使用时间记录下
         cc.sys.localStorage.setItem('lqTime', Date.now());
@@ -206,39 +211,70 @@ cc.Class({
     },
 
     onGuangGaoClick: function () {
-   //     cc.log("onGuangGaoClick");
+        //     cc.log("onGuangGaoClick");
+        let self = this;
         cc.audioEngine.playEffect(this.buttonAudio, false);
-        cc.eventManager.pauseTarget(this.node, true);
 
-        //添加 金币 护盾 必杀 生命
-        //1 读取 2 添加 3 写入
+
+
+        let videoAd = wx.createRewardedVideoAd({
+            adUnitId: 'adunit-aa5bb944ef989f55'
+        });
+
+        videoAd.load()
+            .then(() => videoAd.show())
+            .catch(err => console.log(err.errMsg));
+
+        //不行，这里不管用户是否看完广告，都会给奖励。
+        videoAd.onClose(() => {
+            // The user clicked the [Close Ad] button
+            console.log("用户关闭广告~！");
+            console.log("这里给用户奖励！！");
+        });
+
+
+        videoAd.onClose(res => {
+            // 用户点击了【关闭广告】按钮
+            // 小于 2.1.0 的基础库版本，res 是一个 undefined
+            console.log("用户关闭广告~！");
+
+            if (res && res.isEnded || res === undefined) {
+                // 正常播放结束，可以下发游戏奖励
+                console.log("这里给用户奖励！！");
+
+                self.givePrize();
+            }
+            else {
+                // 播放中途退出，不下发游戏奖励
+                console.log("中途退出，没有奖励！");
+            }
+        })
+
+    },
+
+    givePrize: function () {
+        console.log("给用户奖励！~~");
+
+        cc.eventManager.pauseTarget(this.node, true);
+        // 添加 金币 护盾 必杀 生命
+        // 1 读取 2 添加 3 写入
         let jbC = cc.sys.localStorage.getItem('jinBiCount');
         let dzC = cc.sys.localStorage.getItem('dazhaoCount');
         let hdC = cc.sys.localStorage.getItem('hudunCount');
         let plC = cc.sys.localStorage.getItem('planeLifeCount');
 
-        let ajbC = parseInt(jbC) + 100;
-        //   let adzC = parseInt(dzC) + 1;
+        let ajbC = parseInt(jbC) + 500;
         let ahdC = parseInt(hdC) + 1;
-        //   let aplC = parseInt(plC) + 1;
-
 
         cc.sys.localStorage.setItem('jinBiCount', ajbC);
-        //    cc.sys.localStorage.setItem('dazhaoCount', adzC);
         cc.sys.localStorage.setItem('hudunCount', ahdC);
-        //    cc.sys.localStorage.setItem('planeLifeCount', aplC);
-      //  cc.log("!!!!---  " + cc.sys.localStorage.getItem('planeLifeCount'));
-
-        //使用时间记录下
-        //  cc.sys.localStorage.setItem('lqTime', Date.now());
         cc.sys.localStorage.setItem('ggTime', Date.now());
-
-
 
         let cbFadeOut = cc.callFunc(this.onGGSuccess, this);
         let actionFadeOut = cc.sequence(cc.spawn(cc.fadeTo(0.3, 0), cc.scaleTo(0.3, 2.0)), cbFadeOut);
         this.node.runAction(actionFadeOut);
     },
+
 
     onGGSuccess: function () {
         //通知调取的页面 数据更新
@@ -256,7 +292,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-      //  cc.log("onCancelClick");
+        //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
 
