@@ -9510,8 +9510,8 @@
     "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -277.2,
-      "y": 611.1
+      "x": -281,
+      "y": 609
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -9633,9 +9633,9 @@
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 9,
-    "_left": 10,
+    "_left": 6.199999999999989,
     "_right": 0,
-    "_top": 10,
+    "_top": 12.100000000000023,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
