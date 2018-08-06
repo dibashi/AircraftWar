@@ -43,7 +43,7 @@ cc.Class({
         dxGG: 0,
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
-        adInterval:30,
+        adInterval:0.5,
     },
 
     // LIFE-CYCLE CALLBACKS:

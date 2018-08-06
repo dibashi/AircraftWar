@@ -4320,6 +4320,9 @@
     },
     "beginGame": {
       "__id__": 32
+    },
+    "expectingAlert": {
+      "__uuid__": "54129d33-9211-4690-aac1-abf845530a48"
     }
   },
   {

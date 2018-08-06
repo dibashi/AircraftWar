@@ -149,6 +149,11 @@ cc.Class({
             type: cc.Node,
 
         },
+
+        expectingAlert: {
+            default:null,
+            type:cc.Prefab,
+        },
     },
 
 
@@ -464,7 +469,13 @@ cc.Class({
     storeClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
 
-        cc.director.loadScene('store');
+        //cc.director.loadScene('store');
+        let ss = cc.instantiate(this.expectingAlert);
+        ss.setPosition(0, 0);
+
+        ss.getComponent("Alert").onWho = this.node;
+        this.node.addChild(ss);
+
     },
 
     onSoundButtonClick: function () {
