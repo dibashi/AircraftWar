@@ -127,10 +127,12 @@ cc.Class({
             this.lifeBtn.getComponent(cc.Button).interactable = false;
         }
 
-
-        wx.postMessage({
-            message: "nextInfo",
-        });
+        if(cc.isOpen_wx) {
+            wx.postMessage({
+                message: "nextInfo",
+            });
+        }
+     
 
         this.display.scale = 1.0;
 
@@ -145,13 +147,20 @@ cc.Class({
     },
 
     start() {
+        if(cc.isOpen_wx) {
+            this.tex = new cc.Texture2D();
+            window.sharedCanvas.width = 720;
+            window.sharedCanvas.height = 1280;
+        }
       
-        this.tex = new cc.Texture2D();
-        window.sharedCanvas.width = 720;
-        window.sharedCanvas.height = 1280;
     },
 
     _updaetSubDomainCanvas() {
+
+        if(!cc.isOpen_wx) {
+            return;
+        }
+
         if (!this.tex) {
             return;
         }
