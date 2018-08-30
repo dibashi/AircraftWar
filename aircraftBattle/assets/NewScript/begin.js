@@ -158,6 +158,9 @@ cc.Class({
 
 
     setBestScore: function (s) { //上报到微信服务器：历史最高分
+        if(!cc.isOpen_wx) {
+            return;
+        }
         var kvDataList = new Array();
         kvDataList.push({ key: "driver_MaxScore", value: "" + s });
         wx.setUserCloudStorage({ KVDataList: kvDataList })
@@ -168,7 +171,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        cc.isOpen_wx = false;
 
         let self = this;
         
@@ -337,7 +340,9 @@ cc.Class({
         }
 
 
-
+        if(!cc.isOpen_wx) {
+            return;
+        }
 
         if (!cc.videoAd) {
             //先创建，可不用，由于是单例模式，所以后面再创建就快了。
@@ -387,6 +392,11 @@ cc.Class({
 
     //从服务器获得用户的推荐奖励，并刷新在界面上
     refreshrecommended: function () {
+
+        if(!cc.isOpen_wx) {
+            return;
+        }
+
         let self = this;
         let openid = cc.sys.localStorage.getItem("openid");
         if (openid == "0") {
@@ -526,6 +536,9 @@ cc.Class({
 
 
     getUerOpenID: function () {
+        if(!cc.isOpen_wx) {
+            return;
+        }
         // console.log("getUserOpenID!");
         let self = this;
         self.openid = cc.sys.localStorage.getItem("openid");
