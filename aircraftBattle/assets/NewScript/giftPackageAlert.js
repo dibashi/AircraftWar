@@ -231,6 +231,10 @@ cc.Class({
 
     onGuangGaoClick: function () {
         //     cc.log("onGuangGaoClick");
+        if(!cc.isOpen_wx) {
+            this.onCancelClick();
+            return;
+        }
         let self = this;
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.videoAd.show();
