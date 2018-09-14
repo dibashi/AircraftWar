@@ -154,6 +154,11 @@ cc.Class({
             default:null,
             type:cc.Prefab,
         },
+
+        noticeNode:{
+            default:null,
+            type:cc.Node,
+        }
     },
 
     exitClick:function() {
@@ -330,7 +335,19 @@ cc.Class({
         this.getUerOpenID();
 
         this.schedule(this.refreshrecommended, 4);
+
+        this.scheduleOnce(this.noticeClose,2);
     },
+
+    noticeClose:function() {
+        
+        this.noticeNode.runAction(cc.sequence(cc.fadeOut(1),cc.callFunc(this.noticeOver,this)));
+    },
+
+    noticeOver:function() {
+        this.noticeNode.active = false;
+    },
+
 
 
     start() {
