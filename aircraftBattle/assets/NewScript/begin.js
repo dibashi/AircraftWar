@@ -183,7 +183,8 @@ cc.Class({
         cc.isOpen_wx = false;
 
         let self = this;
-        
+        var today=new Date();
+        console.log( ""+today.getFullYear() + today.getMonth() + today.getDate());
 
 
         //适配
@@ -253,6 +254,13 @@ cc.Class({
 
             //钻石数量初始化
             cc.sys.localStorage.setItem('diamondCount', 0);
+
+            //日期限购 初始化
+            var today=new Date();
+      
+            cc.sys.localStorage.setItem('purchasingLimitationsDate', ""+today.getFullYear() + today.getMonth() + today.getDate());
+            //本日已购买次数
+            cc.sys.localStorage.setItem("LimitationsCount",0);
         }
         else {
             cc.sys.localStorage.setItem('isLoaded', parseInt(isloaded) + 1);
@@ -335,8 +343,13 @@ cc.Class({
         this.getUerOpenID();
 
         this.schedule(this.refreshrecommended, 4);
-
-        this.scheduleOnce(this.noticeClose,2);
+        if(!cc.noticeFlag) {
+            this.scheduleOnce(this.noticeClose,2);
+            cc.noticeFlag = true;
+        } else {
+            this.noticeNode.active = false;
+        }
+        
     },
 
     noticeClose:function() {

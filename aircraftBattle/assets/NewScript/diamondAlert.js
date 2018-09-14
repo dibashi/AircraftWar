@@ -49,6 +49,11 @@ cc.Class({
 
         onWho: null,//在哪个页面上面，当当前页面消失时使得那个页面可点击
         _nodeTag: -1,
+
+        LimitationsAlert: {
+            default: null,
+            type: cc.Prefab,
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -76,7 +81,46 @@ cc.Class({
 
 
     gouMaiClick: function () {
-       // cc.log("gouMaiClick");
+        // cc.log("gouMaiClick");
+
+        var today = new Date();
+
+        let currDate = "" + today.getFullYear() + today.getMonth() + today.getDate();
+        let preDate = cc.sys.localStorage.getItem('purchasingLimitationsDate');
+        if (currDate == preDate) {
+            console.log("日期相同");
+            let lc = parseInt(cc.sys.localStorage.getItem("LimitationsCount"));
+            if (lc >= 20) {
+                console.log("限购");
+                //弹窗
+
+                cc.audioEngine.playEffect(this.buttonAudio, false);
+
+                cc.eventManager.pauseTarget(this.node, true);
+                let ss = cc.instantiate(this.LimitationsAlert);
+                ss.setPosition(0, 0);
+
+                ss.getComponent("zuanShiBuZuAlert").onWho = this.node;
+                this.node.addChild(ss);
+            } else {
+                this._goumai();
+                lc += 1;
+                console.log("lc  " + lc);
+                cc.sys.localStorage.setItem("LimitationsCount", lc);
+            }
+
+        } else {
+            console.log("日期不同");
+            this._goumai();
+            cc.sys.localStorage.setItem("LimitationsCount", 1);
+
+        }
+
+
+
+    },
+
+    _goumai: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
@@ -92,16 +136,18 @@ cc.Class({
         }
 
     },
+
+
     getPrizeByTag: function () {
-      //  cc.log("!!!!!!!");
-      //  cc.log(this._nodeTag);
+        //  cc.log("!!!!!!!");
+        //  cc.log(this._nodeTag);
         //添加 金币 护盾 必杀 生命
         //1 读取 2 添加 3 写入
 
         let dc = cc.sys.localStorage.getItem('diamondCount');
 
         if (this._nodeTag == 0) {
-          //  cc.log("!!!!!!!nodeTag0");
+            //  cc.log("!!!!!!!nodeTag0");
             dc = parseInt(dc) + 100;
             cc.sys.localStorage.setItem('diamondCount', dc);
 
@@ -121,7 +167,7 @@ cc.Class({
 
 
     onCancelClick: function () {
-      //  cc.log("onCancelClick");
+        //  cc.log("onCancelClick");
         cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.eventManager.pauseTarget(this.node, true);
         let cbFadeOut = cc.callFunc(this.onFadeOutFinish, this);
