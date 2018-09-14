@@ -156,6 +156,10 @@ cc.Class({
         },
     },
 
+    exitClick:function() {
+        cc.director.end();
+    },
+
 
     setBestScore: function (s) { //上报到微信服务器：历史最高分
         if(!cc.isOpen_wx) {
@@ -479,12 +483,12 @@ cc.Class({
     storeClick: function () {
         cc.audioEngine.playEffect(this.buttonAudio, false);
 
-        //cc.director.loadScene('store');
-        let ss = cc.instantiate(this.expectingAlert);
-        ss.setPosition(0, 0);
+        cc.director.loadScene('store');
+        // let ss = cc.instantiate(this.expectingAlert);
+        // ss.setPosition(0, 0);
 
-        ss.getComponent("Alert").onWho = this.node;
-        this.node.addChild(ss);
+        // ss.getComponent("Alert").onWho = this.node;
+        // this.node.addChild(ss);
 
     },
 
